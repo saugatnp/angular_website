@@ -1,0 +1,75 @@
+<div class="header" style="display: block;">
+    <div class="top-header" id="top-header">
+        <div class="row">
+            <div class="col-sm-7 offset-1">
+                <h4 class="white-color m-0"><b> Medipro Computers Pvt. Ltd.</b>
+                </h4>
+            </div>
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <i class="fa fa-calendar white-color"></i>
+
+                    </div>
+                    <div class="col-sm white-color">
+                        Appointments(1234567890)
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <i class="fa fa-phone white-color"></i>
+                    </div>
+                    <div class="col-sm white-color">
+                        1234567890
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg ">
+                <a class="navbar-brand" href="index.html">
+                    Medipro
+                </a>
+
+
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-lg-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link nav-header" [routerLink]="['/Home']" routerLinkActive='active'>Home</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link  nav-header" [routerLink]="['/About']" routerLinkActive='active'>About</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="btn-group">
+                                <button style="border: none;" class="btn nav-link  nav-header dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                                    Departments
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
+                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                </ul>
+                              </div>
+                            <!-- <a class="nav-link  nav-header" >Departments</a> -->
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  nav-header " [routerLink]="['/Contact']" routerLinkActive='active'>Contact</a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+</div>
