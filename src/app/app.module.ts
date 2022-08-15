@@ -8,20 +8,22 @@ import { mainRoutes } from './routing/routes';
 import { FooterComponent } from './content/shared/footer/footer.component';
 import { HeaderComponent } from './content/shared/header/header.component';
 import { AboutComponent } from './content/pages/about/about.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forChild(mainRoutes),
     NgbModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

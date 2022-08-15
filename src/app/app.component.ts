@@ -6,7 +6,7 @@ import { Component, HostListener } from '@angular/core';
 })
 export class AppComponent {
   title = 'Medipro';
-  @HostListener('window:scroll', ['$event']) // for window scroll events
+  @HostListener('window:scroll', ['$event']) 
   onScroll(event : Event) {
       if (document.body.scrollTop > 80 ||     
         document.documentElement.scrollTop > 80) {
