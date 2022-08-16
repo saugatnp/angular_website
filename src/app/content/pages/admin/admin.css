@@ -1,0 +1,250 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+  }
+
+  .menuLogo {
+      position: fixed;
+      left: 0;
+      top: 0px;
+      height: 50px;
+      color: var(--bg-color);
+      padding: 5px 8px;
+      border-bottom: 1px white solid;
+      display: flex;
+  }
+
+  .sidebar ul {
+      margin: 0;
+  }
+
+  .topBar {
+      position: fixed;
+      left: 0;
+      top: 0px;
+      height: 50px;
+      width: 100%;
+      margin: 0;
+      background: var(--primary-color);
+      padding: 5px 8px;
+      border-bottom: 1px white solid;
+      display: flex;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 10px;
+      z-index: 1000;
+  }
+
+  .sidebarWithWidth {
+      width: 10vw;
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  }
+
+
+  @media only screen and (min-width: 1250px) {
+      .sidebarWithWidth {
+          width: 12vw;
+      }
+
+  }
+
+  @media only screen and (max-width: 1250px) and (min-width: 1100px) {
+      .sidebarWithWidth {
+          width: 13vw;
+      }
+
+  }
+
+  @media only screen and (max-width: 1100px) and (min-width: 900px) {
+      .sidebarWithWidth {
+          width: 14vw;
+      }
+
+  }
+
+  @media only screen and (max-width: 900px) and (min-width: 700px) {
+      .sidebarWithWidth {
+          width: 17vw;
+      }
+
+  }
+
+
+  @media only screen and (max-width: 700px) {
+      .sidebarWithWidth {
+          width: 100vw
+      }
+
+  }
+
+  .sidebar {
+      position: relative;
+      left: 0;
+      top: 40px;
+      height: 100vh;
+      background: var(--primary-color);
+      padding: 15px 2px;
+      color: var(--bg-color);
+      z-index: 99;
+      transition: all 0.3s ease;
+  }
+
+  .logo {
+      height: 90%;
+      border-radius: 5px;
+      margin-top: 2px;
+      margin-bottom: 1px;
+      margin-left: 15px;
+      padding-left: 0;
+
+  }
+
+  .toggleSideNav i {
+      padding: 10px 6px;
+      /* color: #fff; */
+      font-size: 20px;
+      text-align: center;
+      height: 100%;
+  }
+
+  .sidebar i {
+      min-width: 50px;
+      text-align: center;
+
+  }
+
+  .sidebar li {
+      position: relative;
+      margin: 5px 0;
+  }
+
+  .sidebar li .tooltip {
+      position: absolute;
+      display: none;
+      left: calc(100% + 15px);
+      z-index: 3;
+      background: var(--bg-color);
+      color: var(--primary-color);
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 400;
+      opacity: 0;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: 0s;
+  }
+
+  .sidebar li:hover .tooltip {
+      opacity: 1;
+
+      display: block;
+
+      pointer-events: auto;
+
+      transition: all 0.3s ease;
+      top: 50%;
+      transform: translateY(-30%);
+  }
+
+
+  .sidebar li a {
+      display: flex;
+      border-radius: 10px;
+      align-items: center;
+      text-decoration: none;
+
+  }
+
+  .primary-text {
+      color: var(--primary-color) !important;
+  }
+
+  .primary-text:hover {
+      color: #1b2c3d !important;
+  }
+
+  .sidebar li a:hover {
+      background: var(--bg-color);
+  }
+
+  .divhide {
+      display: none
+  }
+
+  .nodisp {
+      display: none;
+      opacity: 0;
+
+  }
+
+
+  .sidebar li a .links_name {
+      font-size: 14px;
+      opacity: 1;
+      transition: all 0.3s ease !important;
+      display: block;
+      pointer-events: none;
+  }
+
+  .pagediv {
+      height: auto;
+      position: relative;
+  }
+
+  .secDown {
+      position: absolute;
+      right: 0;
+      top: -5px;
+      text-align: center;
+  }
+
+
+
+  .sidebar li a:hover .links_name,
+  .sidebar li a:hover i,
+  .sidebar li a:hover .sublinks_name,
+  .sidebar li a:hover .subpage_name {
+      color: var(--primary-color);
+
+  }
+
+  .active {
+      color: var(--primary-color) !important;
+      background-color: var(--bg-color) !important;
+      border-radius: 8px;
+
+  }
+
+  .sidebar li i {
+      line-height: 20px;
+      font-size: 18px;
+      border-radius: 10px;
+
+  }
+
+  .text-end {
+      position: absolute;
+      right: 0;
+      height: 5px;
+      top: -2px;
+      text-align: center;
+  }
+
+  li {
+      margin-bottom: 3px;
+      z-index: 100;
+
+  }
+
+  .none {
+      font-size: 12px;
+  }
+
+  .flex {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  

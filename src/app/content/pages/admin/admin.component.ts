@@ -1,35 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.css']
+
 })
-export class HeaderComponent implements OnInit {
-  show:boolean=true;
+export class AdminComponent implements OnInit {
   isLoggedIn: any;
   userName:any;
   id: number = 0
-  constructor(private router: Router,) { }
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe(event => {
-
-      if (event instanceof NavigationStart) {
-
-        if (event.url.includes('Admin')) {
-          this.show=false
-
-        }
-        else 
-          this.show = true
-      }
-    });
   }
+  ngOnDestroy() {
+    this.cdRef.detectChanges();}
   logOff(){
 
   }
-
   division = [
     {
       id: 1,
