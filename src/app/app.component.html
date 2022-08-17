@@ -1,6 +1,11 @@
-<app-header></app-header>
-<router-outlet> </router-outlet>
-<button (click)="topFunction()" id="movetop" title="Go to top" class="top-button">
-    &#10548;
-</button>
-<app-footer>    </app-footer>
+<div [ngStyle]="{'display': show ? 'unset' : 'flex' }">
+    <app-header *ngIf="show"></app-header>
+    <app-admin *ngIf="!show"></app-admin>
+    <div style="flex-grow: 1;">
+        <router-outlet> </router-outlet>
+    </div>
+    <button (click)="topFunction()" id="movetop" title="Go to top" class="top-button">
+        &#10548;
+    </button>
+    <app-footer *ngIf="show"> </app-footer>
+</div>

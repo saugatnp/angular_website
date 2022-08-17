@@ -1,0 +1,114 @@
+<!-- top horizontal bar -->
+<div style="display: flex;">
+    <div class="toggleSideNav navheader" style="overflow: hidden;">
+        <div class="topBar row">
+          <div class="col-sm-2 col-md-8 col-lg-9">
+            <div class="row">
+              <div class="col-sm-2">
+                <div class="menuLogo">
+                    <a [routerLink]="['']">
+                      <img src="assets/images/mediproLogo.png" class="logo">
+                    </a>
+                </div>
+              </div>
+              <div class="col-sm">
+                <h2 style="color:white">Admin Portal</h2>
+              </div>
+            </div>
+          </div>
+         
+          
+      
+      
+      
+          <!-- login -->
+          <div class="col-sm-10 col-lg-3 col-md-4  d-none d-sm-block ">
+            <ul class="navbar-nav  ">
+              <div class="row">
+                <div class=" col-sm-2  col-xs-5 d-block d-md-none "></div>
+                <!-- <div class="col-sm-1" *ngIf="!isLoggedIn"></div> -->
+                <div class="col-sm-6 col-lg-8 col-md-7 ms-auto ">
+                  <!-- login text -->
+                  <li class="nav-item   text-center" *ngIf="!isLoggedIn" style="font-size: 12px;margin-top:10px;">
+                    <a [routerLink]="['Login']" style="color:#0A61B5" class="login-div">
+                      <!-- <i class="fa fa-user " style="font-size: 20px"></i> -->
+                      Login
+                    </a>
+                  </li>
+      
+                  <li class="nav-item mt-2 " *ngIf="!isLoggedIn">
+      
+                    <!-- routerLinkActive="active" -->
+                  </li>
+                  <!-- username -->
+                  <li class="nav-item dropdown   text-center" *ngIf="isLoggedIn" style="font-size: 12px;margin-top:6px;">
+                    <div class="row m-0" ngbDropdown placement="bottom-right">
+                      <div class="input-group m-0 login-div p-0 " ngbDropdownToggle>
+                        <a type="button" class="nav-link  dropdown-toggle primary-text" data-toggle="dropdown">
+                          {{userName}}
+                        </a>
+                        <i class="fa fa-caret-down pt-0"></i>
+                      </div>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="mt-1 p-2 dropdown">
+                        <a ngbDropdownItem class="nav-link p-1 m-1"><label for="" class="small primary-text" >Change
+                            Password</label></a>
+                        <a ngbDropdownItem class="nav-link p-1 m-1"  [routerLink]="['UpdateUser']"><label for="" class="small primary-text">Update
+                            User</label></a>
+                        <a ngbDropdownItem class="nav-link p-1 m-1"><label for="" class="small primary-text"
+                            (click)="logOff()">Logout</label></a>
+                      </div>
+                    </div>
+                  </li>
+                </div>
+      
+                <!-- logout button -->
+                <div class="col-sm-1 col-lg-2 col-md-2  ms-auto ">
+                  <li class=" nav-item text-center icon-circle m-0" *ngIf="isLoggedIn">
+                    <a class="" href="" (click)="logOff()" data-toggle="tooltip" title="Logout">
+                      <i class="fas fa-sign-out" style="color:#0A61B5;font-size: 15px;"></i>
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </div>
+      
+        </div>
+      
+        <!-- side bar starts -->
+        <!-- div's width is increased and decresased by changing its class -->
+        <div id="sidebar" class="sidebar sidebarWithWidth">
+      
+      
+      
+       
+          <!-- list  HIDDEN IN CHALLAN-->
+          <ul class="nav-list" *ngFor="let div of division" >
+      
+            
+            <!-- division loop -->
+            <li class="none" [ngClass]="{'active' : div.id == id }">
+              <!-- on clicking a division its id is passed to toggle its children -->
+              <a (click)="showSub(div.id)">
+                <!-- icon class is taken from backend -->
+                <i class="{{div.class}}"></i>
+                <!-- name is displayed when the menu is toggled -->
+                <span  class="text-capitalize links_name">{{div.name}}
+                  <!-- down arrow icon -->
+      
+                </span>
+              </a>
+              <!-- name for the tooltip on hover -->
+              <span class="tooltip">{{div.name}}</span>
+      
+            </li>
+          </ul>
+     
+      
+        </div>
+      
+      
+      </div>
+      
+    
+</div>

@@ -1,6 +1,7 @@
 :root {
-  --primary-color: #2caee2;
+  --primary-color: #0a61b5;
   --secondary-color: #2F4051;
+  --box-color : rgb(244, 244, 244);
   --font-color: #666;
   --bg-color: #fff;
   --heading-color: #252422;
@@ -47,7 +48,7 @@
   background: transparent;
   padding: 0px;
   transition: all 0.4s ease 0s;
-  height: 90px;
+  height: 70px;
   display: grid;
   align-items: center;
   box-shadow: none;
@@ -171,8 +172,8 @@ a.navbar-brand img {
   left: 0;
   right: 0;
   bottom: 0;
-  mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%));
-  --webkit-mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%));
+  /* mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%));
+  --webkit-mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%)); */
   clip-path: ellipse(80% 50% at 50% 50%) !important;
 }
 .banner-image::after {
@@ -182,7 +183,7 @@ a.navbar-brand img {
   top: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgb(3 15 39 / 69%), rgb(3 15 39 / 70%));
+  background: linear-gradient(to right, rgb(3 15 39 / 49%), rgb(3 15 39 / 30%));
 
 }
 
@@ -210,7 +211,12 @@ a.navbar-brand img {
   text-align: center;
   z-index: 10;
 }
-
+.half-page-card{
+  /* padding: 5px; */
+  border-radius: 10px;
+  /* box-shadow: 0 15px 60px 0 rgb(0 0 0 / 20%); */
+  background-color: var(--box-color);
+}
 .banner-title-top {
   font-size: 14px;
   font-weight: 600;
@@ -452,8 +458,8 @@ a {
 .top-button {
   position: fixed;
   bottom: 50px;
-  z-index: 100;
-  right: 10px;
+  z-index: 10;
+  right: 15px;
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -535,4 +541,37 @@ a {
 
 .mdl-tabs.is-upgraded .mdl-tabs__tab.is-active {
    color: #E21549;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.formcontainer {
+width: 100%;
+  margin-top: 1vh !important;
+  position: relative !important;
+  background-color: #eff7fd;
+  border-radius: 10px 10px 10px 10px;
+  height: 98% !important;
+  margin-bottom: 1vh !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px #DCDCDC solid;
+  overflow: overlay;
+}
+
+.mainViewToggle {
+  margin-left: 15px;
+  padding: 0;
+  flex-grow: 100;
+}
+
+.main-page {
+  width: 100%;
+z-index: 11;
+padding-right: 15px;
+  border-radius: 5px;
+  padding-top: 50px !important;
+  height: 100vh;
+
 }

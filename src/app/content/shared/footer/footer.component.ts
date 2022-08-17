@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -6,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  show:boolean=true;
+  constructor(private router: Router,) { }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+
+      if (event instanceof NavigationStart) {
+
+        if (event.url.includes('Admin')) {
+          this.show=false
+
+        }
+        else 
+          this.show = true
+      }
+    });
   }
 
 }

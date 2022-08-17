@@ -1,4 +1,4 @@
-<div class="header" style="display: block;">
+<div class="header" style="display: block;" *ngIf="show">
     <div class="top-header" id="top-header">
         <div class="row">
             <div class="col-sm-7 offset-1">
@@ -58,9 +58,14 @@
                               </div>
                             <!-- <a class="nav-link  nav-header" >Departments</a> -->
                         </li>
-
+                        <li class="nav-item ">
+                            <a class="nav-link  nav-header" [routerLink]="['/Service']" routerLinkActive='active'>Scope of Services</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link  nav-header " [routerLink]="['/Contact']" routerLinkActive='active'>Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  nav-header " [routerLink]="['/Admin/AdminHome']" routerLinkActive='active'>Admin</a>
                         </li>
 
 

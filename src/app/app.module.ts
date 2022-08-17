@@ -8,20 +8,27 @@ import { mainRoutes } from './routing/routes';
 import { FooterComponent } from './content/shared/footer/footer.component';
 import { HeaderComponent } from './content/shared/header/header.component';
 import { AboutComponent } from './content/pages/about/about.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatStepperModule} from '@angular/material/stepper';
+import { AdminComponent } from './content/pages/admin/admin.component';
+import { AdminModule } from './content/pages/admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forChild(mainRoutes),
     NgbModule,
+    NoopAnimationsModule,
+    MatStepperModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
