@@ -12,6 +12,7 @@ import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatStepperModule} from '@angular/material/stepper';
 import { AdminComponent } from './content/pages/admin/admin.component';
+import { AdminModule } from './content/pages/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { AdminComponent } from './content/pages/admin/admin.component';
     NgbModule,
     NoopAnimationsModule,
     MatStepperModule,
-    
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

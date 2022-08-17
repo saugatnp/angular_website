@@ -33,7 +33,7 @@ export const mainRoutes = [
         ).then((m) => m.ServicesModule)
     },
     {
-        path: 'Admin', component: AdminHomeComponent,
+        path: 'Admin',
         loadChildren: () => import('../content/pages/admin/admin.module'
         ).then((m) => m.AdminModule)
     },

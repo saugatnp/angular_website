@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -10,12 +11,11 @@ export class AdminComponent implements OnInit {
   isLoggedIn: any;
   userName:any;
   id: number = 0
-  constructor(private cdRef: ChangeDetectorRef) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-  ngOnDestroy() {
-    this.cdRef.detectChanges();}
+  
   logOff(){
 
   }
@@ -69,10 +69,10 @@ export class AdminComponent implements OnInit {
   ]
   showSub(id: number) {
     if (id == 1) {
-      
+      this.router.navigate(['Admin/AdminHome']);
     }
     else if (id == 2) {
-      
+      this.router.navigate(['Admin/AdminAbout']);
     }
     
     this.id = id
