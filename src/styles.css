@@ -169,7 +169,7 @@ a.navbar-brand img {
   font-weight: 600 !important;
   /* border-bottom: 4px solid #e72327; */
   border-bottom: 5px solid var(--primary-color);
-  border-radius: 5px;
+  border-radius: 5px; 
 }
 
 .inner-banner-image img {
