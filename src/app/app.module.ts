@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
@@ -13,6 +13,15 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatStepperModule} from '@angular/material/stepper';
 import { AdminComponent } from './content/pages/admin/admin.component';
 import { AdminModule } from './content/pages/admin/admin.module';
+import { JsonAppConfigService } from 'src/config/json-app-config.service';
+import { AppConfiguration } from 'src/config/app-config';
+import { HttpClient } from '@angular/common/http';
+
+export function initializerFn(jsonappconfig: JsonAppConfigService) {
+  return () => {
+    return jsonappconfig.load();
+  }
+}
 
 @NgModule({
   declarations: [
@@ -30,7 +39,19 @@ import { AdminModule } from './content/pages/admin/admin.module';
     MatStepperModule,
     AdminModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AppConfiguration,
+      deps: [HttpClient],
+      useExisting: JsonAppConfigService
+    },
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      useFactory: initializerFn,
+      deps: [JsonAppConfigService]
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
