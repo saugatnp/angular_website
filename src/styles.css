@@ -292,6 +292,22 @@ a.navbar-brand img {
   background-color: white;
   color: var(--primary-color);
 }
+.view-report {
+  background: white;
+  color: var(--primary-color);
+  border: 2px solid #fff;
+  padding: 10px 36px;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 600;
+  transition: 0.3s ease-in;
+  border-radius: var(--border-radius-full);
+}
+
+.view-report:hover {
+  background-color: transparent;
+  color: #fff;
+}
 
 .banner-box-wrap {
   transition: all 0.5s ease 0s;
@@ -527,7 +543,7 @@ a {
   font-weight: 400;
   color:white;
   background-color: var(--primary-color);
-  border: none;
+  border: 1px solid white;
 }
 .image-radius{
   border-radius: 10px;
@@ -647,4 +663,7 @@ padding-right: 15px;
 }
 .info:hover .primary-text-hover{
   color: var(--primary-second-color) !important;
+}
+.primary-bg{
+  background-color: var(--primary-color);
 }
