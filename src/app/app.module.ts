@@ -15,7 +15,7 @@ import { AdminComponent } from './content/pages/admin/admin.component';
 import { AdminModule } from './content/pages/admin/admin.module';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { AppConfiguration } from 'src/config/app-config';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -37,7 +37,8 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     NgbModule,
     NoopAnimationsModule,
     MatStepperModule,
-    AdminModule
+    AdminModule,
+    HttpClientModule
   ],
   providers: [
     {
