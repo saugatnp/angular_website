@@ -1,5 +1,6 @@
 import { Component, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { AppConfiguration } from 'src/config/app-config';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   pauseOnIndicator = false;
   pauseOnHover = true;
   pauseOnFocus = true;
-  constructor() { }
+  constructor(private baseurl:AppConfiguration) {
+   }
 
   ngOnInit(): void {
   }
