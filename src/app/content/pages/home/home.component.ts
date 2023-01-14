@@ -45,18 +45,18 @@ export class HomeComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ['', ''],
+    items:2,
+    autoplay:false,
+    autoWidth:true,
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
-      400: {
-        items: 2
+      500: {
+        items: 2,
       },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
+      1000: {
+        items: 3,
       }
     },
     nav: true
