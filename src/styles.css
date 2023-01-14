@@ -721,16 +721,17 @@ body {
 }
 
 .unilab-shape {
-
-  border-radius: 0 20px 0 20px;
+margin:10px;
+  border-radius: 0 20% 0 20%;
   background-color: var(--primary-color);
-  width: 100%;
-  height: 450px;
+    height: 450px;
+    overflow: hidden;
+}
+.owl-item{
+  margin: 0!important;
 }
 
 .unilab-shape img {
-  border-radius: 0 20px 0 20px;
-
   width: 100%;
   height: 40%;
 }
@@ -758,6 +759,13 @@ body {
   color:var(--primary-color);
   background-color: white;
   
+}
+.owl-item{
+  margin: 10px;
+}
+#features .active{
+  border-bottom: none;
+  font-weight: unset!important;
 }
 
 @media only screen and (max-width: 600px) {
