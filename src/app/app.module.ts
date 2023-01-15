@@ -9,13 +9,14 @@ import { FooterComponent } from './content/shared/footer/footer.component';
 import { HeaderComponent } from './content/shared/header/header.component';
 import { AboutComponent } from './content/pages/about/about.component';
 import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatStepperModule} from '@angular/material/stepper';
 import { AdminComponent } from './content/pages/admin/admin.component';
 import { AdminModule } from './content/pages/admin/admin.module';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { AppConfiguration } from 'src/config/app-config';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -38,7 +39,9 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     NoopAnimationsModule,
     MatStepperModule,
     AdminModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CarouselModule
   ],
   providers: [
     {
