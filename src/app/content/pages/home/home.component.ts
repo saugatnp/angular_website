@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
-    pullDrag: false,
+    pullDrag: false, 
     dots: false,
     navSpeed: 500,
     navText: ['', ''],
