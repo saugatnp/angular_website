@@ -1,4 +1,5 @@
 import { Component, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
@@ -14,11 +15,23 @@ export class HomeComponent implements OnInit {
   pauseOnIndicator = false;
   pauseOnHover = true;
   pauseOnFocus = true;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-  @ViewChild('carousel', {static : true}) carousel!: NgbCarousel;
+  redirectToService(index: number) {
+    if (index % 2 == 0) {
+      this.router.navigateByUrl("/Service/(ServiceName:ServiceOne)")
+      console.log("%2")
+    }
+    else {
+      console.log("no %2")
+
+      this.router.navigateByUrl("/Service/(ServiceName:ServiceTwo)")
+    }
+
+  }
+  @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
 
   togglePaused() {
     if (this.paused) {
@@ -43,11 +56,11 @@ export class HomeComponent implements OnInit {
     touchDrag: false,
     pullDrag: false,
     dots: false,
-    navSpeed: 700,
+    navSpeed: 500,
     navText: ['', ''],
-    items:2,
-    autoplay:false,
-    autoWidth:true,
+    items: 2,
+    autoplay: true,
+    autoWidth: true,
     responsive: {
       0: {
         items: 1,
