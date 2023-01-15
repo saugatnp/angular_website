@@ -226,7 +226,7 @@
 
                 <div class="col-sm-8">
                     <owl-carousel-o [options]="customOptions">
-                        <ng-container *ngFor="let slide of images">
+                        <ng-container *ngFor="let slide of images ; let i = index">
                             <ng-template carouselSlide>
 
                                 <div class="unilab-shape">
@@ -243,7 +243,7 @@
                                             </p>
                                         </div>
                                         <div class="mt-auto ms-auto">
-                                            <a href="" class="service-read-more">Read More <i
+                                            <a class="service-read-more" (click)="redirectToService(i)">Read More <i
                                                     class="fa fa-angle-double-right"></i></a>
                                         </div>
 
