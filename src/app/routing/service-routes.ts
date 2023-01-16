@@ -5,8 +5,6 @@ import { ServicesComponent } from '../content/pages/services/services.component'
 export const serviceRoutes = [
     {
         path: '', 
-        loadChildren: () => import('../content/pages/services/services.module'
-        ).then((m) => m.ServicesModule),
         component: ServicesComponent,
         children : [
             {
