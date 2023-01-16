@@ -230,7 +230,7 @@
                             <ng-template carouselSlide>
 
                                 <div class="unilab-shape">
-                                    <img [src]="slide" [alt]="slide" [title]="slide">
+                                    <img src="{{slide}}" [alt]="slide" [title]="slide">
                                     <div class="d-flex align-items-start flex-column p-3"
                                         style="width: 100%;height: 60%;">
                                         <div>
@@ -243,7 +243,7 @@
                                             </p>
                                         </div>
                                         <div class="mt-auto ms-auto">
-                                            <a class="service-read-more" (click)="redirectToService(i)">Read More <i
+                                            <a class="service-read-more" (click)="onSelectImage(slide);redirectToService(i)">Read More <i
                                                     class="fa fa-angle-double-right"></i></a>
                                         </div>
 

@@ -18,6 +18,14 @@ export const serviceRoutes = [
                         component: ServiceOneComponent
             },
             {
+                path :'ServiceOne/:id',
+                outlet : 'ServiceName',
+                loadChildren: () =>
+                            import('../../app/content/pages/services/servicePages/service-one/service-one.module').then(
+                                (m) => m.ServiceOneModule,),
+                        component: ServiceOneComponent
+            },
+            {
                 path :'ServiceTwo',
                 outlet : 'ServiceName',
                 loadChildren: () =>

@@ -2,6 +2,7 @@ import { Component, HostBinding, HostListener, OnInit, ViewChild } from '@angula
 import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { AppConfiguration } from 'src/config/app-config';
 
 @Component({
   selector: 'app-home',
@@ -21,16 +22,23 @@ export class HomeComponent implements OnInit {
   }
   redirectToService(index: number) {
     if (index % 2 == 0) {
-      this.router.navigateByUrl("/Service/(ServiceName:ServiceOne)")
-      console.log("%2")
+      this.router.navigateByUrl("/Service/(ServiceName:ServiceOne/)")
+      // console.log("%2")
     }
     else {
-      console.log("no %2")
+      // console.log("no %2")
 
       this.router.navigateByUrl("/Service/(ServiceName:ServiceTwo)")
     }
 
   }
+  selectedImage:string=''
+  onSelectImage(x:any){
+    // console.log(x)
+    this.selectedImage=x;
+    localStorage.setItem('img',this.selectedImage);
+  }
+ 
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel;
 
   togglePaused() {
