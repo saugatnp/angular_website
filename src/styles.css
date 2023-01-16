@@ -87,7 +87,7 @@
 a.navbar-brand img {
   display: inline-block;
   height: 44px;
-  vertical-align: sub;
+  vertical-align: center;
 }
 
 .header .navbar .navbar-brand span.fa {
@@ -131,6 +131,9 @@ a.navbar-brand img {
 .btn.show {
   color: white;
 }
+#banner-main{
+  position: relative;
+}
 
 .banner-main {
   padding-top: 80px;
@@ -151,8 +154,9 @@ a.navbar-brand img {
   overflow: hidden;
 
   position: relative;
-  width: auto;
-  height: 400px;
+  background-size: cover;
+  width: 100%;
+  height: auto;
   top: 0;
   left: 0;
   right: 0;
@@ -187,7 +191,8 @@ a.navbar-brand img {
 .inner-banner-image img {
   display: block;
   width: 100vw;
-  height: 100vh;
+  max-height: 600px;
+  /* height: 100vh; */
   object-fit: cover;
 }
 
@@ -549,7 +554,7 @@ a {
 }
 
 .bottom-footer {
-  height: 50px;
+  height:auto;
   padding: 15px 0 0 20px;
   border-top: 1px solid var(--primary-color);
 }
@@ -581,9 +586,14 @@ a {
 .image-div {
   padding: 0;
   border-radius: 8px;
-  width: 40%;
-  height: 250px;
+  width: 100%;
+  height: auto;
   transition: 0.5s ease;
+
+}
+.about-team-image{
+  width: auto;
+  height: 250px;
 
 }
 
@@ -817,5 +827,34 @@ margin:10px;
 
   p {
     font-size: 16px !important;
+  }
+  .header{
+    background-color: white;
+  } 
+  .active{
+    color: black !important;
+  }
+  .nav-header{
+    color: black;
+  }
+  .fixed-top .container{
+    background-color: white;
+  }
+  .bottom-footer{
+    padding: 0;
+  }
+  .bottom-footer p{
+    font-size: 12px !important;
+  }
+  .main-footer a {
+    font-size: 13px !important;
+  }
+  .main-footer h2{
+    font-size: 20px!important;
+  }
+  .about-team-image{
+    width: 100%;
+    height: auto;
+  
   }
 }
