@@ -214,146 +214,126 @@
 
     <section class=" py-5" id="features">
         <div class="py-lg-5 py-md-4">
-            <div class="container">
-                <div class=" text-center">
-                    <h6 class="banner-title-top">Extraordinary Services</h6>
-                    <h1 class=" mb-sm-5 mb-4 pb-lg-2 primary-text"><b>Our Services.</b></h1>
+            <div class=" text-center">
+                <h6 class="banner-title-top">Extraordinary Services</h6>
+                <h1 class=" mb-sm-5 mb-4 pb-lg-2 primary-text"><b>Our Services.</b></h1>
+            </div>
+            <div class="row">
+
+                <div class="col-sm">
+
                 </div>
-                <div class="row">
-                    
-                    
-                        
-                            <owl-carousel-o [options]="customOptions">
-                                <ng-container *ngFor="let slide of images">
-                                    <ng-template carouselSlide>
-                                        
-                                            <div class="unilab-shape">
-                                                <img [src]="slide" [alt]="slide" [title]="slide">
-                                                <div class="d-flex align-items-start flex-column p-3"
-                                                    style="width: 100%;height: 60%;">
-                                                    <div>
-                                                        <h4 class=" white-text ">Service One</h4>
-                                                        <p class="white-text service-text">
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Maxime accusamus facilis ex, quos atque error veritatis
-                                                            sunt, facere aliquid est libero tempora exercitationem
-                                                            quidem odio ea magni ipsam minima repellendus?
-                                                        </p>
-                                                    </div>
-                                                    <div class="mt-auto">
-                                                        <a href="" class="service-read-more">Read More <i
-                                                                class="fa fa-angle-double-right"></i></a>
-                                                    </div>
 
-                                                </div>
-                                            </div>
-                                        
-                                    </ng-template>
-                                </ng-container>
+                <div class="col-sm-8">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-container *ngFor="let slide of images ; let i = index">
+                            <ng-template carouselSlide>
 
-                            </owl-carousel-o>
-                              <!-- <div class="col-sm-4">
                                 <div class="unilab-shape">
-                                    <img src="https://picsum.photos/id/83/900/500" alt="My image description">
+                                    <img src="{{slide}}" [alt]="slide" [title]="slide">
                                     <div class="d-flex align-items-start flex-column p-3"
                                         style="width: 100%;height: 60%;">
                                         <div>
                                             <h4 class=" white-text ">Service One</h4>
                                             <p class="white-text service-text">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-                                                accusamus facilis ex, quos atque error veritatis sunt, facere aliquid
-                                                est libero tempora exercitationem quidem odio ea magni ipsam minima
-                                                repellendus?
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                Maxime accusamus facilis ex, quos atque error veritatis
+                                                sunt, facere aliquid est libero tempora exercitationem
+                                                quidem odio ea magni ipsam minima repellendus?
                                             </p>
                                         </div>
-                                        <div class="mt-auto">
-                                            <a href="" class="service-read-more">Read More <i
+                                        <div class="mt-auto ms-auto">
+                                            <a class="service-read-more" (click)="onSelectImage(slide);redirectToService(i)">Read More <i
                                                     class="fa fa-angle-double-right"></i></a>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div> -->
-                           
-                      
-                   
-                    
+
+                            </ng-template>
+                        </ng-container>
+
+                    </owl-carousel-o>
                 </div>
-                <div class=" row">
-                    <div class="col-lg-5 offset-1">
-                        <div class="row  mb-sm-3 mb-3 half-page-card font-color">
-                            <div class="col-lg-2 col-3 d-flex align-items-center">
-                                <div class="icon p-2 bg-white">
-                                    <span class="fa fa-american-sign-language-interpreting "></span>
-                                </div>
-                            </div>
-                            <div class=" col-9 info ">
-                                <h4><a href="#url" class="primary-text">Therapiya</a></h4>
-                                <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    adipisicing.</p>
-                            </div>
-                        </div>
-                        <div class="row  mb-sm-3 mb-3 half-page-card font-color">
-                            <div class="col-lg-2 col-3 d-flex align-items-center">
-                                <div class="icon p-2 bg-white">
-                                    <span class="fa fa-superpowers"></span>
-                                </div>
-                            </div>
-                            <div class="col-9 info">
-                                <h4><a href="#url" class="primary-text">Dentistry</a></h4>
-                                <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    adipisicing.</p>
+                <div class="col-sm">
+
+                </div>
+            </div>
+           
+            <div class=" row" *ngIf="false">
+                <div class="col-lg-5 offset-1">
+                    <div class="row  mb-sm-3 mb-3 half-page-card font-color">
+                        <div class="col-lg-2 col-3 d-flex align-items-center">
+                            <div class="icon p-2 bg-white">
+                                <span class="fa fa-american-sign-language-interpreting "></span>
                             </div>
                         </div>
-                        <div class="row  mb-sm-3 mb-3 half-page-card font-color">
-                            <div class="col-lg-2 col-3 d-flex align-items-center">
-                                <div class="icon p-2 bg-white">
-                                    <span class="fa fa-snowflake-o"></span>
-                                </div>
-                            </div>
-                            <div class="col-9 info">
-                                <h4><a href="#url" class="primary-text">Virusology</a></h4>
-                                <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    adipisicing.</p>
-                            </div>
+                        <div class=" col-9 info ">
+                            <h4><a href="#url" class="primary-text">Therapiya</a></h4>
+                            <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
+                                adipisicing.</p>
                         </div>
                     </div>
-                    <div class="col-lg-5 offset-1">
-                        <div class="row  mb-sm-3 mb-3 half-page-card font-color">
-                            <div class="col-lg-2 col-3 d-flex align-items-center">
-                                <div class="icon p-2 bg-white">
-                                    <span class="fa fa-building-o"></span>
-                                </div>
-                            </div>
-                            <div class="info col-9 ">
-                                <h4><a href="#url" class="primary-text">Pharmocology</a></h4>
-                                <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    adipisicing.</p>
+                    <div class="row  mb-sm-3 mb-3 half-page-card font-color">
+                        <div class="col-lg-2 col-3 d-flex align-items-center">
+                            <div class="icon p-2 bg-white">
+                                <span class="fa fa-superpowers"></span>
                             </div>
                         </div>
-                        <div class="row mb-sm-3 mb-3 half-page-card font-color">
-                            <div class="col-lg-2 col-3 d-flex align-items-center">
-                                <div class="icon p-2 bg-white">
-                                    <span class="fa fa-heartbeat"></span>
-                                </div>
-                            </div>
-                            <div class="info col-9 ">
-                                <h4><a href="#url" class="primary-text"> Cardiology</a></h4>
-                                <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    adipisicing.</p>
+                        <div class="col-9 info">
+                            <h4><a href="#url" class="primary-text">Dentistry</a></h4>
+                            <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
+                                adipisicing.</p>
+                        </div>
+                    </div>
+                    <div class="row  mb-sm-3 mb-3 half-page-card font-color">
+                        <div class="col-lg-2 col-3 d-flex align-items-center">
+                            <div class="icon p-2 bg-white">
+                                <span class="fa fa-snowflake-o"></span>
                             </div>
                         </div>
-                        <div class="row mb-sm-3 mb-3 half-page-card font-color">
-                            <div class="col-lg-2 col-3 d-flex align-items-center">
-                                <div class="icon p-2 bg-white">
-                                    <span class="fa fa-eye"></span>
-                                </div>
+                        <div class="col-9 info">
+                            <h4><a href="#url" class="primary-text">Virusology</a></h4>
+                            <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
+                                adipisicing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-1">
+                    <div class="row  mb-sm-3 mb-3 half-page-card font-color">
+                        <div class="col-lg-2 col-3 d-flex align-items-center">
+                            <div class="icon p-2 bg-white">
+                                <span class="fa fa-building-o"></span>
                             </div>
-                            <div class="info col-9 ">
-                                <h4><a href="#url" class="primary-text"> Eye Surgery</a></h4>
-                                <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
-                                    adipisicing.</p>
+                        </div>
+                        <div class="info col-9 ">
+                            <h4><a href="#url" class="primary-text">Pharmocology</a></h4>
+                            <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
+                                adipisicing.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-sm-3 mb-3 half-page-card font-color">
+                        <div class="col-lg-2 col-3 d-flex align-items-center">
+                            <div class="icon p-2 bg-white">
+                                <span class="fa fa-heartbeat"></span>
                             </div>
+                        </div>
+                        <div class="info col-9 ">
+                            <h4><a href="#url" class="primary-text"> Cardiology</a></h4>
+                            <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
+                                adipisicing.</p>
+                        </div>
+                    </div>
+                    <div class="row mb-sm-3 mb-3 half-page-card font-color">
+                        <div class="col-lg-2 col-3 d-flex align-items-center">
+                            <div class="icon p-2 bg-white">
+                                <span class="fa fa-eye"></span>
+                            </div>
+                        </div>
+                        <div class="info col-9 ">
+                            <h4><a href="#url" class="primary-text"> Eye Surgery</a></h4>
+                            <p>Lorem ipsum dolor sit amet,Ea consequuntur illum facere aperiam sequi optio
+                                adipisicing.</p>
                         </div>
                     </div>
                 </div>
@@ -401,30 +381,30 @@
                 <h1 class="my-4 p-5 primary-text"><b>Contact</b></h1>
             </div>
         </div>
-        <div class="mapouter mb-5" style="height:auto">
-            <div class="row mb-5">
-                <div class="col-sm-4 offset-1">
+        <div class="mapouter mb-5 p-3" style="height:auto">
+            <div class="row mb-lg-5">
+                <div class="col-lg-4 col-sm offset-lg-1 p-2">
                     <h6 class="banner-title-top mb-1 text-start primary-text">Get in Touch</h6>
                     <h1 class=" mb-2 text-start"><b>Contact Us</b></h1>
                     <p>We have a dedicated support center for all of your support needs. We usually get back to you
                         within
                         12-24 hours.</p>
-                    <div class="row mt-4">
-                        <div class="col-sm-1 ">
-                            <span class="fa fa-map-marker banner-title-top mt-2" style="font-size: 20px;"></span>
+                    <div class=" mt-lg-4 row">
+                        <div class="col-xs-2 col-lg-1">
+                            <span class="fa fa-map-marker banner-title-top " style="font-size: 20px;"></span>
                         </div>
-                        <div class="col-sm">
-                            <div class="row m-0 text-start">
+                        <div class="col-xs-10 col-lg-10">
+                            <div class=" m-0 text-start">
                                 <h5 class="primary-text"><b>Our Address</b></h5>
 
                             </div>
-                            <div class="row m-0">
+                            <div class=" m-0">
                                 <p style="font-size: 13px;" class="m-0">China Town , Kathmandu</p>
 
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
+                    <div class="row mt-lg-4">
                         <div class="col-sm-1 ">
                             <span class="fa fa-phone banner-title-top mt-2" style="font-size: 20px;"></span>
                         </div>
@@ -439,7 +419,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
+                    <div class="row mt-lg-4">
                         <div class="col-sm-1 ">
                             <span class="fa fa-envelope banner-title-top mt-2" style="font-size: 20px;"></span>
                         </div>
@@ -454,7 +434,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
+                    <div class="row mt-lg-4">
                         <div class="col-sm-1 ">
                             <span class="fa fa-life-ring banner-title-top mt-2" style="font-size: 20px;"></span>
                         </div>

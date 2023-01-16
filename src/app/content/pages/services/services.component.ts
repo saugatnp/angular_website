@@ -10,6 +10,12 @@ export class ServicesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const img=localStorage.getItem('img')
+    if(img){
+      this.selectedImage=img;
+    }
   }
+
+  selectedImage:string=''
 
 }

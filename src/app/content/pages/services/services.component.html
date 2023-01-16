@@ -1,7 +1,7 @@
 <div style="position: relative;overflow-x:hidden;">
     <div id="banner-main" style="height: 400px;">
         <div class="inner-banner-image">
-            <img src="../../../assets/images/banner1.jpg">
+            <img src="{{selectedImage}}">
         </div>
         <div class="banner-content">
             <h1 style="position: absolute;top:200px;left:45%;color: white;"><b>Services</b></h1>
@@ -11,6 +11,8 @@
     <div class="container">
 
         <div class="m-5">
+            <router-outlet name="ServiceName"></router-outlet>
+
             <!-- <mat-stepper orientation="vertical" class="row m-5">
                 <ng-template matStepperIcon="edit">
                 </ng-template>
