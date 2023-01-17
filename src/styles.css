@@ -37,6 +37,7 @@
   width: 100%;
   height: auto;
   transition: 2s;
+  font-size: 14px;
 }
 
 .fixed-top .container {
@@ -76,6 +77,7 @@
   font-size: 30px;
   font-weight: 700;
   color: #fff;
+  padding:5px;
 }
 
 .header .navbar .navbar-brand span.sub-logo {
@@ -84,7 +86,7 @@
 
 a.navbar-brand img {
   display: inline-block;
-  height: 44px;
+  height: 45px;
   vertical-align: center;
 }
 
@@ -97,7 +99,7 @@ a.navbar-brand img {
 }
 
 .header .navbar .navbar-brand img {
-  max-width: 140px;
+  max-width: 300px;
   transition: all 0.5s ease;
 }
 
@@ -176,6 +178,9 @@ a.navbar-brand img {
 
 .navbar-nav .nav-link.active {
   color: unset;
+}
+.nav-link{
+  color:unset;
 }
 
 .active {
@@ -286,7 +291,7 @@ a.navbar-brand img {
 }
 
 .nav-fixed .nav-header {
-  color: black;
+  color: black !important;
 }
 
 .nav-fixed .active {
@@ -389,10 +394,14 @@ a{
   background-color: var(--primary-color);
   transform: rotateY(180deg);
 }
+.banner-box-wrap-front p{
+  font-size: 16px;
+  margin: 0;
+}
 
 .icon {
   font-size: 30px;
-  width: 70px;
+  max-width: 70px !important;
   height: 70px;
   text-align: center;
   justify-content: center;
@@ -419,11 +428,11 @@ a{
 }
 
 .white-text {
-  color: var(--white-font-color);
+  color: var(--white-font-color) !important;
 }
 
 .info h4 a {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   margin-top: 5px;
   margin-bottom: 0px;
@@ -486,6 +495,9 @@ p {
 .service-div:hover .icon {
   background-color: var(--primary-color);
   color: var(--bg-color);
+}
+.service-div p{
+  font-size: 16px;
 }
 
 .img-fluid {
@@ -594,7 +606,7 @@ a {
 }
 .about-team-image{
   width: auto;
-  height: 250px;
+  /* height: 250px; */
 
 }
 
@@ -748,7 +760,16 @@ margin:10px;
 }
 
 .unilab-shape p {
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
+.about-text{
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .service-text {
@@ -857,5 +878,11 @@ margin:10px;
     width: 100%;
     height: auto;
   
+  }
+  a.navbar-brand img{
+    height: 23px;
+  }
+  .header .navbar .navbar-brand img{
+    max-width: 150px;
   }
 }

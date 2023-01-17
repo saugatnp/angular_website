@@ -11,7 +11,7 @@ export const mainRoutes = [
     {
         path: '', component: HomeComponent,
         loadChildren: () => import('../content/pages/home/home.module'
-        ).then((m) => m.HomeModule)
+        ).then((m) => m.HomeModule),
     },
     {
         path: 'Home', component: HomeComponent,

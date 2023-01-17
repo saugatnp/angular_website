@@ -1,76 +1,111 @@
 <div class="header" style="display: block;" *ngIf="show">
     <div class="top-header" id="top-header">
         <div class="row">
-            <div class="col-xl-6 col-lg-4 col-xs-5 offset-lg-1 d-flex align-items-center">
-                <h6 class="white-color m-0"> Unilab Diagnostic Center Pvt. Ltd
+            <div class="col-xl-3 col-lg-4 col-xs-5 ms-4 d-flex align-items-center">
+                <h6 class="white-color m-0"> Nepal Cancer Hospital & Research Center Pvt. Ltd
                 </h6>
             </div>
-            <div class="col-sm">
+            <div class="col-xs-7 col-lg-6 col-xs-5 offset-lg-1">
                 <div class="row">
-                    <div class="col-sm-1 col-xs-2">
-                        <i class="fa fa-calendar white-color"></i>
-
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <i class="fa fa-phone white-color"></i>
+                        </div>
+                        <div class=" white-color ms-2">
+                            +977 1 5251312&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="input-group-prepend">
+                            <i class="fa fa-envelope white-color"></i>
+                        </div>
+                        <div class=" white-color ms-2">
+                            info@nch.com.np&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="input-group-prepend">
+                            <i class="fa fa-map-marker white-color"></i>
+                        </div>
+                        <div class=" white-color ms-2">
+                            Harisiddhi,&nbsp;Kathmandu&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div class="input-group-prepend">
+                            <i class="fa fa-user white-color"></i>
+                        </div>
+                        <div class=" white-color ms-2">
+                            Careers
+                        </div>
                     </div>
-                    <div class="col-sm col-xs white-color">
-                        Appointments(1234567890)
-                    </div>
+                    
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="row">
+            <div class="col-sm-1 d-flex align-items-center">
+                <div class="input-group d-flex justify-content-around">
+                    
+                        <i class="fab fa-twitter white-color"></i>
+                        <i class="fab fa-youtube white-color"></i>
+                        <i class="fab fa-facebook white-color"></i>
+                        <i class="fab fa-linkedin white-color"></i>
+                    
+                </div>
+                <!-- <div class="row">
                     <div class="col-sm-1">
                         <i class="fa fa-phone white-color"></i>
                     </div>
                     <div class="col-sm white-color">
                         1234567890
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
     <!--header-->
-        
+
     <header id="site-header" class="fixed-top bottom-border">
         <div class="container">
             <nav class="navbar navbar-expand-lg ">
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/images/unilab-logo.png">
-                    
+                    <img src="https://www.nch.com.np/wp-content/uploads/2020/05/nch_ios_logos.png">
+
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                  </button>
+                </button>
 
 
-                <div class="collapse navbar-collapse"id="navbarNavDropdown">
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link nav-header" [routerLink]="['/Home']" routerLinkActive='active'>Home</a>
+                            <a class="nav-link nav-header white-text " [routerLink]="['/Home']" routerLinkActive='active'>Home</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link  nav-header" [routerLink]="['/About']" routerLinkActive='active'>About</a>
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/About']"
+                                routerLinkActive='active'>About</a>
                         </li>
                         <li class="nav-item">
                             <div class="btn-group">
-                                <button style="border: none;" class="btn nav-link  nav-header dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
+                                <button style="border: none;" class="btn nav-link  nav-header dropdown-toggle white-text"
+                                    type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
                                     Departments
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
                                 </ul>
-                              </div>
+                            </div>
                             <!-- <a class="nav-link  nav-header" >Departments</a> -->
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link  nav-header" [routerLink]="['/Service']" routerLinkActive='active'>Scope of Services</a>
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Service']" routerLinkActive='active'>Scope
+                                of Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  nav-header " [routerLink]="['/Contact']" routerLinkActive='active'>Contact</a>
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Contact']"
+                                routerLinkActive='active'>Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  nav-header " [routerLink]="['/Admin/AdminHome']" routerLinkActive='active'>Admin</a>
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Admin/AdminHome']"
+                                routerLinkActive='active'>Admin</a>
                         </li>
 
 

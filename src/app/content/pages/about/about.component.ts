@@ -11,6 +11,7 @@ export class AboutComponent implements OnInit {
   pauseOnIndicator = false;
   pauseOnHover = true;
   pauseOnFocus = true;
+  textShow : boolean = false;
   constructor() { }
 
   ngOnInit(): void {

@@ -7,8 +7,11 @@
             <div class="container">
 
                 <!-- <h6 class="banner-title-top ">Medical</h6> -->
-                <h3 class="banner-title-center">Better Doctors. Better Care.</h3>
-                <a class=" btn-style btn-white mt-sm-5 mt-4 read-more" href="about.html">
+                <h2 class="white-text">
+                    Your&nbsp;health&nbsp;partner.
+                </h2>
+                <h3 class="banner-title-center mb-2">Medical&nbsp;specialist.</h3>
+                <a class=" btn-style btn-white mt-sm-5 mt-5 read-more" href="about.html">
                     Book Appointment</a>
 
             </div>
@@ -16,7 +19,7 @@
         <div class="banner-image">
 
             <ngb-carousel #carousel [interval]="2000" (slide)="onSlide($event)">
-                <ng-template ngbSlide *ngFor="let img of images; index as i">
+                <ng-template ngbSlide *ngFor="let img of newImages; index as i">
                     <!-- <div class="carousel-caption">
                         <h3>My slide {{i + 1}} title</h3>
                     </div> -->
@@ -39,21 +42,21 @@
                             <div class="banner-box-wrap-inner">
                                 <div class="banner-box-wrap-front row">
                                     <div class="row">
-                                        <div class="icon col-sm-4">
-                                            <span class="fa fa-users mt-3"></span>
+                                        <div class="icon col-sm-3">
+                                            <span class="fas fa-user-md mt-3"></span>
                                         </div>
-                                        <div class="info col-sm">
-                                            <p class="banner-box-wrap-theader">Protect</p>
-                                            <h4 class="m-0"><a href="#url">Qualified Team</a></h4>
+                                        <div class="info col-sm w-auto">
+                                            <!-- <p class="banner-box-wrap-theader">Protect</p> -->
+                                            <h4 class="m-0 w-100"><a href="#url">Know Our Specialist</a></h4>
                                         </div>
                                     </div>
-                                    <p class=" py-2 white-text">Lorem ipsum asd dolor sit amet consectetur ipsum elit.
-                                        Qui eligendi vitae sit.
+                                    <p class=" py-2 white-text">We have a dedicated multidisciplinary team of cancer
+                                        specialists to offer safe care to cancer patients.
                                     </p>
                                 </div>
                                 <div class="banner-box-wrap-back">
-                                    <p class="  white-text">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                                        eligendi vitae sit.
+                                    <p class="  white-text">We have a dedicated multidisciplinary team of cancer
+                                        specialists to offer safe care to cancer patients.
                                     </p>
                                 </div>
 
@@ -66,21 +69,22 @@
                             <div class="banner-box-wrap-inner">
                                 <div class="banner-box-wrap-front row">
                                     <div class="row">
-                                        <div class="icon col-sm-4">
-                                            <span class="fa fa-users mt-3"></span>
+                                        <div class="icon col-sm-3">
+                                            <i class="fa fa-hospital mt-3"></i>
+                                            <!-- <span class="fa fa-circle-h mt-3"></span> -->
                                         </div>
-                                        <div class="info col-sm">
-                                            <p class="banner-box-wrap-theader">Protect</p>
-                                            <h4 class="m-0"><a href="#url">Qualified Team</a></h4>
+                                        <div class="info col-sm w-auto">
+                                            <!-- <p class="banner-box-wrap-theader">Protect</p> -->
+                                            <h4 class="m-0"><a href="#url">Types of Cancer</a></h4>
                                         </div>
                                     </div>
-                                    <p class=" py-2 white-text">Lorem ipsum asd dolor sit amet consectetur ipsum elit.
-                                        Qui eligendi vitae sit.
+                                    <p class=" py-2 white-text">We treat all kinds of Cancer like Blood Cancer, Cervical
+                                        Cancer, Breast Cancer, Bone Cancer.
                                     </p>
                                 </div>
                                 <div class="banner-box-wrap-back">
-                                    <p class="  white-text">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                                        eligendi vitae sit.
+                                    <p class="  white-text">We treat all kinds of Cancer like Blood Cancer, Cervical
+                                        Cancer, Breast Cancer, Bone Cancer.
                                     </p>
                                 </div>
 
@@ -93,21 +97,21 @@
                             <div class="banner-box-wrap-inner">
                                 <div class="banner-box-wrap-front row">
                                     <div class="row m-0">
-                                        <div class="icon col-sm-4">
-                                            <span class="fa fa-users mt-3"></span>
+                                        <div class="icon col-sm-3">
+                                            <span class="fa fa-file-invoice mt-3"></span>
                                         </div>
-                                        <div class="info col-sm">
-                                            <p class="banner-box-wrap-theader">Protect</p>
-                                            <h4 class="m-0"><a href="#url">Qualified Team</a></h4>
+                                        <div class="info col-sm w-auto">
+                                            <!-- <p class="banner-box-wrap-theader">Protect</p> -->
+                                            <h4 class="m-0"><a href="#url">Get An Appointment</a></h4>
                                         </div>
                                     </div>
-                                    <p class=" py-2 white-text">Lorem ipsum asd dolor sit amet consectetur ipsum elit.
-                                        Qui eligendi vitae sit.
+                                    <p class=" py-2 white-text">Appointment date and time requested would be confirmed
+                                        back to you through our appointment section.
                                     </p>
                                 </div>
                                 <div class="banner-box-wrap-back">
-                                    <p class="  white-text">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                                        eligendi vitae sit.
+                                    <p class="  white-text">Appointment date and time requested would be confirmed back
+                                        to you through our appointment section.
                                     </p>
                                 </div>
 
@@ -128,21 +132,23 @@
             <div class="row mt-lg-5 pt-lg-5">
                 <div class="col-lg-5  mt-lg-4">
                     <h6 class=" mb-2 banner-title-top ">About Us</h6>
-                    <h1 class="title-w3l mb-4 font-weight-bold primary-text"><b>Changing the way you receive
-                            healthcare.</b></h1>
+                    <h1 class="title-w3l mb-4 font-weight-bold primary-text"><b>Welcome to Nepal Cancer Hospital</b>
+                    </h1>
                 </div>
                 <div class="col-lg-7  pl-lg-5 mt-lg-4">
-                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                        eligendi
-                        vitae sit.Ea
-                        ipsum sed consequuntur illum facere.Vivamus a ligula quam tesque et libero ut justo, ultrices
-                        in. Ut eu leo
-                        non..
+                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">Nepal Cancer Hospital and Research Center (NCHRC) Pvt. Ltd.
+                        is the first ever effort from the private sector, established to provide the highest quality
+                        state-of-the-art treatment and excellent care to the patients and their families from all around
+                        the globe. The hospital has a dedicated multidisciplinary team of cancer specialists offering
+                        affordable, safe, innovative and compassionate care to cancer patients. In addition to the
+                        latest innovative treatments and state-of-the-art equipment, the hospital goes beyond just
+                        medicine and opens access to alternative and complementary medicine as well.
                     </p>
-                    <p class=" pr-lg-5 mt-md-4 mt-3 mx-auto">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                        eligendi
-                        vitae sit.Ea
-                        ipsum sed consequuntur illum facere.
+                    <p class=" pr-lg-5 mt-md-4 mt-3 mx-auto">With its multidisciplinary department that takes care of
+                        all types of cancer and cancer patients in the holistic approach under one roof, the hospital
+                        will contribute to reduce the burden of cancer, increase survival and improve the quality of
+                        life of the patients and families; thus, a special emphasis has been given to preventive and
+                        palliative oncology.
                     </p>
                     <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2" href="about.html">
                         Read More</a>
@@ -150,14 +156,17 @@
             </div>
         </div>
     </div>
-    <div class="primary-bg pt-lg-2 pt-4 pb-5">
-        <div class="row" style="align-items: end;">
-            <div class="col-sm offset-md-1 text-center">
-                <h1 class="white-text m-0"><b>View Your Report</b></h1>
+    <div class="primary-bg p-4">
+        <div class="row d-flex justify-content-around align-items-center" >
+            <div class="col-sm-6 col-lg-8 col-md-8 m-4">
+                <h6 class=" white-text text-center">Need a Doctor for Check-up?</h6>
+                    <h2 class="font-weight-bold white-text text-center"><b>JUST MAKE AN APPOINTMENT & YOU'RE DONE!</b></h2>
+                <!-- <h4 class="white-text m-0">Need a Doctor for Check-up?</h4>
+                <h3 class="white-text m-0"><b>JUST MAKE AN APPOINTMENT & YOU'RE DONE!</b></h3> -->
             </div>
-            <div class="col-sm offset-md-1 text-center">
-                <a class=" btn-style btn-white mt-sm-5 mt-4 view-report" href="about.html">
-                    View Report</a>
+            <div class="col-lg col-sm col-md text-center">
+                <a class=" btn-style btn-white mt-sm-5 mt-4 view-report text-center" href="about.html">
+                    Get&nbsp;an&nbsp;Appointment</a>
 
             </div>
         </div>
@@ -169,27 +178,30 @@
                 <div class="col-lg-6 ">
                     <div class="">
                         <h6 class="banner-title-top primary-text">Extraordinary Services</h6>
-                        <h1 class=" mb-sm-5 mb-4 pb-2"><b>Why You Should Choose Unilab?.</b></h1>
+                        <h1 class=" mb-sm-5 mb-4 pb-2"><b>Why You Should Choose Us?.</b></h1>
                     </div>
 
                     <div class="row mb-4 service-div px-2">
                         <div class="icon col-xs-4 col-sm-2 col-2 service-icon">
-                            <span class="fa fa-calendar mt-3"></span>
+                            <span class="fa fa-eye mt-3"></span>
                         </div>
                         <div class="info ps-4 col-xs-8 col-sm-10 col ">
-                            <h4><a href="#url" class="primary-text-hover">10 Years Of Experience</a></h4>
-                            <p class="mt-1">Lorem ipsum dolor sit amet consectetur ipsum elit. Lorem ipsum dolor sit
-                                amet elit. </p>
+                            <h4><a href="#url" class="primary-text-hover">CURATIVE</a></h4>
+                            <p class="mt-1">Curative medicine is the health care given for medical conditions where a
+                                cure is considered achievable. We use a comprehensive modality consisting of Medical
+                                Oncology, Surgical Oncology and Radiation Oncology to treat cancerous diseases.</p>
                         </div>
                     </div>
                     <div class="row mb-4 service-div px-2">
                         <div class="icon col-xs-4 col-sm-2 col-2 service-icon ">
-                            <span class="fa fa-calendar mt-3"></span>
+                            <i class="fas fa-stethoscope mt-3"></i>
+                            <!-- <span class="fa fa-calendar mt-3"></span> -->
                         </div>
                         <div class="info ps-4 col-xs-8 col-sm-10 col">
-                            <h4><a href="#url" class="primary-text-hover">Free Consultation</a></h4>
-                            <p class="mt-1">Lorem ipsum dolor sit amet consectetur ipsum elit. Lorem ipsum dolor sit
-                                amet elit. </p>
+                            <h4><a href="#url" class="primary-text-hover">DIAGNOSTIC</a></h4>
+                            <p class="mt-1">Medical diagnosis is the process of determining which disease or condition
+                                explains a person’s symptoms and signs. We have the latest diagnostic facilities in our
+                                Laboratories and Imaging Departments to detect cancers in their earliest stages.</p>
                         </div>
                     </div>
                     <div class="row mb-4 service-div px-2">
@@ -197,9 +209,20 @@
                             <span class="fa fa-shield mt-3"></span>
                         </div>
                         <div class="info ps-4 col-xs-8 col-sm-10 col">
-                            <h4><a href="#url" class="primary-text-hover">100% Guranteed</a></h4>
-                            <p class="mt-1">Lorem ipsum dolor sit amet consectetur ipsum elit. Lorem ipsum dolor sit
-                                amet elit. </p>
+                            <h4><a href="#url" class="primary-text-hover">ACADEMIC & RESEARCH</a></h4>
+                            <p class="mt-1">NCH covers a very varied clinical spectrum and offers the highest quality
+                                and advanced oncology care</p>
+                        </div>
+                    </div>
+                    <div class="row mb-4 service-div px-2">
+                        <div class="icon col-xs-4 col-sm-2 col-2 service-icon ">
+                            <span class="fa fa-shield mt-3"></span>
+                        </div>
+                        <div class="info ps-4 col-xs-8 col-sm-10 col">
+                            <h4><a href="#url" class="primary-text-hover">PALLIATIVE</a></h4>
+                            <p class="mt-1">Nepal Cancer Hospital and Research Center uses Comprehensive Cancer Control
+                                Programs for patients with terminal cancers focusing on their physical, social and
+                                emotional well being.</p>
                         </div>
                     </div>
                 </div>
@@ -211,6 +234,49 @@
 
         </div>
     </div>
+    <section class="messages mt-4 p-5">
+        <div class="row d-flex justify-content-around align-items-center mb-4 pb-4">
+            <div class="col-sm-5 mb-3">
+                <div class="">
+                    <h6 class="banner-title-top primary-text">Message from the</h6>
+                    <h1 class=" mb-sm-5 mb-4 pb-2"><b>Founder and Executive Chairman.</b></h1>
+                </div>
+                <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">Every life has been directly or indirectly affected by cancer.
+                    Some lost the battle against it, some are fighting it, some survived it and some are supporting
+                    those who are fighting and those who survived. The fi ght against cancer is one of the most daunting
+                    challenges faced by people all around the world.
+                </p>
+                <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2" href="about.html">
+                    Read More</a>
+            </div>
+            <div class="col-sm-3">
+                <img src="https://www.nch.com.np/wp-content/uploads/2019/09/Dr.-Sudip-Shrestha-266x300.png" alt=""
+                    class="img-fluid w-100">
+            </div>
+        </div>
+        <div class="row d-flex justify-content-around align-items-center mt-4 pt-4">
+            <div class="col-sm-3 order-sm-2 order-lg-1">
+                <img src="https://www.nch.com.np/wp-content/uploads/2021/05/bijesh-150x150.jpg" alt=""
+                    class="img-fluid w-100">
+            </div>
+            <div class="col-sm-5 mb-3 order-sm-1 order-lg-2">
+                <div class="">
+                    <h6 class="banner-title-top primary-text">Message from the</h6>
+                    <h1 class=" mb-sm-5 mb-4 pb-2"><b>Medical Director.</b></h1>
+                </div>
+                <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">Though most of the cancers are curable if diagnosed early,
+                    people coming to hospitals for diagnosis and treatment in early stages are very low in Nepal. Even
+                    if they did, Nepal lacked the equipment and manpower that helped in proper and timely diagnosis. Due
+                    to lack of comprehensive cancer center patients were forced to go to abroad seeking the diagnosis
+                    and treatment of their disease. Besides that, illiteracy and ignorance of people played a
+                    significant role in increased cancer mortality among Nepalese people.
+                </p>
+                <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2" href="about.html">
+                    Read More</a>
+            </div>
+
+        </div>
+    </section>
 
     <section class=" py-5" id="features">
         <div class="py-lg-5 py-md-4">
@@ -226,26 +292,26 @@
 
                 <div class="col-sm-8">
                     <owl-carousel-o [options]="customOptions">
-                        <ng-container *ngFor="let slide of images ; let i = index">
+                        <ng-container *ngFor="let slide of service ; let i = index">
                             <ng-template carouselSlide>
 
                                 <div class="unilab-shape">
-                                    <img src="{{slide}}" [alt]="slide" [title]="slide">
+                                    <img src="{{slide.image}}" [alt]="slide.name" [title]="slide.name">
                                     <div class="d-flex align-items-start flex-column p-3"
                                         style="width: 100%;height: 60%;">
                                         <div>
-                                            <h4 class=" white-text ">Service One</h4>
+                                            <h4 class=" white-text ">{{slide.name}}</h4>
                                             <p class="white-text service-text">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                Maxime accusamus facilis ex, quos atque error veritatis
-                                                sunt, facere aliquid est libero tempora exercitationem
-                                                quidem odio ea magni ipsam minima repellendus?
+                                               {{slide.text}}
                                             </p>
                                         </div>
                                         <div class="mt-auto ms-auto">
-                                            <a class="service-read-more"
+                                            <a class=" btn-style btn-white mt-sm-5 mt-4 view-report text-center px-2 py-1"  (click)="onSelectImage(slide);redirectToService(i)" style="font-weight: 500;">
+                                                Read&nbsp;More&nbsp;<i
+                                                class="fa fa-angle-double-right"></i></a>
+                                            <!-- <a class="service-read-more"
                                                 (click)="onSelectImage(slide);redirectToService(i)">Read More <i
-                                                    class="fa fa-angle-double-right"></i></a>
+                                                    class="fa fa-angle-double-right"></i></a> -->
                                         </div>
 
                                     </div>
@@ -347,31 +413,134 @@
         <div class="stats-image">
             <img src="../../../assets/images/banner.jpg" alt="stats-image" class="stats-image">
         </div>
-        <div class=" container pt-5 mt-5">
+        <div class=" container mt-5">
             <div class="row ">
-                <div class="col-lg-3 col-6 text-center">
-                    <span class="fa fa-users stats-icon"></span>
-                    <h1 class="counter text-center">1100</h1>
-                    <h4>Expert Doctors</h4>
-                </div>
-                <div class="col-lg-3 col-6 text-center">
-                    <span class="fa fa-laptop stats-icon"></span>
-                    <h1 class="counter text-center">1020</h1>
-                    <h4>Health Programs</h4>
-                </div>
-                <div class="col-lg-3 col-6 text-center">
-                    <span class="fa fa-smile stats-icon"></span>
-                    <h1 class="counter text-center">912</h1>
-                    <h4>Happy Clients</h4>
-                </div>
-                <div class="col-lg-3 col-6 text-center">
+                <div class="col-lg-4 col-6 text-center mb-3">
                     <span class="fa fa-trophy stats-icon"></span>
-                    <h1 class="counter text-center">80</h1>
-                    <h4>Success Meets</h4>
+                    <h1 class="counter text-center">3171</h1>
+                    <h4>Radiation Treatment</h4>
+                </div>
+                <div class="col-lg-4 col-6 text-center mb-3">
+                    <span class="fa fa-bed stats-icon"></span>
+                    <h1 class="counter text-center">100</h1>
+                    <h4>Hospital Rooms</h4>
+                </div>
+                <div class="col-lg-4 col-6 text-center mb-3">
+                    <span class="fa fa-user-md stats-icon"></span>
+                    <h1 class="counter text-center">535</h1>
+                    <h4>Qualified Staffs</h4>
+                </div>
+                <div class="col-lg-4 col-6 text-center pb-3">
+                    <span class="fa fa-thumbs-up stats-icon"></span>
+                    <h1 class="counter text-center">15537</h1>
+                    <h4>Satisfied Patients</h4>
+                </div>
+                <div class="col-lg-4 col-6 text-center pb-3">
+                    <span class="fa fa-heart stats-icon"></span>
+                    <h1 class="counter text-center">247</h1>
+                    <h4>Awareness class and camps</h4>
+                </div>
+                <div class="col-lg-4 col-6 text-center pb-3">
+                    <span class="fa fa-users stats-icon"></span>
+                    <h1 class="counter text-center">120</h1>
+                    <h4>Patients Beds</h4>
                 </div>
             </div>
         </div>
     </section>
+    <div class="row mt-4 pt-4">
+        <div class="col-sm">
+            <div class="row mt-2">
+                <h6 class="banner-title-top text-center">LEADING TEAM</h6>
+            </div>
+            <div class="row">
+                <h1 class=" mb-sm-5 text-center primary-text"><b>Meet Our Team</b></h1>
+            </div>
+
+            <div class="row mb-4" style="justify-content: space-around;">
+
+                <div class="col-lg-5 col-sm-10 p-4">
+                    <div class="image-div font-color row m-0 mb-2">
+                        <img src="../../../assets/images/team1.jpg" alt="" class="image-radius col-sm-6 px-0 about-team-image"
+                            >
+                        <div class="col-sm">
+                            <div class="row mt-4">
+                                <h5 class="text-center m-0">
+                                    Mr Lorem ipsum
+                                </h5>
+                            </div>
+                            <div class="row">
+                                <p class="text-center" style="font-size: 14px;">Associate Developer</p>
+
+                            </div>
+                            <div class="row mt-3">
+                                <p class="text-start" style="font-size: 14px;"><b>Qualification: </b>MBBS</p>
+
+                            </div>
+                            <div class="row">
+                                <p class="text-start" style="font-size: 14px;"><b>Visiting Hours: </b>Sunday - Friday
+                                </p>
+
+                            </div>
+                            <div class="row">
+                                <p class="text-start" style="font-size: 14px;"><b>Timing: </b>8:00 AM - 6:00 PM</p>
+
+                            </div>
+                            <div class="row">
+                                <p class="text-start" style="font-size: 14px;"><b>NMC No.: </b>007</p>
+
+                            </div>
+                        </div>
+
+
+                        
+                    </div>
+                </div>
+                <div class="col-lg-5 col-sm-10 p-4">
+                    <div class="image-div font-color row m-0 mb-2">
+                        <img src="../../../assets/images/team1.jpg" alt="" class="image-radius col-sm-6 px-0 about-team-image"
+                            >
+                        <div class="col-sm">
+                            <div class="row mt-4">
+                                <h5 class="text-center m-0">
+                                    Mr Lorem ipsum
+                                </h5>
+                            </div>
+                            <div class="row">
+                                <p class="text-center" style="font-size: 14px;">Associate Developer</p>
+
+                            </div>
+                            <div class="row mt-3">
+                                <p class="text-start" style="font-size: 14px;"><b>Qualification: </b>MBBS</p>
+
+                            </div>
+                            <div class="row">
+                                <p class="text-start" style="font-size: 14px;"><b>Visiting Hours: </b>Sunday - Friday
+                                </p>
+
+                            </div>
+                            <div class="row">
+                                <p class="text-start" style="font-size: 14px;"><b>Timing: </b>8:00 AM - 6:00 PM</p>
+
+                            </div>
+                            <div class="row">
+                                <p class="text-start" style="font-size: 14px;"><b>NMC No.: </b>007</p>
+
+                            </div>
+                        </div>
+
+
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
 
 
 

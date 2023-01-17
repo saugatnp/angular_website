@@ -23,21 +23,53 @@
                             healthcare.</b></h1>
                 </div>
                 <div class="col-lg-7  pl-lg-5 mt-lg-4">
-                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                        eligendi
-                        vitae sit.Ea
-                        ipsum sed consequuntur illum facere.Vivamus a ligula quam tesque et libero ut justo, ultrices
-                        in. Ut eu leo
-                        non..
+                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto about-text">Nepal Cancer Hospital and Research Center (NCHRC)
+                        Pvt.
+                        Ltd.is the first ever effort from the private sector, established to provide the highest quality
+                        of state-of-the-art treatment and excellent care to the patients and their families from all
+                        around the globe. The hospital has a dedicated multidisciplinary team of cancer specialists
+                        offering affordable, safe, innovative and compassionate care to cancer patients. In addition to
+                        the latest innovative treatments and state-of-the-art equipment, the hospital goes beyond just
+                        medicine and opens access to alternative medicine as well.
+
+                        The hospital has a multidisciplinary department that takes care of all types of cancer and
+                        cancer patients in the holistic approach under one roof. The hospital will contribute to reduce
+                        the burden of cancer, increase survival and improve the quality of life of the patients and
+                        families; thus, emphasis has been given to preventive and palliative oncology.
+
+                        Nepal cancer Hospital and Research Center is located in Harisiddhi, Lalitpur, Nepal within 24
+                        ropani land. The construction of the hospital has been divided into two phases. The completed
+                        phase I hospital has 85 beds and is in 50000 sq.ft. The Phase II of the hospital will be built
+                        within 3 years of the opening of the phase I hospital which will be in 100,000 sq.ft. and will
+                        have 120 beds. The phase II hospital will be further extended to 300 beds in future.
                     </p>
-                    <p class=" pr-lg-5 mt-md-4 mt-3 mx-auto">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                        eligendi
-                        vitae sit.Ea
-                        ipsum sed consequuntur illum facere.
-                    </p>
-                    <a class="btn btn-style read-more-second mt-sm-5 mt-4 mr-2" href="about.html">
-                        Read More</a>
+                    <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2"  (click)="textShow = !textShow">
+                        Read {{textShow ? 'Less' : 'More'}}</a>
                 </div>
+            </div>
+            <div class="row mt-4" *ngIf="textShow">
+                <h6><b class="primary-text">Why Nepal Cancer Hospital & Research Center (NCHRC) for Cancer Care?</b>
+                </h6>
+                <p class="col-sm">
+                    Today, more than half of all patients diagnosed with cancer can be cured, and many others will live
+                    long, meaningful lives even with their disease. But getting the correct diagnosis and the most
+                    appropriate treatment right from the start is crucial.
+
+                    At NCHRC, our focus is comprehensive cancer care. Our doctors have unparalleled expertise in
+                    diagnosing and treating all types of cancer and we use the latest technology and the most
+                    innovative, advanced therapies to increase the chances of cure. The close collaboration between our
+                    doctors offers our patients the best available treatment options.
+                </p>
+                <h6><b class="primary-text">Individualized Expert Treatment</b>
+                </h6>
+                <p class="col-sm">
+                    We also recognize that every patient is unique and the best treatment for one patient may not be
+                    right for another. So you can rest assured that the treatment recommended at NCHRC will be the best
+                    one for you. And while we are leading experts in cancer therapies, we take particular pride in the
+                    compassion and dedication of our doctors, nurses, and other healthcare staffs.
+                    <br />
+                    We are proud of our designation as an the comprehensive cancer center in Nepal.
+                </p>
             </div>
         </div>
     </div>
@@ -166,7 +198,7 @@
     </div>
 
 
-    <div class="row ">
+    <div class="row " *ngIf="false">
         <div class="col-sm">
             <div class="row mt-2">
                 <h6 class="banner-title-top text-center">LEADING TEAM</h6>
@@ -179,8 +211,8 @@
 
                 <div class="col-lg-5 col-sm-10 p-4">
                     <div class="image-div font-color row m-0 mb-2">
-                        <img src="../../../assets/images/team1.jpg" alt="" class="image-radius col-sm-6 px-0 about-team-image"
-                            >
+                        <img src="../../../assets/images/team1.jpg" alt=""
+                            class="image-radius col-sm-6 px-0 about-team-image">
                         <div class="col-sm">
                             <div class="row mt-4">
                                 <h5 class="text-center m-0">
@@ -211,13 +243,13 @@
                         </div>
 
 
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-5 col-sm-10 p-4">
                     <div class="image-div font-color row m-0 mb-2">
-                        <img src="../../../assets/images/team1.jpg" alt="" class="image-radius col-sm-6 px-0 about-team-image"
-                            >
+                        <img src="../../../assets/images/team1.jpg" alt=""
+                            class="image-radius col-sm-6 px-0 about-team-image">
                         <div class="col-sm">
                             <div class="row mt-4">
                                 <h5 class="text-center m-0">
@@ -248,7 +280,7 @@
                         </div>
 
 
-                        
+
                     </div>
                 </div>
 
