@@ -325,6 +325,9 @@ a.navbar-brand img {
   transition: 0.3s ease-in;
   border-radius: var(--border-radius-full);
 }
+a{
+  text-decoration: none !important;
+}
 
 .view-report:hover {
   background-color: transparent;
