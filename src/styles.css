@@ -401,6 +401,7 @@ a{
 
 .icon {
   font-size: 30px;
+  width: 70px;
   max-width: 70px !important;
   height: 70px;
   text-align: center;
@@ -506,6 +507,7 @@ p {
 }
 
 .stats {
+  font-size: 35px;
   height: 400px !important;
   position: relative;
   overflow: hidden;
@@ -605,7 +607,8 @@ a {
 
 }
 .about-team-image{
-  width: auto;
+  /* width: auto; */
+  object-fit:fill;
   /* height: 250px; */
 
 }
