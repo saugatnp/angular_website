@@ -11,9 +11,9 @@ import { AppConfiguration } from 'src/config/app-config';
 export class HomeComponent implements OnInit {
   images = [62, 83, 466, 965, 982, 1043, 738].map((n) => `https://picsum.photos/id/${n}/900/500`);
   newImages = [
-    'https://www.nch.com.np/wp-content/uploads/2020/03/DSC_5369-min.jpg',
-    'https://www.nch.com.np/wp-content/uploads/2021/01/1.gif',
-    'https://www.nch.com.np/wp-content/uploads/2020/03/DSC_5390-2-min.jpg'
+    'https://scontent.fbwa1-1.fna.fbcdn.net/v/t31.18172-8/21366619_1917466775243425_3471185600271085063_o.jpg?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_ohc=7cHaS7B2jZAAX_nNvjr&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfC8uDVotDCneDUaeL5Tgeu4ZBmK0k2YHTvwEohyvsZjlA&oe=63F06D33',
+    'https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/242698248_3106452196344871_3145026289251624003_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=Lxx35f29v0gAX8BOQ28&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfCayeUeSIZdCudSdQ4l9dZbZZLxUOTGLmvP1v11VBjTCQ&oe=63CDA242',
+    'https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/270774588_3182864935370263_6227456734189255812_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=db41JLNRreIAX8-WXwM&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfB5qGt4osYpxq4UsOtSLI4ubJagMqxDesL5ilaeRVd9jQ&oe=63CDC5DC'
   ]
   service = [
     {
