@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
         document.querySelector('#site-header')!.classList.remove('nav-fixed')
         document.querySelector('#top-header')!.classList.remove('no-disp');
   
-      }
+      } 
    
   }
   division = [
