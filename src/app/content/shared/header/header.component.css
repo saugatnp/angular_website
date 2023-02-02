@@ -1,0 +1,183 @@
+:root {
+    --primary-color: #1F3992;
+    --primary-second-color: #0d1738;
+    --secondary-color: #F4F506;
+    --secondary-second-color:white;
+    --box-color: rgb(244, 244, 244);
+    --font-color: #666;
+    --white-font-color: #fff;
+    --bg-color: #fff;
+    --heading-color: #252422;
+    --white-heading-color: #fff;
+    --border-radius: 6px;
+    --border-radius-full: 35px;
+    --border-color: transparent;
+    --border-color-light: #eee;
+    --nav-color: #212D38;
+    --dropdown-color: #fff;
+    --iframe-filter: grayscale(0%);
+    --bg-light: rgba(130, 115, 252, .05);
+    --bg-grey: #F4F6F9;
+    --footer-bg: #0f1113;
+    --card-bg: #fff;
+    --blue: #007bff;
+--indigo: #6610f2;
+--purple: #6f42c1;
+--pink: #e83e8c;
+--red: #dc3545;
+--orange: #fd7e14;
+--yellow: #ffc107;
+--green: #28a745;
+--teal: #20c997;
+--cyan: #17a2b8;
+--white: #fff;
+--gray: #6c757d;
+--gray-dark: #343a40;
+--primary: #007bff;
+--secondary: #6c757d;
+--success: #28a745;
+--info: #17a2b8;
+--warning: #ffc107;
+--danger: #dc3545;
+--light: #f8f9fa;
+--dark: #343a40;
+--breakpoint-xs: 0;
+--breakpoint-sm: 576px;
+--breakpoint-md: 768px;
+--breakpoint-lg: 992px;
+--breakpoint-xl: 1200px;
+  }
+  
+
+.dropdown-menu button:hover   {background-color: #ddd;}
+
+.dropdown:hover  .dropdown-menu {
+    
+    display: block;}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu {
+    width:70%;
+    display: none;
+    position: absolute;
+    background-color: (var(--box-color));
+    /* min-width: 160px; */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+      /*animate*/
+  transition:all .3s ease-in;
+  }
+  
+/* .dropdown:hover  .dropbtn {background-color: #3e8e41;} */
+
+.list-group-item{
+    border-bottom:var(--primary-second-color)  2px ;
+    background-color: var(--bg-color);
+}
+
+#btnset.smaller{
+    font-size: -5%;
+}
+
+#btnset{
+    text-align: center;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    color: var(--primary-color);
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    transition: 0.3s ease-in-out;
+}
+
+#btnset-dark{
+    text-align: center;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    border-radius: var(--border-radius);
+    transition: 0.3s ease-in-out;
+}
+
+/* 
+#btnset-dark:hover{
+    background-color: var(--bg-grey);
+    transition: all ease-in .6s ;
+} */
+
+#btnset-dark>div{
+    display: inline-block;
+    /* font-size: 30px; */
+
+}
+
+#btnset-dark>div:nth-child(1){
+    display: inline-block;
+    font-size: 30px;
+
+}
+
+
+#btnset-dark>div:nth-child(2) {
+    /* background: red; */
+    font-size: 20px;
+  }
+
+
+  #btnset-error:hover{
+    background-color: var(--bg-grey);
+}
+
+
+#btnset:hover{
+    background-color: var(--bg-grey);
+}
+#btnset>div{
+    display: inline-block;
+    /* font-size: 30px; */
+
+}
+
+#btnset>div:nth-child(1){
+    display: inline-block;
+    font-size: 30px;
+
+}
+
+
+#btnset>div:nth-child(2) {
+    /* background: red; */
+    font-size: 20px;
+  }
+  
+
+  
+#btnset>div>li {
+    /* background: red; */
+    font-size: 15px;
+    list-style: none;
+  }
+  
+  /* Selects the second li element in a list */
+  /* li:nth-child(2) {
+    background: lightgreen;
+  } */
+  
+
+
+      #inner1 {
+                            float: left;
+                        }
+
+                        #inner2 {
+                            float: left;
+                            clear: left;
+                        }
+

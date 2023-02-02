@@ -19,14 +19,14 @@
         <div class="banner-image">
 
             <ngb-carousel #carousel [interval]="2000" (slide)="onSlide($event)">
-                <ng-template ngbSlide *ngFor="let img of newImages; index as i">
+                <ng-template ngbSlide *ngFor="let img of service; index as i">
                     <!-- <div class="carousel-caption">
                         <h3>My slide {{i + 1}} title</h3>
                     </div> -->
                     <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank"
                         rel="nofollow noopener noreferrer">
                         <div class="picsum-img-wrapper">
-                            <img [src]="img" alt="My image {{i + 1}} description">
+                            <img [src]="img.image" alt="My image {{i + 1}} description">
                         </div>
                     </a>
                 </ng-template>
@@ -132,11 +132,13 @@
             <div class="row mt-lg-5 pt-lg-5">
                 <div class="col-lg-5  mt-lg-4">
                     <h6 class=" mb-2 banner-title-top ">About Us</h6>
-                    <h1 class="title-w3l mb-4 font-weight-bold primary-text"><b>Welcome to Cancer Care Nepal</b>
+                    <h1 class="title-w3l mb-4 font-weight-bold primary-text"><b>Welcome to Blue Cross </b>
                     </h1>
                 </div>
                 <div class="col-lg-7  pl-lg-5 mt-lg-4">
-                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">Cancer Care Nepal
+                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">
+                        Blue Cross believes in a humble beginning and efficient service with steady progress.
+                        
                         is the first ever effort from the private sector, established to provide the highest quality
                         state-of-the-art treatment and excellent care to the patients and their families from all around
                         the globe. The hospital has a dedicated multidisciplinary team of cancer specialists offering
@@ -210,7 +212,7 @@
                         </div>
                         <div class="info ps-4 col-xs-8 col-sm-10 col">
                             <h4><a href="#url" class="primary-text-hover">ACADEMIC & RESEARCH</a></h4>
-                            <p class="mt-1">Cancer Care covers a very varied clinical spectrum and offers the highest quality
+                            <p class="mt-1">Blue Crosscovers a very varied clinical spectrum and offers the highest quality
                                 and advanced oncology care</p>
                         </div>
                     </div>
@@ -220,7 +222,7 @@
                         </div>
                         <div class="info ps-4 col-xs-8 col-sm-10 col">
                             <h4><a href="#url" class="primary-text-hover">PALLIATIVE</a></h4>
-                            <p class="mt-1"> Cancer Care uses Comprehensive Cancer Control
+                            <p class="mt-1"> Blue Crossuses Comprehensive Cancer Control
                                 Programs for patients with terminal cancers focusing on their physical, social and
                                 emotional well being.</p>
                         </div>

@@ -1,8 +1,8 @@
 :root {
-  --primary-color: #dd4fa0;
-  --primary-second-color: #732c77;
-  --secondary-color: #231f20;
-  --secondary-second-color: #414042;
+  --primary-color: #1F3992;
+  --primary-second-color: #0d1738;
+  --secondary-color: white;
+  --secondary-second-color:rgb(255, 235, 235);
   --box-color: rgb(244, 244, 244);
   --font-color: #666;
   --white-font-color: #fff;
@@ -33,10 +33,10 @@
   position: relative;
   margin: 0;
   padding: 5px;
-  background-color: var(--primary-second-color);
+  background-color: var(--bg-color);
   width: 100%;
   height: auto;
-  transition: 2s;
+  transition:all .3s ease-in;
   font-size: 14px;
 }
 
@@ -113,6 +113,7 @@ a.navbar-brand img {
   padding: 0 12px;
   transition: all 0.5s ease;
   position: relative;
+  
 }
 
 .header .navbar-expand-lg .navbar-nav .nav-item.active .nav-link {
@@ -411,6 +412,8 @@ a{
   border-radius: var(--border-radius);
   transition: 0.3s ease-in-out;
 }
+
+
 
 .bg-white {
   background-color: white !important;
@@ -731,6 +734,10 @@ body {
 }
 
 .info:hover .primary-text-hover {
+  color: var(--primary-second-color) !important;
+}
+
+.info:hover >div {
   color: var(--primary-second-color) !important;
 }
 

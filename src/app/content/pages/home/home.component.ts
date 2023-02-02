@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   service = [
     {
       name: 'Medical Department',
-      image: 'https://scontent.fbwa1-1.fna.fbcdn.net/v/t39.30808-6/277674963_3247016085621814_6156537813936942794_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=9dOHyYJAL68AX9BQIZL&_nc_ht=scontent.fbwa1-1.fna&oh=00_AfDlmjtSbjOmXIWHzk2HeKJ6ice7ayZbkSKeU7iCoT1kfg&oe=63CE9762',
+      image: 'https://st2.depositphotos.com/1875497/8309/i/950/depositphotos_83097114-stock-photo-blur-hospital-background.jpg',
       text: 'Department of Medical Oncology at Nepal Cancer Hospital & Research Centre Pvt. Ltd covers a very varied clinical spectrum and offeres the highest quality and advanced oncology care in a supportive and compassionate environment to all our patients for the treatment and prevention of cancers through the protocal-based approach and onnovative reseach.',
       link: ''
     },
