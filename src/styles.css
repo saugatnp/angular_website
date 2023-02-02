@@ -20,6 +20,7 @@
   --bg-grey: #F4F6F9;
   --footer-bg: #0f1113;
   --card-bg: #fff;
+  --hover-color : #445fb7;
 }
 
 .no-disp {
@@ -570,6 +571,10 @@ a {
 .gray-color {
   color: var(--font-color);
 }
+.list-group-item{
+  color: white !important;
+  background-color: var(--primary-color) !important;
+}
 
 .bottom-footer {
   height:auto;
@@ -730,16 +735,19 @@ body {
 }
 
 .primary-text-hover {
-  color: var(--primary-color) !important;
+  /* color: var(--primary-color) !important; */
 }
 
-.info:hover .primary-text-hover {
-  color: var(--primary-second-color) !important;
+ .list-group-item:hover {
+  background-color: var(--hover-color) !important;
 }
 
 
 .info:hover >div {
   color: var(--primary-second-color) !important;
+}
+.small{
+  font-size: 15px !important;
 }
 
 .primary-bg {
