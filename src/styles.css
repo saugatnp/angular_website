@@ -113,7 +113,7 @@ a.navbar-brand img {
   padding: 0 12px;
   transition: all 0.5s ease;
   position: relative;
-  
+
 }
 
 .header .navbar-expand-lg .navbar-nav .nav-item.active .nav-link {
@@ -285,7 +285,7 @@ a.navbar-brand img {
   padding: 0px;
   background: var(--bg-color) !important;
   color: black !important;
-  height: 80px;
+  height: 5vh;
   border-bottom: none;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
   transition: easy 1s;

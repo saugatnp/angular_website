@@ -62,7 +62,7 @@
   }
   
   .dropdown-menu {
-    width:70%;
+    width:50vw;
     display: none;
     position: absolute;
     background-color: (var(--box-color));
