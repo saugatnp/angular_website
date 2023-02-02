@@ -737,6 +737,7 @@ body {
   color: var(--primary-second-color) !important;
 }
 
+
 .info:hover >div {
   color: var(--primary-second-color) !important;
 }
