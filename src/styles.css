@@ -51,7 +51,8 @@
   /* overflow: hidden; */
   top: 0;
   position: fixed;
-  background: rgba(162, 162, 162, 0.7);
+  background-color: var(--primary-color);
+  /* background: rgba(162, 162, 162, 0.7); */
   display: block;
   z-index: 1000;
 }
@@ -60,7 +61,7 @@
   position: relative;
   /* background: rgba(162, 162, 162, 0.3) ; */
   /* padding: 0px; */
-  transition: all 0.4s ease 0s;
+  transition: all 0.4s ease-in-out 0s;
   /* height: 70px; */
   display: grid;
   align-items: center;
@@ -189,7 +190,7 @@ a.navbar-brand img {
   color: var(--white-font-color) !important;
   font-weight: 600 !important;
   /* border-bottom: 4px solid #e72327; */
-  border-bottom: 5px solid var(--primary-color);
+  border-bottom: 5px solid var(--secondary-color);
   border-radius: 5px;
 }
 
@@ -264,7 +265,7 @@ a.navbar-brand img {
 }
 
 .banner-title-top {
-  font-size: 14px;
+  font-size: 30px;
   font-weight: 600;
   text-transform: uppercase;
   line-height: 30px;
@@ -274,7 +275,7 @@ a.navbar-brand img {
 }
 
 .banner-title-center {
-  font-size: 68px;
+  font-size: 65px;
   line-height: 80px;
   font-weight: 700;
   text-transform: capitalize;
@@ -284,21 +285,22 @@ a.navbar-brand img {
 .nav-fixed {
   top: 0;
   padding: 0px;
-  background: var(--bg-color) !important;
-  color: black !important;
+  background: var(--primary-color) !important;
+  color: white !important;
   height: 5vh;
   border-bottom: none;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
   transition: easy 1s;
 }
 
-.nav-fixed .nav-header {
-  color: black !important;
+/* .nav-fixed .nav-header {
+  color: white !important;
 }
 
 .nav-fixed .active {
-  color: black !important;
-}
+  border-bottom: var(--bg-color) 1px solid;
+  color: white !important;
+} */
 
 .nav-fixed .navbar-brand {
   color: black !important;
@@ -735,7 +737,7 @@ body {
 }
 
 .primary-text-hover {
-  /* color: var(--primary-color) !important; */
+  color: var(--primary-color) !important;
 }
 
  .list-group-item:hover {
@@ -904,4 +906,9 @@ margin:10px;
   .header .navbar .navbar-brand img{
     max-width: 150px;
   }
-}
+}@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+ 
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

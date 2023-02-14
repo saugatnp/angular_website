@@ -19,3 +19,46 @@
     text-decoration: none;
     color: #555;
   }
+
+  .card-new{
+    position: relative;
+    /* background-color: cyan; */
+    height: 300px;
+    cursor: pointer;
+}
+.card-image{
+    /* position: absolute; */
+    
+  
+   
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+
+.image{
+    position: relative;
+    z-index: 10;
+    width: 50%; 
+    /* height: 150px; */
+    border-radius: 20px;
+    /* background-color: green; */
+}
+.image img{
+    
+    width: 100% !important;
+    height: auto;
+}
+.card-text{
+    position: absolute;
+    top:25%;
+    padding-top: 25% !important;
+    width: 80%;
+    left:10%;
+    height: auto;
+    border-radius: 20px;
+
+    background-color: var(--primary-color);;
+}
+
