@@ -1,17 +1,19 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { PageContentService } from '../../services/pagecontent.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls:['./header.component.css']
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  show:boolean=true;
+  show: boolean = true;
   isLoggedIn: any;
-  userName:any;
+  userName: any;
   id: number = 0
-  constructor(private router: Router,) { }
+  constructor(private router: Router,
+    private content: PageContentService) { }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -19,29 +21,49 @@ export class HeaderComponent implements OnInit {
       if (event instanceof NavigationStart) {
 
         if (event.url.includes('Admin')) {
-          this.show=false
+          this.show = false
 
         }
-        else 
+        else
           this.show = true
       }
     });
+
+    this.getContent()
   }
-  logOff(){
+  logOff() {
 
   }
-@HostListener('window:scroll', ['$event']) 
-  onScroll(event : Event) {
-      if (document.body.scrollTop > 80 ||     
-        document.documentElement.scrollTop > 80) {
-        document.querySelector('#site-header')!.classList.add('nav-fixed')
-        document.querySelector('#top-header')!.classList.add('no-disp');
-      } else {
-        document.querySelector('#site-header')!.classList.remove('nav-fixed')
-        document.querySelector('#top-header')!.classList.remove('no-disp');
-  
-      }
-   
+  getContent() {
+    this.content.getPageContent().subscribe({
+      next: (value) =>
+        this.storeContent(value),
+      error: (err) => console.log(err)
+
+
+    })
+  }
+
+  aboutList:any = []
+  deptList:any = []
+  servicesList:any = []
+  storeContent(value: any) {
+    this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true)
+  }
+
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    if (document.body.scrollTop > 80 ||
+      document.documentElement.scrollTop > 80) {
+      document.querySelector('#site-header')!.classList.add('nav-fixed')
+      document.querySelector('#top-header')!.classList.add('no-disp');
+    } else {
+      document.querySelector('#site-header')!.classList.remove('nav-fixed')
+      document.querySelector('#top-header')!.classList.remove('no-disp');
+
+    }
+
   }
   division = [
     {
@@ -93,14 +115,14 @@ export class HeaderComponent implements OnInit {
   ]
   showSub(id: number) {
     if (id == 1) {
-      
+
     }
     else if (id == 2) {
-      
+
     }
-    
+
     this.id = id
-   
+
   }
 
 }

@@ -173,12 +173,13 @@
 
                                     <div class="col-12 col-sm-12 col-md-12 small ">
                                         <div class="list-group info" style="border-bottom:1px solid gray;">
-                                            <a class="list-group-item " href="#">About</a>
-                                            <a class="list-group-item" href="#">Mission & Vision</a>
+
+                                            <a class="list-group-item " *ngFor="let x of aboutList">{{x.page_title}}</a>
+                                            <!-- <a class="list-group-item" href="#">Mission & Vision</a>
                                             <a class="list-group-item" href="#">Core values</a>
                                             <a class="list-group-item" href="#">Chairman's Message</a>
                                             <a class="list-group-item" href="#">Board of directors</a>
-                                            <a class="list-group-item" href="#">Senior Management Team</a>
+                                            <a class="list-group-item" href="#">Senior Management Team</a> -->
 
                                         </div>
                                     </div>

@@ -44,6 +44,26 @@ body,*{
   font-size: 14px;
 }
 
+.zoom:hover {
+  cursor: pointer;
+  /* transform: scale(1.2); */
+}
+
+.rounded-btn{
+  text-decoration: none;
+  color:#0a61b5;
+  border-radius: 15px;
+  height: auto;
+  /* margin: 1px 0 1px 0; */
+  padding: 1px 8px 1px 8px !important;
+  border: 1px solid !important  ;
+  border-color: #0a61b5 ;
+  
+}
+.rounded-btn:hover{
+  color:#084e90;
+  border: 1px solid #084e90;
+}
 .fixed-top .container {
   /* position: fixed;
   top: 35px; */
@@ -631,6 +651,40 @@ a {
   transition: 0.5s ease;
 }
 
+/* TABLE HEADER */
+.table-small tr th {
+  background-color: #0a61b5;
+  /* #eff7fd; */
+  /* #2c3e6f9e; */
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+}
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid rgba(121, 119, 119, 0.535) !important
+}
+
+.table-hover tr:hover {
+  background-color: #8893b52c;
+}
+
+
+table tr.highlight {
+  background-color: #72848d2f !important;
+  color: black;
+}
+
+
+  /* TABLE HEAD FIXED */
+  th {
+    position: sticky;
+    height: auto;
+    top: 0;
+    /* Don't forget this, required for the stickiness */
+    box-shadow: 0 2px 2px -1px rgb(0, 0, 0);
+    z-index: 300;
+
+  }
 
 
 .mdl-tabs__panel {
