@@ -23,6 +23,9 @@
   --hover-color : #445fb7;
 }
 
+body,*{
+  font-family: 'Open Sans', sans-serif;}
+
 .no-disp {
   display: none;
   transition: 2s;

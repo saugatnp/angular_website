@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   division = [
     {
       id: 1,
-      name: 'Home',
+      name: 'Dashboard',
       class: 'fas fa-home custom-fa',
     },
     {

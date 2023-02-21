@@ -49,7 +49,7 @@
                         <span class="fa fa-calendar  fs-1 pe-2"></span>
 
 
-                        <a class="small primary-text">Book an <br />appointment</a>
+                        <a class="small primary-text" style="cursor:pointer">Book an <br />&nbsp;appointment</a>
 
 
 
@@ -60,7 +60,7 @@
                     <div class="col-3 d-flex align-items-center" id="btnset-dark">
 
                         <span class="fa fa-calendar fs-1 pe-2"></span>
-                        <a class="small text-white ">Lab Reports</a>
+                        <a class="small text-white " style="cursor:pointer">Patient's Report</a>
 
 
 
@@ -162,10 +162,38 @@
                             <a class="nav-link nav-header white-text " [routerLink]="['/Home']"
                                 routerLinkActive='active'>Home</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link  nav-header white-text" [routerLink]="['/About']"
-                                routerLinkActive='active'>About Us</a>
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
+                                data-bs-toggle="dropdown" data-bs-auto-close="outside">About Us</a>
+                            <div class="dropdown-menu dropdown-menu-right" style="border:1px solid gray">
+
+                                <div class="row w-100 mx-0">
+
+
+
+                                    <div class="col-12 col-sm-12 col-md-12 small ">
+                                        <div class="list-group info" style="border-bottom:1px solid gray;">
+                                            <a class="list-group-item " href="#">About</a>
+                                            <a class="list-group-item" href="#">Mission & Vision</a>
+                                            <a class="list-group-item" href="#">Core values</a>
+                                            <a class="list-group-item" href="#">Chairman's Message</a>
+                                            <a class="list-group-item" href="#">Board of directors</a>
+                                            <a class="list-group-item" href="#">Senior Management Team</a>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    
+
+
+                                </div>
+
+                            </div>
                         </li>
+
+
                         <!-- <li class="nav-item">
                             <div class="dropdown">
                                 <button style="border: none;" class="btn nav-link  nav-header dropdown-toggle white-text"
@@ -231,12 +259,21 @@
                                         </div>
                                     </div>
 
+                                    
+
 
                                 </div>
 
                             </div>
                         </li>
 
+
+                        
+                        <li class="nav-item ">
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Service']"
+                                routerLinkActive='active'>Doctors</a>
+                        </li>
+                   
                         <li class="nav-item dropdown dropdown-mega position-static">
                             <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
                                 data-bs-toggle="dropdown" data-bs-auto-close="outside">Services</a>
@@ -246,7 +283,7 @@
 
 
 
-                                    <div class="col-6 col-sm-6 col-md-6 small pe-0">
+                                    <div class="col-12 col-sm-12 col-md-12 small ">
                                         <div class="list-group info" style="border-bottom:1px solid gray;">
                                             <a class="list-group-item " href="#">Parking</a>
                                             <a class="list-group-item" href="#">Pharmacy</a>
@@ -255,7 +292,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6 col-sm-6 col-md-6 small ">
+                                    <!-- <div class="col-6 col-sm-6 col-md-6 small ">
                                         <div class="list-group info" style="border-bottom:1px solid gray;">
                                             <a class="list-group-item " href="#">Laboratory</a>
                                             <a class="list-group-item" href="#">Radiology</a>
@@ -263,7 +300,7 @@
 
 
                                         </div>
-                                    </div>
+                                    </div> -->
 
 
                                 </div>
@@ -272,10 +309,6 @@
                         </li>
 
 
-                        <!-- <li class="nav-item ">
-                            <a class="nav-link  nav-header white-text" [routerLink]="['/Service']"
-                                routerLinkActive='active'>Services</a>
-                        </li> -->
                         <li class="nav-item ">
                             <a class="nav-link  nav-header white-text" [routerLink]="['/News']"
                                 routerLinkActive='active'>News and Activities</a>

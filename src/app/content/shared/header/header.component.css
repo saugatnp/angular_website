@@ -65,7 +65,7 @@
 }
 
 .dropdown-menu {
-    width: 50vw;
+    width: max-content;
     display: none;
     position: absolute;
     background-color: (var(--box-color));
@@ -81,6 +81,8 @@
 .list-group-item {
     border-bottom: var(--primary-second-color) 2px;
     background-color: var(--bg-color);
+    /* white-space: nowrap; */
+    width:inherit;
 }
 
 #btnset.smaller {
