@@ -75,6 +75,9 @@
     /*animate*/
     transition: all .3s ease-in;
 }
+.list-group{
+    min-width: 12vw;
+}
 
 /* .dropdown:hover  .dropbtn {background-color: #3e8e41;} */
 
