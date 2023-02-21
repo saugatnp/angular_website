@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './services.component.html',
 })
 export class ServicesComponent implements OnInit {
-
+  service : string = 'Neurology';
   constructor() { 
     this.topFunction()
   }
