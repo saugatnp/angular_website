@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AdminHomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { adminRoutes } from 'src/app/routing/admin-routes';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +14,9 @@ import { adminRoutes } from 'src/app/routing/admin-routes';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    FormsModule,
+    RouterModule,
+    CKEditorModule
   ]
 })
 export class HomeModule { }

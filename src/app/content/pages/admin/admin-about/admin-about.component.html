@@ -4,12 +4,22 @@
     
     
     
-    Admin About Page
+    Admin Home Page
     
+            <ul>
+                <li *ngFor="let x of contents">
+                    <a (click)="selectContent(x)">
+                    {{x.page_title}}
+                </a>
+                </li>
+            </ul>
+            
+
+    <ckeditor [editor]="editor" [(ngModel)]="model.editorData" ></ckeditor>
     
-    
-    
-    
+            <button class="btn-small btn">Submit</button>
+
+    {{model.editorData}}
     
     
     

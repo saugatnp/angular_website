@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminAboutComponent } from './admin-about.component';
+import { FormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 
@@ -9,7 +11,10 @@ import { AdminAboutComponent } from './admin-about.component';
     AdminAboutComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    CKEditorModule
+
   ]
 })
 export class AdminAboutModule { }

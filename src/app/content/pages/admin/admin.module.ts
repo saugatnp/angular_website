@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
 import { adminRoutes } from 'src/app/routing/admin-routes';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,9 @@ import { adminRoutes } from 'src/app/routing/admin-routes';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(adminRoutes)
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(adminRoutes),
   ],
   exports : [
     AdminComponent
