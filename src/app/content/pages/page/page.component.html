@@ -1,12 +1,20 @@
 <div class="">
     <div id="banner-main">
-        <div class="inner-banner-image">
-            <div class="" *ngFor="let x of fileList">
+        <div class="inner-banner-image" *ngIf="fileList.length!=0" >
+            <div  class="" *ngFor="let x of fileList">
                 <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT"
                     alt="{{x.filenames}}">
 
             </div>
         </div>
+        <div class="inner-banner-image" *ngIf="fileList.length==0" >
+            <div  class="" >
+                <img src="{{fileLink}}"
+                    alt="demoPic">
+
+            </div>
+        </div>
+        
         <div class="banner-content">
             <h1 style="position: absolute;top:50%;left:42%;color: white;"><b>{{param}}</b></h1>
         </div>

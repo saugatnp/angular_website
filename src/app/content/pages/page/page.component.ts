@@ -85,7 +85,7 @@ ngOnChanges(){
     this.fileList = res;
     this.fileList = this.fileList.filter((x: { published: boolean; }) => x.published === true);
 
-
+    if(this.fileList.length!==0){
     const baseUrl = this.baseUrl;
 
     this.fileLink =
@@ -94,6 +94,12 @@ ngOnChanges(){
     // fileLink = this.baseUrl + 'api/OnlineUploadFileDownload?userid='+vm.selectedBlog.sn+'&sn='+vm.selectedBlog.sn;
     // $scope.fileType = 'SERVICES';
   }
+else{
+  this.fileLink='assets/images/banner1.jpg'
+}
+
+
+}
 
 
 
