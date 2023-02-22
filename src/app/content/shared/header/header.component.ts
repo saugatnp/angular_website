@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
 
     this.getContent()
   }
+
   logOff() {
 
   }
@@ -49,6 +50,12 @@ export class HeaderComponent implements OnInit {
   servicesList:any = []
   storeContent(value: any) {
     this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true)
+  }
+
+  gotoPage(x:any){
+
+    this.router.navigate(['/Page/'+x.page_title]);
+    // location.reload();
   }
 
 

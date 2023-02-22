@@ -11,10 +11,8 @@
                 </div>
 
                 <div class="col-sm-4 d-flex justify-content-end">
-                    <button class="btn btn-small p-2 btn-secondary"
-                    modalDirective
-                    [content]="content1" [size]="'lg'"
-                    (click)="reset()">New</button>
+                    <button class="btn btn-small p-2 btn-secondary" modalDirective [content]="content1" [size]="'lg'"
+                        (click)="reset()">New</button>
                 </div>
             </nav>
 
@@ -23,12 +21,12 @@
             <div class="row">
                 <div class="col-sm-12">
                     <table class="table-sm table table-small table-bordered table-hover">
-                            <tr>
-                                <th>Sn</th>
-                                <th>Title</th>
-                                <th>Published</th>
-                                <th>Actions</th>
-                            </tr>
+                        <tr>
+                            <th>Sn</th>
+                            <th>Title</th>
+                            <th>Published</th>
+                            <th>Actions</th>
+                        </tr>
                         <tbody>
                             <tr *ngFor="let x of contents">
                                 <td class="m-1 p-1">
@@ -42,13 +40,12 @@
                                 </td>
                                 <td class="m-1 p-1">
                                     <div class="zoom">
-                                        <a  class="m-1 rounded-btn " modalDirective
-                                        (click)="selectContent(x)"
-                                        [content]="content1" [size]="'lg'">Edit&nbsp;
-                                          <i class="fa fa-edit " ></i>
+                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x)"
+                                            [content]="content1" [size]="'lg'">Edit&nbsp;
+                                            <i class="fa fa-edit "></i>
                                         </a>
                                     </div>
-            
+
                                 </td>
                             </tr>
                         </tbody>
@@ -57,26 +54,26 @@
             </div>
 
             <div class="row">
-                <input type="file" (click)="fileChange($event)">
+                <input type="file" (change)="fileChange($event)">
 
 
 
-<ul class="col-sm-4">
-    <li *ngFor="let x of fileList">
-        <!-- {{x.filenames}} -->
+                <ul class="col-sm-4">
+                    <li *ngFor="let x of fileList">
+                        <!-- {{x.filenames}} -->
 
-        <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ANGULAR" height="80"
-            [width]="80" alt="{{x.filenames}}">
+                        <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT"
+                            height="80" [width]="80" alt="{{x.filenames}}">
 
-        <br>
+                        <br>
 
-        <!-- {{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=SLIDERS -->
-    </li>
-</ul>
+                        <!-- {{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=SLIDERS -->
+                    </li>
+                </ul>
 
 
             </div>
-           
+
 
             <!-- <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
 
@@ -92,7 +89,7 @@
 
         </div>
 
-        
+
     </div>
 
 
@@ -102,42 +99,74 @@
 
 
 <ng-template #content1 let-modal>
-	<div class="modal-header">
-		<!-- <h4 class="modal-title" id="modal-basic-title">Content</h4> -->
-		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-	</div>
-	<div class="modal-body ">
-            <div class="row">
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                    <label for="
+    <div class="modal-header">
+        <!-- <h4 class="modal-title" id="modal-basic-title">Content</h4> -->
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body ">
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <label for="
                     title" class="small">Title</label>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-6">
-                    <input type="text" class="form-control form-control-sm"
-                    [(ngModel)]="content.page_title">
-                </div>
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [(ngModel)]="content.published">
-                        <label class="form-check-label small" for="flexCheckChecked">
-                          Published
-                        </label>
-                      </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="content.page_title">
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                        [(ngModel)]="content.published">
+                    <label class="form-check-label small" for="flexCheckChecked">
+                        Published
+                    </label>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-3 col-md-4 col-lg-3">
-                    <label for="
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-4 col-lg-3">
+                <label for="
                     title" class="small">Content</label>
+            </div>
+        </div>
+        <div class="row">
+            <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
+
+        </div>
+
+        <div class="row">
+            <input type="file" (change)="fileChange($event)">
+
+        </div>
+        <div class="row">
+            <table class="table table-small">
+                <tr>
+                    <th>Sn</th>
+                    <th>Title</th>
+                    <th>Published</th>
+                </tr>
+                <tr *ngFor="let x of fileList">
+                    <td>
+                        {{x.sn}}
+                    </td>
+                    <td>
+                            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT"
+                                height="80" [width]="80" alt="{{x.filenames}}">
+
+                    </td>
+                    <td>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                        [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
+
                 </div>
-            </div>
-            <div class="row">
-                <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
+                    </td>
+                </tr>
 
-            </div>
-	</div>
-	<div class="modal-footer">
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
         <button class="btn btn-small btn-primary me-auto" (click)="postContent()">Submit</button>
-	</div>
+    </div>
 </ng-template>
-

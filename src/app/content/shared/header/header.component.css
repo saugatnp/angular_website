@@ -86,6 +86,7 @@
     background-color: var(--bg-color);
     /* white-space: nowrap; */
     width:inherit;
+    cursor: pointer;
 }
 
 #btnset.smaller {

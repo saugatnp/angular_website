@@ -1,0 +1,37 @@
+<div class="">
+    <div id="banner-main">
+        <div class="inner-banner-image">
+            <div class="" *ngFor="let x of fileList">
+                <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT"
+                    alt="{{x.filenames}}">
+
+            </div>
+        </div>
+        <div class="banner-content">
+            <h1 style="position: absolute;top:50%;left:42%;color: white;"><b>{{param}}</b></h1>
+        </div>
+
+
+    </div>
+
+
+
+    
+
+
+
+    <div class="row d-flex justify-content-center" >
+        <!-- <div class="col-lg-4" *ngFor="let x of fileList">
+            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT" height="80"
+                [width]="80" alt="{{x.filenames}}">
+
+        </div> -->
+        <div class="col-lg-7 pl-lg-5 mt-lg-4">
+            <div class="black-text" [innerHTML]="content.page_text"></div>
+
+        </div>
+
+    </div>
+
+
+</div>

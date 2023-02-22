@@ -3,6 +3,7 @@ import { AdminComponent } from '../content/pages/admin/admin.component';
 import { AdminHomeComponent } from '../content/pages/admin/home/home.component';
 import { ContactComponent } from '../content/pages/contact/contact.component';
 import { HomeComponent } from '../content/pages/home/home.component';
+import { PageComponent } from '../content/pages/page/page.component';
 import { ServiceOneComponent } from '../content/pages/services/servicePages/service-one/service-one.component';
 import { ServicesComponent } from '../content/pages/services/services.component';
 
@@ -38,4 +39,18 @@ export const mainRoutes = [
         loadChildren: () => import('../content/pages/admin/admin.module'
         ).then((m) => m.AdminModule)
     },
+
+    {
+        path: 'Page/:id', 
+        component:PageComponent
+    
+    },
 ]
+
+export const PageRoutes=[
+    {
+        path: 'Page/:id', 
+        component:PageComponent
+    
+    },  
+];

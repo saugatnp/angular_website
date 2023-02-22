@@ -40,7 +40,6 @@ export class AdminAboutComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEpic();
-    this.getPicture();
   }
 
 
@@ -86,6 +85,7 @@ export class AdminAboutComponent implements OnInit {
   Success(res: any) {
     this.getEpic();
     this.reset()
+    this.getPicture();
     this.modal.dismissAll();
   }
 
@@ -108,6 +108,9 @@ export class AdminAboutComponent implements OnInit {
     this.content = x;
     this.content.page_text = x.page_text;
     this.model.editorData = x.page_text;
+
+    this.getPicture();
+
     // this.mapToModel()
   }
 
@@ -132,7 +135,7 @@ export class AdminAboutComponent implements OnInit {
       headers.append('Content-Type', 'multipart/form-data');
       headers.append('Accept', 'application/json');
       //    let options = new RequestOptions({ headers: headers });
-      this.http.post(baseUrl + "api/FileAPI/UploadFiles?inv_no=" + 111 + "&userid=" + 111 + "&file_type=ANGULAR"
+      this.http.post(baseUrl + "api/FileAPI/UploadFiles?inv_no=" + this.selectedContent.sn + "&userid=" + this.selectedContent.sn + "&file_type=ABOUT"
         , formData, { headers: { Authorization: 'Bearer ' + token } })
         // .map(res => res.json())
         // .catch(error => Observable.throw(error))
@@ -143,17 +146,35 @@ export class AdminAboutComponent implements OnInit {
         )
     }
   }
+  
+  selectedImage: any = [];
+  selectImage(x: any) {
+    this.selectedImage = x;
+  }
+  togglePublishImage() {
+    const token = localStorage.getItem('access_token');
+    const options = {
+      'headers': { 'Authorization': 'Bearer' + token }
+    }
+    var postUrl = "api/OnlineAppointmentRequestFile/update?id=" + this.selectedImage.id + "&published=" + this.selectedImage.published
+    this.http.post(this.baseUrl + postUrl, options)
+      .subscribe(
+        {
+          next: res => this.Success(res),
+          error: res => this.Error(res),
+        })
 
+  }
 
 
   getPicture() {
     var token = localStorage.getItem('access_token');
     // var userId = this.authorize.getUserId();
     const baseUrl = this.baseUrl;
-    var demourl = 'api/OnlineAppointmentRequestFile?userid=' + 111 +
-      '&sn=' + 111 +
-      '&file_type=ANGULAR'
-    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=111&sn=111&file_type=ANGULAR"
+    var demourl = 'api/OnlineAppointmentRequestFile?userid=' + this.selectedContent.sn +
+      '&sn=' + this.selectedContent.sn +
+      '&file_type=ABOUT'
+    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + this.selectedContent.sn + "&sn=" + this.selectedContent.sn + "&file_type=ABOUT"
       // baseUrl + demourl
       , { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
@@ -174,7 +195,7 @@ export class AdminAboutComponent implements OnInit {
     const baseUrl = this.baseUrl;
 
     this.fileLink =
-      baseUrl + '/api/OnlineUploadFileDownload?userid=111&sn=111'
+      baseUrl + '/api/OnlineUploadFileDownload?userid=' + this.selectedContent.sn + '&sn=' + this.selectedContent.sn
     // '&file_type=ANGULAR'
     // fileLink = this.baseUrl + 'api/OnlineUploadFileDownload?userid='+vm.selectedBlog.sn+'&sn='+vm.selectedBlog.sn;
     // $scope.fileType = 'SERVICES';

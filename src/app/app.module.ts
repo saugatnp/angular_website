@@ -32,6 +32,7 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { PageComponent } from './content/pages/page/page.component';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -45,6 +46,7 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     FooterComponent,
     HeaderComponent,
     AboutComponent,
+    PageComponent,
   ],
   imports: [
     BrowserModule,
