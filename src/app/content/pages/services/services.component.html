@@ -46,48 +46,55 @@
                 </mat-step>
             </mat-stepper> -->
         </div>
+<style>
 
+    
+</style>
 
 
         <div class="row " style="padding:50px;">
-            <div class="col-sm-4 font-color">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link primary-text" (click)="service='Neurology'">Neurology</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link primary-text" (click)="service='Cardiology'">Cardiology</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link primary-text" (click)="service='Thoracis'">Thoracis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link primary-text" (click)="service='Orthopedic'">Orthopedic</a>
-                    </li>
-                </ul>
+            <div class="col-sm-3 ps-0 box-shadow" style="border-radius: 18px;">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <ul class="nav flex-column py-2">
+                            <li class="nav-item py-1 my-1 " [ngClass]="service == 'Neurology' ? 'tab-active' : ''">
+                                <a class="nav-link  primary-text w-50 " (click)="service='Neurology'" >Neurology</a>
+                            </li>
+                            <li class="nav-item py-1 my-1 " [ngClass]="service == 'Cardiology' ? 'tab-active' : ''">
+                                <a class="nav-link  primary-text w-50 " (click)="service='Cardiology'" >Cardiology</a>
+                            </li>
+                            <li class="nav-item py-1 my-1 " [ngClass]="service == 'Thoracis' ? 'tab-active' : ''">
+                                <a class="nav-link  primary-text w-50 " (click)="service='Thoracis'" >Thoracis</a>
+                            </li>
+                            <li class="nav-item py-1 my-1 " [ngClass]="service == 'Orthopedic' ? 'tab-active' : ''">
+                                <a class="nav-link  primary-text w-50 " (click)="service='Orthopedic'" >Orthopedic</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm offset-1 box-shadow p-4" [ngSwitch]="service">
+            <div class="col-sm offset-1  p-4 pt-2" [ngSwitch]="service">
                 <div class="row" *ngSwitchCase="'Cardiology'">
                     <div class="col-sm-12">
-                        <h3 class="primary-text text-center">Cardiology</h3>
+                        <h2 class="mb-4">Cardiology</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
                     </div>
                 </div>
                 <div class="row" *ngSwitchCase="'Thoracis'">
                     <div class="col-sm-12">
-                        <h3 class="primary-text text-center">Thoracis</h3>
+                        <h2 class="mb-4">Thoracis</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
                     </div>
                 </div>
                 <div class="row" *ngSwitchCase="'Orthopedic'">
                     <div class="col-sm-12">
-                        <h3 class="primary-text text-center">Orthopedic</h3>
+                        <h2 class="mb-4">Orthopedic</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
                     </div>
                 </div>
                 <div class="row" *ngSwitchDefault="'Neurology'">
                     <div class="col-sm-12">
-                        <h3 class="primary-text text-center">Neurology</h3>
+                        <h2 class="mb-4">Neurology</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</p>
                     </div>
                 </div>
