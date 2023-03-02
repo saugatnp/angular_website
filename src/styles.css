@@ -23,6 +23,9 @@
   --hover-color : #445fb7;
 }
 
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+
 body,*{
   font-family: 'Open Sans', sans-serif;}
 
@@ -51,7 +54,7 @@ body,*{
 
 .rounded-btn{
   text-decoration: none;
-  color:#0a61b5;
+  /* color:#0a61b5; */
   border-radius: 15px;
   height: auto;
   /* margin: 1px 0 1px 0; */
@@ -59,6 +62,13 @@ body,*{
   border: 1px solid !important  ;
   border-color: #0a61b5 ;
   
+}
+.green-text{
+  color: #4caf50 !important;
+}
+
+.red-text{
+  color: red;
 }
 .rounded-btn:hover{
   color:#084e90;
@@ -128,6 +138,23 @@ a.navbar-brand img {
   transition: all 0.5s ease;
 }
 
+
+
+
+.ng-select.custom {
+  border: 0px;
+  min-height: 0px;
+  border-radius: 4px;
+  font-size: 11px !important;
+}
+
+.ng-select.custom .ng-select-container {
+  min-height: 0px;
+  border-radius: 4px;
+  height: 28px !important;
+}
+
+
 .header .navbar-expand-lg .navbar-nav .nav-link span.fa {
   font-size: 14px;
   padding-left: 2px;
@@ -182,7 +209,7 @@ a.navbar-brand img {
   position: relative;
   background-size: cover;
   width: 100%;
-  height: auto;
+  height: 40vh;
   top: 0;
   left: 0;
   right: 0;
@@ -221,7 +248,7 @@ a.navbar-brand img {
 .inner-banner-image img {
   display: block;
   width: 100vw;
-  max-height: 600px;
+  /* max-height: 45vh; */
   /* height: 100vh; */
   object-fit: cover;
 }
@@ -293,6 +320,28 @@ a.navbar-brand img {
   box-shadow: rgba(17, 17, 26, 0.3) 0px 2px 5px;
 
   /* box-shadow: rgba(100, 100, 102, 0.1) -2px -2px 2px, rgba(100, 100, 102, 0.1) 2px 2px 2px; */
+}
+
+
+.btn-book {
+  background: white;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 10px 36px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  transition: 0.3s ease-in;
+  border-radius: var(--border-radius-full);
+}
+
+.btn-book:hover {
+  border: 2px solid white;
+/* border-top: 8px solid yellow; */
+  background-color: var(--primary-color);
+  color: white;
+  transition: 0.3s ease-in;
+
 }
 
 .banner-title-top {

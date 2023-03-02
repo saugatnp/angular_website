@@ -53,27 +53,7 @@
                 </div>
             </div>
 
-            <div class="row">
-                <input type="file" (change)="fileChange($event)">
-
-
-
-                <ul class="col-sm-4">
-                    <li *ngFor="let x of fileList">
-                        <!-- {{x.filenames}} -->
-
-                        <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT"
-                            height="80" [width]="80" alt="{{x.filenames}}">
-
-                        <br>
-
-                        <!-- {{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=SLIDERS -->
-                    </li>
-                </ul>
-
-
-            </div>
-
+      
 
             <!-- <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
 

@@ -33,6 +33,11 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { PageComponent } from './content/pages/page/page.component';
+import { DoctorsComponent } from './content/pages/doctors/doctors.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BlogsComponent } from './content/pages/blogs/blogs.component';
+import { LabreportdownloadComponent } from './content/pages/labreportdownload/labreportdownload.component';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -47,12 +52,17 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     HeaderComponent,
     AboutComponent,
     PageComponent,
+    DoctorsComponent,
+    BlogsComponent,
+    LabreportdownloadComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forChild(mainRoutes),
     NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
     NoopAnimationsModule,
     MatStepperModule,
     AdminModule,
@@ -73,7 +83,8 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     MdbScrollspyModule,
     MdbTabsModule,
     MdbTooltipModule,
-    MdbValidationModule
+    MdbValidationModule,
+    NgSelectModule
   ],
   providers: [
     {

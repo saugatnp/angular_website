@@ -43,20 +43,21 @@
                   <!-- username -->
                   <li class="nav-item dropdown   text-center" *ngIf="isLoggedIn" style="font-size: 12px;margin-top:6px;">
                     <div class="row m-0" ngbDropdown placement="bottom-right">
-                      <div class="input-group m-0 login-div p-0 " ngbDropdownToggle>
-                        <a type="button" class="nav-link  dropdown-toggle primary-text" data-toggle="dropdown">
+                      <div class="input-group m-0 login-div p-0 " >
+                        <!-- ngbDropdownToggle -->
+                        <a type="button" class="nav-link   white-text" >
                           {{userName}}
                         </a>
                         <i class="fa fa-caret-down pt-0"></i>
                       </div>
-                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="mt-1 p-2 dropdown">
+                      <!-- <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="mt-1 p-2 dropdown">
                         <a ngbDropdownItem class="nav-link p-1 m-1"><label for="" class="small primary-text" >Change
                             Password</label></a>
                         <a ngbDropdownItem class="nav-link p-1 m-1"  [routerLink]="['UpdateUser']"><label for="" class="small primary-text">Update
                             User</label></a>
                         <a ngbDropdownItem class="nav-link p-1 m-1"><label for="" class="small primary-text"
                             (click)="logOff()">Logout</label></a>
-                      </div>
+                      </div> -->
                     </div>
                   </li>
                 </div>
@@ -77,7 +78,7 @@
       
         <!-- side bar starts -->
         <!-- div's width is increased and decresased by changing its class -->
-        <div id="sidebar" class="sidebar sidebarWithWidth">
+        <div id="sidebar" class="sidebar sidebarWithWidth" >
       
       
       

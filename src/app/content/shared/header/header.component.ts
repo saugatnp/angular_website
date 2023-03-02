@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { PageContentService } from '../../services/pagecontent.service';
+import { SpecialityService } from '../../services/speciality.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
   userName: any;
   id: number = 0
   constructor(private router: Router,
-    private content: PageContentService) { }
+    private content: PageContentService,
+    private specialityService:SpecialityService) { }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -30,11 +32,35 @@ export class HeaderComponent implements OnInit {
     });
 
     this.getContent()
+    this.getDeptList()
   }
+
+
+  data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+
+  getColumns(): any[] {
+    const numCols = Math.ceil(this.deptList.length / 6); // calculate the number of columns needed
+    const columns = [];
+
+    for (let i = 0; i < numCols; i++) {
+      const start = i * 6;
+      const end = start + 6;
+      const column = this.deptList.slice(start, end);
+      columns.push(column);
+    }
+
+    return columns;
+  }
+
+
 
   logOff() {
 
   }
+
+
+
+
   getContent() {
     this.content.getPageContent().subscribe({
       next: (value) =>
@@ -45,18 +71,53 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+
+  getDeptList() {
+    this.specialityService.getSpecialityList().subscribe({
+      next: (value) =>
+        this.storeDeptList(value),
+      error: (err) => console.log(err)
+
+
+    })
+  }
+
+  storeDeptList(res:any){
+this.deptList=res;
+
+this.deptList = this.deptList.filter((x: {  published: boolean }) =>  x.published == true)
+
+  }
+
+
+
+
   aboutList:any = []
   deptList:any = []
   servicesList:any = []
   storeContent(value: any) {
-    this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true)
+    this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true);
+    this.servicesList=value.filter((x: { page_group: string, published: boolean }) => x.page_group === "services" && x.published == true);
+
+  }
+
+  gotoPageMultipleParam(x:any){
+    this.router.navigate(['/Page/'+x.sp_id+'/'+x.detail]);
+
   }
 
   gotoPage(x:any){
 
-    this.router.navigate(['/Page/'+x.page_title]);
+    this.router.navigate(['/Page/'+x]);
     // location.reload();
   }
+
+  gotoBlogs(x:any){
+
+    this.router.navigate(['/Blogs']);
+    // location.reload();
+  }
+
 
 
   @HostListener('window:scroll', ['$event'])

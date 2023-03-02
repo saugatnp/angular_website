@@ -18,6 +18,18 @@ import { AppConfiguration } from "src/config/app-config";
     
       }
 
+
+      getSpecialityList() {
+        const token = localStorage.getItem('access_token');
+        const options = {
+            'headers': { 'Authorization': 'Bearer' + token }
+        }
+        return this.http.get(this.baseUrl + "api/GetWebSpeciality", options)
+    }
+
+
+
+
       
 
 
