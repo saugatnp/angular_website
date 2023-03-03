@@ -298,6 +298,10 @@ a.navbar-brand img {
 }
 
 .banner-content {
+  position: absolute;
+  text-align: center;
+  top:45%;
+  /* left:40%; */
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
@@ -959,16 +963,14 @@ margin:10px;
     background-size: cover;
   }
 
-  .banner-image::after {
-    height: auto;
-  }
-
+ 
   .banner-image img {
     height: 60vh;
+    background-size: contain;
   }
 
   .home-services {
-    bottom: -5%;
+    bottom: 0%;
   }
 
   .container h3 {
@@ -978,7 +980,7 @@ margin:10px;
   }
 
   .info h4 a {
-    font-size: 22px !important;
+    font-size: 18px !important;
   }
 
   .service-div .service-icon {
@@ -1027,6 +1029,33 @@ margin:10px;
   }
   .header .navbar .navbar-brand img{
     max-width: 150px;
+  }
+  .nav-item .white-text{
+    color: black !important;
+  }
+  .navbar-collapse{
+    margin-top:10px;
+    border-top: 2px solid var(--primary-color)
+  }
+  .banner-main{
+    padding-top:0;
+  }
+  .banner-image{
+    position: relative;
+  }
+  .banner-box-wrap-front p {
+    font-size: 13px !important;
+  }
+  .icon{
+    font-size: 20px !important;
+    height: 50px;
+  }
+  .banner-box-wrap-front {
+   padding: 20px;
+  }
+  .nav-fixed{
+    background-color: white !important; 
+    height: unset;
   }
 }@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';

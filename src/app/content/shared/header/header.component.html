@@ -153,14 +153,21 @@
                         src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=200&h=200">
 
                 </a> -->
+                <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <img src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=35&h=40">
+
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
 
-                <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarNavDropdown">
-                    <ul class="navbar-nav w-75 d-flex justify-content-around">
+
+                <div class="collapse navbar-collapse " id="navbarNavDropdown">
+
+                    <ul class="navbar-nav w-75 d-flex justify-content-around mx-md-auto">
 
                         <li class="nav-item  ">
                             <a class="nav-link nav-header white-text " [routerLink]="['/Home']"
@@ -261,8 +268,8 @@
 
 
                         <li class="nav-item ">
-                            <a class="nav-link  nav-header white-text" [routerLink]="['/DoctorsList']"
-                                routerLinkActive='active'>Doctors</a>
+                            <a class="nav-link  nav-header white-text "[routerLink]="['/DoctorsList']"
+                                routerLinkActive='active' >Doctors</a>
                         </li>
 
                         <li class="nav-item dropdown dropdown-mega position-static">

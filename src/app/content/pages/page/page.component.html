@@ -35,7 +35,8 @@
 
 
 
-<div class="container">
+<div class="container mt-4" >
+    <hr class="primary-bg d-block d-md-none" style="border-top:6px solid #1F3992" />
 
 
     <nav aria-label="breadcrumb"   >
@@ -47,7 +48,6 @@
 
         </ol>
     </nav>
-
 
 
     <div class="row " style="padding:0px 50px 50px 50px;" *ngIf="content.page_group!='departments'">
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col-sm offset-1 p-4 pt-2" >
+        <div class="col-sm offset-md-1 p-md-4 pt-2" >
             <div class="row">
                 <h3>
                     {{selectedContent.page_title}}
@@ -94,9 +94,9 @@
 
 
     <!-- DEPARTMENTS -->
-    <div class="row mt-3" *ngIf="content.page_group=='departments'" style="padding:0px 50px 50px 50px;">
+    <div class="row mt-3" *ngIf="content.page_group=='departments'" style="padding:0px 30px 30px 30px;">
         
-        <div class="col-sm offset-1 p-4 pt-2" >
+        <div class="col-sm offset-md-1 p-md-4 pt-2" >
             <div class="row">
                 <h3 class="text-center mb-3" >
                     {{param1}}
@@ -145,7 +145,7 @@
 
                     <div class="row mb-4" style="justify-content: space-around;">
 
-                        <div class="card-new col-sm-2 col-md-2 col-lg-2 " *ngFor="let x of doctorsList">
+                        <div class="card-new col-sm-2 col-md-2 col-lg-2 my-2" *ngFor="let x of doctorsList">
                             <div class="card-image">
                                 <div class="image">
                                     <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"

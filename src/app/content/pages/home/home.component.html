@@ -3,19 +3,8 @@
     <!-- //header -->
 
     <div class="banner-main" id="banner-main">
-        <div class="banner-content">
-            <div class="container">
-
-                <!-- <h6 class="banner-title-top ">Medical</h6> -->
-                <h2 class="white-text mb-5">
-                    To&nbsp;Participate&nbsp;in&nbsp;Nation’s&nbsp;Health
-                </h2>
-                <a class=" btn-style btn-white mt-sm-5 mt-5 read-more" href="">
-                    Get More Details</a>
-
-            </div>
-        </div>
-        <div class="banner-image">
+        
+        <div class="banner-image d-md-flex justify-content-center align-items-center" >
 
             <ngb-carousel #carousel [interval]="2000" (slide)="onSlide($event)">
                 <ng-template ngbSlide *ngFor="let x of fileList; index as i">
@@ -33,23 +22,34 @@
                     </a>
                 </ng-template>
             </ngb-carousel>
-
+            <div class="banner-content">
+                <div class="container p-sm-2">
+    
+                    <!-- <h6 class="banner-title-top ">Medical</h6> -->
+                    <h2 class="white-text mb-5 fs-md-2 fs-xs-3">
+                        To&nbsp;Participate&nbsp;in Nation’s&nbsp;Health
+                    </h2>
+                    <a class=" btn-style btn-white mt-sm-5 mt-5 read-more fs-md-4 fs-xs-5" href="">
+                        Get More Details</a>
+    
+                </div>
+            </div>
         </div>
 
         <section class="home-services pt-lg-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-12 mb-2 mb-2">
+                    <div class="col-lg-4 col-md-6 col-sm-10 mb-2">
                         <div class="banner-box-wrap">
                             <div class="banner-box-wrap-inner">
                                 <div class="banner-box-wrap-front row">
-                                    <div class="row">
-                                        <div class="icon col-sm-3">
+                                    <div class="row"> 
+                                        <div class="icon col-xs-2 col-md-3">
                                             <span class="fas fa-user-md mt-3"></span>
                                         </div>
                                         <div class="info col-sm w-auto">
                                             <!-- <p class="banner-box-wrap-theader">Protect</p> -->
-                                            <h4 class="m-0 w-100"><a href="#url">Know Our Specialist</a></h4>
+                                            <h4 class="m-0 w-100 "><a href="#url">Know Our Specialist</a></h4>
                                         </div>
                                     </div>
                                     <p class=" py-2 white-text">We have a dedicated multidisciplinary team of
@@ -468,7 +468,7 @@
 
 
 
-    <div class="row mt-4 pt-4">
+    <div class="row ">
         <div class="col-sm">
 
             <div class="row">
@@ -477,14 +477,14 @@
                 <h2 class=" mb-sm-5 text-center primary-text"><b>Meet Our Team</b></h2>
             </div>
             <div class="row">
-                <div class="col-sm-10  offset-1">
+                <div class="col-sm-10 mx-auto">
 
                     <owl-carousel-o [options]="customOptions" class="m-0 p-0" style="width:20vw;">
-                        <ng-container *ngFor="let x of doctors; let i=index">
+                        <ng-container *ngFor="let x of doctors; let i=index ">
                             <ng-template carouselSlide>
 
 
-                                <div class="card-new col-sm-6 ">
+                                <div class="card-new col-sm-7 mx-auto">
                                     <div class="card-image">
                                         <div class="image">
 
@@ -524,8 +524,8 @@
                 </div>
             </div>
 
-            <div class="row mt-2 d-flex justify-content-around">
-                <a class=" btn-style   col-sm-2 read-more-second text-center " [routerLink]="['/DoctorsList']">
+            <div class="row mt-2 d-flex justify-content-around px-4">
+                <a class=" btn-style col-sm-2 read-more-second text-center " [routerLink]="['/DoctorsList']">
                     Find Doctor</a>
             </div>
 
