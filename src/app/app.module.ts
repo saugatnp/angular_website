@@ -38,6 +38,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogsComponent } from './content/pages/blogs/blogs.component';
 import { LabreportdownloadComponent } from './content/pages/labreportdownload/labreportdownload.component';
+import { NgxPrintModule } from 'ngx-print';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -84,7 +85,8 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxPrintModule
   ],
   providers: [
     {
