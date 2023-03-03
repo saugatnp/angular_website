@@ -98,6 +98,7 @@ export class HomeComponent implements OnInit {
   storePic(res: any) {
     // console.log(res);
     this.fileList = res;
+    this.fileList = res.filter((x: { page_group: string, published: boolean }) => x.published == true);
     const baseUrl = this.appconfig.baseUrl;
 
     this.fileLink =
