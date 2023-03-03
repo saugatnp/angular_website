@@ -1,0 +1,102 @@
+<div class="">
+    <div id="banner-main">
+        <div class="inner-banner-image" >
+            <div class="">
+                <img src="assets/images/g7.jpg" alt="demoPic">
+
+            </div>
+        </div>
+
+        <div class="banner-content">
+            <h3 style="position: absolute;top:50%;left:40%;color: white;" ><b>
+
+                    Doctors</b></h3>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="row mt-4 pt-4">
+        <div class="col-sm">
+
+            <div class="row">
+                <h5 class=" mb-sm-5 text-center primary-text"><b>Meet Our Doctors</b></h5>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-10 mx-auto">
+                    <div class="row mt-1">
+                        <div class="col-sm-1">
+                            <label for="" class="small">
+                                Speciality
+                            </label>
+                        </div>
+                        <div class="col-sm-3 mb-5" >
+                            <select name="deptlist" class="form-select form-control" id="" [(ngModel)]="speciality_search"
+                            (ngModelChange)="filterData(speciality_search)">
+                                <option [value]="x.sp_id" *ngFor="let x of deptList" >
+                                    {{x.detail}}
+                                </option>
+                            </select>
+                           
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-outline btn-book fs-6 btn-small" (click)="filtered=doctors">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4" style="justify-content: space-around;">
+
+                        <div class="card-new col-sm-3 col-md-3 col-lg-3 mt-2"  *ngFor="let x of filtered">
+                            <div class="card-image">
+                                <div class="image">
+                                    <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
+                                        class="image-radius col-sm-8 px-0 about-team-image"
+                                        (error)="errorHandler($event)"   
+                                        >
+
+                                </div>
+                            </div>
+                            <div class="card-text p-3 box-shadow" >
+                                <h5 class=" d-flex justify-content-around fs-6 m-0" style="white-space: nowrap;"><b>{{x.referer}}</b></h5>
+                                <p class=" small m-0 mt-1 fs-6 d-flex justify-content-around">
+                                    {{x.detail | slice:0:25}}</p>
+
+
+
+                                    <a class=" btn-style small btn-white mt-5  fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around" href="">
+                                        Book&nbsp;Now</a>
+                    
+                    
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>

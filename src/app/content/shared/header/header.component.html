@@ -30,12 +30,12 @@
                         </div>
                         <div class="ms-3">
                             <li>
-                                01-4262027                            </li>
+                                01-4262027 </li>
                             <li>
                                 01-4261796
                             </li>
 
-                     
+
 
                         </div>
 
@@ -49,7 +49,8 @@
                         <span class="fa fa-calendar  fs-1 pe-2"></span>
 
 
-                        <a class="small primary-text" style="cursor:pointer">Book an <br />&nbsp;appointment</a>
+                        <a class="small primary-text" style="cursor:pointer"
+                        >Book an <br />&nbsp;appointment</a>
 
 
 
@@ -60,14 +61,15 @@
                     <div class="col-3 d-flex align-items-center" id="btnset-dark">
 
                         <span class="fa fa-calendar fs-1 pe-2"></span>
-                        <a class="small text-white " style="cursor:pointer">Patient's Report</a>
+                        <a class="small text-white " style="cursor:pointer"
+                        [routerLink]="'LabReportDownload'">Patient's Report</a>
 
 
 
 
 
                     </div>
-                    
+
 
 
                     <!-- <div class="col-sm-3 col-xs-4 col-3">
@@ -117,9 +119,9 @@
 
             <div class="col-sm-1 d-flex align-items-center">
                 <div class="col-2 fs-5 text-white p-2  d-flex justify-content-around" id="btnset-dark">
-                        <span class="fa fa-envelope"></span>
+                    <span class="fa fa-envelope"></span>
 
-                    </div>
+                </div>
                 <!-- <div class="input-group d-flex justify-content-around">
                     
                         <i class="fab fa-twitter gray-color"></i>
@@ -174,8 +176,8 @@
                                     <div class="col-12 col-sm-12 col-md-12 small ">
                                         <div class="list-group info" style="border-bottom:1px solid gray;">
 
-                                            <a class="list-group-item " *ngFor="let x of aboutList" 
-                                            (click)="gotoPage(x)">{{x.page_title}}</a>
+                                            <a class="list-group-item " *ngFor="let x of aboutList"
+                                                (click)="gotoPage(x.page_title)">{{x.page_title}}</a>
                                             <!-- <a class="list-group-item" href="#">Mission & Vision</a>
                                             <a class="list-group-item" href="#">Core values</a>
                                             <a class="list-group-item" href="#">Chairman's Message</a>
@@ -187,7 +189,7 @@
 
 
 
-                                    
+
 
 
                                 </div>
@@ -237,29 +239,16 @@
 
                                 <div class="mx-0 d-flex justify-content-around small">
 
+                                    <div class="list-group info px-2" *ngFor="let column of getColumns()">
+                                            <a  class="list-group-item " *ngFor="let item of column"
+                                            (click)="gotoPageMultipleParam(item)"
+                                            >{{ item.detail }}</a >
+
+                                    </div >
 
 
-                                    
-                                        <div class="list-group info px-2" style="border-bottom:1px solid gray;">
-                                            <a class="list-group-item " href="#"> General Surgery</a>
-                                            <a class="list-group-item" href="#">General Medicine</a>
-                                            <a class="list-group-item" href="#">Oncology</a>
-                                            <a class="list-group-item" href="#">ENT</a>
-                                            <a class="list-group-item" href="#">Dental Surgeon</a>
 
-                                        </div>
-                                  
-                                        <div class="list-group info pe-2" style="border-bottom:1px solid gray;">
-                                            <a class="list-group-item " href="#">Psychiatry</a>
-                                            <a class="list-group-item" href="#">Neurosurgery</a>
-                                            <a class="list-group-item" href="#">Cardiology</a>
-                                            <a class="list-group-item" href="#">Hematology</a>
-                                            <a class="list-group-item" href="#">Cardiothoracic & Vascular Surgery</a>
 
-                                        </div>
-                                
-                                    
-                                    
 
 
                                 </div>
@@ -268,12 +257,12 @@
                         </li>
 
 
-                        
+
                         <li class="nav-item ">
-                            <a class="nav-link  nav-header white-text" [routerLink]="['/Service']"
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/DoctorsList']"
                                 routerLinkActive='active'>Doctors</a>
                         </li>
-                   
+
                         <li class="nav-item dropdown dropdown-mega position-static">
                             <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
                                 data-bs-toggle="dropdown" data-bs-auto-close="outside">Services</a>
@@ -285,9 +274,9 @@
 
                                     <div class="col-12 col-sm-12 col-md-12 small ">
                                         <div class="list-group info" style="border-bottom:1px solid gray;">
-                                            <a class="list-group-item " href="#">Parking</a>
-                                            <a class="list-group-item" href="#">Pharmacy</a>
-                                            <a class="list-group-item" href="#">Cafeteria</a>
+                                            <a class="list-group-item " *ngFor="let x of servicesList"
+                                                (click)="gotoPage(x.page_title)">{{x.page_title}}</a>
+                                        
 
                                         </div>
                                     </div>
@@ -310,8 +299,8 @@
 
 
                         <li class="nav-item ">
-                            <a class="nav-link  nav-header white-text" [routerLink]="['/News']"
-                                routerLinkActive='active'>News and Activities</a>
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Blogs']"
+                                routerLinkActive='active'>Blogs</a>
                         </li>
 
                         <li class="nav-item">
@@ -325,13 +314,13 @@
 
                         <li class="nav-item">
                             <div class="d-flex justify-content-around align-items-center mt-2">
-                    
+
                                 <i class="fab nav-header  nav-link fa-twitter white-text"></i>
                                 <i class="fab nav-header nav-link fa-youtube white-text"></i>
                                 <i class="fab nav-header nav-link fa-facebook white-text"></i>
                                 <i class="fab nav-header nav-link fa-linkedin white-text"></i>
-                            
-                        </div>
+
+                            </div>
                         </li>
 
                     </ul>
@@ -342,4 +331,8 @@
             </nav>
         </div>
     </header>
+
+   
+
 </div>
+

@@ -18,14 +18,17 @@
         <div class="banner-image">
 
             <ngb-carousel #carousel [interval]="2000" (slide)="onSlide($event)">
-                <ng-template ngbSlide *ngFor="let img of service; index as i">
+                <ng-template ngbSlide *ngFor="let x of fileList; index as i">
                     <!-- <div class="carousel-caption">
                         <h3>My slide {{i + 1}} title</h3>
                     </div> -->
                     <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank"
                         rel="nofollow noopener noreferrer">
                         <div class="picsum-img-wrapper">
-                            <img [src]="img.image" alt="My image {{i + 1}} description">
+                            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=sliders"
+                                alt="{{x.filenames}}">
+
+                            <!-- <img [src]="img.image" alt="My image {{i + 1}} description"> -->
                         </div>
                     </a>
                 </ng-template>
@@ -33,7 +36,7 @@
 
         </div>
 
-        <section class="home-services pt-lg-0"  >
+        <section class="home-services pt-lg-0">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-2 mb-2">
@@ -111,7 +114,8 @@
                                     </p>
                                 </div>
                                 <div class="banner-box-wrap-back">
-                                    <p class="  white-text small">Appointment date and time requested would be confirmed back
+                                    <p class="  white-text small">Appointment date and time requested would be confirmed
+                                        back
                                         to you through our appointment section.
                                     </p>
                                 </div>
@@ -128,35 +132,19 @@
 
 
 
-    <div class=" py-5"> 
-        <div class="container py-lg-5 py-md-4 py-2">
+    <div class=" py-5">
+        <div class="container py-lg-5 py-md-4 py-2" *ngIf="homepageList[0]">
             <div class="row mt-lg-5 pt-lg-5">
                 <div class="col-lg-5  mt-lg-4 d-flex align-items-center">
-                    <h1 class="title-w3l mb-4 font-weight-bold primary-text"><b>Welcome to Blue Cross </b>
+                    <h1 class="title-w3l mb-4 font-weight-bold primary-text"><b>{{homepageList[0].page_title}} </b>
                     </h1>
                 </div>
                 <div class="col-lg-7  pl-lg-5 mt-lg-4">
-                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">
-                        Blue Cross Hospital is a private enterprise that provides health care services. It is centrally
-                        located in the heart of the capital, in Tripureshwor, Kathmandu Valley. Its motto is
-                        "Participating in Nation's Health With Safe, Standard and Satsifying Services" and this is to be
-                        achieved through the provision of modern, new, hi-tech diagnostic and treatment facilities
-                        services, health services that are not available or inadequately available in the country.
-                    </p>
-                    <p class=" pr-lg-5 mt-md-4 mt-3 mx-auto">
-                        With this pledge, BCH was established in 1991 by a group of young entrepreneurs by setting up a
-                        Conventional Computerized Tomography (CT) scan, first from the private sector, and then
-                        gradually developed into a Polyclinic and Diagnostic Centre with Path lab, X ray, Ultrasound,
-                        Cardiological and neurological investigations and meanwhile adding Magnetic Resonance Imaging
-                        (MRI) , Lithotripsy, Haemodialysis and so on. It further started in-patient services and
-                        officially registered as Blue Cross Hospital in 2010 with 25 beds (General beds, cabins), ICU
-                        with ventilator , modern OT with laparoscopic and Endourologic and Orthopedic surgical
-                        facilities and Emergency service. So it is multi-speciality , tertiary level health care centre.
-                        At present Blue Cross is a 50 bedded Multi-Speciality hospital.
-                    </p>
-                    <!-- <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2" href="">
-                        Read More</a> -->
+
+                    <p [innerHTML]="homepageList[0].page_text" class="pr-lg-5 mt-md-4 mt-3 mx-auto">
                 </div>
+                <!-- <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2" href="">
+                        Read More</a> -->
             </div>
         </div>
     </div>
@@ -176,7 +164,7 @@
         </div>
     </div>
 
-    <div class=" py-5 font-color">
+    <div class=" py-5 font-color" *ngIf="false">
         <div class="container py-md-5 py-2 font-color">
             <div class="row ">
                 <div class="col-lg-6 ">
@@ -240,7 +228,9 @@
 
         </div>
     </div>
-    <section class="messages mt-4 p-5">
+
+
+    <section class="messages mt-4 p-5" *ngIf="false">
         <div class="row d-flex justify-content-around align-items-center mb-4 pb-4">
             <div class="col-sm-5 mb-3">
                 <div class="">
@@ -296,30 +286,45 @@
 
                 <div class="col-sm-8">
                     <owl-carousel-o [options]="customOptions">
-                        <ng-container *ngFor="let slide of service ; let i = index">
+                        <ng-container *ngFor="let slide of servicesList ; let i = index">
                             <ng-template carouselSlide>
 
                                 <div class="unilab-shape">
-                                    <img src="{{slide.image}}" [alt]="slide.name" [title]="slide.name">
+                                    <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=services"
+                                        alt="{{slide.page_title}}" style="width:100%;">
+                                        <div class="" style="max-height: 50%;">
+                                            <div style="position: relative;">
+                                              <h5 class="card-title fs-5 m-2">{{slide.page_title}}</h5>
+                                              <hr>
+                                              <p class="white-text black-text small"  [innerHTML]="slide.page_text | slice:0:150">
+                                              </p>
+                                            </div>
+                                            <!-- <a class=" btn-style small btn-white  m-3 col-sm-4  smaller btn-book  d-flex  justify-content-center "
+                                              style="cursor:pointer;position: absolute;
+                                          bottom: 0;right: 0;" (click)="selectContent(x)">
+                                              Read&nbsp;more</a>
+                                 -->
+                                          </div>
+
+                                    <!-- <img src="{{slide.image}}" [alt]="slide.name" [title]="slide.name">
                                     <div class="d-flex align-items-start flex-column p-3"
-                                        style="width: 100%;height: 60%;">
-                                        <div>
-                                            <h4 class=" white-text ">{{slide.name}}</h4>
-                                            <p class="white-text service-text">
-                                                {{slide.text}}
-                                            </p>
-                                        </div>
-                                        <div class="mt-auto ms-auto">
-                                            <a class=" btn-style btn-white mt-sm-5 mt-4 view-report text-center px-2 py-1"
-                                                (click)="onSelectImage(slide);redirectToService(i)"
-                                                style="font-weight: 500;">
-                                                Read&nbsp;More&nbsp;<i class="fa fa-angle-double-right"></i></a>
-                                            <!-- <a class="service-read-more"
+                                        style="width: 100%;height: 60%;"> -->
+                                    <!-- <div style="position: relative;">
+                                        <h4 class=" white-text ">{{slide.page_title}}</h4>
+                                        <p class="white-text service-text" [innerHTML]="slide.page_text">
+                                        </p>
+                                    </div> -->
+                                    <div class=" ">
+                                        <a class=" btn-style small btn-white  m-3 col-sm-4  smaller btn-book  d-flex  justify-content-center"
+                                            (click)="onSelectImage(slide.page_title);" style="cursor:pointer;position: absolute;
+          bottom: 10;right: 0;">
+                                            Read&nbsp;More&nbsp;
+                                        </a>
+                                        <!-- <a class="service-read-more"
                                                 (click)="onSelectImage(slide);redirectToService(i)">Read More <i
                                                     class="fa fa-angle-double-right"></i></a> -->
-                                        </div>
-
                                     </div>
+
                                 </div>
 
                             </ng-template>
@@ -414,8 +419,10 @@
         </div>
     </section>
 
+
+
     <!-- stats -->
-    <section class="py-lg-0 py-5" class="stats">
+    <section class="py-lg-0 py-5" class="stats" *ngIf="false">
         <div class="stats-image">
             <img src="assets/images/banner.jpg" alt="stats-image" class="stats-image">
         </div>
@@ -463,92 +470,62 @@
 
     <div class="row mt-4 pt-4">
         <div class="col-sm">
-           
+
             <div class="row">
                 <h5 class="text-center primary-text">LEADING TEAM</h5>
 
                 <h2 class=" mb-sm-5 text-center primary-text"><b>Meet Our Team</b></h2>
             </div>
             <div class="row">
-                <div class="col-sm-10 mx-auto">
+                <div class="col-sm-10  offset-1">
 
-                    <div class="row mb-4" style="justify-content: space-around;">
+                    <owl-carousel-o [options]="customOptions" class="m-0 p-0" style="width:20vw;">
+                        <ng-container *ngFor="let x of doctors; let i=index">
+                            <ng-template carouselSlide>
 
-                        <div class="card-new col-sm-2 ">
-                            <div class="card-image">
-                                <div class="image">
-                                    <img src="assets/images/team1.jpg" alt=""
-                                        class="image-radius col-sm-8 px-0 about-team-image">
 
+                                <div class="card-new col-sm-6 ">
+                                    <div class="card-image">
+                                        <div class="image">
+
+                                            <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
+                                                alt="{{x.refid}}" class="image-radius col-sm-8 px-0 about-team-image"
+                                                (error)="errorHandler($event)">
+
+
+                                            <!-- <img src="http://192.168.15.126/imports/images/doctors/{{x.refid}}.png" alt=""
+                                                    class="image-radius col-sm-8 px-0 about-team-image"> -->
+
+                                        </div>
+                                    </div>
+                                    <div class="card-text p-3 box-shadow">
+                                        <h5 class=" d-flex justify-content-around fs-6 m-0"
+                                            style="white-space: nowrap;"><b>{{x.referer}}</b></h5>
+                                        <p class=" small m-0 mt-1 fs-6 d-flex justify-content-around">
+                                            {{x.detail | slice:0:25}}</p>
+
+
+
+                                        <a class=" btn-style small btn-white mt-5  fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around"
+                                            href="">
+                                            Book&nbsp;Now</a>
+
+
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card-text p-3 box-shadow">
-                                <h5 class=" d-flex justify-content-around fs-6 m-0"><b>Dr lorem ipsum</b></h5>
-                                <h6 class=" d-flex justify-content-around small m-0"><b>Deparment</b></h6>
-                                <p class=" small m-0 mt-4">
-                                    Lorem ipsum, dolor sit amet consectetur. 
-                                </p>
-                            </div>
-                        </div>
+                            </ng-template>
+                        </ng-container>
 
-                        <div class="card-new col-sm-2 ">
-                            <div class="card-image">
-                                <div class="image">
-                                    <img src="assets/images/team1.jpg" alt=""
-                                        class="image-radius col-sm-6 px-0 about-team-image">
-
-                                </div>
-                            </div>
-                            <div class="card-text p-3">
-                                <p class=" d-flex justify-content-around fs-6 m-0"><b>Dr lorem ipsum</b></p>
-                                <p class=" d-flex justify-content-around small m-0"><b>Deparment</b></p>
-                                <p class=" small m-0">
-                                    Lorem ipsum, dolor sit amet consectetur.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card-new col-sm-2 ">
-                            <div class="card-image">
-                                <div class="image">
-                                    <img src="assets/images/team1.jpg" alt=""
-                                        class="image-radius col-sm-6 px-0 about-team-image">
-
-                                </div>
-                            </div>
-                            <div class="card-text p-3">
-                                <p class="d-flex justify-content-around fs-6 m-0"><b>Dr lorem ipsum</b></p>
-                                <p class="d-flex justify-content-around small m-0"><b>Deparment</b></p>
-                                <p class="small m-0">
-                                    Lorem ipsum, dolor sit amet consectetur.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card-new col-sm-2 ">
-                            <div class="card-image">
-                                <div class="image">
-                                    <img src="assets/images/team1.jpg" alt=""
-                                        class="image-radius col-sm-6 px-0 about-team-image">
-
-                                </div>
-                            </div>
-                            <div class="card-text p-3">
-                                <p class=" d-flex justify-content-around fs-5 m-0"><b>Dr Lorem ipsum</b></p>
-                                <p class=" d-flex justify-content-around fs-6 m-0"><b>Deparment</b></p>
-                                <p class=" small m-0">
-                                    Lorem ipsum, dolor sit amet consectetur.
-                                </p>
-                            </div>
-                        </div>
+                    </owl-carousel-o>
 
 
 
 
-                    </div>
                 </div>
             </div>
 
             <div class="row mt-2 d-flex justify-content-around">
-                <a class=" btn-style  col-sm-2 read-more-second text-center " href="about.html">
+                <a class=" btn-style   col-sm-2 read-more-second text-center " [routerLink]="['/DoctorsList']">
                     Find Doctor</a>
             </div>
 

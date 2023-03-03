@@ -19,6 +19,7 @@ export class JsonAppConfigService extends AppConfiguration {
                 this.title = data.title;
                 this.baseUrl= data.baseUrl;
                 this.localUrl=data.localUrl;
+                this.onlineLabUrl=data.onlineLabUrl;
             }
         ).catch(()=>{
             console.error('cannot load config')

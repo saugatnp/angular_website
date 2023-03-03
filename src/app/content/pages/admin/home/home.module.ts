@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { adminRoutes } from 'src/app/routing/admin-routes';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule } from '@angular/forms';
+import { SharedDirective } from 'src/app/content/directives/shared.directive';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     RouterModule,
-    CKEditorModule
+    CKEditorModule,
+    SharedDirective
   ]
 })
 export class HomeModule { }

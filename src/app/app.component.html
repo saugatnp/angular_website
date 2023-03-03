@@ -2,7 +2,7 @@
     <app-header *ngIf="show"></app-header>
     <app-admin *ngIf="!show"></app-admin>
     <div style="flex-grow: 1;min-height: 66vh;" >
-        <router-outlet> </router-outlet>
+        <router-outlet > </router-outlet>
     </div>
     <button (click)="topFunction()" id="movetop" title="Go to top" class="top-button">
         &#10548;

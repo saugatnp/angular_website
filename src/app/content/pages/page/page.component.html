@@ -1,45 +1,191 @@
-<div class="">
-    <div id="banner-main">
-        <div class="inner-banner-image" *ngIf="fileList.length!=0" >
-            <div  class="" *ngFor="let x of fileList">
-                <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT"
+<div class="mt-5">
+ 
+    <div id="banner-main " style="margin-top: 8%;" >
+
+       
+      
+        <!-- <div class="inner-banner-image" *ngIf="fileList.length!=0">
+            <div class="" *ngFor="let x of fileList">
+                <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{content.page_group}}"
                     alt="{{x.filenames}}">
 
             </div>
         </div>
-        <div class="inner-banner-image" *ngIf="fileList.length==0" >
-            <div  class="" >
-                <img src="{{fileLink}}"
-                    alt="demoPic">
+        <div class="inner-banner-image" *ngIf="fileList.length==0">
+            <div class="">
+                <img src="{{fileLink}}" alt="demoPic">
 
             </div>
         </div>
-        
+
         <div class="banner-content">
-            <h1 style="position: absolute;top:50%;left:42%;color: white;"><b>{{param}}</b></h1>
-        </div>
+            <h3 style="position: absolute;top:50%;left:40%;color: white;" *ngIf="param1==null"><b>
+
+                    {{param}}</b></h3>
+
+
+            <h3 style="position: absolute;top:50%;left:40%;color: white;" *ngIf="param1!=null"><b>
+
+                    {{param1}}</b></h3>
+        </div> -->
 
 
     </div>
 
 
 
-    
+
+<div class="container">
+
+
+    <nav aria-label="breadcrumb"   >
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item " aria-current="page" *ngIf="content.page_group!='departments'">{{selectedContent.page_title}}</li>
+
+            <li class="breadcrumb-item " aria-current="page" *ngIf="content.page_group=='departments'">{{param1}}</li>
+
+        </ol>
+    </nav>
 
 
 
-    <div class="row d-flex justify-content-center" >
-        <!-- <div class="col-lg-4" *ngFor="let x of fileList">
-            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=ABOUT" height="80"
-                [width]="80" alt="{{x.filenames}}">
+    <div class="row " style="padding:0px 50px 50px 50px;" *ngIf="content.page_group!='departments'">
+        <div class="col-sm-3 ps-0 " >
+            <div class="row box-shadow" style="border-radius: 18px;">
+                <div class="col-sm-8 " >
+                    <ul class="nav flex-column py-2">
+                        <li class="nav-item py-1 my-1 " *ngFor="let x of contents"  [ngClass]="selectedContent.page_title == x.page_title? 'tab-active' : ''">
+                            <a class="nav-link primary-text w-50 " (click)="selectContent(x)" style="white-space: nowrap;">
+                                {{x.page_title}}
+                            </a>
+                        </li>
 
-        </div> -->
-        <div class="col-lg-7 pl-lg-5 mt-lg-4">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm offset-1 p-4 pt-2" >
+            <div class="row">
+                <h3>
+                    {{selectedContent.page_title}}
+                </h3>
+                <div class="col-sm-12">
+                    <div class="" *ngFor="let x of fileList">
+                        <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{content.page_group}}"
+                            alt="{{x.filenames}}" style="width:100%;">
+        
+                    </div>
+        
+                </div>
+            </div>
+            <div class="row">
+              
+                <div class="col-sm-12" >
+                  
+                    <div class="black-text" [innerHTML]="content.page_text"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DEPARTMENTS -->
+    <div class="row mt-3" *ngIf="content.page_group=='departments'" style="padding:0px 50px 50px 50px;">
+        
+        <div class="col-sm offset-1 p-4 pt-2" >
+            <div class="row">
+                <h3 class="text-center mb-3" >
+                    {{param1}}
+                </h3>
+                <!-- <div class="col-sm-12">
+                    <div class="" *ngFor="let x of fileList">
+                        <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{content.page_group}}"
+                            alt="{{x.filenames}}" style="width:100%;">
+        
+                    </div>
+        
+                </div> -->
+            </div>
+            <div class="row">
+              
+                <div class="col-sm-12" >
+                  
+                    <div class="black-text" [innerHTML]="content.page_text"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="col-sm-11 offset-1">
             <div class="black-text" [innerHTML]="content.page_text"></div>
 
+        </div> -->
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+    <div class="row mt-4 pt-4" *ngIf="content.page_group=='departments'">
+        <div class="col-sm">
+
+            <div class="row">
+                <h5 class=" mb-sm-5 text-center primary-text"><b>Meet Our {{param1}}</b></h5>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 mx-auto">
+
+                    <div class="row mb-4" style="justify-content: space-around;">
+
+                        <div class="card-new col-sm-2 col-md-2 col-lg-2 " *ngFor="let x of doctorsList">
+                            <div class="card-image">
+                                <div class="image">
+                                    <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
+                                    (error)="errorHandler($event)"   
+                                    class="image-radius col-sm-8 px-0 about-team-image">
+
+                                </div>
+                            </div>
+                            <div class="card-text p-3 box-shadow">
+                                <h5 class=" d-flex justify-content-around fs-6 m-0" style="white-space: nowrap;">
+                                    <b>{{x.referer}}</b>
+                                </h5>
+                                <p class=" small m-0 mt-1 fs-6 d-flex justify-content-around">
+                                    {{x.detail | slice:0:25}}</p>
+
+
+                                <a class=" btn-style small btn-white mt-3 fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around"
+                                    href="">
+                                    Book&nbsp;Now</a>
+
+
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
+
+
+
     </div>
+
 
 
 </div>

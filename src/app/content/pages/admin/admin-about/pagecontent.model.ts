@@ -3,5 +3,5 @@ export class PageContent{
     page_title="" ;
     page_text="" ;
     published=true ;
-    page_group="about" 
+    page_group="" 
 }

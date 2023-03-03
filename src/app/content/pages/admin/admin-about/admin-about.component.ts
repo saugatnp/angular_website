@@ -58,6 +58,8 @@ export class AdminAboutComponent implements OnInit {
     )
   }
 
+
+
   edit = false;
   postContent() {
 
@@ -151,6 +153,7 @@ export class AdminAboutComponent implements OnInit {
   selectImage(x: any) {
     this.selectedImage = x;
   }
+  
   togglePublishImage() {
     const token = localStorage.getItem('access_token');
     const options = {
