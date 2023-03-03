@@ -249,3 +249,9 @@
     transition: 0.3s ease-in;
   
   }
+  @media only screen and (max-width: 600px) {
+
+    .card-image .image{
+        width: 40%
+    }
+}
