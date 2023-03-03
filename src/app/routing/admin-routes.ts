@@ -14,6 +14,7 @@ export const adminRoutes = [
         path: 'Login', component: LoginComponent,
     },
 
+   
     
        {
         path: 'AdminHome', component: AdminHomeComponent,

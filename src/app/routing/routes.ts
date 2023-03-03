@@ -20,6 +20,12 @@ export const mainRoutes = [
         loadChildren: () => import('../content/pages/home/home.module'
         ).then((m) => m.HomeModule),
     },
+    
+    {
+        path: ' ', component: HomeComponent,
+        loadChildren: () => import('../content/pages/home/home.module'
+        ).then((m) => m.HomeModule),
+    },
     {
         path: 'Home', component: HomeComponent,
         loadChildren: () => import('../content/pages/home/home.module'
