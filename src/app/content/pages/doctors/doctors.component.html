@@ -104,9 +104,9 @@
 
 
     <ng-template #doctorModal let-modal>
-        <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Book Now</h4>
-            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        <div class="modal-header primary-bg p-1 pe-3">
+            <h4 class="modal-title white-text" id="modal-basic-title">Book Now</h4>
+            <button type="button" class="btn-close red-text" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
         </div>
         <div class="modal-body">
             <form>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-2">
-                        <label for="" class="small">Gener</label>
+                        <label for="" class="small">Gender</label>
                     </div>
                     <div class="col-sm-4">
                         <select class="form-control form-control-sm form-select pb-0" name="gender"
@@ -182,14 +182,14 @@
                     <div class="col-sm-2">
                         <label for="" class="small">Remarks</label>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm">
                         <textarea name="remarks" class="form-control" [(ngModel)]="appointmentData.remarks"
                             id=""></textarea>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer bg-white">
             <div class="row">
                 <button class="btn btn-small btn-primary  me-auto" (click)="postAppointment()">Submit</button>
 
