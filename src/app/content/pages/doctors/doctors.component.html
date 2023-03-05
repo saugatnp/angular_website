@@ -1,13 +1,13 @@
 <div class="">
     <div id="banner-main">
-        <div class="inner-banner-image" >
+        <div class="inner-banner-image">
             <div class="">
                 <img src="assets/images/g7.jpg" alt="demoPic">
 
             </div>
         </div>
 
-        <div class="banner-content "style="left:45%"  >
+        <div class="banner-content " style="left:45%">
             <h3 class="text-white"><b>
 
                     Doctors</b></h3>
@@ -20,7 +20,9 @@
 
 
 
-
+    <button modalDirective [content]="doctorModal  " [size]="'lg'">
+        OPE MPDA:
+    </button>
 
 
 
@@ -39,14 +41,14 @@
                                 Speciality
                             </label>
                         </div>
-                        <div class="col-sm-3 mb-5" >
-                            <select name="deptlist" class="form-select form-control" id="" [(ngModel)]="speciality_search"
-                            (ngModelChange)="filterData(speciality_search)">
-                                <option [value]="x.sp_id" *ngFor="let x of deptList" >
+                        <div class="col-sm-3 mb-5">
+                            <select name="deptlist" class="form-select form-control" id=""
+                                [(ngModel)]="speciality_search" (ngModelChange)="filterData(speciality_search)">
+                                <option [value]="x.sp_id" *ngFor="let x of deptList">
                                     {{x.detail}}
                                 </option>
                             </select>
-                           
+
                         </div>
                         <div class="col-sm-2">
                             <button class="btn btn-outline btn-book fs-6 btn-small" (click)="filtered=doctors">
@@ -57,27 +59,28 @@
 
                     <div class="row mb-4" style="justify-content: space-around;">
 
-                        <div class="card-new col-sm-3 col-md-3 col-lg-3 mt-2"  *ngFor="let x of filtered">
+                        <div class="card-new col-sm-3 col-md-3 col-lg-3 mt-2" *ngFor="let x of filtered">
                             <div class="card-image">
                                 <div class="image">
                                     <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
                                         class="image-radius col-sm-8 px-0 about-team-image"
-                                        (error)="errorHandler($event)"   
-                                        >
+                                        (error)="errorHandler($event)">
 
                                 </div>
                             </div>
-                            <div class="card-text p-3 box-shadow" >
-                                <h5 class=" d-flex justify-content-around fs-6 m-0" style="white-space: nowrap;"><b>{{x.referer}}</b></h5>
+                            <div class="card-text p-3 box-shadow">
+                                <h5 class=" d-flex justify-content-around fs-6 m-0" style="white-space: nowrap;">
+                                    <b>{{x.referer}}</b></h5>
                                 <p class=" small m-0 mt-1 fs-6 d-flex justify-content-around">
                                     {{x.detail | slice:0:25}}</p>
 
 
 
-                                    <a class=" btn-style small btn-white mt-5  fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around" href="">
-                                        Book&nbsp;Now</a>
-                    
-                    
+                                <a class=" btn-style small btn-white mt-5  fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around"
+                                    modalDirective (click)="selectDoctor(x);" [content]="doctorModal  " [size]="'lg'">
+                                    Book&nbsp;Now</a>
+
+
                             </div>
                         </div>
 
@@ -99,4 +102,104 @@
 
 
 
+
+    <ng-template #doctorModal let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Book Now</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="" class="small">Name</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" name="name"
+                            [(ngModel)]="appointmentData.pname">
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="" class="small">Address</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" name="name"
+                            [(ngModel)]="appointmentData.address">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="" class="small">Gener</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <select class="form-control form-control-sm form-select pb-0" name="gender"
+                            [(ngModel)]="appointmentData.sex">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="" class="small">Age</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control form-control-sm" name="age"
+                            [(ngModel)]="appointmentData.age">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="" class="small">Mobile</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control form-control-sm" name="mobile"
+                            [(ngModel)]="appointmentData.mobile">
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="" class="small">Email</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="email" class="form-control form-control-sm" name="email"
+                            [(ngModel)]="appointmentData.email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="" class="small">Date</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="date" class="form-control form-control-sm" name="date"
+                            [(ngModel)]="appointmentData.date">
+                    </div>
+                    <!-- <div class="col-sm-2">
+                        <label for="" class="small">Email</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="email" class="form-control form-control-sm" name="email" [(ngModel)]="appointmentData.email">
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="" class="small">Remarks</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <textarea name="remarks" class="form-control" [(ngModel)]="appointmentData.remarks"
+                            id=""></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <button class="btn btn-small btn-primary  me-auto" (click)="postAppointment()">Submit</button>
+
+             
+            </div>
+        </div>
+    </ng-template>
+
+
+    <!-- <modal #modal [modalConfig]="modalConfig"> -->
+        <!--  body of the modal  -->
+      <!-- </modal> -->
 </div>

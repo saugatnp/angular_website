@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
@@ -28,8 +29,12 @@ export class FooterComponent implements OnInit {
       }
     });
     this.getPageContent()
+
+    this.year= formatDate(new Date(),'yyyy','EN-US')
+
   }
 
+  year:any=''
   contents: any = []
   getPageContent() {
     this.pagecontent.getPageContent().subscribe({

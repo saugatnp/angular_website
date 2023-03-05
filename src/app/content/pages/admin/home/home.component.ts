@@ -47,6 +47,12 @@ export class AdminHomeComponent implements OnInit {
   contents: any = [];
   content = new PageContent();
 
+
+  imageVisible:boolean=false;
+  imageShow(){
+    this.imageVisible=true
+  }
+
   getEpic() {
     this.contentService.getPageContent().subscribe(
       {
@@ -214,6 +220,7 @@ export class AdminHomeComponent implements OnInit {
     };
     this.content.page_group="homepage";
     this.fileList=[]
+    this.imageVisible=false;
   }
 
 
