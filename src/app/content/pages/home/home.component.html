@@ -3,8 +3,8 @@
     <!-- //header -->
 
     <div class="banner-main" id="banner-main">
-        
-        <div class="banner-image d-md-flex justify-content-center align-items-center" >
+
+        <div class="banner-image d-md-flex justify-content-center align-items-center">
 
             <ngb-carousel #carousel [interval]="2000" (slide)="onSlide($event)">
                 <ng-template ngbSlide *ngFor="let x of fileList; index as i">
@@ -24,14 +24,14 @@
             </ngb-carousel>
             <div class="banner-content">
                 <div class="container p-sm-2">
-    
+
                     <!-- <h6 class="banner-title-top ">Medical</h6> -->
                     <h2 class="white-text mb-5 fs-md-2 fs-xs-3">
                         To&nbsp;Participate&nbsp;in Nation’s&nbsp;Health
                     </h2>
                     <a class=" btn-style btn-white mt-sm-5 mt-5 read-more fs-md-4 fs-xs-5" href="">
                         Get More Details</a>
-    
+
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                         <div class="banner-box-wrap">
                             <div class="banner-box-wrap-inner">
                                 <div class="banner-box-wrap-front row">
-                                    <div class="row"> 
+                                    <div class="row">
                                         <div class="icon col-xs-2 col-md-3">
                                             <span class="fas fa-user-md mt-3"></span>
                                         </div>
@@ -164,16 +164,23 @@
         </div>
     </div>
 
-    <div class=" py-5 font-color" *ngIf="false">
+    <div class=" py-5 font-color" *ngIf="homepageList[1]">
         <div class="container py-md-5 py-2 font-color">
             <div class="row ">
                 <div class="col-lg-6 ">
                     <div class="">
-                        <h6 class="banner-title-top primary-text">Extraordinary Services</h6>
-                        <h1 class=" mb-sm-5 mb-4 pb-2"><b>Why You Should Choose Us?.</b></h1>
+                        <!-- <h6 class="banner-title-top primary-text">Extraordinary Services</h6> -->
+                        <h1 class="title-w3l mb-4 font-weight-bold primary-text"><b>{{homepageList[1].page_title}} </b>
+                        </h1>
                     </div>
 
                     <div class="row mb-4 service-div px-2">
+                        <p [innerHTML]="homepageList[1].page_text" class="pr-lg-5 mt-md-4 mt-3 mx-auto">
+
+                    </div>
+
+                    <div class="row mb-4 service-div px-2" *ngIf="false">
+
                         <div class="icon col-xs-4 col-sm-2 col-2 service-icon">
                             <span class="fa fa-eye mt-3"></span>
                         </div>
@@ -184,40 +191,6 @@
                                 Oncology, Surgical Oncology and Radiation Oncology to treat cancerous diseases.</p>
                         </div>
                     </div>
-                    <div class="row mb-4 service-div px-2">
-                        <div class="icon col-xs-4 col-sm-2 col-2 service-icon ">
-                            <i class="fas fa-stethoscope mt-3"></i>
-                            <!-- <span class="fa fa-calendar mt-3"></span> -->
-                        </div>
-                        <div class="info ps-4 col-xs-8 col-sm-10 col">
-                            <h4><a href="#url" class="primary-text-hover">DIAGNOSTIC</a></h4>
-                            <p class="mt-1">Medical diagnosis is the process of determining which disease or condition
-                                explains a person's symptoms and signs. We have the latest diagnostic facilities in our
-                                Laboratories and Imaging Departments to detect cancers in their earliest stages.</p>
-                        </div>
-                    </div>
-                    <div class="row mb-4 service-div px-2">
-                        <div class="icon col-xs-4 col-sm-2 col-2 service-icon ">
-                            <span class="fa fa-shield mt-3"></span>
-                        </div>
-                        <div class="info ps-4 col-xs-8 col-sm-10 col">
-                            <h4><a href="#url" class="primary-text-hover">ACADEMIC & RESEARCH</a></h4>
-                            <p class="mt-1">Blue Cross covers a very varied clinical spectrum and offers the highest
-                                quality
-                                and advanced health care</p>
-                        </div>
-                    </div>
-                    <!-- <div class="row mb-4 service-div px-2">
-                        <div class="icon col-xs-4 col-sm-2 col-2 service-icon ">
-                            <span class="fa fa-shield mt-3"></span>
-                        </div>
-                        <div class="info ps-4 col-xs-8 col-sm-10 col">
-                            <h4><a href="#url" class="primary-text-hover">PALLIATIVE</a></h4>
-                            <p class="mt-1"> Blue Crossuses Comprehensive Cancer Control
-                                Programs for patients with terminal cancers focusing on their physical, social and
-                                emotional well being.</p>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="col-lg-6  p-5 d-flex align-items-center">
                     <img src="assets/images/bc.png" alt="" style="max-width: 100%;
@@ -292,19 +265,20 @@
                                 <div class="unilab-shape">
                                     <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=services"
                                         alt="{{slide.page_title}}" style="width:100%;">
-                                        <div class="" style="max-height: 50%;">
-                                            <div style="position: relative;">
-                                              <h5 class="card-title fs-5 m-2">{{slide.page_title}}</h5>
-                                              <hr>
-                                              <p class="white-text black-text small"  [innerHTML]="slide.page_text | slice:0:150">
-                                              </p>
-                                            </div>
-                                            <!-- <a class=" btn-style small btn-white  m-3 col-sm-4  smaller btn-book  d-flex  justify-content-center "
+                                    <div class="" style="max-height: 50%;">
+                                        <div style="position: relative;">
+                                            <h5 class="card-title fs-5 m-2">{{slide.page_title}}</h5>
+                                            <hr>
+                                            <p class="small white-text" style="color:white !important"
+                                                [innerHTML]="slide.page_text | slice:0:150">
+                                            </p>
+                                        </div>
+                                        <!-- <a class=" btn-style small btn-white  m-3 col-sm-4  smaller btn-book  d-flex  justify-content-center "
                                               style="cursor:pointer;position: absolute;
                                           bottom: 0;right: 0;" (click)="selectContent(x)">
                                               Read&nbsp;more</a>
                                  -->
-                                          </div>
+                                    </div>
 
                                     <!-- <img src="{{slide.image}}" [alt]="slide.name" [title]="slide.name">
                                     <div class="d-flex align-items-start flex-column p-3"
@@ -316,8 +290,7 @@
                                     </div> -->
                                     <div class=" ">
                                         <a class=" btn-style small btn-white  m-3 col-sm-4  smaller btn-book  d-flex  justify-content-center"
-                                            (click)="onSelectImage(slide.page_title);" style="cursor:pointer;position: absolute;
-          bottom: 10;right: 0;">
+                                            (click)="onSelectImage(slide.page_title);" style="cursor:pointer;position: absolute; bottom: 10;right: 0;">
                                             Read&nbsp;More&nbsp;
                                         </a>
                                         <!-- <a class="service-read-more"
@@ -336,8 +309,7 @@
 
                 </div>
             </div>
-
-            <div class=" row" *ngIf="false">
+           <div class=" row" *ngIf="false">
                 <div class="col-lg-5 offset-1">
                     <div class="row  mb-sm-3 mb-3 half-page-card font-color">
                         <div class="col-lg-2 col-3 d-flex align-items-center">

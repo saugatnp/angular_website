@@ -39,13 +39,20 @@
                                     {{x.published}}
                                 </td>
                                 <td class="m-1 p-1">
+                                    <span>
                                     <div class="zoom">
-                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x)"
+                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);"
                                             [content]="content1" [size]="'lg'">Edit&nbsp;
                                             <i class="fa fa-edit "></i>
                                         </a>
-                                    </div>
+                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);imageShow()"
+                                        [content]="content1" [size]="'lg'">Images&nbsp;
+                                        <i class="fa fa-image "></i>
+                                    </a>
 
+                                    </div>
+                                 
+                                </span>
                                 </td>
                             </tr>
                         </tbody>
@@ -83,6 +90,7 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body ">
+        <div class="container" *ngIf="!imageVisible">
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <label for="
@@ -112,6 +120,9 @@
 
         </div>
 
+    </div>
+    <div class="container" *ngIf="imageVisible">
+        
         <div class="row">
             <input type="file" (change)="fileChange($event)">
 
@@ -144,6 +155,8 @@
 
             </table>
         </div>
+        
+    </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-small btn-primary me-auto" (click)="postContent()">Submit</button>
