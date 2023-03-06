@@ -1,24 +1,95 @@
 <ng-template #modal>
     <div class="modal-header">
-      <h5 class="modal-title">{{ modalConfig.modalTitle }}</h5>
+      <h5 class="modal-title">{{ appointmentData.referer }}</h5>
     </div>
     <div class="modal-body">
-      <ng-content></ng-content>
-    </div>
+      <form>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="" class="small">Name</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" name="name"
+                    [(ngModel)]="appointmentData.pname">
+            </div>
+            <div class="col-sm-2">
+                <label for="" class="small">Address</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" name="name"
+                    [(ngModel)]="appointmentData.address">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="" class="small">Gener</label>
+            </div>
+            <div class="col-sm-4">
+                <select class="form-control form-control-sm form-select pb-0" name="gender"
+                    [(ngModel)]="appointmentData.sex">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <label for="" class="small">Age</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="number" class="form-control form-control-sm" name="age"
+                    [(ngModel)]="appointmentData.age">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="" class="small">Mobile</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="form-control form-control-sm" name="mobile"
+                    [(ngModel)]="appointmentData.mobile">
+            </div>
+            <div class="col-sm-2">
+                <label for="" class="small">Email</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="email" class="form-control form-control-sm" name="email"
+                    [(ngModel)]="appointmentData.email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="" class="small">Date</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="date" class="form-control form-control-sm" name="date"
+                    [(ngModel)]="appointmentData.date">
+            </div>
+            <!-- <div class="col-sm-2">
+                <label for="" class="small">Email</label>
+            </div>
+            <div class="col-sm-4">
+                <input type="email" class="form-control form-control-sm" name="email" [(ngModel)]="appointmentData.email">
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="" class="small">Remarks</label>
+            </div>
+            <div class="col-sm-6">
+                <textarea name="remarks" class="form-control" [(ngModel)]="appointmentData.remarks"
+                    id=""></textarea>
+            </div>
+        </div>
+    </form>
+</div>
     <div class="modal-footer">
-      <button type="button"
-              class="btn btn-outline-secondary"
-              (click)="dismiss()"
-              *ngIf="modalConfig.hideDismissButton === undefined || !modalConfig.hideDismissButton()"
-              [disabled]="modalConfig.disableDismissButton !== undefined && modalConfig.disableDismissButton()">
-        {{ modalConfig.dismissButtonLabel }}
-      </button>
-      <button type="button"
-              class="btn btn-outline-primary"
-              (click)="close()"
-              *ngIf="modalConfig.hideCloseButton === undefined || !modalConfig.hideCloseButton()"
-              [disabled]="modalConfig.disableCloseButton !== undefined && modalConfig.disableCloseButton()">
-        {{ modalConfig.closeButtonLabel }}
-      </button>
+
+      <div class="row">
+        <button class="btn btn-small btn-primary  me-auto" (click)="postAppointment()">Submit</button>
+
+     
+    </div>
+    
     </div>
   </ng-template>

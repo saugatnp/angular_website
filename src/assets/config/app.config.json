@@ -1,6 +1,6 @@
 {
     "title": "Web App",
-    "baseUrl": "https://bluecross.com.np/MediproWebApi/",
+    "baseUrl": "http://192.168.15.126/medipro.api.medipro/",
     "reportBaseUrl": "http://192.168.15.126/MediproReport/Default.aspx?",
     "onlineLabUrl": "https://bluecross.com.np/mediprowebapi/uploads/",
     "localUrl": "http://localhost:56442/"

@@ -123,7 +123,7 @@ export class DoctorsComponent implements OnInit {
     this.appointmentData = new AppointmentModel();
   }
 
-  // const modalConfig = new ModalConfig();
+  modalConfig !:ModalConfig
 
   
   @ViewChild('modal') private modalComponent!: ModalComponent
