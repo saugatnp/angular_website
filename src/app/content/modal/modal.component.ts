@@ -8,7 +8,6 @@ import { AppConfiguration } from 'src/config/app-config'
 @Component({
   selector: 'modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
 })
 @Injectable()
 export class ModalComponent implements OnInit {

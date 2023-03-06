@@ -93,7 +93,7 @@
 
 
       <div class="card-group">
-        <div class="card m-3 box-shadow col-md-4" *ngFor="let x of contents">
+        <div class="card m-3 box-shadow blog-card" *ngFor="let x of contents">
           <div class="image" style="height: 50%;">
             <img
               src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.sn}}&sn={{x.sn}}&filenames={{x.sn}}.png&extension=.png&file_type={{content.page_group}}"
@@ -101,9 +101,9 @@
           </div>
           <div class="card-body ">
             <div style="position: relative;">
-              <h5 class="card-title fs-5 mt-2">{{x.page_title}}</h5>
+              <h5 class="card-title fs-5 mt-2 fw-lighter">{{x.page_title}}</h5>
               <hr>
-              <p class="card-text black-text small"  [innerHTML]="x.page_text | slice:0:150">
+              <p class="card-text black-text " [innerHTML]="x.page_text | slice:0:150">
               </p>
               <br>
               <br>

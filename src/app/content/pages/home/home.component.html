@@ -141,7 +141,7 @@
                 </div>
                 <div class="col-lg-7  pl-lg-5 mt-lg-4">
 
-                    <p [innerHTML]="homepageList[0].page_text" class="pr-lg-5 mt-md-4 mt-3 mx-auto">
+                    <p [innerHTML]="homepageList[0].page_text" class="pr-lg-5 mt-md-4 mt-3 mx-auto text-justify">
                 </div>
                 <!-- <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2" href="">
                         Read More</a> -->
@@ -259,17 +259,17 @@
 
                 <div class="col-sm-8">
                     <owl-carousel-o [options]="customOptions">
-                        <ng-container *ngFor="let slide of servicesList ; let i = index">
-                            <ng-template carouselSlide>
+                        <ng-container *ngFor="let slide of servicesList ; let i = index" style="display:flex;">
+                            <ng-template carouselSlide  >
 
-                                <div class="unilab-shape">
+                                <div class="unilab-shape" >
                                     <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=services"
                                         alt="{{slide.page_title}}" style="width:100%;">
-                                    <div class="" style="max-height: 50%;">
+                                    <div class="" style="padding-bottom:50px;height: auto;">
                                         <div style="position: relative;">
                                             <h5 class="card-title fs-5 m-2">{{slide.page_title}}</h5>
-                                            <hr>
-                                            <p class="small white-text" style="color:white !important"
+                                            <!-- <hr > -->
+                                            <p class="small white-text mt-1 pt-2" style="color:white !important;border-top:1px solid white"
                                                 [innerHTML]="slide.page_text | slice:0:150">
                                             </p>
                                         </div>
@@ -290,7 +290,7 @@
                                     </div> -->
                                     <div class=" ">
                                         <a class=" btn-style small btn-white  m-3 col-sm-4  smaller btn-book  d-flex  justify-content-center"
-                                            (click)="onSelectImage(slide.page_title);" style="cursor:pointer;position: absolute; bottom: 10;right: 0;">
+                                            (click)="onSelectImage(slide.page_title);" style="cursor:pointer;position: absolute; bottom: 0;right: 0;">
                                             Read&nbsp;More&nbsp;
                                         </a>
                                         <!-- <a class="service-read-more"
