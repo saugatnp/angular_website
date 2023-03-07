@@ -29,7 +29,11 @@
                     <h2 class="white-text mb-5 fs-md-2 fs-xs-3">
                         To&nbsp;Participate&nbsp;in Nation’s&nbsp;Health
                     </h2>
-                    <a class=" btn-style btn-white mt-sm-5 mt-5 read-more fs-md-4 fs-xs-5" href="">
+                    <p>
+
+                    </p>
+                    <a class=" btn-style btn-white mt-sm-5 mt-5 read-more fs-md-4 fs-xs-5" [routerLink]="['/Page/About Us']"
+                    >
                         Get More Details</a>
 
                 </div>
@@ -131,7 +135,6 @@
     </div>
 
 
-
     <div class=" py-5">
         <div class="container py-lg-5 py-md-4 py-2" *ngIf="homepageList[0]">
             <div class="row mt-lg-5 pt-lg-5">
@@ -148,7 +151,7 @@
             </div>
         </div>
     </div>
-    <div class="primary-bg p-4" *ngIf="true">
+    <div class="primary-bg p-4" *ngIf="false">
         <div class="row d-flex justify-content-around align-items-center">
             <div class="col-sm-6 col-lg-8 col-md-8 m-4">
                 <h6 class=" white-text text-center">Need a Doctor for Check-up?</h6>

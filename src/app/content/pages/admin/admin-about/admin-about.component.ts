@@ -40,6 +40,8 @@ export class AdminAboutComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEpic();
+    this.content.page_group="about"
+
   }
 
 
@@ -205,10 +207,16 @@ export class AdminAboutComponent implements OnInit {
   }
 
 
-
+  imageVisible:boolean=false;
   reset() {
     this.edit = false;
     this.content = new PageContent()
+     this.model = {
+      editorData: ''
+    };
+    this.content.page_group="about";
+    this.fileList=[]
+    this.imageVisible=false;
   }
 
 

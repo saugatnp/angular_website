@@ -263,9 +263,10 @@ a.navbar-brand img {
   left: 0;
   right: 0;
   bottom: 0;
+  clip-path: ellipse(80% 60% at 50% 50%);
   /* mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%));
   --webkit-mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%)); */
-  clip-path: ellipse(80% 50% at 50% 50%) !important;
+  /* clip-path: ellipse(80% 50% at 50% 50%) !important; */
 }
 
 .banner-image::after {
@@ -876,7 +877,7 @@ body {
 .red-text{
   color: red !important;
 }
-..btn-close{
+.btn-close{
   color: red !important;
 }
 
