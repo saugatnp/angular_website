@@ -9,11 +9,11 @@ import { SlidersComponent } from '../content/pages/admin/sliders/sliders.compone
 import { ActivateGuard } from '../guards/auth.guard';
 
 export const adminRoutes = [
-
+    
     {
         path: 'Login', component: LoginComponent,
     },
-    {
+       {
         path: 'AdminHome', component: AdminHomeComponent,
         canActivate: [ActivateGuard],
 
@@ -56,6 +56,6 @@ export const adminRoutes = [
     //     path: '', component: LoginComponent,
     // },
 
-
+    
 ]
 
