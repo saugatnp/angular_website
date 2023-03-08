@@ -49,8 +49,12 @@ export class AdminHomeComponent implements OnInit {
 
 
   imageVisible:boolean=false;
+
   imageShow(){
     this.imageVisible=true
+  }
+  imageHide(){
+    this.imageVisible=false
   }
 
   getEpic() {

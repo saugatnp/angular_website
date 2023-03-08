@@ -15,17 +15,7 @@ import { ActivateGuard } from '../guards/auth.guard';
 
 export const mainRoutes = [
 
-    {
-        path: '', component: HomeComponent,
-        loadChildren: () => import('../content/pages/home/home.module'
-        ).then((m) => m.HomeModule),
-    },
-    
-    {
-        path: ' ', component: HomeComponent,
-        loadChildren: () => import('../content/pages/home/home.module'
-        ).then((m) => m.HomeModule),
-    },
+   
     {
         path: 'Home', component: HomeComponent,
         loadChildren: () => import('../content/pages/home/home.module'
@@ -79,6 +69,18 @@ export const mainRoutes = [
         loadChildren: () => import('../content/pages/admin/admin.module'
         ).then((m) => m.AdminModule),
 
+    },
+
+    {
+        path: '', component: HomeComponent,
+        loadChildren: () => import('../content/pages/home/home.module'
+        ).then((m) => m.HomeModule),
+    },
+    
+    {
+        path: ' ', component: HomeComponent,
+        loadChildren: () => import('../content/pages/home/home.module'
+        ).then((m) => m.HomeModule),
     },
 
 
