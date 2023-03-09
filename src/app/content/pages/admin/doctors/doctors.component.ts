@@ -45,6 +45,8 @@ export class AdminDoctorsComponent implements OnInit {
   ngOnInit(): void {
 
     this.getDepartmentList();
+    this.content.page_group="doctors";
+
   }
 
 
@@ -285,11 +287,29 @@ export class AdminDoctorsComponent implements OnInit {
 
   }
 
+  
 
+  imageVisible:boolean=false;
+  
+
+  imageShow(){
+      this.imageVisible=true
+    
+  }
+  imageHide(){
+    this.imageVisible=false
+  }
 
   reset() {
     this.edit = false;
     this.content = new PageContent()
+     this.model = {
+      editorData: ''
+    };
+    this.content.page_group="doctors";
+    this.fileList=[]
+  this.imageVisible=false;
+    
   }
 
 }

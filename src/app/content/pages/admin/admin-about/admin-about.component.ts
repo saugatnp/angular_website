@@ -208,6 +208,16 @@ export class AdminAboutComponent implements OnInit {
 
 
   imageVisible:boolean=false;
+  
+
+  imageShow(){
+      this.imageVisible=true
+    
+  }
+  imageHide(){
+    this.imageVisible=false
+  }
+
   reset() {
     this.edit = false;
     this.content = new PageContent()

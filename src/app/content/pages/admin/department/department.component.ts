@@ -45,6 +45,8 @@ export class DepartmentComponent implements OnInit {
   ngOnInit(): void {
 
     this.getDepartmentList();
+    this.content.page_group="departments";
+
   }
 
 
@@ -100,6 +102,21 @@ export class DepartmentComponent implements OnInit {
 
     this.deptList = this.deptList;
   }
+
+
+  
+  imageVisible:boolean=false;
+  
+
+  imageShow(){
+      this.imageVisible=true
+    
+  }
+  imageHide(){
+    this.imageVisible=false
+  }
+
+
 
 
 
@@ -297,6 +314,12 @@ export class DepartmentComponent implements OnInit {
   reset() {
     this.edit = false;
     this.content = new PageContent()
+     this.model = {
+      editorData: ''
+    };
+    this.content.page_group="departments";
+    this.fileList=[]
+  this.imageVisible=false;    
   }
 
 

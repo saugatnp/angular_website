@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable } from 'rxjs';
 import { PageContentService } from 'src/app/content/services/pagecontent.service';
 import { SpecialityService } from 'src/app/content/services/speciality.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { PageContent } from '../admin-about/pagecontent.model';
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'app-content',
+  templateUrl: './content.component.html',
+  styleUrls: ['./content.component.css']
 })
-export class AdminHomeComponent implements OnInit {
+export class ContentComponent implements OnInit {
  
   editor = ClassicEditor as unknown as {
     create: any;
@@ -39,7 +40,7 @@ export class AdminHomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEpic();
-    this.content.page_group="homepage"
+    this.content.page_group="packages"
   }
 
 
@@ -51,8 +52,9 @@ export class AdminHomeComponent implements OnInit {
   imageVisible:boolean=false;
 
   imageShow(){
+    if(!this.imageVisible){
       this.imageVisible=true
-    
+   }
   }
   imageHide(){
     this.imageVisible=false
@@ -223,13 +225,9 @@ export class AdminHomeComponent implements OnInit {
      this.model = {
       editorData: ''
     };
-    this.content.page_group="homepage";
+    this.content.page_group="packages";
     this.fileList=[]
     this.imageVisible=false;
   }
-
-
-
-
 
 }

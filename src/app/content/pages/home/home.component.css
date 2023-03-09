@@ -107,3 +107,8 @@
     }
 }
 
+.packages-card:hover{
+    transition: ease-in-out 0.3s all;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px rgba(38, 38, 36, 0.343);}
+

@@ -95,9 +95,11 @@ this.deptList = this.deptList.filter((x: {  published: boolean }) =>  x.publishe
   aboutList:any = []
   deptList:any = []
   servicesList:any = []
+  packagesList:any=[]
   storeContent(value: any) {
     this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true);
     this.servicesList=value.filter((x: { page_group: string, published: boolean }) => x.page_group === "services" && x.published == true);
+    this.packagesList=value.filter((x: { page_group: string, published: boolean }) => x.page_group === "packages" && x.published == true);
 
   }
 

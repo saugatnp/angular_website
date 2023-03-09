@@ -80,17 +80,18 @@ export class AdminComponent implements OnInit {
 
     },
     {
-      id: 6,
-      name: 'Blogs',
-      class: 'fas fa-clipboard',
+      id: 7,
+      name: 'Packages',
+      class: 'fas fa-gift',
 
     },
     // {
-    //   id: 7,
-    //   name: 'Page',
-    //   class: 'fas fa-file',
+    //   id: 6,
+    //   name: 'Blogs',
+    //   class: 'fas fa-clipboard',
 
     // },
+    
     // {
     //   id: 8,
     //   name: 'News And Events',
@@ -119,6 +120,9 @@ export class AdminComponent implements OnInit {
     }
     else if (id == 3) {
       this.router.navigate(['Admin/AdminServices']);
+    }
+    else if (id == 7) {
+      this.router.navigate(['Admin/AdminContent']);
     }
     
   

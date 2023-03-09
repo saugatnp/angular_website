@@ -15,7 +15,8 @@
                         rel="nofollow noopener noreferrer">
                         <div class="picsum-img-wrapper">
                             <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=sliders"
-                                alt="{{x.filenames}}">
+                                alt="{{x.filenames}}"
+                                style="object-fit: fill;">
 
                             <!-- <img [src]="img.image" alt="My image {{i + 1}} description"> -->
                         </div>
@@ -39,6 +40,7 @@
                 </div>
             </div>
         </div>
+        
 
         <section class="home-services pt-lg-0" *ngIf="true">
             <div class="container">
@@ -133,6 +135,9 @@
             </div>
         </section>
     </div>
+
+
+
 
 
     <div class=" py-5">
@@ -396,6 +401,8 @@
 
 
 
+
+
     <!-- stats -->
     <section class="py-lg-0 py-5" class="stats" *ngIf="false">
         <div class="stats-image">
@@ -441,7 +448,7 @@
 
 
 
-
+<!-- DOCTORS -->
 
     <div class="row ">
         <div class="col-sm">
@@ -511,6 +518,87 @@
 
     </div>
 
+    <!-- packages -->
+    <section class=" py-5" id="features">
+        <div class="py-lg-5 py-md-4">
+            <div class=" text-center">
+                <h2 class=" mb-sm-5 text-center primary-text"><b>Health Screening Packages</b></h2>
+            </div>
+            <div class="row">
+
+                <div class="col-sm">
+
+                </div>
+
+                <div class="col-sm-8">
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-container *ngFor="let slide of packagesList ; let i = index" style="display:flex;">
+                            <ng-template carouselSlide  >
+
+                                    <div class="  mb-sm-3 mb-3 m-2 card packages-card font-color hoverable">
+                                        <div class="card-body">
+                                            <div class="row">
+                                        <div class="col-lg-4 col-4 d-flex align-items-center">
+                                            <div class="bg-white">
+                                                <img class="box-shadow" src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=packages"
+                                                alt="{{slide.page_title}}" (error)="errorHandler($event)" style="width:100%;height:110px">
+                                                    </div>
+                                        </div>
+                                        <div class=" col-8  info ">
+                                            <h4><a  class="primary-text fs-5" style="text-transform: uppercase;">
+                                                {{slide.page_title}}
+                                            </a></h4>
+
+                                         
+                                                <br>
+
+                                            </div>
+                                                <div class=" ">
+                                                    <a class=" btn-style small btn-white btn-sm  m-3 fs-6 col-sm-4  smaller btn-book  d-flex  justify-content-center"
+                                                        (click)="onSelectImage(slide.page_title);" style="cursor:pointer;position: absolute; bottom: 0;right: 0;">
+                                                        Details&nbsp;
+                                                    </a>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                <div class="unilab-shape" *ngIf="false" >
+                                    <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=services"
+                                        alt="{{slide.page_title}}" style="width:100%;">
+                                    <div class="" style="padding-bottom:50px;height: auto;">
+                                        <div style="position: relative;">
+                                            <h5 class="card-title fs-5 m-2">{{slide.page_title}}</h5>
+                                            <p class="small white-text mt-1 pt-2" style="color:white !important;border-top:1px solid white"
+                                                [innerHTML]="slide.page_text | slice:0:150">
+                                            </p>
+                                        </div>
+                                     
+                                    </div>
+
+                                    <div class=" ">
+                                        <a class=" btn-style small btn-white  m-3 col-sm-4  smaller btn-book  d-flex  justify-content-center"
+                                            (click)="onSelectImage(slide.page_title);" style="cursor:pointer;position: absolute; bottom: 0;right: 0;">
+                                            Read&nbsp;More&nbsp;
+                                        </a>
+                                    
+                                    </div>
+
+                                </div>
+
+                            </ng-template>
+                        </ng-container>
+
+                    </owl-carousel-o>
+                </div>
+                <div class="col-sm">
+
+                </div>
+            </div>
+       
+        </div>
+    </section>
 
     <div class="row">
 

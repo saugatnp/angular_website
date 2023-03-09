@@ -82,7 +82,10 @@ export class PageComponent implements OnInit {
       // this.getDoctorList();
     }
 
+    else if(this.content.page_group!=null){
+      this.contents = res.filter((epic: { page_group: string;published:boolean }) => epic.page_group == this.content.page_group && epic.published==true );
 
+    }
 
     this.getPicture();
 

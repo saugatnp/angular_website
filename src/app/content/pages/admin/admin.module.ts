@@ -14,6 +14,7 @@ import { SlidersComponent } from './sliders/sliders.component';
 import { ServicesComponent } from './services/services.component';
 import { AdminblogsComponent } from './adminblogs/adminblogs.component';
 import { LoginComponent } from './login/login.component';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponent } from './login/login.component';
     ServicesComponent,
     AdminblogsComponent,
     LoginComponent,
+    ContentComponent,
   ],
   imports: [
     CommonModule,

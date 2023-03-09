@@ -208,6 +208,18 @@ export class ServicesComponent implements OnInit {
     // $scope.fileType = 'SERVICES';
   }
 
+  
+  imageVisible:boolean=false;
+  
+
+  imageShow(){
+      this.imageVisible=true
+    
+  }
+  imageHide(){
+    this.imageVisible=false
+  }
+
 
 
   reset() {
@@ -218,6 +230,7 @@ export class ServicesComponent implements OnInit {
     };
     this.content.page_group="services";
     this.fileList=[]
+  this.imageVisible=false;
   }
 
 

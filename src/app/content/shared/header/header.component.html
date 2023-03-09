@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-xs-5 ms-4 d-flex align-items-center">
                 <a [routerLink]="['/Home']">
-                <img src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=70&h=80">
-            </a>
+                    <img src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=70&h=80">
+                </a>
             </div>
             <div class="col-xs-7 col-lg-6 col-xs-5 mx-auto mt-1">
                 <div class="row d-flex justify-content-around">
@@ -19,7 +19,7 @@
                         <div class="" id="inner2">
                             <h5 class="">
                                 9866298925
-                                                        </h5>
+                            </h5>
 
                         </div>
 
@@ -62,8 +62,7 @@
                         <span class="fa fa-calendar  fs-1 pe-2"></span>
 
 
-                        <a class="small primary-text" style="cursor:pointer"
-                        >Book an <br />&nbsp;appointment</a>
+                        <a class="small primary-text" style="cursor:pointer">Book an <br />&nbsp;appointment</a>
 
 
 
@@ -74,8 +73,8 @@
                     <div class="col-3 d-flex align-items-center" id="btnset-dark">
 
                         <span class="fa fa-calendar fs-1 pe-2"></span>
-                        <a class="small text-white " style="cursor:pointer"
-                        [routerLink]="'LabReportDownload'">Patient's Report</a>
+                        <a class="small text-white " style="cursor:pointer" [routerLink]="'LabReportDownload'">Patient's
+                            Report</a>
 
 
 
@@ -165,7 +164,7 @@
 
                 </a> -->
                 <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <img src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=35&h=40">
 
                 </div>
@@ -260,29 +259,22 @@
                                 <div class="mx-0 d-flex justify-content-around small">
 
                                     <div class="list-group info px-2" *ngFor="let column of getColumns()">
-                                            <a  class="list-group-item " *ngFor="let item of column"
-                                            (click)="gotoPageMultipleParam(item)"
-                                            >{{ item.detail }}</a >
+                                        <a class="list-group-item " *ngFor="let item of column"
+                                            (click)="gotoPageMultipleParam(item)">{{ item.detail }}</a>
 
-                                    </div >
-
-
-
-
-
-
+                                    </div>
                                 </div>
-
                             </div>
                         </li>
 
 
 
                         <li class="nav-item ">
-                            <a class="nav-link  nav-header white-text "[routerLink]="['/DoctorsList']"
-                                routerLinkActive='active' >Doctors</a>
+                            <a class="nav-link  nav-header white-text " [routerLink]="['/DoctorsList']"
+                                routerLinkActive='active'>Doctors</a>
                         </li>
 
+                        
                         <li class="nav-item dropdown dropdown-mega position-static">
                             <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
                                 data-bs-toggle="dropdown" data-bs-auto-close="outside">Services</a>
@@ -296,22 +288,47 @@
                                         <div class="list-group info" style="border-bottom:1px solid gray;">
                                             <a class="list-group-item " *ngFor="let x of servicesList"
                                                 (click)="gotoPage(x.page_title)">{{x.page_title}}</a>
-                                        
+
 
                                         </div>
                                     </div>
 
-            
+
                                 </div>
 
                             </div>
                         </li>
 
 
-                        <li class="nav-item ">
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
+                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Packages</a>
+                            <div class="dropdown-menu dropdown-menu-right" style="border:1px solid gray">
+
+                                <div class="row w-100 mx-0">
+
+
+
+                                    <div class="col-12 col-sm-12 col-md-12 small ">
+                                        <div class="list-group info" style="border-bottom:1px solid gray;">
+                                            <a class="list-group-item " *ngFor="let x of packagesList"
+                                                (click)="gotoPage(x.page_title)">{{x.page_title}}</a>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                        <!-- <li class="nav-item ">
                             <a class="nav-link  nav-header white-text" [routerLink]="['/Blogs']"
                                 routerLinkActive='active'>Blogs</a>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a class="nav-link  nav-header white-text" [routerLink]="['/Contact']"
@@ -324,12 +341,12 @@
 
                         <li class="nav-item">
                             <div class="d-flex justify-content-around align-items-center mt-2">
-<a href="https://www.facebook.com/BluecrossHospitalNepal/" target="_blank">
-                                <i class="fab nav-header  nav-link fa-facebook white-text"></i>
-                            </a>
-                            <a href="https://www.instagram.com/bluecross_hospital">
-                                <i class="fab nav-header nav-link fa-instagram white-text"></i>
-                            </a>
+                                <a href="https://www.facebook.com/BluecrossHospitalNepal/" target="_blank">
+                                    <i class="fab nav-header  nav-link fa-facebook white-text"></i>
+                                </a>
+                                <a href="https://www.instagram.com/bluecross_hospital">
+                                    <i class="fab nav-header nav-link fa-instagram white-text"></i>
+                                </a>
                                 <!-- <i class="fab nav-header nav-link fa-brands fa-tiktok white-text"></i>
                                 <i class="fab nav-header nav-link fa-linkedin white-text"></i> -->
 
@@ -345,7 +362,6 @@
         </div>
     </header>
 
-   
+
 
 </div>
-

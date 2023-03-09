@@ -1,5 +1,6 @@
 import { AdminAboutComponent } from '../content/pages/admin/admin-about/admin-about.component';
 import { AdminblogsComponent } from '../content/pages/admin/adminblogs/adminblogs.component';
+import { ContentComponent } from '../content/pages/admin/content/content.component';
 import { DepartmentComponent } from '../content/pages/admin/department/department.component';
 import { AdminDoctorsComponent } from '../content/pages/admin/doctors/doctors.component';
 import { AdminHomeComponent } from '../content/pages/admin/home/home.component';
@@ -49,6 +50,11 @@ export const adminRoutes = [
     },
     {
         path: 'AdminBlogs', component: AdminblogsComponent,
+        canActivate: [ActivateGuard],
+
+    },
+    {
+        path: 'AdminContent', component: ContentComponent,
         canActivate: [ActivateGuard],
 
     },
