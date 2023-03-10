@@ -6,7 +6,7 @@
 
         <div class="banner-image d-md-flex justify-content-center align-items-center">
 
-            <ngb-carousel #carousel [interval]="4000" (slide)="onSlide($event)">
+            <ngb-carousel #carousel [interval]="20000" (slide)="onSlide($event)">
                 <ng-template ngbSlide *ngFor="let x of fileList; index as i">
                     <!-- <div class="carousel-caption">
                         <h3>My slide {{i + 1}} title</h3>
@@ -16,7 +16,7 @@
                         <div class="picsum-img-wrapper">
                             <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type=sliders"
                                 alt="{{x.filenames}}"
-                                style="object-fit: cover;">
+                                style="object-fit: cover;aspect-ratio: 16/6;">
 
                             <!-- <img [src]="img.image" alt="My image {{i + 1}} description"> -->
                         </div>
@@ -460,7 +460,7 @@
                             <ng-template carouselSlide>
 
 
-                                <div class="card-new col-sm-10 col-md-8 col-lg-7 mx-auto">
+                                <div class="card-new col-sm-10 col-md-8 col-lg-7 mx-auto ">
                                     <div class="card-image">
                                         <div class="image">
 
@@ -474,7 +474,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="card-text p-3 box-shadow">
+                                    <div class="card-text p-3 box-shadow pb-4 mb-4">
                                         <h5 class=" d-flex justify-content-around fs-6 m-0"
                                             style="white-space: nowrap;"><b>{{x.referer}}</b></h5>
                                         <p class=" small m-0 mt-1 fs-6 d-flex justify-content-around">

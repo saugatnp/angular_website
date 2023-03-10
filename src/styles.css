@@ -196,7 +196,7 @@ a.navbar-brand img {
 }
 
 .banner-main {
-  padding-top: 80px;
+  padding-top: 120px;
   z-index: 0;
   position: relative;
   display: grid;
@@ -207,7 +207,6 @@ a.navbar-brand img {
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: top;
   background-attachment: fixed;
-  min-height: 710px;
 }
 
 .inner-banner-image {
@@ -264,14 +263,15 @@ a.navbar-brand img {
 .banner-image {
   overflow: hidden;
 
-  position: absolute;
+  /* position: absolute; */
   width: auto;
   height: auto;
-  top: -50px;
+  top: 0px;
   left: 0;
   right: 0;
   bottom: 0;
-  clip-path: ellipse(80% 60% at 50% 50%);
+  border-radius:0 0 15% 15%;
+  /* clip-path: ellipse(80% 60% at 50% 50%); */
   /* mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%));
   --webkit-mask-image: linear-gradient(to right, rgb(3 15 39 / 90%), rgb(3 15 39 / 90%)); */
   /* clip-path: ellipse(80% 50% at 50% 50%) !important; */
@@ -291,8 +291,8 @@ a.navbar-brand img {
 .banner-image img {
   display: block;
   width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+  max-height: 100vh;
+  /* object-fit: cover; */
 }
 
 
@@ -1025,6 +1025,9 @@ body {
   .sidebarNoneWidth{
     display: none;
   }
+  .banner-image {
+    top:50px
+  }
   
 } 
 @media only screen and (max-width: 700px) {
@@ -1069,7 +1072,7 @@ body {
 
 
   .banner-image img {
-    height: 60vh;
+    /* height: 60vh; */
     background-size: contain;
   }
 
