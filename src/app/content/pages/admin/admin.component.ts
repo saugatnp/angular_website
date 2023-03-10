@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { BroadcastService } from '../../services/broadcast.service';
@@ -131,4 +131,13 @@ export class AdminComponent implements OnInit {
    
   }
 
+  fix: boolean = true
+  @Output() fixEmitter = new EventEmitter<boolean>();
+  fixNav() {
+     
+      this.fix = !this.fix
+    
+
+    this.fixEmitter.emit(this.fix);
+  }
 }

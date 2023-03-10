@@ -24,6 +24,11 @@ export class AppComponent {
       }
     });
   }
+  fix: boolean = false
+  fixNav($event: boolean) {
+    this.fix = $event
+    // alert($event)
+  }
   // @HostListener('window:scroll', ['$event']) 
   // onScroll(event : Event) {
   //     if (document.body.scrollTop > 80 ||     

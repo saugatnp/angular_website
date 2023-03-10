@@ -966,6 +966,9 @@ body {
   background-color: white;
 
 }
+.zoom a {
+  white-space: nowrap;
+}
 
 .owl-item {
   margin: 10px;
@@ -990,6 +993,12 @@ body {
   width: 70px;
   height: 80px;
 }
+.drawer-header{
+  display: none ;;
+}
+.hideOnMobile{
+  display: block
+}
 @media only screen and (max-width: 991px) and (min-width: 768px) {
   .home-services {
       position: relative !important;
@@ -1013,7 +1022,23 @@ body {
   .page-container {
     margin-top: 10% !important;
   }
+  .sidebarNoneWidth{
+    display: none;
+  }
+  
 } 
+@media only screen and (max-width: 700px) {
+  .HideAdminRouteOnNavFix{
+    transition: all 0.4s ease;
+    display: none;
+  }
+  .drawer-header{
+    display: block ;
+  }
+  .hideOnMobile{
+    display: hidden !important;
+  }
+}
 
 @media (max-width:1300px) {
   .top-header-logo img {
@@ -1173,7 +1198,54 @@ body {
     margin-top: 12% !important;
   }
 }
+.login-div {
+  position: relative;
+  width: auto !important;
+  height: 1.5rem;
+  padding: 0;
+  background-color: white;
+  color: #0A61B5;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 500;
+  padding: 5px 10px 5px 15px !important;
+  border-radius: 5px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px;
 
+}
+
+.login-div::before {
+  background-color: rgb(167, 202, 245);
+  color: var(--primary-color);
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 5px;
+  font-size: 18px;
+  border: 1px solid lightgray;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px;
+  border-radius: 50%;
+  position: absolute;
+  font-family: "Font Awesome 5 Free ", "Font Awesome 5 Pro", "Font Awesome 5 Brands" !important;
+  content: "\f007";
+  font-weight: 900;
+  left: -2rem;
+  top: -7px
+}
+.icon-circle {
+  background-color: rgb(167, 202, 245);
+  color: var(--primary-color);
+  height: auto;
+  width: 2.5rem;
+  padding: 4px;
+  font-size: 15px !important;
+  border: 0.5px solid lightgray;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px;
+  border-radius: 50%;
+}
+.sidebarNoneWidth {
+  width: 50px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
