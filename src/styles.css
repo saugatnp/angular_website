@@ -1257,6 +1257,9 @@ width: 100vw;
   background-color: rgba(0, 0, 0, 0.7);
   /* opacity: 0.7; */
 }
+.bg-gray{
+  background-color: rgb(161, 161, 161);
+}
 #toast-container > div {
   opacity:1;
 }
