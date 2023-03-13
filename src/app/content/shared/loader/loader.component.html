@@ -1,0 +1,144 @@
+<style>
+  .overlay {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(74, 74, 74, 0);
+    z-index: 99999;
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+  #loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1500;
+  }
+
+  #loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 3px solid transparent;
+    border-top-color: #375583;
+
+    z-index: 1500;
+    border-radius: 50%;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+
+  }
+
+  #loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 3px solid transparent;
+    border-top-color: #02ac5e;
+       border-bottom-color: red;
+
+    border-radius: 50%;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+
+  }
+
+  #loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 3px solid transparent;
+    border-top-color: white;
+
+    border-radius: 50%;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+
+  }
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(0deg);
+      /* IE 9 */
+      transform: rotate(0deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(360deg);
+      /* IE 9 */
+      transform: rotate(360deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(0deg);
+      /* IE 9 */
+      transform: rotate(0deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+      /* Chrome, Opera 15+, Safari 3.1+ */
+      -ms-transform: rotate(360deg);
+      /* IE 9 */
+      transform: rotate(360deg);
+      /* Firefox 16+, IE 10+, Opera */
+    }
+  }
+  #img{
+    position: absolute;
+    top:47%;
+    left:48%;
+    opacity: 100% !important;
+
+  }
+</style>
+
+<div class="spinner" *ngIf="isLoading.length!=0" >
+  <div id="loader-wrapper" >
+  <div id="loader">
+  
+  </div>
+  <!-- <img src="assets/img/loader.png" height="70" width="70" alt=""  id="img"> -->
+</div>
+  <!-- <mat-spinner mode="indeterminate" style="top:50%;left:50%" strokeWidth="6" diameter="100" color="accent" ></mat-spinner> -->
+
+</div>
+
+

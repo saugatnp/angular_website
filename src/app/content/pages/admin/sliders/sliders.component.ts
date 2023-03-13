@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { NotificationService } from 'src/app/content/services/notification.service';
 import { PageContentService } from 'src/app/content/services/pagecontent.service';
 import { SpecialityService } from 'src/app/content/services/speciality.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
@@ -15,6 +16,7 @@ import { PageContent } from '../admin-about/pagecontent.model';
 })
 export class SlidersComponent implements OnInit {
 
+  title: string = "Sliders";
 
   editor = ClassicEditor as unknown as {
     create: any;
@@ -29,7 +31,8 @@ export class SlidersComponent implements OnInit {
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
     private modal: NgbModal,
-    private specialityService: SpecialityService
+    private specialityService: SpecialityService,
+    public toastr: NotificationService,
 
   ) {
     this.baseUrl = appconfig.baseUrl;
@@ -86,10 +89,21 @@ export class SlidersComponent implements OnInit {
   }
 
   Success(res: any) {
+    this.successToast();
     this.getDepartmentList();
     this.reset()
     // this.getPicture();
     this.modal.dismissAll();
+  }
+
+  //success Toastr
+  successToast() {
+    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Updated"} Content`, this.title)
+  }
+
+  //error Toastr
+  errorToast() {
+    this.toastr.showError(`Error ${this.edit? "Editing" : "Updated"} Content`, this.title)
   }
 
 
@@ -107,7 +121,8 @@ export class SlidersComponent implements OnInit {
 
 
   Error(res: any): void {
-    console.log(res)
+    // console.log(res)
+    this.errorToast();
     // throw new Error('Method not implemented.');
   }
 

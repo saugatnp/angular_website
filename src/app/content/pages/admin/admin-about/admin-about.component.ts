@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { NotificationService } from 'src/app/content/services/notification.service';
 import { PageContentService } from 'src/app/content/services/pagecontent.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { PageContent } from './pagecontent.model';
@@ -13,7 +14,7 @@ import { PageContent } from './pagecontent.model';
 })
 export class AdminAboutComponent implements OnInit {
 
-
+title : string = "Admin-About"
   editor = ClassicEditor as unknown as {
     create: any;
   };
@@ -26,7 +27,8 @@ export class AdminAboutComponent implements OnInit {
   constructor(private http: HttpClient,
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private toastr: NotificationService,
 
   ) {
     this.baseUrl = appconfig.baseUrl;
@@ -87,10 +89,18 @@ export class AdminAboutComponent implements OnInit {
   }
 
   Success(res: any) {
+    this.SuccessToastr(res);
     this.getEpic();
     this.reset()
     this.getPicture();
     this.modal.dismissAll();
+  }
+  SuccessToastr(res: any) {
+    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content!`, this.title);
+  }
+  //error toaster message
+  ErrorToastr(res: any) {
+    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content!`, this.title);
   }
 
 
@@ -99,7 +109,8 @@ export class AdminAboutComponent implements OnInit {
 
   }
   Error(res: any): void {
-    console.log(res)
+    // console.log(res)
+    this.ErrorToastr(res);
     // throw new Error('Method not implemented.');
   }
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationService } from 'src/app/content/services/notification.service';
 import { PageContentService } from 'src/app/content/services/pagecontent.service';
 import { SpecialityService } from 'src/app/content/services/speciality.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
@@ -13,7 +14,7 @@ import { PageContent } from '../admin-about/pagecontent.model';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
- 
+  title: string = "Packages";
   editor = ClassicEditor as unknown as {
     create: any;
   };
@@ -27,7 +28,8 @@ export class ContentComponent implements OnInit {
   constructor(private http: HttpClient,
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private toastr: NotificationService,
 
   ) {
     this.baseUrl = appconfig.baseUrl;
@@ -98,19 +100,27 @@ export class ContentComponent implements OnInit {
   }
 
   Success(res: any) {
+    this.successToastr();
     this.getEpic();
     this.reset()
     this.getPicture();
     this.modal.dismissAll();
   }
-
-
+//success toastr
+  successToastr() {
+    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content`, this.title)
+  }
+  //error toastr
+  errorToastr() {
+    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content`, this.title)
+  }
   filterData() {
     this.contents = this.contents.filter((x: { page_group: string; }) => x.page_group === this.content.page_group);
 
   }
   Error(res: any): void {
-    console.log(res)
+    // console.log(res)
+    this.errorToastr();
     // throw new Error('Method not implemented.');
   }
 

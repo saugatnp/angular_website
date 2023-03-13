@@ -15,7 +15,7 @@ import { AdminComponent } from './content/pages/admin/admin.component';
 import { AdminModule } from './content/pages/admin/admin.module';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { AppConfiguration } from 'src/config/app-config';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
@@ -40,6 +40,10 @@ import { BlogsComponent } from './content/pages/blogs/blogs.component';
 import { LabreportdownloadComponent } from './content/pages/labreportdownload/labreportdownload.component';
 import { SharedDirective } from './content/directives/shared.directive';
 import { ModalComponent } from './content/modal/modal.component';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { LoaderService } from './content/services/loader.service';
+import { LoaderComponent } from './content/shared/loader/loader.component';
+import { ToastrModule } from 'ngx-toastr';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -58,6 +62,7 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     BlogsComponent,
     LabreportdownloadComponent,
     ModalComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +76,7 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     AdminModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     CarouselModule,
     MdbAccordionModule,
     MdbCarouselModule,
@@ -88,9 +94,10 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     MdbTooltipModule,
     MdbValidationModule,
     NgSelectModule,
-    SharedDirective
+    SharedDirective,
+
   ],
-  providers: [
+  providers: [LoaderService,
     {
       provide: AppConfiguration,
       deps: [HttpClient],
@@ -102,6 +109,11 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
       useFactory: initializerFn,
       deps: [JsonAppConfigService]
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
+      }
   ],
   bootstrap: [AppComponent]
 })

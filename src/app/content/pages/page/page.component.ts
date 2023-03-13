@@ -39,7 +39,7 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    window.scroll(0,0)
+    window.scroll(0, 0)
 
     this.getContent()
 
@@ -67,23 +67,23 @@ export class PageComponent implements OnInit {
 
     if (this.content.page_group == "departments") {
       this.getDoctorList();
-      this.contents=[]
+      this.contents = []
       // this.contents = res.filter((epic: { page_group: string; }) => epic.page_group == this.content.page_group);
 
     }
 
 
     if (this.content.page_group == "about") {
-      this.contents = res.filter((epic: { page_group: string;published:boolean }) => epic.page_group == this.content.page_group && epic.published==true );
+      this.contents = res.filter((epic: { page_group: string; published: boolean }) => epic.page_group == this.content.page_group && epic.published == true);
       // this.getDoctorList();
     }
     if (this.content.page_group == "services") {
-      this.contents = res.filter((epic: { page_group: string;published:boolean }) => epic.page_group == this.content.page_group && epic.published==true );
+      this.contents = res.filter((epic: { page_group: string; published: boolean }) => epic.page_group == this.content.page_group && epic.published == true);
       // this.getDoctorList();
     }
 
-    else if(this.content.page_group!=null){
-      this.contents = res.filter((epic: { page_group: string;published:boolean }) => epic.page_group == this.content.page_group && epic.published==true );
+    else if (this.content.page_group != null) {
+      this.contents = res.filter((epic: { page_group: string; published: boolean }) => epic.page_group == this.content.page_group && epic.published == true);
 
     }
 
@@ -162,12 +162,12 @@ export class PageComponent implements OnInit {
   }
 
 
-  
-  errorHandler(event:any) {
+
+  errorHandler(event: any) {
     // (event.target as HTMLImageElement).style.display = 'none';
     console.debug(event);
     event.target.src = "https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=60&h=60  "
- }
+  }
 
 
 
