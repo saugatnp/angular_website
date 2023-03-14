@@ -1,3 +1,5 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
 :root {
   --primary-color: #1F3992;
   --primary-second-color: #0d1738;
@@ -63,7 +65,7 @@ body,
   padding: 1px 8px 1px 8px !important;
   border: 1px solid !important;
   border-color: #0a61b5;
-
+  cursor: pointer;
 }
 
 .green-text {
@@ -1262,6 +1264,43 @@ width: 100vw;
 }
 #toast-container > div {
   opacity:1;
+}
+
+.ng-select.dash .ng-select-container{
+  height: 40px !important;
+  padding: 0;
+  margin: 0 2px;
+}
+
+  /* SELEECT CUSTOM */
+  .ng-select.custom {
+    border: 0px;
+    min-height: 0px;
+    border-radius: 4px;
+    font-size: 11px !important;
+  }
+
+  .ng-select.custom .ng-select-container {
+    min-height: 0px;
+    border-radius: 4px;
+    height: 28px !important;
+  }
+  .ng-select-container:focus-within,
+  input:focus,
+  .form-control:focus,
+  .form-control-sm:focus {
+    /* box-shadow: 0 0 5px rgb(255, 0, 153) !important ;
+    outline: none !important;
+    border: 1px solid rgb(255, 0, 153)  !important;
+    -webkit-box-shadow: 0 0 5px rgb(255, 0, 153) inset !important;
+    -moz-box-shadow: 0 0 5px rgb(255, 0, 153) inset !important; */
+    background-color: rgb(245, 245, 206) ;
+  }
+  
+.ng-select.dash .ng-select-container{
+  height: 40px !important;
+  padding: 0;
+  margin: 0 2px;
 }
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';

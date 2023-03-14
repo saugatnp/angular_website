@@ -14,7 +14,7 @@ import { PageContent } from './pagecontent.model';
 })
 export class AdminAboutComponent implements OnInit {
 
-title : string = "Admin-About"
+  title: string = "Admin-About"
   editor = ClassicEditor as unknown as {
     create: any;
   };
@@ -42,7 +42,7 @@ title : string = "Admin-About"
   ngOnInit(): void {
 
     this.getEpic();
-    this.content.page_group="about"
+    this.content.page_group = "about"
 
   }
 
@@ -96,13 +96,65 @@ title : string = "Admin-About"
     this.modal.dismissAll();
   }
   SuccessToastr(res: any) {
-    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content!`, this.title);
+    this.toastr.showSuccess(`Successfully ${this.edit ? "Edited" : "Added"} Content!`, this.title);
   }
   //error toaster message
   ErrorToastr(res: any) {
-    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content!`, this.title);
+    this.toastr.showError(`Error ${this.edit ? "Editing" : "Adding"} Content!`, this.title);
   }
 
+  deleteImage(data: any) {
+    if (confirm("Are you sure want to delete the image?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePhoto"
+      var payload = {
+        "id": data.id,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+          })
+    }
+    else {
+      return;
+    }
+  }
+  deleteContent(data:any){
+
+    if (confirm("Are you sure want to delete the content?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePageContent"
+      var payload = {
+        "sn": data.sn,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+          })
+    }
+    else {
+      return;
+    }
+
+  }
+ //success delete data
+ successDeleteToastr() {
+  this.toastr.showSuccess(`Successfully Deleted Content`, this.title)
+}
+//error delete data
+errorDeleteToastr() {
+  this.toastr.showError(`Error Deleting Content`, this.title)
+}
 
   filterData() {
     this.contents = this.contents.filter((x: { page_group: string; }) => x.page_group === "about");
@@ -142,7 +194,9 @@ title : string = "Admin-About"
 
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
-      let file: File = fileList[0];
+      //confirm dialogue
+      if (confirm("Are you sure want to upload the image?")) {
+        let file: File = fileList[0];
       let formData: FormData = new FormData();
       formData.append('uploadFile', file, file.name);
       let headers = new Headers();
@@ -159,14 +213,20 @@ title : string = "Admin-About"
           ,
           error => console.log(error)
         )
+      }
+      else {
+        fileList = new FileList;
+        return;
+      }
+     
     }
   }
-  
+
   selectedImage: any = [];
   selectImage(x: any) {
     this.selectedImage = x;
   }
-  
+
   togglePublishImage() {
     const token = localStorage.getItem('access_token');
     const options = {
@@ -218,26 +278,26 @@ title : string = "Admin-About"
   }
 
 
-  imageVisible:boolean=false;
-  
+  imageVisible: boolean = false;
 
-  imageShow(){
-      this.imageVisible=true
-    
+
+  imageShow() {
+    this.imageVisible = true
+
   }
-  imageHide(){
-    this.imageVisible=false
+  imageHide() {
+    this.imageVisible = false
   }
 
   reset() {
     this.edit = false;
     this.content = new PageContent()
-     this.model = {
+    this.model = {
       editorData: ''
     };
-    this.content.page_group="about";
-    this.fileList=[]
-    this.imageVisible=false;
+    this.content.page_group = "about";
+    this.fileList = []
+    this.imageVisible = false;
   }
 
 

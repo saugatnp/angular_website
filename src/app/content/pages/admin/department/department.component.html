@@ -42,18 +42,21 @@
                                     </div>
                                                     </td> -->
                                 <td class="m-1 p-1">
-                                    
 
-                                        <div class="zoom">
-                                            <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);imageHide()"
-                                            [content]="content1" [size]="'lg'">Edit&nbsp;
+
+                                    <div class="zoom">
+                                        <a class="m-1 rounded-btn " modalDirective
+                                            (click)="selectContent(x);imageHide()" [content]="content1"
+                                            [size]="'lg'">Edit&nbsp;
                                             <i class="fa fa-edit "></i>
                                         </a>
-                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);imageShow()"
-                                        [content]="content1" [size]="'lg'">Images&nbsp;
-                                        <i class="fa fa-image "></i>
-                                    </a>
-                                        </div>
+                                        <a class="m-1 rounded-btn " modalDirective
+                                            (click)="selectContent(x);imageShow()" [content]="content1"
+                                            [size]="'lg'">Images&nbsp;
+                                            <i class="fa fa-image "></i>
+                                        </a>
+                                        
+                                    </div>
 
 
                                 </td>
@@ -63,7 +66,7 @@
                 </div>
             </div>
 
-            
+
 
             <!-- <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
 
@@ -121,16 +124,16 @@
             </div>
             <div class="row">
                 <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
-    
+
             </div>
-    
+
         </div>
-    
+
         <div class="container" *ngIf="imageVisible">
-            
+
             <div class="row">
                 <input type="file" (change)="fileChange($event)">
-    
+
             </div>
             <div class="row">
                 <table class="table table-small">
@@ -138,29 +141,35 @@
                         <th>Sn</th>
                         <th>Title</th>
                         <th>Published</th>
+                        <th>Action</th>
                     </tr>
                     <tr *ngFor="let x of fileList">
                         <td>
                             {{x.sn}}
                         </td>
                         <td>
-                                <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{this.content.page_group}}"
-                                    height="80" [width]="80" alt="{{x.filenames}}">
-    
+                            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{this.content.page_group}}"
+                                height="80" [width]="80" alt="{{x.filenames}}">
+
                         </td>
                         <td>
-    
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
-    
-                    </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                    [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
+
+                            </div>
+                        </td>
+                        <td>
+                            <a class="m-1 rounded-btn text-danger" (click)="deleteImage(x);">Delete&nbsp;
+                                <i class="fa fa-trash text-danger "></i>
+                            </a>
                         </td>
                     </tr>
-    
+
                 </table>
             </div>
-            
+
         </div>
     </div>
     <div class="modal-footer">

@@ -52,19 +52,24 @@
                                 </td>
                                 <td class="m-1 p-1">
                                     <span>
-                                    <div class="zoom">
-                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);imageHide()"
-                                            [content]="content1" [size]="'lg'">Edit&nbsp;
-                                            <i class="fa fa-edit "></i>
-                                        </a>
-                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);imageShow()"
-                                        [content]="content1" [size]="'lg'">Images&nbsp;
-                                        <i class="fa fa-image "></i>
-                                    </a>
+                                        <div class="zoom">
+                                            <a class="m-1 rounded-btn " modalDirective
+                                                (click)="selectContent(x);imageHide()" [content]="content1"
+                                                [size]="'lg'">Edit&nbsp;
+                                                <i class="fa fa-edit "></i>
+                                            </a>
+                                            <a class="m-1 rounded-btn " modalDirective
+                                                (click)="selectContent(x);imageShow()" [content]="content1"
+                                                [size]="'lg'">Images&nbsp;
+                                                <i class="fa fa-image "></i>
+                                            </a>
+                                            <a class="m-1 rounded-btn text-danger" (click)="deleteContent(x)">Delete&nbsp;
+                                                <i class="fa fa-trash text-danger"></i>
+                                            </a>
 
-                                    </div>
-                                 
-                                </span>
+                                        </div>
+
+                                    </span>
                                 </td>
                             </tr>
                         </tbody>
@@ -103,74 +108,80 @@
     </div>
     <div class="modal-body ">
         <div class="container" *ngIf="!imageVisible">
-        <div class="row">
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                <label for="
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <label for="
                     title" class="small">Title</label>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <input type="text" class="form-control form-control-sm" [(ngModel)]="content.page_title">
-            </div>
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                        [(ngModel)]="content.published">
-                    <label class="form-check-label small" for="flexCheckChecked">
-                        Published
-                    </label>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <input type="text" class="form-control form-control-sm" [(ngModel)]="content.page_title">
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            [(ngModel)]="content.published">
+                        <label class="form-check-label small" for="flexCheckChecked">
+                            Published
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-4 col-lg-3">
-                <label for="
+            <div class="row">
+                <div class="col-sm-3 col-md-4 col-lg-3">
+                    <label for="
                     title" class="small">Content</label>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
+            <div class="row">
+                <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
+
+            </div>
 
         </div>
+        <div class="container" *ngIf="imageVisible">
 
-    </div>
-    <div class="container" *ngIf="imageVisible">
-        
-        <div class="row">
-            <input type="file" (change)="fileChange($event)">
+            <div class="row">
+                <input type="file" (change)="fileChange($event)">
 
-        </div>
-        <div class="row">
-            <table class="table table-small">
-                <tr>
-                    <th>Sn</th>
-                    <th>Title</th>
-                    <th>Published</th>
-                </tr>
-                <tr *ngFor="let x of fileList">
-                    <td>
-                        {{x.sn}}
-                    </td>
-                    <td>
+            </div>
+            <div class="row">
+                <table class="table table-small">
+                    <tr>
+                        <th>Sn</th>
+                        <th>Title</th>
+                        <th>Published</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr *ngFor="let x of fileList">
+                        <td>
+                            {{x.sn}}
+                        </td>
+                        <td>
                             <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{this.content.page_group}}"
                                 height="80" [width]="80" alt="{{x.filenames}}">
 
-                    </td>
-                    <td>
+                        </td>
+                        <td>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                        [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                    [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
 
-                </div>
-                    </td>
-                </tr>
+                            </div>
+                        </td>
+                        <td>
+                            <a class="m-1 rounded-btn text-danger" (click)="deleteImage(x);">Delete&nbsp;
+                                <i class="fa fa-trash text-danger "></i>
+                            </a>
+                        </td>
+                    </tr>
 
-            </table>
+                </table>
+            </div>
+
         </div>
-        
-    </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-small btn-primary me-auto" *ngIf="!imageVisible" (click)="postContent()">Submit</button>
     </div>
-</ng-template>  
+</ng-template>
