@@ -16,6 +16,7 @@ import { AdminblogsComponent } from './adminblogs/adminblogs.component';
 import { LoginComponent } from './login/login.component';
 import { ContentComponent } from './content/content.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AdminblogsComponent,
     LoginComponent,
     ContentComponent,
+    SettingsComponent,
   ],
   imports: [
     CommonModule,

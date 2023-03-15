@@ -11,32 +11,32 @@ import { BroadcastService } from '../../services/broadcast.service';
 })
 export class AdminComponent implements OnInit {
   isLoggedIn: any;
-  userName:any;
+  userName: any;
   id: number = 0
   constructor(private router: Router,
-    private service:BroadcastService,
-    private auth:AuthService) { 
+    private service: BroadcastService,
+    private auth: AuthService) {
 
-      this.service.currentData.subscribe((dataSub: any) => {
-        this.isLoggedIn = dataSub;
-        // console.log(this.isLoggedIn);
-        this.service.currentloggedAdmin.subscribe((data: any) => {
-          this.loggedInAsAdmin = data;
-          this.userName = this.auth.getUser()
-        })
-  
+    this.service.currentData.subscribe((dataSub: any) => {
+      this.isLoggedIn = dataSub;
+      // console.log(this.isLoggedIn);
+      this.service.currentloggedAdmin.subscribe((data: any) => {
+        this.loggedInAsAdmin = data;
+        this.userName = this.auth.getUser()
       })
+
+    })
   }
-    loggedInAsAdmin=false;
-    loggedIn=false;
+  loggedInAsAdmin = false;
+  loggedIn = false;
 
   ngOnInit(): void {
 
-   
-  
-}
-  
-  logOff(){
+
+
+  }
+
+  logOff() {
     this.auth.logOff();
     this.service.changeData(false)
     this.service.changeAdmin(false)
@@ -85,13 +85,19 @@ export class AdminComponent implements OnInit {
       class: 'fas fa-gift',
 
     },
+    {
+      id: 8,
+      name: 'Settings',
+      class: 'fas fa-cog',
+
+    },
     // {
     //   id: 6,
     //   name: 'Blogs',
     //   class: 'fas fa-clipboard',
 
     // },
-    
+
     // {
     //   id: 8,
     //   name: 'News And Events',
@@ -124,19 +130,21 @@ export class AdminComponent implements OnInit {
     else if (id == 7) {
       this.router.navigate(['Admin/AdminContent']);
     }
-    
-  
-    
+    else if (id == 8) {
+      this.router.navigate(['Admin/Settings']);
+    }
+
+
     this.id = id
-   
+
   }
 
   fix: boolean = true
   @Output() fixEmitter = new EventEmitter<boolean>();
   fixNav() {
-     
-      this.fix = !this.fix
-    
+
+    this.fix = !this.fix
+
 
     this.fixEmitter.emit(this.fix);
   }

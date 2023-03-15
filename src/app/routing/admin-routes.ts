@@ -6,6 +6,7 @@ import { AdminDoctorsComponent } from '../content/pages/admin/doctors/doctors.co
 import { AdminHomeComponent } from '../content/pages/admin/home/home.component';
 import { LoginComponent } from '../content/pages/admin/login/login.component';
 import { ServicesComponent } from '../content/pages/admin/services/services.component';
+import { SettingsComponent } from '../content/pages/admin/settings/settings.component';
 import { SlidersComponent } from '../content/pages/admin/sliders/sliders.component';
 import { ActivateGuard } from '../guards/auth.guard';
 
@@ -55,6 +56,11 @@ export const adminRoutes = [
     },
     {
         path: 'AdminContent', component: ContentComponent,
+        canActivate: [ActivateGuard],
+
+    },
+    {
+        path: 'Settings', component: SettingsComponent,
         canActivate: [ActivateGuard],
 
     },
