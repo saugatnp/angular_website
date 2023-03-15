@@ -5,3 +5,4 @@ export class PageContent{
     published=true ;
     page_group="" 
 }
+
