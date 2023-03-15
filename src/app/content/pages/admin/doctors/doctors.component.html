@@ -11,8 +11,12 @@
                 </div>
 
                 <div class="col-sm-4 d-flex justify-content-end">
-                    <button class="btn btn-small p-2 btn-secondary" modalDirective [content]="content1" [size]="'lg'"
-                        (click)="reset()">New</button>
+                    <!-- <button class="btn btn-small p-2 btn-secondary" modalDirective [content]="content1" [size]="'lg'"
+                        (click)="reset()">New</button> -->
+                    <button class="btn btn-small p-2 btn-secondary ms-1" modalDirective [content]="specialitysetup"
+                        [size]="'md'" (click)="reset();">New Speciality</button>
+                    <button class="btn btn-small p-2 btn-secondary ms-1" modalDirective [content]="referersetup"
+                        [size]="'lg'" (click)="reset();getMax();">New Doctor</button>
                 </div>
             </nav>
 
@@ -20,7 +24,8 @@
             Doctors
             <div class="row">
                 <div class="col-sm-12">
-                    <input type="text" class="form-control form-control-sm" [(ngModel)]="search">                </div>
+                    <input type="text" class="form-control form-control-sm" [(ngModel)]="search">
+                </div>
                 <div class="col-sm-12" style="overflow-y: scroll;max-height: 80vh;">
                     <table class="table-sm table table-small table-bordered table-hover">
                         <tr>
@@ -49,14 +54,16 @@
                                                     </td> -->
                                 <td class="m-1 p-1">
                                     <div class="zoom">
-                                        <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);imageHide()"
-                                        [content]="content1" [size]="'lg'">Edit&nbsp;
-                                        <i class="fa fa-edit "></i>
-                                    </a>
-                                    <a class="m-1 rounded-btn " modalDirective (click)="selectContent(x);imageShow()"
-                                    [content]="content1" [size]="'lg'">Images&nbsp;
-                                    <i class="fa fa-image "></i>
-                                </a>
+                                        <a class="m-1 rounded-btn " modalDirective
+                                            (click)="selectContent(x);imageHide()" [content]="content1"
+                                            [size]="'lg'">Edit&nbsp;
+                                            <i class="fa fa-edit "></i>
+                                        </a>
+                                        <a class="m-1 rounded-btn " modalDirective
+                                            (click)="selectContent(x);imageShow()" [content]="content1"
+                                            [size]="'lg'">Images&nbsp;
+                                            <i class="fa fa-image "></i>
+                                        </a>
                                     </div>
 
 
@@ -76,7 +83,39 @@
 
 </div>
 
+<ng-template #specialitysetup let-modal>
+    <div class="modal-header m-0 p-0 primary-bg">
+        <h5 class="white-text m-1" id="modal-basic-title">Add Speciality</h5>
+        <button type="button" class="close btn-sm btn-danger" aria-label="Close"
+            (click)="modal.dismiss('Cross click');">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <form #form="ngForm" ngNativeValidate>
+        <div class="modal-body newform container-fluid">
 
+            <div class="row">
+                <div class="col-sm-2">
+                    <label class="small">Speciality</label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" [(ngModel)]="formData.detail" name="detail"
+                        required />
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer py-2">
+            <div class="row me-auto">
+                <div class="col-sm-12">
+                    <button class="btn btn-primary btn-sm me-3" (click)="submit(form)">Submit</button>
+                    <button class="btn btn-secondary btn-sm" (click)="modal.dismiss('Cancel Click');">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</ng-template>
 
 <ng-template #content1 let-modal>
     <div class="modal-header">
@@ -111,16 +150,16 @@
             </div>
             <div class="row">
                 <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
-    
+
             </div>
-    
+
         </div>
-    
+
         <div class="container" *ngIf="imageVisible">
-            
+
             <div class="row">
                 <input type="file" (change)="fileChange($event)">
-    
+
             </div>
             <div class="row">
                 <table class="table table-small">
@@ -128,32 +167,164 @@
                         <th>Sn</th>
                         <th>Title</th>
                         <th>Published</th>
+                        <th>Action</th>
                     </tr>
                     <tr *ngFor="let x of fileList">
                         <td>
                             {{x.sn}}
                         </td>
                         <td>
-                                <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{this.content.page_group}}"
-                                    height="80" [width]="80" alt="{{x.filenames}}">
-    
+                            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{this.content.page_group}}"
+                                height="80" [width]="80" alt="{{x.filenames}}">
+
                         </td>
                         <td>
-    
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
-                            [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
-    
-                    </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                    [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
+
+                            </div>
+                        </td>
+                        <td>
+                            <a class="m-1 rounded-btn text-danger" (click)="deleteImage(x);">Delete&nbsp;
+                                <i class="fa fa-trash text-danger "></i>
+                            </a>
                         </td>
                     </tr>
-    
+
                 </table>
             </div>
-            
+
         </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-small btn-primary me-auto" *ngIf="!imageVisible" (click)="postContent()">Submit</button>
     </div>
 </ng-template>
+
+
+<!-- modal starts here -->
+<!-- PURCHASE EXTRA MODAL -->
+<ng-template #referersetup let-modal>
+    <div class="modal-header m-0 p-0 primary-bg">
+        <h5 class="white-text m-1" id="modal-basic-title">Add Doctor</h5>
+        <button type="button" class="close btn-sm btn-danger" aria-label="Close"
+            (click)="modal.dismiss('Cross click');">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+
+    <form #form="ngForm" (keydown.enter)="$event.preventDefault()" formNavigator>
+        <div class="modal-body newform container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="" class="small">Referer</label>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group input-group-sm">
+                                <input type="text" type="text" class="form-control form-control-sm white-bg"
+                                    name="refid" [(ngModel)]="refData.refid" readonly>
+                                <input type="text" class="form-control form-control-sm w-75"
+                                    [(ngModel)]="refData.referer" name="referer" required>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class=" col-sm-3">
+                            <label for="" class="small">Speciality</label>
+                        </div>
+                        <div class=" col-sm">
+                            <!-- DESKTOP -->
+                            <ng-select [openOnEnter]="false" [items]="specialityList" class="custom" name="speciality"
+                                bindLabel="name" placeholder="Select a speciality" [clearable]="true"
+                                [(ngModel)]="selectedSpeciality" (focus)="getSpecialityDataFromServer()"
+                                (ngModelChange)="setSpeciality(selectedSpeciality)">
+                            </ng-select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="small">NMC&nbsp;No.</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="refData.regno"
+                                name="regno">
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="small">Telephone</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="refData.telephone"
+                                name="telephone">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="small">Address</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="refData.address"
+                                name="address">
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="small">Qualification</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="refData.qualification"
+                                name="qualification">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="small">Email</label>
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="refData.email"
+                                name="email">
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+            </div>
+
+            <div class="modal-footer py-2 ">
+                <div class="row me-auto">
+                    <div class="col-sm-12">
+                        <button class="btn btn-primary btn-sm" (click)="submitRef(form)">Submit</button>
+                        <button class="btn btn-secondary btn-sm ms-3"
+                            (click)="modal.dismiss('Cancel Click');">Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+
+</ng-template>
+<!-- modal ends here -->

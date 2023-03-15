@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { DoctorsService } from 'src/app/content/services/doctors.service';
+import { MaxSnService } from 'src/app/content/services/maxsn.service';
 import { NotificationService } from 'src/app/content/services/notification.service';
 import { PageContentService } from 'src/app/content/services/pagecontent.service';
 import { SpecialityService } from 'src/app/content/services/speciality.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { PageContent } from '../admin-about/pagecontent.model';
+import { RefererInsert, SpecialityInsert } from './doctors.model';
 
 @Component({
   selector: 'app-doctors',
@@ -17,7 +20,7 @@ import { PageContent } from '../admin-about/pagecontent.model';
 })
 export class AdminDoctorsComponent implements OnInit {
 
-title : string = "Doctors";
+  title: string = "Doctors";
 
   editor = ClassicEditor as unknown as {
     create: any;
@@ -32,10 +35,10 @@ title : string = "Doctors";
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
     private modal: NgbModal,
-    private specialityService: DoctorsService,
+    private doctorService: DoctorsService,
     public toastr: NotificationService,
-
-
+    private maxParam: MaxSnService,
+    private specialityService: SpecialityService
   ) {
     this.baseUrl = appconfig.baseUrl;
 
@@ -48,18 +51,48 @@ title : string = "Doctors";
   ngOnInit(): void {
 
     this.getDepartmentList();
-    this.content.page_group="doctors";
+    this.content.page_group = "doctors";
 
   }
 
-
+  deleteImage(data: any) {
+    if (confirm("Are you sure want to delete the image?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePhoto"
+      var payload = {
+        "id": data.id,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+          })
+    }
+    else {
+      return;
+    }
+  }
+  //success delete data
+  successDeleteToastr() {
+    this.toastr.showSuccess(`Successfully Deleted Content`, this.title)
+    //close modal
+    this.modal.dismissAll();
+  }
+  //error delete data
+  errorDeleteToastr() {
+    this.toastr.showError(`Error Deleting Content`, this.title)
+  }
   search = ''
 
   contents: any = [];
   content = new PageContent();
 
   getDepartmentList() {
-    this.specialityService.getDoctorList().subscribe(
+    this.doctorService.getDoctorList().subscribe(
       {
         next: res => this.refList = res,
         error: res => this.Error(res),
@@ -103,14 +136,14 @@ title : string = "Doctors";
 
 
   selectedContent: any = [];
-  selectedRef:any=[]
+  selectedRef: any = []
   selectContent(x: any) {
 
     this.selectedContent = x;
-    this.selectedRef=x;
+    this.selectedRef = x;
     this.getContent();
 
-    this.fileList=[]
+    this.fileList = []
 
   }
 
@@ -129,7 +162,7 @@ title : string = "Doctors";
 
 
 
-  imageName:string=''
+  imageName: string = ''
   filterContent() {
     this.contents = this.contents.filter((x: { page_title: string; page_group: string; }) => x.page_title === this.selectedContent.refid.toString() && x.page_group === "doctors");
 
@@ -143,7 +176,7 @@ title : string = "Doctors";
       this.selectedContent = this.content;
 
       this.getPicture();
-      this.imageName=this.selectedContent.page_title+".png"
+      this.imageName = this.selectedContent.page_title + ".png"
 
 
 
@@ -157,7 +190,7 @@ title : string = "Doctors";
       this.content.page_title = this.selectedContent.refid
       this.model.editorData = this.selectedContent.referer;
       this.content.page_group = "doctors"
-      this.imageName=this.selectedContent.refid+".png"
+      this.imageName = this.selectedContent.refid + ".png"
 
     }
 
@@ -171,12 +204,12 @@ title : string = "Doctors";
 
   //success toastr  
   successToastr() {
-    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content`, this.title)
+    this.toastr.showSuccess(`Successfully ${this.edit ? "Edited" : "Added"} Content`, this.title)
   }
 
   //error toastr
   errorToastr() {
-    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content`, this.title)
+    this.toastr.showError(`Error ${this.edit ? "Editing" : "Adding"} Content`, this.title)
   }
 
 
@@ -186,7 +219,7 @@ title : string = "Doctors";
     this.errorToastr();
     // throw new Error('Method not implemented.');
   }
- 
+
 
 
 
@@ -306,29 +339,148 @@ title : string = "Doctors";
 
   }
 
-  
 
-  imageVisible:boolean=false;
-  
 
-  imageShow(){
-      this.imageVisible=true
-    
+  imageVisible: boolean = false;
+
+
+  imageShow() {
+    this.imageVisible = true
+
   }
-  imageHide(){
-    this.imageVisible=false
+  imageHide() {
+    this.imageVisible = false
   }
 
   reset() {
     this.edit = false;
     this.content = new PageContent()
-     this.model = {
+    this.model = {
       editorData: ''
     };
-    this.content.page_group="doctors";
-    this.fileList=[]
-  this.imageVisible=false;
-    
+    this.content.page_group = "doctors";
+    this.fileList = []
+    this.imageVisible = false;
+
   }
+  submit(form: NgForm) {
+
+
+    var invalidControl = document.querySelector('input.ng-invalid');
+    if (invalidControl) {
+      (invalidControl as HTMLElement).focus();
+      return;
+    }
+
+    if (form.valid) {
+      this.postMember()
+    }
+  }
+
+
+
+  formData = new SpecialityInsert;
+  specialityList: Array<any> = new Array<any>();
+
+
+
+  postMember() {
+    const token = localStorage.getItem('access_token');
+
+
+    const options = {
+      'headers': { 'Authorization': 'Bearer' + token }
+
+    }
+    var postUrl = 'api/RefererSetup/Speciality/' + (this.edit ? 'Update' : 'Insert')
+
+
+    var baseUrl = this.baseUrl + postUrl
+
+    this.http.post(baseUrl, this.formData, options).subscribe({
+      next: res => this.SuccessPost(res),
+      error: res => this.ErrorPost(res),
+    }
+
+    );
+  }
+
+  SuccessPost(res: any) {
+    this.successToastr();
+  }
+
+  ErrorPost(res: any) {
+    this.errorToastr();
+  }
+  refData = new RefererInsert;
+  submitRef(form: NgForm) {
+    var invalidControl = document.querySelector('input.ng-invalid');
+    if (invalidControl) {
+      (invalidControl as HTMLElement).focus();
+      return;
+    }
+
+    if (form.valid) {
+      this.postReferer()
+
+    }
+  }
+  selectedSpeciality: any = [];
+
+  postReferer() {
+    const token = localStorage.getItem('access_token');
+    const options = {
+      'headers': { 'Authorization': 'Bearer' + token }
+    }
+    var postUrl
+
+    this.edit
+      ?
+      postUrl = 'api/RefererSetup/Update'
+      :
+      postUrl = 'api/Billing/Catalogue/Referer/Insert'
+
+
+    var baseUrl = this.baseUrl + postUrl
+
+    this.http.post(baseUrl, this.refData, options).subscribe({
+      next: res => this.SuccessPost(res),
+      error: res => this.ErrorPost(res),
+    }
+
+    );
+  }
+  getMax() {
+    this.maxParam.getMaxSn('referer', 'refid').subscribe(x => {
+      var refid = x[0].newcode;
+      this.refData.refid = refid;
+    })
+  }
+
+  getSpecialityDataFromServer() {
+    const token = localStorage.getItem('access_token');
+    const options = {
+      'headers': { 'Authorization': 'Bearer' + token }
+    }
+    this.specialityService.getSpecialityList().subscribe({
+      next: res => {
+        this.specialityList = res.map((i: any) => {
+          i.name = i.sp_id + '  -  ' + i.detail;
+          return i
+        });
+      },
+    }
+    );
+
+  };
+
+  setSpeciality(data: any) {
+    this.selectedSpeciality = data;
+    this.refData.sp_id = data.sp_id;
+  }
+
+
+
+
 
 }

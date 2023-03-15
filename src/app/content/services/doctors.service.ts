@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { AppConfiguration } from "src/config/app-config";
 
 
@@ -19,7 +20,7 @@ import { AppConfiguration } from "src/config/app-config";
       }
 
 
-      getDoctorList() {
+      getDoctorList() :  Observable<any> {
         const token = localStorage.getItem('access_token');
         const options = {
             'headers': { 'Authorization': 'Bearer' + token }

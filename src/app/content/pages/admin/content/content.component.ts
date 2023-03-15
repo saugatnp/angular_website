@@ -47,6 +47,62 @@ export class ContentComponent implements OnInit {
 
 
   
+  deleteImage(data: any) {
+    if (confirm("Are you sure want to delete the image?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePhoto"
+      var payload = {
+        "id": data.id,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+          })
+    }
+    else {
+      return;
+    }
+  }
+  deleteContent(data:any){
+
+    if (confirm("Are you sure want to delete the content?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePageContent"
+      var payload = {
+        "sn": data.sn,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+          })
+    }
+    else {
+      return;
+    }
+
+  }
+
+  //success delete data
+  successDeleteToastr() {
+    this.toastr.showSuccess(`Successfully Deleted Content`, this.title)
+  }
+  //error delete data
+  errorDeleteToastr() {
+    this.toastr.showError(`Error Deleting Content`, this.title)
+  }
+
+
+
   contents: any = [];
   content = new PageContent();
 
@@ -152,6 +208,9 @@ export class ContentComponent implements OnInit {
 
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
+      //comfirm image upload
+      if (confirm("Are you sure want to upload the image?")) {
+
       let file: File = fileList[0];
       let formData: FormData = new FormData();
       formData.append('uploadFile', file, this.selectedContent.sn+".png");
@@ -170,6 +229,11 @@ export class ContentComponent implements OnInit {
           error => console.log(error)
         )
     }
+  }
+  else{
+    fileList = new FileList
+    return;
+  }
   }
   
   selectedImage: any = [];

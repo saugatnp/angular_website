@@ -18,7 +18,7 @@ import { PageContent } from '../admin-about/pagecontent.model';
 export class ServicesComponent implements OnInit {
 
   title: string = "Services";
-  
+
   editor = ClassicEditor as unknown as {
     create: any;
   };
@@ -33,7 +33,7 @@ export class ServicesComponent implements OnInit {
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
     private modal: NgbModal,
-    private toastr : NotificationService,
+    private toastr: NotificationService,
 
   ) {
     this.baseUrl = appconfig.baseUrl;
@@ -46,11 +46,11 @@ export class ServicesComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEpic();
-    this.content.page_group="services"
+    this.content.page_group = "services"
   }
 
 
-  
+
   contents: any = [];
   content = new PageContent();
 
@@ -63,6 +63,59 @@ export class ServicesComponent implements OnInit {
       }
 
     )
+  }
+
+  deleteImage(data: any) {
+    if (confirm("Are you sure want to delete the image?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePhoto"
+      var payload = {
+        "id": data.id,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+          })
+    }
+    else {
+      return;
+    }
+  }
+  deleteContent(data: any) {
+
+    if (confirm("Are you sure want to delete the content?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePageContent"
+      var payload = {
+        "sn": data.sn,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+          })
+    }
+    else {
+      return;
+    }
+
+  }
+   //success delete data
+   successDeleteToastr() {
+    this.toastr.showSuccess(`Successfully Deleted Content`, this.title)
+  }
+  //error delete data
+  errorDeleteToastr() {
+    this.toastr.showError(`Error Deleting Content`, this.title)
   }
 
 
@@ -101,12 +154,12 @@ export class ServicesComponent implements OnInit {
 
   //success toastr
   successToastr() {
-    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content`, this.title)
+    this.toastr.showSuccess(`Successfully ${this.edit ? "Edited" : "Added"} Content`, this.title)
   }
 
   //error toastr
   errorToastr() {
-    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content`, this.title)
+    this.toastr.showError(`Error ${this.edit ? "Editing" : "Adding"} Content`, this.title)
   }
 
   filterData() {
@@ -147,31 +200,40 @@ export class ServicesComponent implements OnInit {
 
     let fileList: FileList = event.target.files;
     if (fileList.length > 0) {
-      let file: File = fileList[0];
-      let formData: FormData = new FormData();
-      formData.append('uploadFile', file, this.selectedContent.sn+".png");
-      let headers = new Headers();
-      /** In Angular 5, including the header Content-Type can invalidate your request */
-      headers.append('Content-Type', 'multipart/form-data');
-      headers.append('Accept', 'application/json');
-      //    let options = new RequestOptions({ headers: headers });
-      this.http.post(baseUrl + "api/FileAPI/UploadFiles?inv_no=" + this.selectedContent.sn + "&userid=" + this.selectedContent.sn + "&file_type="+this.content.page_group
-        , formData, { headers: { Authorization: 'Bearer ' + token } })
-        // .map(res => res.json())
-        // .catch(error => Observable.throw(error))
-        .subscribe(
-          data => this.getPicture()
-          ,
-          error => console.log(error)
-        )
+
+      //confirm file upload
+      if (confirm("Are you sure want to upload the image?")) {
+
+        let file: File = fileList[0];
+        let formData: FormData = new FormData();
+        formData.append('uploadFile', file, this.selectedContent.sn + ".png");
+        let headers = new Headers();
+        /** In Angular 5, including the header Content-Type can invalidate your request */
+        headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+        //    let options = new RequestOptions({ headers: headers });
+        this.http.post(baseUrl + "api/FileAPI/UploadFiles?inv_no=" + this.selectedContent.sn + "&userid=" + this.selectedContent.sn + "&file_type=" + this.content.page_group
+          , formData, { headers: { Authorization: 'Bearer ' + token } })
+          // .map(res => res.json())
+          // .catch(error => Observable.throw(error))
+          .subscribe(
+            data => this.getPicture()
+            ,
+            error => console.log(error)
+          )
+      }
+    }
+    else {
+      fileList = new FileList
+      return;
     }
   }
-  
+
   selectedImage: any = [];
   selectImage(x: any) {
     this.selectedImage = x;
   }
-  
+
   togglePublishImage() {
     const token = localStorage.getItem('access_token');
     const options = {
@@ -194,8 +256,8 @@ export class ServicesComponent implements OnInit {
     const baseUrl = this.baseUrl;
     var demourl = 'api/OnlineAppointmentRequestFile?userid=' + this.selectedContent.sn +
       '&sn=' + this.selectedContent.sn +
-      '&file_type='+this.content.page_group
-    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + this.selectedContent.sn + "&sn=" + this.selectedContent.sn + "&file_type="+this.content.page_group
+      '&file_type=' + this.content.page_group
+    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + this.selectedContent.sn + "&sn=" + this.selectedContent.sn + "&file_type=" + this.content.page_group
       // baseUrl + demourl
       , { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
@@ -222,16 +284,16 @@ export class ServicesComponent implements OnInit {
     // $scope.fileType = 'SERVICES';
   }
 
-  
-  imageVisible:boolean=false;
-  
 
-  imageShow(){
-      this.imageVisible=true
-    
+  imageVisible: boolean = false;
+
+
+  imageShow() {
+    this.imageVisible = true
+
   }
-  imageHide(){
-    this.imageVisible=false
+  imageHide() {
+    this.imageVisible = false
   }
 
 
@@ -239,12 +301,12 @@ export class ServicesComponent implements OnInit {
   reset() {
     this.edit = false;
     this.content = new PageContent()
-     this.model = {
+    this.model = {
       editorData: ''
     };
-    this.content.page_group="services";
-    this.fileList=[]
-  this.imageVisible=false;
+    this.content.page_group = "services";
+    this.fileList = []
+    this.imageVisible = false;
   }
 
 

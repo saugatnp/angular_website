@@ -49,7 +49,38 @@ export class SlidersComponent implements OnInit {
   }
 
 
-
+  deleteImage(data: any) {
+    if (confirm("Are you sure want to delete the image?")) {
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer' + token }
+      }
+      var postUrl = "api/DeletePhoto"
+      var payload = {
+        "id": data.id,
+      }
+      this.http.post(this.baseUrl + postUrl, payload, options)
+        .subscribe(
+          {
+            next: res => this.successDeleteToastr(),
+            error: res => this.errorDeleteToastr(),
+            complete : () => {
+              this.getPicture();
+            },
+          })
+    }
+    else {
+      return;
+    }
+  }
+   //success delete data
+   successDeleteToastr() {
+    this.toastr.showSuccess(`Successfully Deleted Content`, this.title)
+  }
+  //error delete data
+  errorDeleteToastr() {
+    this.toastr.showError(`Error Deleting Content`, this.title)
+  }
   contents: any = [];
   content = new PageContent();
   deptList:any=[]

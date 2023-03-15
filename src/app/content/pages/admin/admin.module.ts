@@ -15,6 +15,7 @@ import { ServicesComponent } from './services/services.component';
 import { AdminblogsComponent } from './adminblogs/adminblogs.component';
 import { LoginComponent } from './login/login.component';
 import { ContentComponent } from './content/content.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { ContentComponent } from './content/content.component';
     RouterModule.forChild(adminRoutes),
     CKEditorModule,
     SharedDirective,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgSelectModule,
+
   ],
   exports : [
     AdminComponent
