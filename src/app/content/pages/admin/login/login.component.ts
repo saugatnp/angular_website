@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/content/services/auth.service';
 import { BroadcastService } from 'src/app/content/services/broadcast.service';
+import { NotificationService } from 'src/app/content/services/notification.service';
 import { TitleService } from 'src/app/content/services/title.service';
 import { AppConfiguration } from 'src/config/app-config';
 
@@ -44,6 +45,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private titleService:TitleService,
     private route: ActivatedRoute,
+    public toastr: NotificationService,
+
     //NEW URL COPY FROM HERE
     private appConfig:AppConfiguration
     ) {
@@ -77,7 +80,7 @@ export class LoginComponent implements OnInit {
 
   Success(res: any) {
    // this.ngxspinner.hide()
-
+    this.SuccessLogin(res);
     // this.notifyService.showSuccess("Logged in successfully !",this.title);
     localStorage.setItem('access_token', res.access_token);
     localStorage.setItem('expiresIn', res.expires_in);
@@ -109,7 +112,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-
+  SuccessLogin(res: any) {
+    this.toastr.showSuccess("Successfully logged in!", this.title);
+  }
   resetInput() {
     this.data = [];
   }

@@ -154,12 +154,13 @@ export class HomeComponent implements OnInit {
   }
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: false,
-    touchDrag: false,
+    mouseDrag: true,
+    touchDrag: true,
     pullDrag: false,
     dots: false,
+    rewind: true,
     navSpeed: 500,
-    navText: ['', ''],
+    navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
     items: 2,
     autoplay: true,
     autoWidth: true,

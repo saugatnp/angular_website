@@ -1,4 +1,7 @@
 <div [ngStyle]="{'display': show ? 'unset' : 'flex' }">
+    <!-- loader  -->
+    <app-loader></app-loader>
+    
     <app-header *ngIf="show"></app-header>
     <app-admin *ngIf="!show" (fixEmitter)="fixNav($event)"></app-admin>
     <div style="flex-grow: 1;min-height: 66vh;" [ngClass]="{'HideAdminRouteOnNavFix' : fix == true}">

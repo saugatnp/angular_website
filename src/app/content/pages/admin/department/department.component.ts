@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
+import { NotificationService } from 'src/app/content/services/notification.service';
 import { PageContentService } from 'src/app/content/services/pagecontent.service';
 import { SpecialityService } from 'src/app/content/services/speciality.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
@@ -15,7 +16,7 @@ import { PageContent } from '../admin-about/pagecontent.model';
 })
 export class DepartmentComponent implements OnInit {
 
-
+  title: string = "Departments";
 
 
   editor = ClassicEditor as unknown as {
@@ -31,7 +32,8 @@ export class DepartmentComponent implements OnInit {
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
     private modal: NgbModal,
-    private specialityService: SpecialityService
+    private specialityService: SpecialityService,
+    private toastr: NotificationService,
 
   ) {
     this.baseUrl = appconfig.baseUrl;
@@ -90,12 +92,21 @@ export class DepartmentComponent implements OnInit {
   }
 
   Success(res: any) {
+    this.successToastr();
     this.getDepartmentList();
     this.reset()
     // this.getPicture();
     this.modal.dismissAll();
   }
+  //success toastr
+  successToastr() {
+    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content`, this.title)
+  }
 
+  //error toastr
+  errorToastr() {
+    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content`, this.title)
+  }
 
 
   filterData() {
@@ -126,7 +137,8 @@ export class DepartmentComponent implements OnInit {
 
 
   Error(res: any): void {
-    console.log(res)
+    // console.log(res)
+    this.errorToastr();
     // throw new Error('Method not implemented.');
   }
 

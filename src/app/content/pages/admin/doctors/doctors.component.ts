@@ -4,6 +4,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { DoctorsService } from 'src/app/content/services/doctors.service';
+import { NotificationService } from 'src/app/content/services/notification.service';
 import { PageContentService } from 'src/app/content/services/pagecontent.service';
 import { SpecialityService } from 'src/app/content/services/speciality.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
@@ -16,7 +17,7 @@ import { PageContent } from '../admin-about/pagecontent.model';
 })
 export class AdminDoctorsComponent implements OnInit {
 
-
+title : string = "Doctors";
 
   editor = ClassicEditor as unknown as {
     create: any;
@@ -31,7 +32,9 @@ export class AdminDoctorsComponent implements OnInit {
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
     private modal: NgbModal,
-    private specialityService: DoctorsService
+    private specialityService: DoctorsService,
+    public toastr: NotificationService,
+
 
   ) {
     this.baseUrl = appconfig.baseUrl;
@@ -91,6 +94,7 @@ export class AdminDoctorsComponent implements OnInit {
   }
 
   Success(res: any) {
+    this.successToastr();
     this.getDepartmentList();
     this.reset()
     // this.getPicture();
@@ -164,10 +168,25 @@ export class AdminDoctorsComponent implements OnInit {
     // .filter((x: { published: boolean; }) => x.published === true);
 
   }
+
+  //success toastr  
+  successToastr() {
+    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content`, this.title)
+  }
+
+  //error toastr
+  errorToastr() {
+    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content`, this.title)
+  }
+
+
+
   Error(res: any): void {
-    console.log(res)
+    // console.log(res)
+    this.errorToastr();
     // throw new Error('Method not implemented.');
   }
+ 
 
 
 
