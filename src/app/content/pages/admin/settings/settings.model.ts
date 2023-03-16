@@ -5,7 +5,7 @@ export class Settings {
     value: string = ''
     published: boolean = true;
     serial: number = 0;
-    SettingGroup: string = ''
+    settinggroup: string = ''
 }
 export class SettingsGroup {
     firm_name: string = ''

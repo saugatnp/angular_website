@@ -5,17 +5,17 @@
                 <div class="row pt-2">
                     <div class="col-lg-4 col-md-6 col-sm-7 pr-lg-5">
                         <div class="white-color mb-3">
-                            <h2 class=" white-color"><b>{{this.data.firm_name}}</b></h2>
+                            <h2 class=" white-color"><b>{{this.settings.firm_name}}</b></h2>
                         </div>
                         <p class=" white-color small">
-                            <b> "Participating in Nation's Health With Safe, Standard and Satsifying Services"</b>
+                            <b> "{{settings.firm_slogan}}"</b>
                         </p>
                         <ul class="mt-3">
                             <li><a href="tel:015319227" class="white-color"><span class="fa fa-phone"></span>
-                                01-5362027, 01-5369727, 01-5319227, 01-5365927</a></li>
-                            <li><a href="mailto:care@bluecross.com.np" class="mail white-color "><span
+                                {{settings.phone_no_one}},  {{settings.phone_no_two}},  {{settings.phone_no_three}},  {{settings.phone_no_four}}</a></li>
+                            <li><a href="mailto:{{settings.customer_support_email}}" class="mail white-color "><span
                                         class="fa fa-envelope-open-o"></span>
-                                    care@bluecross.com.np</a></li>
+                                        {{settings.customer_support_email}}</a></li>
                         </ul>
                     </div>
                     

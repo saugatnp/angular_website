@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { AppConfiguration } from 'src/config/app-config';
+import { BroadcastService } from '../../services/broadcast.service';
 import { DoctorsService } from '../../services/doctors.service';
 import { PageContentService } from '../../services/pagecontent.service';
+import { SettingsGroup } from '../admin/settings/settings.model';
 
 @Component({
   selector: 'app-home',
@@ -20,16 +22,29 @@ export class HomeComponent implements OnInit {
   pauseOnIndicator = false;
   pauseOnHover = true;
   pauseOnFocus = true;
+  baseUrl : string = '';
+  settings = new SettingsGroup()
+
   constructor(private router: Router,
     private doctorService: DoctorsService,
     public appconfig: AppConfiguration,
     public pagecontent: PageContentService,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private BroadCastservice: BroadcastService
+    ) {
+
+      this.baseUrl = this.appconfig.baseUrl;
 
     doctorService.getDoctorList().subscribe({
       next: x => this.doctors = x,
       error: err => console.log(err)
     })
+
+    
+    this.BroadCastservice.currentSettings.subscribe((dataSub: any) => {
+      this.settings = dataSub;
+    })
+
 
     this.getSliderImageList();
     this.getContent();
@@ -161,7 +176,7 @@ export class HomeComponent implements OnInit {
     rewind: true,
     navSpeed: 500,
     navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
-    items: 2,
+    items: 3,
     autoplay: true,
     autoWidth: false,
     responsive: {
@@ -177,5 +192,33 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
+  // getSettings() {
+  //   const token = localStorage.getItem('access_token');
+  //   const options = {
+  //     'headers': { 'Authorization': 'Bearer' + token }
+  //   }
+  //   var postUrl = 'api/GetSettingsDetailByName';
+  //   this.http.get(this.baseUrl + postUrl, options)
+  //     .subscribe(
+  //       {
+  //         next: res => this.successGet(res),
+  //         error: res => this.errorToastr(),
+
+  //       })
+  // }
+  // settings = new SettingsGroup()
+  // successGet(res: any) {
+  //   res.map((x: { name: string; value: any; published: boolean; }) => {
+  //     Object.keys(this.settings).map(y => {
+  //       if (y == x.name && x.published == true) {
+  //         this.settings[y as keyof SettingsGroup] = x.value
+
+  //       }
+  //     })
+  //   })
+  // }
+  // errorToastr() {
+  //   // this.toastr.error('Error', 'Error')
+  // }
 
 }

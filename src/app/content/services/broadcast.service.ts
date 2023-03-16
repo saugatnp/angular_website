@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Observer } from 'rxjs';
+import { SettingsGroup } from '../pages/admin/settings/settings.model';
 import { AuthService } from './auth.service';
 
 
@@ -74,9 +75,10 @@ export class BroadcastService {
   }
 
   //NAVIGATION DYNAMIC Url
-  private onModuleSelected = new BehaviorSubject<string>(this.moduleSelected);
-  currentModule = this.onModuleSelected.asObservable();
-  changeModule(newObj: string) {
+  settings = new SettingsGroup();
+  private onModuleSelected = new BehaviorSubject<SettingsGroup>(this.settings);
+  currentSettings = this.onModuleSelected.asObservable();
+  changeSettings(newObj: SettingsGroup) {
     this.onModuleSelected.next(newObj);
   }
 
