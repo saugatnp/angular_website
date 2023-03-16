@@ -18,7 +18,7 @@ export class LoaderInterceptor implements HttpInterceptor {
 
   handleError(error: HttpErrorResponse) {
     this.loader.hide()
-    return throwError(error);
+    return throwError(() => error);
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -35,23 +35,11 @@ export class LoaderInterceptor implements HttpInterceptor {
     }),
       catchError((error: HttpErrorResponse) => {
         this.loader.hide()
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   }
 
-
-
-  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //   this.loader.show();
-  //   return next.handle(req).pipe(
-  //     finalize(
-  //       () => {
-  //         this.loader.hide();
-  //       }
-  //     )
-  //   );
-  // }
 
 
   hideSpinner() {

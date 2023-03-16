@@ -1,5 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { JsonAppConfigService } from 'src/config/json-app-config.service';
+import { SettingsGroup } from '../../pages/admin/settings/settings.model';
+import { BroadcastService } from '../../services/broadcast.service';
 import { PageContentService } from '../../services/pagecontent.service';
 import { SpecialityService } from '../../services/speciality.service';
 
@@ -13,9 +17,21 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: any;
   userName: any;
   id: number = 0
+  baseUrl = ''
+  settings: SettingsGroup = new SettingsGroup()
   constructor(private router: Router,
     private content: PageContentService,
-    private specialityService:SpecialityService) { }
+    private specialityService:SpecialityService,
+    private http : HttpClient,
+    private appconfig: JsonAppConfigService,
+    private BroadCastservice: BroadcastService
+    ) {
+      this.baseUrl = this.appconfig.localUrl;
+
+      this.BroadCastservice.currentSettings.subscribe((dataSub: any) => {
+        this.settings = dataSub;
+      })
+     }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -194,5 +210,6 @@ this.deptList = this.deptList.filter((x: {  published: boolean }) =>  x.publishe
     this.id = id
 
   }
+  
 
 }

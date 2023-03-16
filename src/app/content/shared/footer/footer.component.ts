@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { Settings, SettingsGroup } from '../../pages/admin/settings/settings.model';
+import { BroadcastService } from '../../services/broadcast.service';
 import { PageContentService } from '../../services/pagecontent.service';
 
 @Component({
@@ -14,13 +15,18 @@ export class FooterComponent implements OnInit {
 
   show: boolean = true;
   baseUrl = ''
+  settings: SettingsGroup = new SettingsGroup()
   constructor(private router: Router,
     private http: HttpClient,
     private pagecontent: PageContentService,
     private appconfig: JsonAppConfigService,
+    private BroadCastservice: BroadcastService
 
   ) {
     this.baseUrl = this.appconfig.localUrl;
+    this.BroadCastservice.currentSettings.subscribe((dataSub: any) => {
+      this.settings = dataSub;
+    })
   }
 
   ngOnInit(): void {
@@ -37,7 +43,7 @@ export class FooterComponent implements OnInit {
       }
     });
     this.getPageContent()
-    this.getSettings()
+    // this.getSettings()
     this.year = formatDate(new Date(), 'yyyy', 'EN-US')
 
   }
@@ -52,35 +58,6 @@ export class FooterComponent implements OnInit {
     })
 
 
-  }
-  getSettings() {
-    const token = localStorage.getItem('access_token');
-    const options = {
-      'headers': { 'Authorization': 'Bearer' + token }
-    }
-    var postUrl = 'api/GetSettingsDetailByName';
-    this.http.get(this.baseUrl + postUrl, options)
-      .subscribe(
-        {
-          next: res => this.successGet(res),
-          error: res => this.errorToastr(),
-
-        })
-  }
-  data = new SettingsGroup()
-  successGet(res: any) {
-    res.map((x: { name: string; value: any; published: boolean; }) => {
-      Object.keys(this.data).map(y => {
-        if (y == x.name && x.published == true) {
-          this.data[y as keyof SettingsGroup] = x.value
-
-        }
-      })
-    })
-    console.log(this.data);
-  }
-  errorToastr() {
-    // this.toastr.error('Error', 'Error')
   }
 
   storeContent(res: any) {

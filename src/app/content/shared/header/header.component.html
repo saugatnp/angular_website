@@ -20,7 +20,7 @@
                         </div>
                         <div class="" id="inner2">
                             <li class="">
-                                9866298925
+                                {{settings.emergency_no}}
                             </li>
 
                         </div>
@@ -30,9 +30,9 @@
                     <div class="col-4 d-flex align-items-center" id="btnset">
                         <div class="ms-3">
                             <li class="">
-                                01-5319227 </li>
+                                {{settings.phone_no_one}} </li>
                             <li class="">
-                                01-5365927
+                                {{settings.phone_no_two}}
                             </li>
 
 
@@ -45,9 +45,9 @@
                         </div>
                         <div class="ms-3">
                             <li class="">
-                                01-5369727 </li>
+                                {{settings.phone_no_three}} </li>
                             <li class="">
-                                01-5362027
+                                {{settings.phone_no_four}}
                             </li>
 
 
@@ -64,7 +64,7 @@
                         <span class="fa fa-calendar  fs-1 pe-2"></span>
 
 
-                        <a class="small primary-text " style="cursor:pointer">Book an <br />&nbsp;appointment</a>
+                        <a class="small primary-text " target="_blank" style="cursor:pointer" href='{{settings.book_appointment_link}}'>Book an <br />&nbsp;appointment</a>
 
 
 
@@ -75,7 +75,7 @@
                     <div class="col-3 d-flex align-items-center" id="btnset-dark">
 
                         <span class="fa fa-calendar fs-1 p-2"></span>
-                        <a class="small text-white " style="cursor:pointer" [routerLink]="'LabReportDownload'">Patient's
+                        <a class="small text-white " style="cursor:pointer" href='{{settings.patient_report_link}}'>Patient's
                             Report</a>
 
 
@@ -305,21 +305,20 @@
 
                         <li class="nav-item">
                             <div class="d-flex justify-content-around align-items-center mt-2">
-                                <a href="https://www.facebook.com/BluecrossHospitalNepal/" target="_blank">
+                                <a href="{{settings.facebook_link}}" target="_blank" *ngIf="settings.facebook_link">
                                     <i class="fab nav-header  nav-link fa-facebook white-text"></i>
                                 </a>
-                                <a href="https://www.instagram.com/bluecross_hospital" target="_blank">
+                                <a href="{{settings.instagram_link}}" target="_blank" *ngIf="settings.instagram_link">
                                     <i class="fab nav-header nav-link fa-instagram white-text"></i>
                                 </a>
-                                <a href="https://www.tiktok.com/@bluecross.hospital?is_from_webapp=1&sender_device=pc" target="_blank">
-                                    <i class="fa-brands fa-tiktok white-text"></i>
-
-                                    <!-- <i class=" nav-header nav-link fab  white-text"></i>
-
-                                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 448 512" style="position:absolute;bottom:12;height:15px" class="ps-2">
-                                    <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" fill="#FFFFFF" />
-                                  </svg> -->
-                                  
+                                <a href="{{settings.tiktok_link}}" target="_blank" *ngIf="settings.tiktok_link">
+                                    <i class="fa-brands fa-tiktok white-text nav-header nav-link "></i>
+                                </a>
+                                <a href="{{settings.linkedin_link}}" target="_blank"  *ngIf="settings.linkedin_link">
+                                    <i class="fab nav-header nav-link fa-linkedin white-text"></i>
+                                </a>
+                                <a href="{{settings.youtube_link}}" target="_blank"  *ngIf="settings.youtube_link">
+                                    <i class="fab nav-header nav-link fa-youtube white-text"></i>
                                 </a>
                                 <!-- <i class="fab nav-header nav-link fa-brands fa-tiktok white-text"></i>
                                 <i class="fab nav-header nav-link fa-linkedin white-text"></i> -->
@@ -331,7 +330,6 @@
 
                 </div>
 
-                <!-- //toggle switch for light and dark theme -->
             </nav>
         </div>
     </header>
