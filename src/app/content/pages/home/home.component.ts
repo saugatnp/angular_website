@@ -163,7 +163,7 @@ export class HomeComponent implements OnInit {
     navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
     items: 2,
     autoplay: true,
-    autoWidth: true,
+    autoWidth: false,
     responsive: {
       0: {
         items: 1,

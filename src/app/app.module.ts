@@ -10,7 +10,7 @@ import { HeaderComponent } from './content/shared/header/header.component';
 import { AboutComponent } from './content/pages/about/about.component';
 import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { AdminComponent } from './content/pages/admin/admin.component';
 import { AdminModule } from './content/pages/admin/admin.module';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
@@ -44,6 +44,8 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoaderService } from './content/services/loader.service';
 import { LoaderComponent } from './content/shared/loader/loader.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DoctorCardComponent } from './content/shared/doctorcard/doctorcard.component';
+import { SharedModule } from './content/shared/shared/shared.module';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -61,11 +63,12 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     DoctorsComponent,
     BlogsComponent,
     LabreportdownloadComponent,
-    ModalComponent,
-    LoaderComponent
+    LoaderComponent,
+
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
+    SharedModule,
     AppRoutingModule,
     RouterModule.forChild(mainRoutes),
     NgbModule,
@@ -113,8 +116,10 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true
-      }
+    }
   ],
+  // exports: [DoctorCardComponent] // <== export the component you want to use in another module
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

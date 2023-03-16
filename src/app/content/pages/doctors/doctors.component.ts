@@ -50,6 +50,10 @@ export class DoctorsComponent implements OnInit {
     event.target.src = "https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=60&h=60  "
   }
 
+
+  
+
+
   doctors: any = []
   speciality_search: any = []
   getDoctorsList() {
@@ -128,7 +132,9 @@ export class DoctorsComponent implements OnInit {
   
   @ViewChild('modal') private modalComponent!: ModalComponent
   
-  async    openModal() {
+  async   openModal() {
     return await this.modalComponent.open()
   }
+
+
 }

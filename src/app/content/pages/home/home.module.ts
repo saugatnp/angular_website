@@ -5,19 +5,24 @@ import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';
 import { SharedDirective } from '../../directives/shared.directive';
+import { DoctorCardComponent } from '../../shared/doctorcard/doctorcard.component';
+import { SharedModule } from '../../shared/shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    // DoctorCardComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule,
     CarouselModule,
-    SharedDirective
+    SharedDirective,
+    SharedModule
   ]
+
 })
 export class HomeModule { }

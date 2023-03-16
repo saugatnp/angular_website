@@ -39,12 +39,19 @@ export class HeaderComponent implements OnInit {
   data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
   getColumns(): any[] {
-    const numCols = Math.ceil(this.deptList.length / 6); // calculate the number of columns needed
+    var count = this.deptList.length/2;
+    if(count<=6){
+      count=4
+    }
+    else if(count>=6){
+      count=6
+    }
+    const numCols = Math.ceil(this.deptList.length / count); // calculate the number of columns needed
     const columns = [];
 
     for (let i = 0; i < numCols; i++) {
-      const start = i * 6;
-      const end = start + 6;
+      const start = i * count;
+      const end = start + count;
       const column = this.deptList.slice(start, end);
       columns.push(column);
     }
@@ -96,10 +103,12 @@ this.deptList = this.deptList.filter((x: {  published: boolean }) =>  x.publishe
   deptList:any = []
   servicesList:any = []
   packagesList:any=[]
+  vacancyList:any=[]
   storeContent(value: any) {
     this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true);
     this.servicesList=value.filter((x: { page_group: string, published: boolean }) => x.page_group === "services" && x.published == true);
     this.packagesList=value.filter((x: { page_group: string, published: boolean }) => x.page_group === "packages" && x.published == true);
+    this.vacancyList=value.filter((x: { page_group: string, published: boolean }) => x.page_group === "careers" && x.published == true);
 
   }
 
