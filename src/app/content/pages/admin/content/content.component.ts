@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from 'src/app/content/services/notification.service';
@@ -25,15 +26,23 @@ export class ContentComponent implements OnInit {
 
 
   baseUrl = ''
+  page_group: string = ''
   constructor(private http: HttpClient,
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
+    private router: ActivatedRoute,
     private modal: NgbModal,
     private toastr: NotificationService,
 
   ) {
     this.baseUrl = appconfig.baseUrl;
 
+    var param = this.router.snapshot.paramMap.get('id');
+    if (param) {
+      // this.page_group = param;
+      this.content.page_group = param;
+    }
+    // this.page_group=router.ac
     // contentService.getPageContent().subscribe(x => {
     //        .map(epics => epics.filter(epic => epic.id === id)[0]);
 
@@ -42,11 +51,11 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEpic();
-    this.content.page_group="packages"
+    // this.content.page_group = "packages"
   }
 
 
-  
+
   deleteImage(data: any) {
     if (confirm("Are you sure want to delete the image?")) {
       const token = localStorage.getItem('access_token');
@@ -68,7 +77,7 @@ export class ContentComponent implements OnInit {
       return;
     }
   }
-  deleteContent(data:any){
+  deleteContent(data: any) {
 
     if (confirm("Are you sure want to delete the content?")) {
       const token = localStorage.getItem('access_token');
@@ -107,15 +116,15 @@ export class ContentComponent implements OnInit {
   content = new PageContent();
 
 
-  imageVisible:boolean=false;
+  imageVisible: boolean = false;
 
-  imageShow(){
-    if(!this.imageVisible){
-      this.imageVisible=true
-   }
+  imageShow() {
+    if (!this.imageVisible) {
+      this.imageVisible = true
+    }
   }
-  imageHide(){
-    this.imageVisible=false
+  imageHide() {
+    this.imageVisible = false
   }
 
   getEpic() {
@@ -162,13 +171,13 @@ export class ContentComponent implements OnInit {
     this.getPicture();
     this.modal.dismissAll();
   }
-//success toastr
+  //success toastr
   successToastr() {
-    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Added"} Content`, this.title)
+    this.toastr.showSuccess(`Successfully ${this.edit ? "Edited" : "Added"} Content`, this.title)
   }
   //error toastr
   errorToastr() {
-    this.toastr.showError(`Error ${this.edit? "Editing" : "Adding"} Content`, this.title)
+    this.toastr.showError(`Error ${this.edit ? "Editing" : "Adding"} Content`, this.title)
   }
   filterData() {
     this.contents = this.contents.filter((x: { page_group: string; }) => x.page_group === this.content.page_group);
@@ -207,40 +216,44 @@ export class ContentComponent implements OnInit {
     var token = localStorage.getItem('access_token');
 
     let fileList: FileList = event.target.files;
+    
     if (fileList.length > 0) {
       //comfirm image upload
       if (confirm("Are you sure want to upload the image?")) {
 
-      let file: File = fileList[0];
-      let formData: FormData = new FormData();
-      formData.append('uploadFile', file, this.selectedContent.sn+".png");
-      let headers = new Headers();
-      /** In Angular 5, including the header Content-Type can invalidate your request */
-      headers.append('Content-Type', 'multipart/form-data');
-      headers.append('Accept', 'application/json');
-      //    let options = new RequestOptions({ headers: headers });
-      this.http.post(baseUrl + "api/FileAPI/UploadFiles?inv_no=" + this.selectedContent.sn + "&userid=" + this.selectedContent.sn + "&file_type="+this.content.page_group
-        , formData, { headers: { Authorization: 'Bearer ' + token } })
-        // .map(res => res.json())
-        // .catch(error => Observable.throw(error))
-        .subscribe(
-          data => this.getPicture()
-          ,
-          error => console.log(error)
-        )
+        let file: File = fileList[0];
+        let formData: FormData = new FormData();
+        formData.append('uploadFile', file, this.selectedContent.sn + ".png");
+        let headers = new Headers();
+        /** In Angular 5, including the header Content-Type can invalidate your request */
+        headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+        //    let options = new RequestOptions({ headers: headers });
+        this.http.post(baseUrl + "api/FileAPI/UploadFiles?inv_no=" + this.selectedContent.sn + "&userid=" + this.selectedContent.sn + "&file_type=" + this.content.page_group
+          , formData, { headers: { Authorization: 'Bearer ' + token } })
+          // .map(res => res.json())
+          // .catch(error => Observable.throw(error))
+          .subscribe(
+            {
+              next:res=>this.getPicture(),
+              error:err => console.log(err)
+
+            }
+           
+          )
+      }
+    }
+    else {
+      fileList = new FileList
+      return;
     }
   }
-  else{
-    fileList = new FileList
-    return;
-  }
-  }
-  
+
   selectedImage: any = [];
   selectImage(x: any) {
     this.selectedImage = x;
   }
-  
+
   togglePublishImage() {
     const token = localStorage.getItem('access_token');
     const options = {
@@ -263,8 +276,8 @@ export class ContentComponent implements OnInit {
     const baseUrl = this.baseUrl;
     var demourl = 'api/OnlineAppointmentRequestFile?userid=' + this.selectedContent.sn +
       '&sn=' + this.selectedContent.sn +
-      '&file_type='+this.content.page_group
-    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + this.selectedContent.sn + "&sn=" + this.selectedContent.sn + "&file_type="+this.content.page_group
+      '&file_type=' + this.content.page_group
+    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + this.selectedContent.sn + "&sn=" + this.selectedContent.sn + "&file_type=" + this.content.page_group
       // baseUrl + demourl
       , { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
@@ -296,12 +309,15 @@ export class ContentComponent implements OnInit {
   reset() {
     this.edit = false;
     this.content = new PageContent()
-     this.model = {
+    this.model = {
       editorData: ''
     };
-    this.content.page_group="packages";
-    this.fileList=[]
-    this.imageVisible=false;
+    
+    this.content.page_group = this.page_group;
+
+    // this.content.page_group = "packages";
+    this.fileList = []
+    this.imageVisible = false;
   }
 
 }

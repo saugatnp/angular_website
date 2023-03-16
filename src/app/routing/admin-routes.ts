@@ -58,6 +58,11 @@ export const adminRoutes = [
         canActivate: [ActivateGuard],
 
     },
+    {
+        path: 'AdminContent/:id', 
+        component:ContentComponent
+    
+    },
     // {
     //     path: '', component: LoginComponent,
     // },

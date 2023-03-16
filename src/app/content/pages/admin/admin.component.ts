@@ -85,6 +85,13 @@ export class AdminComponent implements OnInit {
       class: 'fas fa-gift',
 
     },
+  
+    {
+      id: 10,
+      name: 'News and Events',
+      class: 'fas fa-newspaper',
+
+    },
     // {
     //   id: 6,
     //   name: 'Blogs',
@@ -122,7 +129,11 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['Admin/AdminServices']);
     }
     else if (id == 7) {
-      this.router.navigate(['Admin/AdminContent']);
+      this.router.navigate(['Admin/AdminContent/packages']);
+    }
+    
+    else if (id == 10) {
+      this.router.navigate(['Admin/AdminContent/events']);
     }
     
   
