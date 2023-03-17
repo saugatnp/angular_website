@@ -123,7 +123,7 @@ export class SettingsComponent implements OnInit {
 
   //success toastr
   successToastr() {
-    this.toastr.showSuccess(`Successfull`, this.title)
+    // this.toastr.showSuccess(`Successfull`, this.title)
   }
 
 

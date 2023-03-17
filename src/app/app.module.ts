@@ -44,6 +44,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { LoaderService } from './content/services/loader.service';
 import { LoaderComponent } from './content/shared/loader/loader.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SafePipe } from './content/pipe/safe.pipe';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -62,7 +63,7 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     BlogsComponent,
     LabreportdownloadComponent,
     ModalComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +98,7 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     SharedDirective,
 
   ],
-  providers: [LoaderService,
+  providers: [LoaderService,SafePipe,
     {
       provide: AppConfiguration,
       deps: [HttpClient],

@@ -31,7 +31,7 @@
 
                             </div>
                             <div class="row m-0">
-                                <p style="font-size: 13px;" class="m-0"> P.O. Box No. 3168, Tripura Marg, 44600</p>
+                                <p style="font-size: 13px;" class="m-0"> P.O. Box No. {{settings.po_box}}, {{settings.address_one}}, {{settings.address_two}}</p>
 
                             </div>
                         </div>
@@ -46,8 +46,7 @@
 
                             </div>
                             <div class="row m-0">
-                                <p style="font-size: 13px;" class="m-0"> 01-5362027, 01-5369727, 01-5319227,
-                                    01-5365927
+                                <p style="font-size: 13px;" class="m-0"> {{settings.phone_no_one | placeholder:'comma'}}  {{settings.phone_no_two | placeholder:'comma'}}  {{settings.phone_no_three | placeholder:'comma'}}  {{settings.phone_no_four }}
                                 </p>
 
                             </div>
@@ -63,7 +62,7 @@
 
                             </div>
                             <div class="row m-0">
-                                <p style="font-size: 13px;" class="m-0">care@bluecross.com.np</p>
+                                <p style="font-size: 13px;" class="m-0">{{settings.customer_support_email}}</p>
 
                             </div>
                         </div>
@@ -76,7 +75,7 @@
 
                     <div class="gmap_canvas">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.7629647073454!2d85.3151991!3d27.69372010000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6fb6e054397de851!2sBlue%20Cross%20Hospital!5e0!3m2!1sen!2snp!4v1675407767251!5m2!1sen!2snp"
+                        [src]="settings.map_url | safe: 'resourceUrl' "
                             width="100%" height="100%" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0"
                             marginwidth="0"></iframe>
 

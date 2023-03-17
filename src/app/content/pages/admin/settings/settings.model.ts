@@ -1,3 +1,4 @@
+
 export class Settings {
     id: number = 0;
     name: string = ''
@@ -28,6 +29,6 @@ export class SettingsGroup {
     customer_support_email: string = ''
     email_one: string = ''
     email_two: string = ''
-    map_url: string = ''
+    map_url: string = ''; 
     remarks: string = ''
 }

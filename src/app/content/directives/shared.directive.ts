@@ -1,12 +1,18 @@
 import { NgModule } from "@angular/core";
+import { PlaceholderPipe } from "../pipe/placeholder.pipe";
+import { SafePipe } from "../pipe/safe.pipe";
 import { modalDirective } from "./modal";
 
 @NgModule({
     declarations:[
-        modalDirective
+        modalDirective,
+        SafePipe,
+        PlaceholderPipe
     ],
     exports : [
-        modalDirective
+        modalDirective,
+        SafePipe,
+        PlaceholderPipe
     ]
 })
 export class SharedDirective { }

@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, SecurityContext } from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
 import { AppConfiguration } from "src/config/app-config";
 import { SettingsGroup } from "../pages/admin/settings/settings.model";
 import { BroadcastService } from "./broadcast.service";
@@ -18,7 +19,8 @@ export class SettingsService {
     constructor(
         public http: HttpClient,
         private Config: AppConfiguration,
-        private broadCast: BroadcastService
+        private broadCast: BroadcastService,
+        protected _sanitizer: DomSanitizer
     ) {
         this.baseUrl = Config.localUrl;
     }
@@ -56,6 +58,9 @@ export class SettingsService {
             Object.keys(this.settings).map(y => {
                 if (y == x.name && x.published == true) {
                     this.settings[y as keyof SettingsGroup] = x.value
+                    // if(x.value.startsWith('http')){
+                    //     this.settings[y as keyof SettingsGroup] = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, this._sanitizer.bypassSecurityTrustResourceUrl(x.value))!;
+                    // }
 
                 }
             })

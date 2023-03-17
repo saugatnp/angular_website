@@ -5,6 +5,7 @@ import { NgbCarousel, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { RouterModule } from '@angular/router';
 import { SharedDirective } from '../../directives/shared.directive';
+import { SafePipe } from '../../pipe/safe.pipe';
 
 
 
@@ -17,7 +18,8 @@ import { SharedDirective } from '../../directives/shared.directive';
     RouterModule,
     NgbModule,
     CarouselModule,
-    SharedDirective
+    SharedDirective,
+    
   ]
 })
 export class HomeModule { }
