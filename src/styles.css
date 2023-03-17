@@ -1031,6 +1031,9 @@ body {
     top:50px
   }
   
+}
+.small{
+  font-size: 13px !important;
 } 
 @media only screen and (max-width: 700px) {
   .HideAdminRouteOnNavFix{
@@ -1230,7 +1233,7 @@ body {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px;
   border-radius: 50%;
   position: absolute;
-  font-family: "Font Awesome 5 Free ", "Font Awesome 5 Pro", "Font Awesome 5 Brands" !important;
+  font-family: "Font Awesome 6 Free ", "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
   content: "\f007";
   font-weight: 900;
   left: -2rem;

@@ -59,8 +59,11 @@
 
                     <div class="row mb-4" style="justify-content: space-around;">
 
-                        <div class="card-new col-sm-3 col-md-3 col-lg-3 mt-2" *ngFor="let x of filtered">
-                            <div class="card-image">
+
+                        <div class="col-sm-3 col-md-3 col-lg-3 mt-2" *ngFor="let x of filtered" >
+                            <doctor-card  [inputcss]="'card-new '" [x]="x"></doctor-card>
+
+                            <!-- <div class="card-image">
                                 <div class="image">
                                     <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
                                         class="image-radius col-sm-8 px-0 about-team-image"
@@ -81,7 +84,7 @@
                                     Book&nbsp;Now</a>
 
 
-                            </div>
+                            </div> -->
                         </div>
 
 

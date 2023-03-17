@@ -85,12 +85,23 @@ export class AdminComponent implements OnInit {
       class: 'fas fa-gift',
 
     },
+  
     {
+      id: 10,
+      name: 'News and Events',
+      class: 'fas fa-newspaper',
+    },{
       id: 8,
       name: 'Settings',
       class: 'fas fa-cog',
 
     },
+    {
+      id: 11,
+      name: 'Careers',
+      class: 'fas fa-cog',
+
+    }
     // {
     //   id: 6,
     //   name: 'Blogs',
@@ -128,10 +139,17 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['Admin/AdminServices']);
     }
     else if (id == 7) {
-      this.router.navigate(['Admin/AdminContent']);
+      this.router.navigate(['Admin/AdminContent/packages']);
+    }
+    
+    else if (id == 10) {
+      this.router.navigate(['Admin/AdminContent/events']);
     }
     else if (id == 8) {
       this.router.navigate(['Admin/Settings']);
+    }
+    else if (id == 11) {
+      this.router.navigate(['Admin/AdminContent/careers']);
     }
 
 

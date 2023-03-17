@@ -149,8 +149,10 @@
 
                     <div class="row mb-4" style="justify-content: space-around;">
 
-                        <div class="card-new col-sm-2 col-md-2 col-lg-2 my-2" *ngFor="let x of doctorsList">
-                            <div class="card-image">
+                        <div class=" col-sm-3 col-md-3 col-lg-3 my-2" *ngFor="let x of doctorsList">
+                            <doctor-card  [inputcss]="'card-new '" [x]="x"></doctor-card>
+
+                            <!-- <div class="card-image">
                                 <div class="image">
                                     <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
                                         (error)="errorHandler($event)"
@@ -159,11 +161,10 @@
                                 </div>
                             </div>
                             <div class="card-text p-3 box-shadow">
-                                <h5 class=" d-flex justify-content-around fs-6 m-0" style="white-space: nowrap;">
-                                    <b>{{x.referer}}</b>
-                                </h5>
-                                <p class=" small m-0 mt-1 fs-6 d-flex justify-content-around">
-                                    {{x.detail | slice:0:25}}</p>
+                                <h5 class=" d-flex justify-content-around fs-6 m-0"
+                                style="white-space: nowrap;"><b>{{x.referer |titlecase}}</b> </h5>
+                            <p class=" small m-0 mt-1 fs-6 d-flex justify-content-around">
+                                {{x.detail}}</p>
 
 
                                 <a class=" btn-style small btn-white mt-3 fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around"
@@ -171,7 +172,7 @@
                                     Book&nbsp;Now</a>
 
 
-                            </div>
+                            </div> -->
                         </div>
 
 
