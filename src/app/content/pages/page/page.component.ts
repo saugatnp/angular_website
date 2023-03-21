@@ -59,9 +59,10 @@ export class PageComponent implements OnInit {
   storeContent(res: any) {
 
     if(this.param==="careers"){
-    this.content = res.filter((epic: { page_group: string; }) => epic.page_group == this.param);
+    this.contents = res.filter((epic: { page_group: string; }) => epic.page_group == this.param);
 
     }
+    
     // this.contents = res;
     this.content = res.filter((epic: { page_title: string; }) => epic.page_title == this.param)[0];
 

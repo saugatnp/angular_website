@@ -51,7 +51,7 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEpic();
-    // this.content.page_group = "packages"
+    this.content.page_group = ""
   }
 
 
