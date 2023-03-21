@@ -30,7 +30,8 @@ export class HomeComponent implements OnInit {
     public appconfig: AppConfiguration,
     public pagecontent: PageContentService,
     private http: HttpClient,
-    private BroadCastservice: BroadcastService
+    private BroadCastservice: BroadcastService,
+    
     ) {
 
       this.baseUrl = this.appconfig.baseUrl;

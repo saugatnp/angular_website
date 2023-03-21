@@ -659,7 +659,7 @@
 
                             </div>
                             <div class="row m-0">
-                                <p style="font-size: 13px;" class="m-0">{{settings.phone_no_one}}, {{settings.phone_no_two}}, {{settings.phone_no_three}}, {{settings.phone_no_four}}
+                                <p style="font-size: 13px;" class="m-0">{{settings.phone_no_one | placeholder:'comma'}}  {{settings.phone_no_two | placeholder:'comma'}}  {{settings.phone_no_three | placeholder:'comma'}}  {{settings.phone_no_four}}
                                 </p>
 
                             </div>
@@ -692,7 +692,6 @@
                             <div class="row m-0">
                                 <p style="font-size: 13px;" class="m-0">
                                     {{settings.customer_support_email}}
-                                    
                                 </p>
 
                             </div>
@@ -701,11 +700,11 @@
 
 
                 </div>
-                <div class="col-sm-12 col-lg-6">
 
+                <div class="col-sm-12 col-lg-6">
                     <div class="gmap_canvas">
                         <iframe
-                            src="{{settings.map_url}}"
+                            [src]="settings.map_url | safe: 'resourceUrl' "
                             width="100%" height="100%" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0"
                             marginwidth="0"></iframe>
                         <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14137.561167766831!2d85.3390083!3d27.643394!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x566b845e859ff374!2z4KSo4KWH4KSq4KS-4KSyIOCkleCljeCkr-CkvuCkqOCljeCkuOCksCDgpIXgpLjgpY3gpKrgpKTgpL7gpLIg4KSwIOCkheCkqOClgeCkuOCkqOCljeCkp-CkvuCkqCDgpJXgpYfgpKjgpY3gpKbgpY3gpLA!5e0!3m2!1sne!2snp!4v1673964409476!5m2!1sne!2snp" 

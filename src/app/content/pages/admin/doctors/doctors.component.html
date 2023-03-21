@@ -293,6 +293,39 @@
 
                     </div>
 
+                    <div class="row">
+
+                       
+                        <div class="col-sm-3">
+                            <label class="small">Duty&nbsp;Time</label>
+                        </div>
+
+                        <div class="col-sm-7">
+                            <div class="input-group ">
+
+                                <span class=" small   mt-1 mx-1 " id="">In</span>
+                                <input type="time" class="form-control form-control-sm  "
+                                    [(ngModel)]="refData.intime" name="intime">
+                                <span class=" small mt-1 mx-1 " id="">Out</span>
+                                <input type="time" class="form-control form-control-sm  "
+                                    [(ngModel)]="refData.outtime" name="outtime">
+
+                                <span class=" small   mt-1 mx-1 " id="">[24&nbsp;Hours&nbsp;Format]</span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-sm-12 p-md-0">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="oncall"
+                                    [(ngModel)]="refData.oncall" name="oncall">
+                                <label class="form-check-label small" for="oncall">On&nbsp;Call</label>
+
+                            </div>
+                        </div>  
+
+                    </div>
+
 
 
 

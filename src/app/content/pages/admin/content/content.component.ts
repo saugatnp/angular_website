@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from 'src/app/content/services/notification.service';
@@ -31,6 +31,7 @@ export class ContentComponent implements OnInit {
     private appconfig: JsonAppConfigService,
     private contentService: PageContentService,
     private router: ActivatedRoute,
+    private _Router : Router,
     private modal: NgbModal,
     private toastr: NotificationService,
 
@@ -47,6 +48,9 @@ export class ContentComponent implements OnInit {
     //        .map(epics => epics.filter(epic => epic.id === id)[0]);
 
     // })
+    this._Router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+
   }
   ngOnInit(): void {
 
