@@ -40,7 +40,7 @@ export class BlogsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-this.content.page_group="blogs"
+this.content.page_group="events"
     this.getContent()
 
 window.scroll(0,0)
@@ -61,8 +61,8 @@ window.scroll(0,0)
   storeContent(res: any) {
 
     // this.contents = res;
-    this.contents = res.filter((epic: { page_group: string; published:boolean}) => epic.page_group == "blogs" && epic.published==true);
-    this.content = res.filter((epic: { page_group: string; published:boolean}) => epic.page_group == "blogs" && epic.published==true)[0];
+    this.contents = res.filter((epic: { page_group: string; published:boolean}) => epic.page_group == this.content.page_group && epic.published==true);
+    // this.content = res.filter((epic: { page_group: string; published:boolean}) => epic.page_group == "blogs" && epic.published==true)[0];
 
     // this.selectedContent = this.content;
     // console.log(this.content);

@@ -25,6 +25,7 @@ export class DoctorCardComponent implements OnInit {
     private http: HttpClient,
     private pagecontent: PageContentService,
     public appconfig: JsonAppConfigService,
+    
 
   ) {
     this.baseUrl = this.appconfig.localUrl;
@@ -86,6 +87,10 @@ this.selectedDoctor=x;
   }
   Error(err:any){
     
+  }
+
+  goToPage(x:any){
+
   }
 
   appointmentData = new AppointmentModel();
@@ -178,7 +183,9 @@ this.selectedDoctor=x;
 
   gotoPage(x: any) {
 
-    this.router.navigate(['/Page/' + x]);
+    // this.router.navigate(['/Page/' + x]);
+    this.router.navigate(['/Page/'+x.refid+'/'+x.referer]);
+
     // location.reload();
   }
 

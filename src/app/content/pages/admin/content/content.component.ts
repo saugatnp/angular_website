@@ -40,8 +40,8 @@ export class ContentComponent implements OnInit {
 
     var param = this.router.snapshot.paramMap.get('id');
     if (param) {
-      // this.page_group = param;
-      this.content.page_group = param;
+      this.page_group = param;
+      // this.content.page_group = param;
     }
     // this.page_group=router.ac
     // contentService.getPageContent().subscribe(x => {
@@ -55,7 +55,7 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
 
     this.getEpic();
-    this.content.page_group = ""
+    this.content.page_group = this.page_group
   }
 
 
@@ -160,6 +160,8 @@ export class ContentComponent implements OnInit {
       'headers': { 'Authorization': 'Bearer' + token }
     }
 
+
+    console.log(this.content)
     this.http.post(this.baseUrl + postUrl, this.content, options)
       .subscribe(
         {

@@ -131,6 +131,7 @@ export class PageComponent implements OnInit {
 
   fileList: any = [];
   fileLink: any = [];
+  doctorLink=''
   storePic(res: any) {
     // console.log(res);
     this.fileList = res;
@@ -145,9 +146,14 @@ export class PageComponent implements OnInit {
       // fileLink = this.baseUrl + 'api/OnlineUploadFileDownload?userid='+vm.selectedBlog.sn+'&sn='+vm.selectedBlog.sn;
       // $scope.fileType = 'SERVICES';
     }
-    else {
-      this.fileLink = 'assets/images/banner1.jpg'
-    }
+
+this.doctorLink= 
+    this.baseUrl + '/api/OnlineUploadFileDownload?userid=' + this.param + '&sn=' + this.param +
+    '&filenames=' + this.param + '.png&extension=.png&file_type=' + this.content.page_group;
+
+    // else {
+    //   this.fileLink = 'assets/images/banner1.jpg'
+    // }
 
 
   }

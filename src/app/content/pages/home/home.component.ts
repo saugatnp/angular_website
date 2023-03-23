@@ -80,11 +80,13 @@ export class HomeComponent implements OnInit {
   homepageList: any = []
   servicesList: any = []
   packagesList:any=[]
+  clientsList:any=[]
   storeContent(value: any) {
     this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true);
     this.servicesList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "services" && x.published == true);
     this.homepageList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "homepage" && x.published == true);
     this.packagesList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "packages" && x.published == true);
+    this.clientsList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "clients" && x.published == true);
     
 
   }

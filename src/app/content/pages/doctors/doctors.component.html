@@ -50,8 +50,11 @@
                             </select>
 
                         </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control form-control-sm" [(ngModel)]="search"(ngModelChange)="searchData()">
+                        </div>
                         <div class="col-sm-2">
-                            <button class="btn btn-outline btn-book fs-6 btn-small" (click)="filtered=doctors">
+                            <button class="btn btn-outline btn-book fs-6 btn-small" (click)="filtered=doctors;search=''">
                                 Reset
                             </button>
                         </div>

@@ -101,13 +101,20 @@ export class AdminComponent implements OnInit {
       name: 'Careers',
       class: 'fas fa-cog',
 
-    }
-    // {
-    //   id: 6,
-    //   name: 'Blogs',
-    //   class: 'fas fa-clipboard',
+    },
+    {
+      id: 12,
+      name: 'Clients',
+      class: 'fas fa-clipboard',
 
-    // },
+    },
+
+    {
+      id: 13,
+      name: 'OPD Time',
+      class: 'fas fa-user-md',
+
+    },
 
     // {
     //   id: 8,
@@ -150,6 +157,12 @@ export class AdminComponent implements OnInit {
     }
     else if (id == 11) {
       this.router.navigate(['Admin/AdminContent/careers']);
+    }
+    else if (id == 12) {
+      this.router.navigate(['Admin/AdminContent/clients']);
+    }
+    else if (id == 13) {
+      this.router.navigate(['Admin/AdminContent/opdtimes']);
     }
 
 

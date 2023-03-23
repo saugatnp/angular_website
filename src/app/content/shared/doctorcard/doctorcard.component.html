@@ -1,13 +1,14 @@
 
 
 
-<div class="card-new {{inputcss}}" >
+<div class="card-new {{inputcss}}"  >
     <div class="card-image">
         <div class="image">
             <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
                 class="image-radius col-sm-8 px-0 about-team-image"
                 style="aspect-ratio: 1/1 !important;"
-                (error)="errorHandler($event)">
+                (error)="errorHandler($event)"
+                >
 
         </div>
     </div>
@@ -21,7 +22,7 @@
 
 
         <a class=" btn-style small btn-white mt-5  fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around"
-            modalDirective (click)="selectDoctor(x);openModal()" [content]="modal" [size]="'lg'">
+            modalDirective (click)="selectDoctor(x);gotoPage(x)" [content]="modal" [size]="'lg'">
             Book&nbsp;Now</a>
 
 

@@ -164,7 +164,7 @@ export class AdminDoctorsComponent implements OnInit {
 
   imageName: string = ''
   filterContent() {
-    this.contents = this.contents.filter((x: { page_title: string; page_group: string; }) => x.page_title === this.selectedContent.refid.toString() && x.page_group === "doctors");
+    this.contents = this.contents.filter((x: { page_title: string; page_group: string; }) => x.page_title === this.selectedContent.referer.toString() && x.page_group === "doctors");
 
     // EDIT CONTENT
     if (this.contents.length !== 0) {
@@ -187,8 +187,8 @@ export class AdminDoctorsComponent implements OnInit {
     if (this.contents.length === 0) {
       this.edit = false
       this.content = new PageContent();
-      this.content.page_title = this.selectedContent.refid
-      this.model.editorData = this.selectedContent.referer;
+      this.content.page_title = this.selectedContent.referer
+      this.model.editorData = '';
       this.content.page_group = "doctors"
       this.imageName = this.selectedContent.refid + ".png"
 

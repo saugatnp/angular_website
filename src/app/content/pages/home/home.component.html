@@ -468,10 +468,11 @@
 
                     <owl-carousel-o [options]="customOptions" class="m-0 p-0" style="width:20vw;">
                         <ng-container *ngFor="let x of doctors; let i=index ">
-                            <ng-template  carouselSlide>
+                            <ng-template carouselSlide>
 
 
-                                <doctor-card  [inputcss]="'card-new col-sm-10 col-md-8 col-lg-7 mx-auto'" [x]="x"></doctor-card>
+                                <doctor-card [inputcss]="'card-new col-sm-10 col-md-8 col-lg-7 mx-auto'"
+                                    [x]="x"></doctor-card>
 
                                 <div class="" *ngIf="false">
                                     <div class="card-image">
@@ -542,7 +543,8 @@
                         <ng-container *ngFor="let slide of packagesList ; let i = index" style="display:flex;">
                             <ng-template carouselSlide>
 
-                                <div class="  mb-sm-3 mb-3 m-2 card packages-card font-color hoverable" style="height:80%">
+                                <div class="  mb-sm-3 mb-3 m-2 card packages-card font-color hoverable"
+                                    style="height:80%">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-4 col-4 d-flex align-items-center">
@@ -612,12 +614,81 @@
         </div>
     </section>
 
-    <div class="row">
+    <section id="clients" class="section-bg">
 
+        <div class="container">
 
-    </div>
+            <div class=" text-center">
+                <h2 class=" mb-sm-5 text-center primary-text"><b>Our Clients</b></h2>
+            </div>
+            <div class="row no-gutters clients-wrap clearfix wow fadeInUp"
+                style="visibility: visible; animation-name: fadeInUp;">
 
+                <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let slide of clientsList">
+                    <div class="client-logo">
+                        <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=clients"
+                            alt="{{slide.page_title}}" (error)="errorHandler($event)" class="img-fluid" alt=""
+                            data-toggle="tootltip" alt="{{slide.page_title}}">
+                    </div>
+                </div>
 
+                <!-- <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="client-logo">
+                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559460224/cropped-cropped-20170720-lucuLogo-squ2-e1500543540803.png"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="client-logo">
+                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559460269/104840a62d46c05d285762857fecb61a.png"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="client-logo">
+                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559460358/client-4.png"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="client-logo">
+                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559460379/client-5.png"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="client-logo">
+                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559460398/client-6.png"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="client-logo">
+                        <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1559460418/client-7.png"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="client-logo">
+                        <img src="https://bootstrapmade.com/demo/themes/NewBiz/img/clients/client-8.png"
+                            class="img-fluid" alt="">
+                    </div>
+                </div> -->
+
+            </div>
+
+        </div>
+
+    </section>
+  
+
+ 
 
     <section class=" pb-5">
 
@@ -644,7 +715,8 @@
 
                             </div>
                             <div class=" m-0">
-                                <p style="font-size: 13px;" class="m-0">P.O. Box No. {{settings.po_box}}, {{settings.address_one}}, {{settings.address_two}}</p>
+                                <p style="font-size: 13px;" class="m-0">P.O. Box No. {{settings.po_box}},
+                                    {{settings.address_one}}, {{settings.address_two}}</p>
 
                             </div>
                         </div>
@@ -659,7 +731,9 @@
 
                             </div>
                             <div class="row m-0">
-                                <p style="font-size: 13px;" class="m-0">{{settings.phone_no_one | placeholder:'comma'}}  {{settings.phone_no_two | placeholder:'comma'}}  {{settings.phone_no_three | placeholder:'comma'}}  {{settings.phone_no_four}}
+                                <p style="font-size: 13px;" class="m-0">{{settings.phone_no_one | placeholder:'comma'}}
+                                    {{settings.phone_no_two | placeholder:'comma'}} {{settings.phone_no_three |
+                                    placeholder:'comma'}} {{settings.phone_no_four}}
                                 </p>
 
                             </div>
@@ -703,10 +777,8 @@
 
                 <div class="col-sm-12 col-lg-6">
                     <div class="gmap_canvas">
-                        <iframe
-                            [src]="settings.map_url | safe: 'resourceUrl' "
-                            width="100%" height="100%" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0"
-                            marginwidth="0"></iframe>
+                        <iframe [src]="settings.map_url | safe: 'resourceUrl' " width="100%" height="100%"
+                            id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                         <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14137.561167766831!2d85.3390083!3d27.643394!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x566b845e859ff374!2z4KSo4KWH4KSq4KS-4KSyIOCkleCljeCkr-CkvuCkqOCljeCkuOCksCDgpIXgpLjgpY3gpKrgpKTgpL7gpLIg4KSwIOCkheCkqOClgeCkuOCkqOCljeCkp-CkvuCkqCDgpJXgpYfgpKjgpY3gpKbgpY3gpLA!5e0!3m2!1sne!2snp!4v1673964409476!5m2!1sne!2snp" 
                          width="100%" height="100%" id="gmap_canvas"
                             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->

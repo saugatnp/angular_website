@@ -136,5 +136,10 @@ export class DoctorsComponent implements OnInit {
     return await this.modalComponent.open()
   }
 
-
+  search:string=''
+searchData(){
+  this.filtered = this.doctors.filter((epic: { referer: string; }) => epic.referer.toLocaleLowerCase().includes( this.search.toLocaleLowerCase()));
+ 
+}
+  
 }
