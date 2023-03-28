@@ -35,6 +35,7 @@
   .image img {
     width: 100% !important;
     height: auto;
+    /* border-bottom:1px solid black */
   }
   
   .card-text {

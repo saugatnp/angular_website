@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostBinding, HostListener, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel, NgbModal, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { interval, startWith } from 'rxjs';
 import { AppConfiguration } from 'src/config/app-config';
+import { ModalComponent } from '../../modal/modal.component';
+import { ModalConfig } from '../../modal/modal.config';
 import { BroadcastService } from '../../services/broadcast.service';
 import { DoctorsService } from '../../services/doctors.service';
 import { PageContentService } from '../../services/pagecontent.service';
@@ -22,7 +25,7 @@ export class HomeComponent implements OnInit {
   pauseOnIndicator = false;
   pauseOnHover = true;
   pauseOnFocus = true;
-  baseUrl : string = '';
+  baseUrl: string = '';
   settings = new SettingsGroup()
 
   constructor(private router: Router,
@@ -31,17 +34,21 @@ export class HomeComponent implements OnInit {
     public pagecontent: PageContentService,
     private http: HttpClient,
     private BroadCastservice: BroadcastService,
-    
-    ) {
+    private modalService: NgbModal
 
-      this.baseUrl = this.appconfig.baseUrl;
+
+  ) {
+
+    this.baseUrl = this.appconfig.baseUrl;
 
     doctorService.getDoctorList().subscribe({
       next: x => this.doctors = x,
       error: err => console.log(err)
     })
 
-    
+
+
+
     this.BroadCastservice.currentSettings.subscribe((dataSub: any) => {
       this.settings = dataSub;
     })
@@ -61,6 +68,9 @@ export class HomeComponent implements OnInit {
     event.target.src = "https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=60&h=60  "
   }
 
+  goToLink(x: any) {
+    window.open(x.page_text, '_blank');
+  }
 
 
 
@@ -79,17 +89,70 @@ export class HomeComponent implements OnInit {
   deptList: any = []
   homepageList: any = []
   servicesList: any = []
-  packagesList:any=[]
-  clientsList:any=[]
+  packagesList: any = []
+  clientsList: any = []
+  modalsList: any = []
+  modalData: any = []
+  selectedIndex: number = 0;
   storeContent(value: any) {
     this.aboutList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "about" && x.published == true);
     this.servicesList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "services" && x.published == true);
     this.homepageList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "homepage" && x.published == true);
     this.packagesList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "packages" && x.published == true);
     this.clientsList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "clients" && x.published == true);
-    
+    this.modalsList = value.filter((x: { page_group: string, published: boolean }) => x.page_group === "modals" && x.published == true);
+
+    if (this.modalsList.length != 0) {
+
+      for (const [key, value] of Object.entries(this.modalsList)) {
+
+        this.modalData.push(value)
+
+
+          this.openModal(parseInt(key))
+        // console.log(this.modalData)
+
+      }
+
+      // console.log('1time')
+
+      // for (let i = 0; i <= this.modalData.length - 1; i++) {
+
+      //   setTimeout(() => {
+      //     this.selectedIndex=i;
+      //     console.log(this.selectedIndex)
+      //     this.openModal(i)
+      //   }, 1000);
+      // }
+
+    }
 
   }
+  modalConfig !: ModalConfig
+
+  @ViewChild('startModal', { static: true }) content1!: TemplateRef<any>;
+  @ViewChild('startModal1', { static: true }) content2!: TemplateRef<any>;
+  @ViewChild('startModal2', { static: true }) content3!: TemplateRef<any>;
+
+
+
+  async openModal(i: number) {
+
+    // console.log(i)
+    // this.selectedIndex = i
+if(i==0){
+    this.modalService.open(this.content1,{size:'lg',centered:true,animation:true})
+  }
+
+  if(i==1){
+    this.modalService.open(this.content2,{size:'lg',centered:true,animation:true})
+  }
+  if(i==2){
+    this.modalService.open(this.content3,{size:'lg',centered:true,animation:true})
+  }
+  }
+
+
 
 
 
@@ -112,6 +175,10 @@ export class HomeComponent implements OnInit {
       )
   }
 
+  modalImageLink= this.appconfig.baseUrl + '/api/OnlineUploadFileDownload?userid='
+  // + 101 + '&sn=' + 101
+
+
 
   fileList: any;
   fileLink: any;
@@ -126,7 +193,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  
+
 
 
   redirectToService(index: number) {
@@ -141,10 +208,10 @@ export class HomeComponent implements OnInit {
     }
 
   }
-  
+
   selectedImage: string = ''
   onSelectImage(x: any) {
-    this.router.navigate(['/Page/'+x]);
+    this.router.navigate(['/Page/' + x]);
 
     // console.log(x)
     this.selectedImage = x.image;
@@ -178,7 +245,7 @@ export class HomeComponent implements OnInit {
     dots: false,
     rewind: true,
     navSpeed: 500,
-    navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+    navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
     items: 3,
     autoplay: true,
     autoWidth: false,

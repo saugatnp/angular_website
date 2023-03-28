@@ -22,6 +22,9 @@
                     </a>
                 </ng-template>
             </ngb-carousel>
+
+
+
             <div class="banner-content" *ngIf="false">
                 <div class="container p-sm-2">
 
@@ -624,7 +627,7 @@
             <div class="row no-gutters clients-wrap clearfix wow fadeInUp"
                 style="visibility: visible; animation-name: fadeInUp;">
 
-                <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let slide of clientsList">
+                <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let slide of clientsList" (click)="goToLink(slide)">
                     <div class="client-logo">
                         <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=clients"
                             alt="{{slide.page_title}}" (error)="errorHandler($event)" class="img-fluid" alt=""
@@ -686,9 +689,9 @@
         </div>
 
     </section>
-  
 
- 
+
+
 
     <section class=" pb-5">
 
@@ -807,8 +810,89 @@
 
 
 
+    <!-- <modal #startModal [size]="'lg'" [type]="'init'" > </modal> -->
+
+    <ng-template #startModal let-modal>
+        <div class="modal-header ">
+            <h5 class="modal-title">
+                {{modalData[0].page_title}}
+            </h5>
 
 
+            <button (click)="modal.dismiss('click')">
+                <i class="fa fa-close red-text"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+<div class="col-sm-10 offset-lg-2">
+    <img src="{{modalImageLink}}{{modalData[0].sn}}&sn={{modalData[0].sn}}&filenames={{modalData[0].sn}}.png&extension=.png&file_type=modals"
+     alt="" style="width:70%;aspect-ratio: 1/1;">
+   
+</div>
+                <div [innerHTML]="modalData[0].page_text|safe:'html'"></div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+
+        </div>
+    </ng-template>
+
+    <ng-template #startModal1 let-modal>
+        <div class="modal-header ">
+            <h5 class="modal-title">
+                {{modalData[1].page_title}}
+            </h5>
+
+            <button (click)="modal.dismiss('click')">
+                <i class="fa fa-close red-text"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-10 offset-lg-2">
+                    <img src="{{modalImageLink}}{{modalData[1].sn}}&sn={{modalData[1].sn}}&filenames={{modalData[1].sn}}.png&extension=.png&file_type=modals"
+                     alt="" style="width:70%;aspect-ratio: 1/1;">
+                   
+                </div>
+                
+                <p [innerHTML]="modalData[1].page_text|safe:'html'"></p>
+                <!-- {{modalData[1].page_text|safe:'html'}} -->
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+
+        </div>
+    </ng-template>
+
+    <ng-template #startModal2 let-modal>
+        <div class="modal-header ">
+            <h5 class="modal-title">
+                {{modalData[2].page_title}}
+            </h5>
+
+            <button (click)="modal.dismiss('click')">
+                <i class="fa fa-close red-text"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                {{modalData[2].page_text|safe:'html'}}
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+
+
+        </div>
+    </ng-template>
 
 
 </div>

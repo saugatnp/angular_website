@@ -22,7 +22,7 @@ export class SettingsService {
         private broadCast: BroadcastService,
         protected _sanitizer: DomSanitizer
     ) {
-        this.baseUrl = Config.localUrl;
+        this.baseUrl = Config.baseUrl;
     }
 
 

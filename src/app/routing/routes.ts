@@ -8,6 +8,7 @@ import { ContactComponent } from '../content/pages/contact/contact.component';
 import { DoctorsComponent } from '../content/pages/doctors/doctors.component';
 import { HomeComponent } from '../content/pages/home/home.component';
 import { LabreportdownloadComponent } from '../content/pages/labreportdownload/labreportdownload.component';
+import { OpdtimesComponent } from '../content/pages/opdtimes/opdtimes.component';
 import { PageComponent } from '../content/pages/page/page.component';
 import { ServiceOneComponent } from '../content/pages/services/servicePages/service-one/service-one.component';
 import { ServicesComponent } from '../content/pages/services/services.component';
@@ -63,6 +64,11 @@ export const mainRoutes = [
         component:LabreportdownloadComponent
     
     },
+    {
+        path: 'OpdTimings', 
+        component:OpdtimesComponent
+    
+    },
 
     {
         path: 'Admin',
@@ -79,6 +85,12 @@ export const mainRoutes = [
     
     {
         path: ' ', component: HomeComponent,
+        loadChildren: () => import('../content/pages/home/home.module'
+        ).then((m) => m.HomeModule),
+    },
+    
+    {
+        path: 'webapp', component: HomeComponent,
         loadChildren: () => import('../content/pages/home/home.module'
         ).then((m) => m.HomeModule),
     },

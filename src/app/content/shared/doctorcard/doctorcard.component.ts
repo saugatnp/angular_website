@@ -25,10 +25,10 @@ export class DoctorCardComponent implements OnInit {
     private http: HttpClient,
     private pagecontent: PageContentService,
     public appconfig: JsonAppConfigService,
-    
+
 
   ) {
-    this.baseUrl = this.appconfig.localUrl;
+    this.baseUrl = this.appconfig.baseUrl;
   }
 
   ngOnInit(): void {
@@ -49,64 +49,68 @@ export class DoctorCardComponent implements OnInit {
     // this.year = formatDate(new Date(), 'yyyy', 'EN-US')
 
   }
-  
-@Input() x:any=[]
 
-@Input() inputcss:string=''
-selectedDoctor:any=[]
-  selectDoctor(x:any){
-this.selectedDoctor=x;
+
+  @ViewChild(ModalComponent) modal!:  ModalComponent;
+
+
+
+  @Input() x: any = []
+
+  @Input() inputcss: string = ''
+  selectedDoctor: any = []
+  selectDoctor(x: any) {
+    this.selectedDoctor = x;
+this.openModal()
+    // this.getPageContent()
   }
   postAppointment() {
 
-    if(
+    if (
       moment(new Date()).isBefore(this.appointmentData.date)
-      ){
-        return ;
-      } // true
-    
-      else{
+    ) {
+      return;
+    } // true
 
-    const token = localStorage.getItem('access_token');
-    const options = {
-      'headers': { 'Authorization': 'Bearer ' + token }
-    }
-    
-    this.http.post(this.baseUrl + 'api/onlineappointment', this.appointmentData, options)
-      .subscribe(
-        {
-          next: res => this.Success(res),
-          error: res => this.Error(res),
-        })
+    else {
+
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer ' + token }
       }
+
+      this.http.post(this.baseUrl + 'api/onlineappointment', this.appointmentData, options)
+        .subscribe(
+          {
+            next: res => this.Success(res),
+            error: res => this.Error(res),
+          })
+    }
   }
 
   Success(res: any) {
     this.reset()
     // this.modal.dismissAll();
   }
-  Error(err:any){
-    
-  }
-
-  goToPage(x:any){
+  Error(err: any) {
 
   }
+
 
   appointmentData = new AppointmentModel();
   reset() {
     this.appointmentData = new AppointmentModel();
   }
 
-  modalConfig !:ModalConfig
+  modalConfig !: ModalConfig
 
-  
 
-  
+
+
   @ViewChild('modal') private modalComponent!: ModalComponent
-  
+
   async openModal() {
-    this.modalConfig={modalTitle:'Book  '+this.selectedDoctor.referer,closeButtonLabel:'End'}
+    this.modalConfig = { modalTitle: 'Book  ' + this.selectedDoctor.referer, closeButtonLabel: 'End' }
     return await this.modalComponent.open()
   }
 
@@ -129,9 +133,18 @@ this.selectedDoctor=x;
       error: err => console.log(err)
 
     })
-
-
   }
+  storeContent(res: any) {
+    this.contents = res.filter((x: { page_title: string, published: boolean }) => (x.page_title == this.selectedDoctor.referer) && x.published == true);
+    if(this.contents.length==0){
+      return;
+    }
+    else{
+      this.gotoPage(this.selectedDoctor);
+    }
+  }
+
+  
   getSettings() {
     const token = localStorage.getItem('access_token');
     const options = {
@@ -162,11 +175,7 @@ this.selectedDoctor=x;
     // this.toastr.error('Error', 'Error')
   }
 
-  storeContent(res: any) {
-    this.contents = res.filter((x: { page_group: string, published: boolean }) => (x.page_group == 'about' || x.page_group == 'services') && x.published == true);
-
-  }
-
+ 
   getColumns(): any[] {
     const numCols = Math.ceil(this.contents.length / 3); // calculate the number of columns needed
     const columns = [];
@@ -183,8 +192,7 @@ this.selectedDoctor=x;
 
   gotoPage(x: any) {
 
-    // this.router.navigate(['/Page/' + x]);
-    this.router.navigate(['/Page/'+x.refid+'/'+x.referer]);
+    this.router.navigate(['/Page/' + x.refid + '/' + x.referer]);
 
     // location.reload();
   }

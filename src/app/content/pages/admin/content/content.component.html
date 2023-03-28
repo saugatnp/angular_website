@@ -128,14 +128,23 @@
             </div>
             <div class="row">
                 <div class="col-sm-3 col-md-4 col-lg-3">
-                    <label for="
+                    <label *ngIf="content.page_group!='clients'" for="
                     title" class="small">Content</label>
+                    <label *ngIf="content.page_group=='clients'" for="
+                    title" class="small">URL Link</label>
+
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6" *ngIf="content.page_group=='clients'">
+                    <input type="text" class="form-control form-control-sm" [(ngModel)]="content.page_text" />
+    
                 </div>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="content.page_group!='clients'">
                 <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
 
             </div>
+           
 
         </div>
         <div class="container" *ngIf="imageVisible">

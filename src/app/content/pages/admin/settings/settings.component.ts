@@ -24,7 +24,7 @@ export class SettingsComponent implements OnInit {
     private toastr: NotificationService,
   ) {
 
-    this.baseUrl = this.appconfig.localUrl;
+    this.baseUrl = this.appconfig.baseUrl;
   }
 
 

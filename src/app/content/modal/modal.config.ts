@@ -2,7 +2,7 @@ export interface ModalConfig {
     modalTitle: string
     dismissButtonLabel?: string
     closeButtonLabel?: string
-    shouldClose?(): Promise<boolean> | boolean
+    shouldClose?: boolean
     shouldDismiss?(): Promise<boolean> | boolean
     onClose?(): Promise<boolean> | boolean
     onDismiss?(): Promise<boolean> | boolean
@@ -10,6 +10,7 @@ export interface ModalConfig {
     disableDismissButton?(): boolean
     hideCloseButton?(): boolean
     hideDismissButton?(): boolean
+    index?:number
 
     
 }

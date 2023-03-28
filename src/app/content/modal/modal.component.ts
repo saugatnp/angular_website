@@ -13,36 +13,50 @@ import { AppConfiguration } from 'src/config/app-config'
 export class ModalComponent implements OnInit {
   @Input() public modalConfig!: ModalConfig
   @ViewChild('modal') private modalContent!: TemplateRef<ModalComponent>
+  @ViewChild('startModal') private modalContent1!: TemplateRef<ModalComponent>
+
   private modalRef!: NgbModalRef
 
-  @Input() appointmentData!:AppointmentModel
+  @Input() appointmentData!: AppointmentModel
 
-  // @Input() public modalConfig: ModalConfig
-  // @ViewChild('modal') private modalContent: TemplateRef<ModalComponent>
-  // private modalRef: NgbModalRef
-  baseUrl:String=''
+
+  baseUrl: String = ''
   constructor(private modalService: NgbModal,
-    private http:HttpClient,
-    private appConfig:AppConfiguration) {
-      this.baseUrl=appConfig.baseUrl
+    private http: HttpClient,
+    private appConfig: AppConfiguration) {
+    this.baseUrl = appConfig.baseUrl
 
-      // this.appointmentData.referer=this.appointmentData.referer
-     }
+    // this.appointmentData.referer=this.appointmentData.referer
+  }
 
   ngOnInit(): void { }
 
-  @Input() size:string='lg'
+  @Input() size: string = 'lg'
+  @Input() type: string = 'doctor'
+
+
+
+  @Input() contentData:any=[];
+
+  @Input() modalLength!:number
+
+  
 
   open(): Promise<boolean> {
-    console.log(this.appointmentData)
+    if (this.type == 'doctor') {
+      var modal = this.modalContent
+    }
+    else {
+      var modal = this.modalContent1
+    }
     return new Promise<boolean>(resolve => {
-      this.modalRef = this.modalService.open(this.modalContent, { ariaLabelledBy: 'modal-basic-title', size: this.size, centered: true })
+      this.modalRef = this.modalService.open(modal, { ariaLabelledBy: 'modal-basic-title', size: this.size, centered: true })
       this.modalRef.result.then(resolve, resolve)
     })
   }
 
   async close(): Promise<void> {
-    if (this.modalConfig.shouldClose === undefined || (await this.modalConfig.shouldClose())) {
+    if (this.modalConfig.shouldClose === undefined ) {
       const result = this.modalConfig.onClose === undefined || (await this.modalConfig.onClose())
       this.modalRef.close(result)
     }
@@ -56,23 +70,23 @@ export class ModalComponent implements OnInit {
   }
 
 
-  postAppointment(){
+  postAppointment() {
     this.http.post(this.baseUrl + 'api/onlineappointment', this.appointmentData)
-    .subscribe(
-      {
-        next: res => this.Success(res),
-        error: res => this.Error(res),
-      })
-    }
-  
-
-  Success(res:any){
-
-  }
-  Error(res:any){
-
+      .subscribe(
+        {
+          next: res => this.Success(res),
+          error: res => this.Error(res),
+        })
   }
 
 
-  
+  Success(res: any) {
+
+  }
+  Error(res: any) {
+
+  }
+
+
+
 }

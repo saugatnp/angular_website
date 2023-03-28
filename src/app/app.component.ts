@@ -20,7 +20,7 @@ export class AppComponent {
     private settingService : SettingsService
     ) {
 
-      this.baseUrl = this.appconfig.localUrl;
+      this.baseUrl = this.appconfig.baseUrl;
 
      }
   ngOnInit(): void {

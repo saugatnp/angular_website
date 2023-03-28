@@ -23,7 +23,7 @@ export class FooterComponent implements OnInit {
     private BroadCastservice: BroadcastService
 
   ) {
-    this.baseUrl = this.appconfig.localUrl;
+    this.baseUrl = this.appconfig.baseUrl;
     this.BroadCastservice.currentSettings.subscribe((dataSub: any) => {
       this.settings = dataSub;
     })

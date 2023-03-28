@@ -111,10 +111,11 @@ export class AdminComponent implements OnInit {
 
     {
       id: 13,
-      name: 'OPD Time',
-      class: 'fas fa-user-md',
+      name: 'Modals',
+      class: 'fa-solid fa-bell',
 
     },
+    
 
     // {
     //   id: 8,
@@ -162,7 +163,7 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['Admin/AdminContent/clients']);
     }
     else if (id == 13) {
-      this.router.navigate(['Admin/AdminContent/opdtimes']);
+      this.router.navigate(['Admin/AdminContent/modals']);
     }
 
 

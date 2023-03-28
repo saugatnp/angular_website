@@ -47,6 +47,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SafePipe } from './content/pipe/safe.pipe';
 import { DoctorCardComponent } from './content/shared/doctorcard/doctorcard.component';
 import { SharedModule } from './content/shared/shared/shared.module';
+import { OpdtimesComponent } from './content/pages/opdtimes/opdtimes.component';
 
 export function initializerFn(jsonappconfig: JsonAppConfigService) {
   return () => {
@@ -65,6 +66,7 @@ export function initializerFn(jsonappconfig: JsonAppConfigService) {
     BlogsComponent,
     LabreportdownloadComponent,
     LoaderComponent,
+    OpdtimesComponent,
 
 
   ],

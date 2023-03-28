@@ -42,7 +42,7 @@
                             </label>
                         </div>
                         <div class="col-sm-3 mb-5">
-                            <select name="deptlist" class="form-select form-control" id=""
+                            <select name="deptlist" class="form-select form-control pb-0" id=""
                                 [(ngModel)]="speciality_search" (ngModelChange)="filterData(speciality_search)">
                                 <option [value]="x.sp_id" *ngFor="let x of deptList">
                                     {{x.detail}}
@@ -51,10 +51,10 @@
 
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control form-control-sm" [(ngModel)]="search"(ngModelChange)="searchData()">
+                            <input type="text" class="form-control form-control-sm m-0" placeholder="Search by Doctors name" [(ngModel)]="search" (ngModelChange)="searchData()">
                         </div>
-                        <div class="col-sm-2">
-                            <button class="btn btn-outline btn-book fs-6 btn-small" (click)="filtered=doctors;search=''">
+                        <div class="col-sm-2 ">
+                            <button class="btn btn-outline d-flex justify-content-center btn-book fs-6 btn-small" (click)="reset()">
                                 Reset
                             </button>
                         </div>

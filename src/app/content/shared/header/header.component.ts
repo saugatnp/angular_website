@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     private appconfig: JsonAppConfigService,
     private BroadCastservice: BroadcastService
     ) {
-      this.baseUrl = this.appconfig.localUrl;
+      this.baseUrl = this.appconfig.baseUrl;
 
       this.BroadCastservice.currentSettings.subscribe((dataSub: any) => {
         this.settings = dataSub;
@@ -55,13 +55,16 @@ export class HeaderComponent implements OnInit {
   data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
   getColumns(): any[] {
+    
     var count = this.deptList.length/2;
     if(count<=6){
       count=4
     }
-    else if(count>=6){
-      count=6
+
+    else if(count>=6&&count<=12){
+      count=8
     }
+
     const numCols = Math.ceil(this.deptList.length / count); // calculate the number of columns needed
     const columns = [];
 

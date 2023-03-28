@@ -17,7 +17,7 @@ export class DoctorsComponent implements OnInit {
 
   constructor(private specialityService: SpecialityService,
     private doctorsService: DoctorsService,
-    
+
     private http: HttpClient,
     public appconfig: AppConfiguration) {
     this.baseUrl = appconfig.baseUrl;
@@ -41,7 +41,7 @@ export class DoctorsComponent implements OnInit {
     })
   }
 
-  
+
 
 
   errorHandler(event: any) {
@@ -51,7 +51,7 @@ export class DoctorsComponent implements OnInit {
   }
 
 
-  
+
 
 
   doctors: any = []
@@ -67,11 +67,14 @@ export class DoctorsComponent implements OnInit {
     )
   }
   filtered: any = []
-  filterData(spid: any) {
-    // this.filtered=
-    this.filtered = this.doctors.filter((epic: { sp_id: number; }) => epic.sp_id === parseInt(spid));
 
-    // this.doctors=  this.doctors
+
+  filterData(spid: any) {
+    this.filtered = this.doctors.filter((epic: { sp_id: number; }) => epic.sp_id === parseInt(spid));
+    if(this.search!=''){
+    this.filtered = this.filtered.filter((epic: { referer: string; }) => epic.referer.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+  }
+
   }
   Error(res: any) {
   }
@@ -84,37 +87,37 @@ export class DoctorsComponent implements OnInit {
 
   }
 
-   isBefore(date1:any, date2:any) {
+  isBefore(date1: any, date2: any) {
     // return date1 > date2;
     // const moment = require('moment');
 
     // var now = moment().format('LLLL');
-    
-   }
-   
-  
+
+  }
+
+
   postAppointment() {
 
-    if(
+    if (
       moment(new Date()).isBefore(this.appointmentData.date)
-      ){
-        return ;
-      } // true
-    
-      else{
+    ) {
+      return;
+    } // true
 
-    const token = localStorage.getItem('access_token');
-    const options = {
-      'headers': { 'Authorization': 'Bearer ' + token }
-    }
-    
-    this.http.post(this.baseUrl + 'api/onlineappointment', this.appointmentData, options)
-      .subscribe(
-        {
-          next: res => this.Success(res),
-          error: res => this.Error(res),
-        })
+    else {
+
+      const token = localStorage.getItem('access_token');
+      const options = {
+        'headers': { 'Authorization': 'Bearer ' + token }
       }
+
+      this.http.post(this.baseUrl + 'api/onlineappointment', this.appointmentData, options)
+        .subscribe(
+          {
+            next: res => this.Success(res),
+            error: res => this.Error(res),
+          })
+    }
   }
 
   Success(res: any) {
@@ -125,21 +128,41 @@ export class DoctorsComponent implements OnInit {
 
   reset() {
     this.appointmentData = new AppointmentModel();
+    this.search='';
+    this.speciality_search=[];
+    this.filtered=this.doctors;
   }
 
-  modalConfig !:ModalConfig
+  modalConfig !: ModalConfig
 
-  
+
   @ViewChild('modal') private modalComponent!: ModalComponent
-  
-  async   openModal() {
+
+  async openModal() {
     return await this.modalComponent.open()
   }
 
-  search:string=''
-searchData(){
-  this.filtered = this.doctors.filter((epic: { referer: string; }) => epic.referer.toLocaleLowerCase().includes( this.search.toLocaleLowerCase()));
- 
-}
-  
+  search: string = ''
+
+  searchData() {
+    if(this.search==''){
+      this.filtered=this.doctors;
+    }
+    if(this.speciality_search.detail==''){
+    this.filtered = this.doctors.filter((epic: { referer: string; }) => epic.referer.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+    }
+
+    else{
+      this.filtered = this.doctors.filter((epic: { sp_id: number; }) => epic.sp_id === parseInt(this.speciality_search.sp_id));
+
+
+    this.filtered = this.filtered.filter((epic: { referer: string; }) => epic.referer.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+
+    if (this.filtered.length == 0) {
+      this.filtered = this.doctors.filter((epic: { referer: string; }) => epic.referer.toLocaleLowerCase().includes(this.search.toLocaleLowerCase()));
+
+    }
+  }
+  }
+
 }

@@ -161,7 +161,7 @@ export class ContentComponent implements OnInit {
     }
 
 
-    console.log(this.content)
+    // console.log(this.content)
     this.http.post(this.baseUrl + postUrl, this.content, options)
       .subscribe(
         {

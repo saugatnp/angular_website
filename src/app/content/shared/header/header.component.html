@@ -59,23 +59,23 @@
 
 
 
-                    <div class="col-4  d-flex align-items-center" id="btnset">
+                    <!-- <div class="col-4  d-flex align-items-center" id="btnset"  >
 
                         <span class="fa fa-calendar  fs-1 pe-2"></span>
 
 
-                        <a class="small primary-text " target="_blank" style="cursor:pointer" href='{{settings.book_appointment_link}}'>Book an <br />&nbsp;appointment</a>
+                        <a class="small primary-text " target="_blank" style="cursor:pointer" href='https://bluecross.com.np/webapp/LabReportDownload'>Book an <br />&nbsp;appointment</a>
 
 
 
 
-                    </div>
+                    </div> -->
 
 
                     <div class="col-3 d-flex align-items-center" id="btnset-dark">
 
                         <span class="fa fa-calendar fs-1 p-2"></span>
-                        <a class="small text-white " style="cursor:pointer" href='{{settings.patient_report_link}}'>Patient's
+                        <a class="small text-white " style="cursor:pointer" href='https://bluecross.com.np/webapp/LabReportDownload'>Patient's
                             Report</a>
 
 
@@ -292,7 +292,12 @@
                             <a class="nav-link  nav-header white-text" [routerLink]="['/Blogs']"
                                 routerLinkActive='active'>Events</a>
                         </li>
-                        
+                      
+                        <li class="nav-item ">
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/OpdTimings']"
+                                routerLinkActive='active'>OPD Timings</a>
+                        </li>
+                      
                         <!-- <li class="nav-item " *ngIf="vacancyList.length==0">
                             <a class="nav-link  nav-header white-text " [routerLink]="['/Page/careers']"
                                 routerLinkActive='active'>Careers</a>
