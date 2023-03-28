@@ -111,7 +111,7 @@ export class AdminComponent implements OnInit {
 
     {
       id: 13,
-      name: 'Modals',
+      name: 'Dialogs',
       class: 'fa-solid fa-bell',
 
     },
