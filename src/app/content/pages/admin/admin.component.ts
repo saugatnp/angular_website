@@ -16,9 +16,21 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  logOff(){
-
+  
+  
+  showSub(id: number) {
+    if (id == 1) {
+      this.router.navigate(['Admin/AdminHome']);
+    }
+    else if (id == 2) {
+      this.router.navigate(['Admin/AdminAbout']);
+    }
+    
+    this.id = id
+   
   }
+
+
   division = [
     {
       id: 1,
@@ -67,16 +79,5 @@ export class AdminComponent implements OnInit {
 
     },
   ]
-  showSub(id: number) {
-    if (id == 1) {
-      this.router.navigate(['Admin/AdminHome']);
-    }
-    else if (id == 2) {
-      this.router.navigate(['Admin/AdminAbout']);
-    }
-    
-    this.id = id
-   
-  }
 
 }
