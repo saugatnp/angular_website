@@ -108,6 +108,7 @@ export class ContentComponent implements OnInit {
   //success delete data
   successDeleteToastr() {
     this.toastr.showSuccess(`Successfully Deleted Content`, this.title)
+    this.modal.dismissAll()
   }
   //error delete data
   errorDeleteToastr() {
@@ -226,10 +227,20 @@ export class ContentComponent implements OnInit {
     if (fileList.length > 0) {
       //comfirm image upload
       if (confirm("Are you sure want to upload the image?")) {
-
+      
         let file: File = fileList[0];
         let formData: FormData = new FormData();
+        if(this.content.page_group=='events'){
+          if(this.imageList!=0){
+            formData.append('uploadFile', file, file.name + ".png");
+          }
+          else{
+            formData.append('uploadFile', file, this.selectedContent.sn + ".png");
+          }
+        }
+        else{
         formData.append('uploadFile', file, this.selectedContent.sn + ".png");
+      }
         let headers = new Headers();
         /** In Angular 5, including the header Content-Type can invalidate your request */
         headers.append('Content-Type', 'multipart/form-data');
@@ -298,9 +309,12 @@ export class ContentComponent implements OnInit {
 
   fileList: any;
   fileLink: any;
+  imageList:any=[]
+
   storePic(res: any) {
     // console.log(res);
     this.fileList = res;
+    this.imageList=res;
     const baseUrl = this.baseUrl;
 
     this.fileLink =

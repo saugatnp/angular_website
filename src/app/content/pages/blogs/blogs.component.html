@@ -54,10 +54,34 @@
 
         <div class="row">
 
+          <div class="col-sm-12" >
+            <img src="{{fileLink}}&filenames={{selectedImage.filenames}}&extension={{selectedImage.extension}}&file_type={{content.page_group}}"
+              alt="{{selectedImage.filenames}}" class="img-fluid " style="width:100%;height:auto;aspect-ratio: 16/9;">
+
+          </div>
+
+          <div class="row align-items-center" *ngIf="fileList.length>1">
+            <div class="col-sm-2">
+              &nbsp;
+            </div>
+
+
+          <div class="col-sm justify-content-center"   *ngFor="let x of fileList">
+            
+            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{content.page_group}}"
+              alt="{{x.filenames}}" class="img-fluid "
+              [ngClass]="{'activated' : selectedImage.filenames== x.filenames }"  style="width:40%"
+              (click)="selectImage(x)">
+ 
+          </div>
+
+          
+        </div>
+
           <div class=" col-md-12 box-shadow mb-5">
-            <img
+            <!-- <img
               src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{selectedContent.sn}}&sn={{selectedContent.sn}}&filenames={{selectedContent.sn}}.png&extension=.png&file_type={{content.page_group}}"
-              class="img-fluid " style="width:100%" />
+              class="img-fluid " style="width:100%" /> -->
 
           </div>
 
@@ -95,17 +119,18 @@
       <div class="card-group">
         <div class="card m-3 box-shadow blog-card" *ngFor="let x of contents">
           <div class="image" style="height: 50%;">
+            
             <img
               src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.sn}}&sn={{x.sn}}&filenames={{x.sn}}.png&extension=.png&file_type={{content.page_group}}"
               class="card-img-top" style="height:100%" />
           </div>
           <div class="card-body ">
             <div style="position: relative;">
-              <h5 class="card-title fs-5 mt-2 fw-lighter">{{x.page_title}}</h5>
+              <h5 class="card-title fs-5 mt-2 fw-lighter" style="cursor:pointer" (click)="selectContent(x)">
+                {{x.page_title}}</h5>
               <hr>
               <p class="card-text black-text " [innerHTML]="x.page_text | slice:0:150">
               </p>
-              <br>
               <br>
             </div>
             <a class=" btn-style small btn-white  m-3 p-2 col-sm-4  smaller btn-book  d-flex  justify-content-center "

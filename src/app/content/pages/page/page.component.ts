@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
+import { ModalComponent } from '../../modal/modal.component';
+import { ModalConfig } from '../../modal/modal.config';
+import { AppointmentModel } from '../../models/appointment.model';
 import { DoctorsService } from '../../services/doctors.service';
 import { PageContentService } from '../../services/pagecontent.service';
 
@@ -15,6 +18,7 @@ export class PageComponent implements OnInit {
   content: any = []
   param: any = ''
   param1: any = ''
+  param2:any=''
 
   title: string = ''
   constructor(private router: Router,
@@ -31,6 +35,8 @@ export class PageComponent implements OnInit {
     this.param = this.activated.snapshot.paramMap.get('id');
 
     this.param1 = this.activated.snapshot.paramMap.get('id2');
+    this.param2 = this.activated.snapshot.paramMap.get('id3');
+
 
 
 
@@ -57,26 +63,54 @@ export class PageComponent implements OnInit {
   }
 
   storeContent(res: any) {
+    this.contents=res;
+
+if(this.param!='' )
+{
+    this.content = res.filter((epic: { page_title: string; }) => epic.page_title == this.param)[0];
+  this.selectedContent=this.content
+
+  }
+
+if(this.param1!='' && this.param2==''){
+
+  this.content = res.filter((epic: { page_title: string; }) => epic.page_title == this.param1)[0];
+  this.selectedContent=this.content
+
+
+}
+if(this.param2=='referer' ){
+
+  this.content = res.filter((epic: { page_title: string; }) => epic.page_title == this.param1)[0];
+  this.selectedContent=this.content
+
+}
+
+
 
     if(this.param==="careers"){
     this.contents = res.filter((epic: { page_group: string; }) => epic.page_group == this.param);
 
     }
     
-    // this.contents = res;
-    this.content = res.filter((epic: { page_title: string; }) => epic.page_title == this.param)[0];
-
-    this.selectedContent = this.content;
-    // console.log(this.content);
 
 
     if (this.content.page_group == "departments") {
       this.getDoctorList();
       this.contents = []
-      // this.contents = res.filter((epic: { page_group: string; }) => epic.page_group == this.content.page_group);
 
     }
 
+    if (this.content.page_group == "doctors") {
+      this.getDoctorList();
+
+      // this.contents = []
+
+    }
+
+
+    
+   
 
     if (this.content.page_group == "about") {
       this.contents = res.filter((epic: { page_group: string; published: boolean }) => epic.page_group == this.content.page_group && epic.published == true);
@@ -167,11 +201,28 @@ this.doctorLink=
     })
   }
 
+  
+  @ViewChild('modal') private modalComponent!: ModalComponent
 
-  storeDoctors(res: any) {
-    this.doctorsList = res.filter((epic: { sp_id: number; }) => epic.sp_id == this.param);
+  async openModal() {
+    this.modalConfig = { modalTitle: 'Book  ' + this.doctor.referer, closeButtonLabel: 'End' }
+    return await this.modalComponent.open()
   }
 
+
+
+
+
+  doctor:any=[]
+  storeDoctors(res: any) {
+    this.doctorsList = res.filter((epic: { sp_id: number; }) => epic.sp_id == this.param);
+
+    this.doctor= res.filter((epic: { refid: number; }) => epic.refid == this.param)[0];
+  }
+
+
+  modalConfig!:ModalConfig
+  appointmentData:AppointmentModel=new AppointmentModel();
 
 
   errorHandler(event: any) {

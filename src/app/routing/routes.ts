@@ -5,6 +5,7 @@ import { AdminHomeComponent } from '../content/pages/admin/home/home.component';
 import { LoginComponent } from '../content/pages/admin/login/login.component';
 import { BlogsComponent } from '../content/pages/blogs/blogs.component';
 import { ContactComponent } from '../content/pages/contact/contact.component';
+import { DoctorProfileComponent } from '../content/pages/doctorprofile/doctorprofile.component';
 import { DoctorsComponent } from '../content/pages/doctors/doctors.component';
 import { HomeComponent } from '../content/pages/home/home.component';
 import { LabreportdownloadComponent } from '../content/pages/labreportdownload/labreportdownload.component';
@@ -52,6 +53,10 @@ export const mainRoutes = [
         component:PageComponent
     
     },
+    {
+        path: 'Page/:id/:id2/:id3', 
+        component:PageComponent
+        },
 
     {
         path: 'Blogs', 
@@ -110,4 +115,9 @@ export const PageRoutes=[
         component:PageComponent
     
     },
+    {
+        path: 'Page/:id/:id2/:id3', 
+        component:PageComponent
+        },
+
 ];

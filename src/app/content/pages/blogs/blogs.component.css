@@ -20,3 +20,9 @@ card:hover {
 .card-body .card-text p{
     font-size: 1rem !important;
 }
+
+
+.activated{
+    filter: grayscale(100%);
+
+}

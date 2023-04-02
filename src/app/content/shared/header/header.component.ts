@@ -62,7 +62,10 @@ export class HeaderComponent implements OnInit {
     }
 
     else if(count>=6&&count<=12){
-      count=8
+      count=9
+    }
+    else if(count>12&&this.deptList.length<=25){
+      count = 9
     }
 
     const numCols = Math.ceil(this.deptList.length / count); // calculate the number of columns needed

@@ -61,8 +61,8 @@ export class DoctorCardComponent implements OnInit {
   selectedDoctor: any = []
   selectDoctor(x: any) {
     this.selectedDoctor = x;
-this.openModal()
-    // this.getPageContent()
+// this.openModal()
+    this.getPageContent()
   }
   postAppointment() {
 
@@ -192,7 +192,7 @@ this.openModal()
 
   gotoPage(x: any) {
 
-    this.router.navigate(['/Page/' + x.refid + '/' + x.referer]);
+    this.router.navigate(['/Page/' + x.refid + '/' + x.referer +'/referer']);
 
     // location.reload();
   }
