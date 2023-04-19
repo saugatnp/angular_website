@@ -31,6 +31,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFromServer()
+    this.getPicture()
   }
 
 
@@ -119,6 +120,81 @@ export class SettingsComponent implements OnInit {
 
 
 
+  fileChange(event: any) {
+
+    const baseUrl = this.appconfig.baseUrl;
+    var token = localStorage.getItem('access_token');
+
+    let fileList: FileList = event.target.files;
+    if (fileList.length != 0) {
+      let file: File = fileList[0]; //event
+      let formData: FormData = new FormData();
+      var name = Math.random()
+
+      formData.append('uploadFile', file, name + ".png");
+      let headers = new Headers();
+      /** In Angular 5, including the header Content-Type can invalidate your request */
+      headers.append('Content-Type', 'multipart/form-data');
+      headers.append('Accept', 'application/json');
+      //    let options = new RequestOptions({ headers: headers });
+      this.http.post(baseUrl + "api/FileAPI/UploadFiles?inv_no=" + 120 + "&userid=" + 120 + "&file_type=logo"
+        , formData, { headers: { Authorization: 'Bearer ' + token } })
+        // .map(res => res.json())
+        // .catch(error => Observable.throw(error))
+        .subscribe(
+          {
+            next: data => this.getPicture(),
+            error: err => console.log(err)
+          }
+
+
+        )
+    }
+  }
+
+  getPicture() {
+    // this.modal.dismissAll();
+    var token = localStorage.getItem('access_token');
+    // var userId = this.authorize.getUserId();
+    const baseUrl = this.appconfig.baseUrl;
+    var demourl = 'api/OnlineAppointmentRequestFile?userid=' + 120 +
+      '&sn=' + 120 +
+      '&file_type=logo'
+    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo"
+      // baseUrl + demourl
+      , { headers: { Authorization: 'Bearer ' + token } })
+      .subscribe({
+
+        next: data => this.storePic(data),
+        error: res => console.log(res)
+
+      }
+      )
+  }
+
+
+  fileList: any;
+  fileLink: any;
+  storePic(res: any) {
+    // console.log(res);
+    this.fileList = res;
+    const baseUrl = this.appconfig.baseUrl;
+
+    this.fileLink =
+      baseUrl + '/api/OnlineUploadFileDownload?userid=' + 120 + '&sn=' + 120
+    // '&file_type=ANGULAR'
+    // fileLink = this.baseUrl + 'api/OnlineUploadFileDownload?userid='+vm.selectedBlog.sn+'&sn='+vm.selectedBlog.sn;
+    // $scope.fileType = 'SERVICES';
+  }
+
+
+  selectedImage: any = [];
+  selectImage(x: any) {
+    this.selectedImage = x;
+    // this.togglePublishImage();
+
+  }
+
 
 
   //success toastr
@@ -127,7 +203,7 @@ export class SettingsComponent implements OnInit {
   }
 
 
-  
+
   //error toastr
   errorToastr() {
     this.toastr.showError(`Error `, this.title)

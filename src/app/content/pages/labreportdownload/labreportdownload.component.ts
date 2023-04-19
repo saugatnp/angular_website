@@ -16,6 +16,7 @@ export class LabreportdownloadComponent implements OnInit {
 
   ) {
     this.downloadUrl = this.appconfig.onlineLabUrl
+    // console.log(this.downloadUrl)
 
   }
 
@@ -30,17 +31,17 @@ export class LabreportdownloadComponent implements OnInit {
 
   getReport() {
 
-    if(this.data.invno.length!=11){
-        document.getElementById('invno')?.focus()
-      return;
-    }
-    if(this.data.phnno.length!=10){
-      document.getElementById('phnno')?.focus()
-      return;
-      
-    }
+    // if(this.data.invno.length!=11){
+    //     document.getElementById('invno')?.focus()
+    //   return;
+    // }
+    // if(this.data.phnno.length!=10){
+    //   document.getElementById('phnno')?.focus()
+    //   return;
 
-    this.labreport.getReport(this.data.invno, this.data.invno).subscribe({
+    // }
+
+    this.labreport.getReport(this.data.invno, this.data.phoneno).subscribe({
       next: res => this.storeReport(res),
       error: err => this.showError(err)
     })
@@ -52,7 +53,7 @@ export class LabreportdownloadComponent implements OnInit {
   storeReport(res: any) {
     this.labReport = res;
     if (this.labReport.length != 0) {
-      this.labreport = res[0]
+      this.labReport = res[0]
       this.showUnavailable = false
     }
     else {
@@ -66,7 +67,10 @@ export class LabreportdownloadComponent implements OnInit {
   }
 
   downloadReport() {
-    window.open(this.downloadUrl + this.data.invno + '_' + this.data.phnno + '.pdf',
+    var url = this.downloadUrl + this.data.invno + '_' + this.data.phoneno + '.pdf';
+    // console.log(url)
+
+    window.open(url,
       '_blank', '');
 
   }

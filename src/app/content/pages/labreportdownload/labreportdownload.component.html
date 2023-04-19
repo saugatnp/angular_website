@@ -45,7 +45,7 @@
 
 
                                 <br>
-                                <button type="submit" class="btn btn-sm  m-1 col-sm-12 btn-primary">Get Report</button>
+                                <button type="submit" class="btn btn-sm  m-1 col-sm-12 btn-primary" (click)="getReport()">Get Report</button>
                                 <!-- <button type="reset" class="btn btn-link btn-sm">Cancel</button> -->
 
                             </form>
@@ -53,29 +53,36 @@
 
                         </div>
                         <!-- *ngIf="labReport.length !==0 " -->
-                        <div class="col-md-5 offset-sm-1" *ngIf="labReport.length !==0 ">
-                            <table class="table table-small table table-bordered">
+                        <div class="col-md-5 p-2 offset-sm-1 box-shadow " *ngIf="labReport.length !=0 ">
+                            <table class="table table-hover table-bordered" >
+                                <!-- <tr>
+                                    <th colspan="2" class="text-center">
+                                        Report Information
+                                    </th>
+                                    
+                                </tr> -->
                                 <tr>
-                                    <th>
+                                    <th class="m-1 p-1">
                                         Invoice No
+
                                     </th>
                                     <td>
-                                        {{labReport.invdate}}
+                                        {{labReport.inv_no}}
 
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>
+                                    <th class="m-1 p-1">
                                         Date
                                     </th>
                                     <td>
-                                        {{labReport.ddate}}
+                                        {{labReport.ddate | date:'yyyy/MM/dd'}}
 
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <th>
+                                    <th class="m-1 p-1">
                                         Name
                                     </th>
                                     <td>
@@ -85,11 +92,34 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>
+                                    <th class="m-1 p-1">
+                                        Gender/Age
+                                    </th>
+                                    <td>
+                                        {{labReport.age}}/{{labReport.sex | slice:0:1}}
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="m-1 p-1">
                                         Address
                                     </th>
                                     <td>
                                         {{labReport.address}}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th class="m-1 p-1">
+                                        Status
+                                    </th>
+                                    <td>
+                                        <!-- <span class="badge badge-success" style="background-color:green;color:white"> -->
+                                            Available
+
+                                        <!-- </span> -->
+                                        <!-- {{labReport.address}} -->
                                     </td>
                                 </tr>
 
@@ -106,7 +136,7 @@
                         <div class="col-md-2" *ngIf="showUnavailable ">
                             <div class="card-body">
                                 <h5 class="card-title ">Lab Report Unavailable</h5>
-                                <button type="button" class="btn btn-sm  m-1  btn-primary" ng-click="unhide();"  >
+                                <button type="button" class="btn btn-sm  m-1  btn-primary"  >
                                  <i class="fas fa-envelope"></i>
                                  Enter Again </button>
                             </div>

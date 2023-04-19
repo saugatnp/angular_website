@@ -33,7 +33,7 @@ export class SlidersComponent implements OnInit {
     private modal: NgbModal,
     private specialityService: SpecialityService,
     public toastr: NotificationService,
-
+    // private imageCompress: NgxImageCompressService
   ) {
     this.baseUrl = appconfig.baseUrl;
 
@@ -64,7 +64,7 @@ export class SlidersComponent implements OnInit {
           {
             next: res => this.successDeleteToastr(),
             error: res => this.errorDeleteToastr(),
-            complete : () => {
+            complete: () => {
               this.getPicture();
             },
           })
@@ -73,8 +73,8 @@ export class SlidersComponent implements OnInit {
       return;
     }
   }
-   //success delete data
-   successDeleteToastr() {
+  //success delete data
+  successDeleteToastr() {
     this.toastr.showSuccess(`Successfully Deleted Content`, this.title)
   }
   //error delete data
@@ -83,7 +83,7 @@ export class SlidersComponent implements OnInit {
   }
   contents: any = [];
   content = new PageContent();
-  deptList:any=[]
+  deptList: any = []
   getDepartmentList() {
     this.specialityService.getSpecialityList().subscribe(
       {
@@ -129,12 +129,12 @@ export class SlidersComponent implements OnInit {
 
   //success Toastr
   successToast() {
-    this.toastr.showSuccess(`Successfully ${this.edit? "Edited" : "Updated"} Content`, this.title)
+    this.toastr.showSuccess(`Successfully ${this.edit ? "Edited" : "Updated"} Content`, this.title)
   }
 
   //error Toastr
   errorToast() {
-    this.toastr.showError(`Error ${this.edit? "Editing" : "Updated"} Content`, this.title)
+    this.toastr.showError(`Error ${this.edit ? "Editing" : "Updated"} Content`, this.title)
   }
 
 
@@ -177,7 +177,7 @@ export class SlidersComponent implements OnInit {
     // this.mapToModel()
   }
 
-  
+
 
   getContent() {
     this.contentService.getPageContent().subscribe(
@@ -192,25 +192,25 @@ export class SlidersComponent implements OnInit {
 
   filterContent() {
     this.contents = this.contents.filter((x: { page_title: string; page_group: string; }) => x.page_title === this.selectedContent.sp_id.toString());
-   
+
     if (this.contents.length !== 0) {
       this.edit = true
       this.content = this.contents[0]
-      
+
       this.model.editorData = this.contents[0].page_text;
 
-      this.selectedContent=this.content;
+      this.selectedContent = this.content;
 
       this.getPicture();
 
-      
+
     }
     if (this.contents.length === 0) {
       this.edit = false
       this.content = new PageContent();
       this.content.page_title = this.selectedContent.sp_id
-    this.model.editorData = this.selectedContent.detail;
-    this.content.page_group="departments"
+      this.model.editorData = this.selectedContent.detail;
+      this.content.page_group = "departments"
 
     }
 
@@ -223,18 +223,76 @@ export class SlidersComponent implements OnInit {
     this.content.page_text = this.model.editorData;
   }
 
+  file: any;
+  // localUrl: any;
+  // localCompressedURl:any;
+  // sizeOfOriginalImage:number | undefined;
+  // sizeOFCompressedImage:number | undefined;
+  // selectFile(event: any) {
+  // var  fileName : any;
+  // this.file = event.target.files[0];
+  // fileName = this.file['name'];
+  // if (event.target.files && event.target.files[0]) {
+  // var reader = new FileReader();
+  // reader.onload = (event: any) => {
+  // this.localUrl = event.target.result;
+  // this.compressFile(this.localUrl,fileName)
+  // }
+  // reader.readAsDataURL(event.target.files[0]);
+  // }
+  // }
+  // imgResultBeforeCompress:string | undefined;
+  // imgResultAfterCompress:string | undefined;
+  // compressFile(image: string,fileName: any) {
+  // var orientation = -1;
+  // this.sizeOfOriginalImage = this.imageCompress.byteCount(image)/(1024*1024);
+  // // console.warn('Size in bytes is now:',  this.sizeOfOriginalImage);
+  // this.imageCompress.compressFile(image, orientation, 50, 50).then(
+  // result => {
+  // this.imgResultAfterCompress = result;
+  // this.localCompressedURl = result;
+  // this.sizeOFCompressedImage = this.imageCompress.byteCount(result)/(1024*1024)
+  // console.warn('Size in bytes after compression:',  this.sizeOFCompressedImage);
+  // // create file from byte
+  // const imageName = fileName;
+  // // call method that creates a blob from dataUri
+  // const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);
+  // //imageFile created below is the new compressed file which can be send to API in form data
+  // const imageFile = new File([result], imageName, { type: 'image/jpeg' });
+  // });}
+  // dataURItoBlob(dataURI: string) {
+  // const byteString = window.atob(dataURI);
+  // const arrayBuffer = new ArrayBuffer(byteString.length);
+  // const int8Array = new Uint8Array(arrayBuffer);
+  // for (let i = 0; i < byteString.length; i++) {
+  // int8Array[i] = byteString.charCodeAt(i);
+  // }
+  // const blob = new Blob([int8Array], { type: 'image/png' });
+  // // this.fileChange(blob);
+  // return blob;
+  // }
+
+
+
+
+  async selectFile(event: any) {
+    // var img = await this.imageCompressor.selectFile(event);
+  }
 
 
 
   fileChange(event: any) {
+
     const baseUrl = this.appconfig.baseUrl;
     var token = localStorage.getItem('access_token');
 
     let fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      let file: File = fileList[0];
+    if (fileList.length!=0) {
+      let file: File =  fileList[0]; //event
       let formData: FormData = new FormData();
-      formData.append('uploadFile', file, file.name);
+      var name = Math.random()
+
+      formData.append('uploadFile', file, name + ".png");
       let headers = new Headers();
       /** In Angular 5, including the header Content-Type can invalidate your request */
       headers.append('Content-Type', 'multipart/form-data');
@@ -245,11 +303,12 @@ export class SlidersComponent implements OnInit {
         // .map(res => res.json())
         // .catch(error => Observable.throw(error))
         .subscribe(
-        {next:data=> this.getPicture(),
-          error:err => console.log(err)
-        } 
-          
-        
+          {
+            next: data => this.getPicture(),
+            error: err => console.log(err)
+          }
+
+
         )
     }
   }
@@ -261,7 +320,7 @@ export class SlidersComponent implements OnInit {
 
   }
 
-  search:string=''
+  search: string = ''
   togglePublishImage() {
     const token = localStorage.getItem('access_token');
     const options = {
