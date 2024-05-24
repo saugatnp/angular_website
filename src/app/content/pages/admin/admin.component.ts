@@ -42,7 +42,6 @@ export class AdminComponent implements OnInit {
 
 
   }
-<<<<<<< HEAD
 
   logOff() {
     this.auth.logOff();
@@ -51,21 +50,6 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['Admin/Login'])
     // this.router.pa
 
-=======
-  
-  
-  
-  showSub(id: number) {
-    if (id == 1) {
-      this.router.navigate(['Admin/AdminHome']);
-    }
-    else if (id == 2) {
-      this.router.navigate(['Admin/AdminAbout']);
-    }
-    
-    this.id = id
-   
->>>>>>> 0612e1e22307e45af71cb5c12d65661d814a02b1
   }
 
 
@@ -149,7 +133,6 @@ export class AdminComponent implements OnInit {
 
     // },
   ]
-<<<<<<< HEAD
   showSub(id: number) {
     if (id == 1) {
       this.router.navigate(['Admin/AdminHome']);
@@ -196,8 +179,6 @@ export class AdminComponent implements OnInit {
     this.id = id
 
   }
-=======
->>>>>>> 0612e1e22307e45af71cb5c12d65661d814a02b1
 
   fix: boolean = true
   @Output() fixEmitter = new EventEmitter<boolean>();
