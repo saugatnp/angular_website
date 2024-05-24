@@ -1,7 +1,7 @@
 <div style="position: relative;overflow-x:hidden;">
     <div id="banner-main">
         <div class="inner-banner-image">
-            <img src="../../../assets/images/banner1.jpg">
+            <img src="assets/images/banner1.jpg">
         </div>
         <div class="banner-content">
             <h1 style="position: absolute;top:50%;left:42%;color: white;"><b>About</b></h1>
@@ -9,7 +9,7 @@
     </div>
     <div class="center-image p-5">
         <div class="row ">
-            <img src="../../../assets/images/banner2.jpg" alt="" class="col-sm-8 mx-auto" style="border-radius: 45px;">
+            <img src="assets/images/banner2.jpg" alt="" class="col-sm-8 mx-auto" style="border-radius: 45px;">
         </div>
     </div>
 
@@ -23,21 +23,51 @@
                             healthcare.</b></h1>
                 </div>
                 <div class="col-lg-7  pl-lg-5 mt-lg-4">
-                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                        eligendi
-                        vitae sit.Ea
-                        ipsum sed consequuntur illum facere.Vivamus a ligula quam tesque et libero ut justo, ultrices
-                        in. Ut eu leo
-                        non..
+                    <p class="pr-lg-5 mt-md-4 mt-3 mx-auto about-text">Cancer Care Nepal is the first ever effort from the private sector, established to provide the highest quality
+                        of state-of-the-art treatment and excellent care to the patients and their families from all
+                        around the globe. The hospital has a dedicated multidisciplinary team of cancer specialists
+                        offering affordable, safe, innovative and compassionate care to cancer patients. In addition to
+                        the latest innovative treatments and state-of-the-art equipment, the hospital goes beyond just
+                        medicine and opens access to alternative medicine as well.
+
+                        The hospital has a multidisciplinary department that takes care of all types of cancer and
+                        cancer patients in the holistic approach under one roof. The hospital will contribute to reduce
+                        the burden of cancer, increase survival and improve the quality of life of the patients and
+                        families; thus, emphasis has been given to preventive and palliative oncology.
+
+                        Nepal cancer Hospital and Research Center is located in Harisiddhi, Lalitpur, Nepal within 24
+                        ropani land. The construction of the hospital has been divided into two phases. The completed
+                        phase I hospital has 85 beds and is in 50000 sq.ft. The Phase II of the hospital will be built
+                        within 3 years of the opening of the phase I hospital which will be in 100,000 sq.ft. and will
+                        have 120 beds. The phase II hospital will be further extended to 300 beds in future.
                     </p>
-                    <p class=" pr-lg-5 mt-md-4 mt-3 mx-auto">Lorem ipsum dolor sit amet consectetur ipsum elit. Qui
-                        eligendi
-                        vitae sit.Ea
-                        ipsum sed consequuntur illum facere.
-                    </p>
-                    <a class="btn btn-style read-more-second mt-sm-5 mt-4 mr-2" href="about.html">
-                        Read More</a>
+                    <a class=" btn-style read-more-second mt-sm-5 mt-4 mr-2" (click)="textShow = !textShow">
+                        Read {{textShow ? 'Less' : 'More'}}</a>
                 </div>
+            </div>
+            <div class="row mt-4" *ngIf="textShow">
+                <h6><b class="primary-text">Why Cancer Care Nepal?</b>
+                </h6>
+                <p class="col-sm">
+                    Today, more than half of all patients diagnosed with cancer can be cured, and many others will live
+                    long, meaningful lives even with their disease. But getting the correct diagnosis and the most
+                    appropriate treatment right from the start is crucial.
+
+                    At CCN, our focus is comprehensive cancer care. Our doctors have unparalleled expertise in
+                    diagnosing and treating all types of cancer and we use the latest technology and the most
+                    innovative, advanced therapies to increase the chances of cure. The close collaboration between our
+                    doctors offers our patients the best available treatment options.
+                </p>
+                <h6><b class="primary-text">Individualized Expert Treatment</b>
+                </h6>
+                <p class="col-sm">
+                    We also recognize that every patient is unique and the best treatment for one patient may not be
+                    right for another. So you can rest assured that the treatment recommended at CCN will be the best
+                    one for you. And while we are leading experts in cancer therapies, we take particular pride in the
+                    compassion and dedication of our doctors, nurses, and other healthcare staffs.
+                    <br />
+                    We are proud of our designation as an the comprehensive cancer center in Nepal.
+                </p>
             </div>
         </div>
     </div>
@@ -54,7 +84,7 @@
                 <div class="row d-flex justify-content-around p-4">
                     <div class="col-lg-3 col-sm-12">
                         <div class="row m-0 d-flex align-items-center">
-                            <div class="col-lg-4 col-sm-6 w-auto">
+                            <div class="col-sm-4 col-lg-4 col-sm-6 w-auto p-0">
                                 <i class="fa fa-lightbulb icon d-flex align-items-center"></i>
                             </div>
                             <div class="col-lg col-sm-6 w-auto">
@@ -71,7 +101,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-12">
                         <div class="row  m-0 d-flex align-items-center">
-                            <div class="col-sm-4 col-lg-4 col-sm-6 w-auto">
+                            <div class="col-sm-4 col-lg-4 col-sm-6 w-auto p-0">
                                 <i class="fa fa-handshake icon d-flex align-items-center"></i>
                             </div>
                             <div class="col-lg col-sm-6 w-auto">
@@ -88,7 +118,7 @@
                     </div>
                     <div class="col-lg-3 col-sm-12">
                         <div class="row m-0 d-flex align-items-center">
-                            <div class="col-sm-4 col-lg-4 col-sm-6 w-auto">
+                            <div class="col-sm-4 col-lg-4 col-sm-6 w-auto p-0">
                                 <i class="fa fa-podcast icon d-flex align-items-center"></i>
                             </div>
                             <div class="col-lg col-sm-6 w-auto">
@@ -117,11 +147,16 @@
                         <h1 class=" mb-sm-5 primary-text"><b>Our Advantages</b></h1>
                     </div>
                     <div class="row">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ex, sequi, temporibus
-                            possimus
-                            at explicabo enim officiis eum officia est consequuntur eius, deleniti nam ipsam distinctio
-                            dolores
-                            laboriosam magni doloremque.</p>
+                        <p>Today, more than half of all patients diagnosed with cancer can be cured, and many others
+                            will live long, meaningful lives even with their disease. This makes getting the correct
+                            diagnosis right from the start even more crucial.
+                            <br />
+                            At Cancer Care Nepal, our sole focus is cancer. Our doctors have
+                            unparalleled expertise in diagnosing and treating all types of cancer, and we use the latest
+                            technology and the most innovative, advanced therapies to increase the chances of a cure and
+                            maximum survival. The close collaboration between our doctors offers patients best available
+                            treatment options from a multidisciplinary perspective.
+                        </p>
                     </div>
 
                     <div class="row mt-3">
@@ -129,36 +164,36 @@
                             <i class="fa fa-check banner-title-top"></i>
                         </div>
                         <div class="col-sm">
-                            <p> Specialists and Dentists as One Team</p>
+                            <p> Individualized Expert Treatment</p>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row ">
                         <div class="col-sm-1">
                             <i class="fa fa-check banner-title-top"></i>
                         </div>
                         <div class="col-sm">
-                            <p> Complimentary Consultations </p>
+                            <p> Unparalleled Surgical Oncology Expertise</p>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row ">
                         <div class="col-sm-1">
                             <i class="fa fa-check banner-title-top"></i>
                         </div>
                         <div class="col-sm">
-                            <p>All Types of Dental Services</p>
+                            <p>Best Medical Oncologists in Nepal</p>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row ">
                         <div class="col-sm-1">
                             <i class="fa fa-check banner-title-top"></i>
                         </div>
                         <div class="col-sm">
-                            <p>On-site Laboratory</p>
+                            <p>Leaders in Radiation Therapy in Nepal</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 ">
-                    <img src="../../../assets/images/g1.jpg" alt="" class="img-fluid ">
+                    <img src="assets/images/g1.jpg" alt="" class="img-fluid ">
 
                 </div>
             </div>
@@ -166,7 +201,7 @@
     </div>
 
 
-    <div class="row ">
+    <div class="row " *ngIf="false">
         <div class="col-sm">
             <div class="row mt-2">
                 <h6 class="banner-title-top text-center">LEADING TEAM</h6>
@@ -179,8 +214,8 @@
 
                 <div class="col-lg-5 col-sm-10 p-4">
                     <div class="image-div font-color row m-0 mb-2">
-                        <img src="../../../assets/images/team1.jpg" alt="" class="image-radius col-sm-6 px-0 about-team-image"
-                            >
+                        <img src="assets/images/team1.jpg" alt=""
+                            class="image-radius col-sm-6 px-0 about-team-image">
                         <div class="col-sm">
                             <div class="row mt-4">
                                 <h5 class="text-center m-0">
@@ -211,13 +246,13 @@
                         </div>
 
 
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-5 col-sm-10 p-4">
                     <div class="image-div font-color row m-0 mb-2">
-                        <img src="../../../assets/images/team1.jpg" alt="" class="image-radius col-sm-6 px-0 about-team-image"
-                            >
+                        <img src="assets/images/team1.jpg" alt=""
+                            class="image-radius col-sm-6 px-0 about-team-image">
                         <div class="col-sm">
                             <div class="row mt-4">
                                 <h5 class="text-center m-0">
@@ -248,7 +283,7 @@
                         </div>
 
 
-                        
+
                     </div>
                 </div>
 

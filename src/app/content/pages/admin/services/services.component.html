@@ -1,0 +1,173 @@
+<div style="display: flex;">
+    <div class="main-page mainViewToggle">
+        <div class="formcontainer">
+
+            <!-- title -->
+            <nav class=" bg-white row">
+
+                <div class="col-sm-8 ms-auto">
+
+                    <p class="text-start black-text m-0">Admin Services Pages</p>
+                </div>
+
+                <div class="col-sm-4 d-flex justify-content-end">
+                    <button class="btn btn-small p-2 btn-secondary" modalDirective [content]="content1" [size]="'lg'"
+                        (click)="reset()">New</button>
+                </div>
+            </nav>
+
+
+            Admin Services Page
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table-sm table table-small table-bordered table-hover">
+                        <tr>
+                            <th>Sn</th>
+                            <th>Title</th>
+                            <th>Published</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tbody>
+                            <tr *ngFor="let x of contents">
+                                <td class="m-1 p-1">
+                                    {{x.sn}}
+                                </td>
+                                <td class="m-1 p-1">
+                                    {{x.page_title}}
+                                </td>
+                                <td class="m-1 p-1">
+                                    {{x.published}}
+                                </td>
+                                <td class="m-1 p-1">
+                                    <div class="zoom">
+                                        <a class="m-1 rounded-btn " modalDirective
+                                            (click)="selectContent(x);imageHide()" [content]="content1"
+                                            [size]="'lg'">Edit&nbsp;
+                                            <i class="fa fa-edit "></i>
+                                        </a>
+                                        <a class="m-1 rounded-btn " modalDirective
+                                            (click)="selectContent(x);imageShow()" [content]="content1"
+                                            [size]="'lg'">Images&nbsp;
+                                            <i class="fa fa-image "></i>
+                                        </a>
+                                        <a class="m-1 rounded-btn text-danger" (click)="deleteContent(x)">Delete&nbsp;
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
+
+            <button class="btn-small btn" (click)="postContent()">Submit</button> -->
+
+            <!-- {{model.editorData}} -->
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+<ng-template #content1 let-modal>
+    <div class="modal-header">
+        <!-- <h4 class="modal-title" id="modal-basic-title">Content</h4> -->
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body ">
+        <div class="container" *ngIf="!imageVisible">
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <label for="
+                        title" class="small">Title</label>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <input type="text" class="form-control form-control-sm" [(ngModel)]="content.page_title">
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                            [(ngModel)]="content.published">
+                        <label class="form-check-label small" for="flexCheckChecked">
+                            Published
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 col-md-4 col-lg-3">
+                    <label for="
+                        title" class="small">Content</label>
+                </div>
+            </div>
+            <div class="row">
+                <ckeditor [editor]="editor" [(ngModel)]="model.editorData" (ngModelChange)="mapToModel()"></ckeditor>
+
+            </div>
+
+        </div>
+
+        <div class="container" *ngIf="imageVisible">
+
+            <div class="row">
+                <input type="file" (change)="fileChange($event)">
+
+            </div>
+            <div class="row">
+                <table class="table table-small">
+                    <tr>
+                        <th>Sn</th>
+                        <th>Title</th>
+                        <th>Published</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr *ngFor="let x of fileList">
+                        <td>
+                            {{x.sn}}
+                        </td>
+                        <td>
+                            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{this.content.page_group}}"
+                                height="80" [width]="80" alt="{{x.filenames}}">
+
+                        </td>
+                        <td>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                    [(ngModel)]="x.published" (ngModelChange)="selectImage(x);togglePublishImage()">
+
+                            </div>
+                        </td>
+                        <td>
+                            <a class="m-1 rounded-btn text-danger" (click)="deleteImage(x);">Delete&nbsp;
+                                <i class="fa fa-trash text-danger "></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-small btn-primary me-auto" *ngIf="!imageVisible" (click)="postContent()">Submit</button>
+    </div>
+</ng-template>

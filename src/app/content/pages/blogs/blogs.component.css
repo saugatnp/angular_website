@@ -1,0 +1,28 @@
+.card-img-top:hover{
+    transform: scale(1.01);
+    transition: 0.2s ease-in;
+}
+
+
+card:hover {
+    box-shadow: 10px 5px 5px grey;
+}
+
+.card-text p *{
+    font-size: 10px !important;
+}
+.blog-card{
+    min-width: 250px;
+}
+.card-body .card-title{
+    font-size: 1.2rem !important;
+}
+.card-body .card-text p{
+    font-size: 1rem !important;
+}
+
+
+.activated{
+    filter: grayscale(100%);
+
+}

@@ -1,0 +1,216 @@
+:root {
+    --primary-color: #1F3992;
+    --primary-second-color: #0d1738;
+    --secondary-color: white;
+    --secondary-second-color: rgb(255, 235, 235);
+    --box-color: rgb(244, 244, 244);
+    --font-color: #666;
+    --white-font-color: #fff;
+    --bg-color: #fff;
+    --heading-color: #252422;
+    --white-heading-color: #fff;
+    --border-radius: 6px;
+    --border-radius-full: 35px;
+    --border-color: transparent;
+    --border-color-light: #eee;
+    --nav-color: #212D38;
+    --dropdown-color: #fff;
+    --iframe-filter: grayscale(0%);
+    --bg-light: rgba(130, 115, 252, .05);
+    --bg-grey: #F4F6F9;
+    --footer-bg: #0f1113;
+    --card-bg: #fff;
+    --hover-color: #445fb7;
+}
+
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
+}
+
+.card-new {
+    position: relative;
+    /* background-color: cyan; */
+    height: 345px;
+    cursor: pointer;
+}
+
+
+.card-image {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.card-new:hover .card-image .image {
+    transform: perspective(600px);
+    transform-origin: center center;
+}
+
+
+.image {
+    position: relative;
+    z-index: 10;
+    width: 45%;
+    /* height: 150px; */
+    border-radius: 20px;
+    /* background-color: green; */
+}
+
+.image img {
+    width: 100% !important;
+    height: auto;
+}
+
+.card-text {
+    position: absolute;
+    top: 25%;
+    padding-top: 25% !important;
+    width: 90%;
+    left: 5%;
+    height: auto;
+    border-radius: 5px;
+    /* border:1px rgba(0, 0, 0, 0.286) solid; */
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+
+}
+
+
+.card-text:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    /* transition: all 0.2s ease-in-out;  */
+}
+
+.card-text:hover>p {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.small {
+    font-size: 13px !important;
+}
+
+@media screen and (max-width: 600px) {
+
+    .card-image .image {
+        width: 40%
+    }
+
+    .icon {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+
+
+    .icon {
+        font-size: 20px;
+        height: 50px;
+    }
+}
+
+.info a {
+    font-size: 1.2rem;
+}
+
+.banner-box-wrap-front p {
+    font-size: 0.9rem;
+    font-weight: light !important;
+    line-height: 26px;
+}
+
+.packages-card:hover {
+    transition: ease-in-out 0.3s all;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px rgba(38, 38, 36, 0.343);
+}
+
+
+
+/* client section */
+
+
+.section-header h3 {
+    font-size: 36px;
+    color: #283d50;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+}
+
+.section-header p {
+    text-align: center;
+    margin: auto;
+    font-size: 15px;
+    padding-bottom: 60px;
+    color: #556877;
+    width: 50%;
+}
+
+#clients {
+    padding: 60px 0;
+
+}
+
+#clients .clients-wrap {
+    border-top: 1px solid #d6eaff;
+    border-left: 1px solid #d6eaff;
+    margin-bottom: 30px;
+}
+
+#clients .client-logo {
+    padding: 64px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-right: 1px solid #d6eaff;
+    border-bottom: 1px solid #d6eaff;
+    overflow: hidden;
+    background: #fff;
+    height: 160px;
+}
+
+
+#clients img {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    transition: all 0.4s ease-in-out;
+
+}
+
+#clients img:hover {
+    -webkit-filter: none;
+    /* Safari 6.0 - 9.0 */
+    filter: none;
+
+    transition: all 0.4s ease-in-out;
+}

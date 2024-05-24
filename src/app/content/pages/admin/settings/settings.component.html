@@ -1,0 +1,222 @@
+<div style="display: flex;">
+    <div class="main-page mainViewToggle">
+        <div class="formcontainer ps-0">
+
+            <!-- title -->
+            <nav class=" bg-white row box-shadow">
+                <div class="col-sm-8 ">
+                    <p class="text-start black-text m-2 d-flex align-items-center   text-dark"><i
+                            class="fa fa-cog fs-3 me-3"></i> Settings</p>
+                </div>
+            </nav>
+
+            <!-- <div class="row">
+                <button (click)="sync()" class="col-sm-2 ">sync</button>
+            </div>
+            <div class="p-2">
+                <div class="row mt-3">
+                    <div class="col-sm-2">
+                        <div class="small">
+                            Site Title
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="form-control form-control-sm" [(ngModel)]="settingGroup.firm_name">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="small">
+                            Site Slogan
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" class="form-control form-control-sm" [(ngModel)]="settingGroup.firm_slogan">
+                    </div>
+                </div>
+            </div> -->
+
+
+            <div class="m-4 p-4 ">
+
+                <div class="row m-1">
+
+
+                    <div class="col-lg-6 ">
+                        <div class="box-shadow bg-white pt-4" style="height:100%;">
+                            <div class="row">
+                                <h3 class="ps-4">Utils</h3>
+                            </div>
+                            <div class="row" *ngFor="let x of data">
+                                <div class="row m-1"
+                                    *ngIf="x.settinggroup == 'top_header' || x.settinggroup == 'others'  || x.settinggroup == 'color'">
+                                    <div class="col-sm-4">
+                                        <label for="" class="small ">{{x.display_name}}</label>
+                                    </div>
+                                    <!-- <div class="col-sm-2">
+                                        <label for="" class="small ">{{x.settinggroup}}</label>
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm " [(ngModel)]="x.value">
+
+                                    </div>
+
+                                    <div class="col-sm-2 ">
+                                        <div class="input-group d-flex align-items-center">
+                                            <input type="checkbox" class="form-check-input" [(ngModel)]="x.published">
+                                            <!-- <input type="number" class="ms-1 form-control form-control-sm " [(ngModel)]="x.serial"> -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="box-shadow bg-white pt-4" style="height:100%;">
+                            <div class="row">
+                                <h3 class="ps-4">Website Images</h3>
+                            </div>
+                            <div class="row m-1">
+                                <div class="col-sm-4">
+                                    <label for="" class="small">Logo Image</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="file" (change)="fileChange($event)">
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="input-group d-flex align-items-center">
+                                        <input type="checkbox" class="form-check-input">
+                                        <!-- <input type="number" class="ms-1 form-control form-control-sm " [(ngModel)]="x.serial"> -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row m-1">
+                                <ul>
+                                    <li>
+                                        <img src="{{logoUrl}}"
+                                        height="90" [width]="90" alt="{{logoUrl}}">
+    
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 ">
+                        <div class="box-shadow bg-white pt-4">
+                            <div class="row">
+                                <h3 class="ps-4">Contact & Emails</h3>
+                            </div>
+                            <div class="row" *ngFor="let x of data">
+                                <div class="row m-1"
+                                    *ngIf="x.settinggroup === 'contact' || x.settinggroup ===  'email'">
+                                    <div class="col-sm-4">
+                                        <label for="" class="small ">{{x.display_name}}</label>
+                                    </div>
+                                    <!-- <div class="col-sm-2">
+                                     <label for="" class="small ">{{x.settinggroup}}</label>
+                                 </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm " [(ngModel)]="x.value">
+
+                                    </div>
+
+                                    <div class="col-sm-2 ">
+                                        <div class="input-group d-flex align-items-center">
+                                            <input type="checkbox" class="form-check-input" [(ngModel)]="x.published">
+                                            <!-- <input type="number" class="ms-1 form-control form-control-sm " [(ngModel)]="x.serial"> -->
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <div class="box-shadow bg-white pt-4">
+                            <div class="row">
+                                <h3 class="ps-4">Socials</h3>
+                            </div>
+                            <div class="row" *ngFor="let x of data">
+                                <div class="row m-1" *ngIf="x.settinggroup === 'icon' ">
+                                    <div class="col-sm-4">
+                                        <label for="" class="small ">{{x.display_name}}</label>
+                                    </div>
+                                    <!-- <div class="col-sm-2">
+                                        <label for="" class="small ">{{x.settinggroup}}</label>
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm " [(ngModel)]="x.value">
+
+                                    </div>
+
+                                    <div class="col-sm-2 ">
+                                        <div class="input-group d-flex align-items-center">
+                                            <input type="checkbox" class="form-check-input" [(ngModel)]="x.published">
+                                            <!-- <input type="number" class="ms-1 form-control form-control-sm " [(ngModel)]="x.serial"> -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row m-1 mt-3">
+
+
+                    <div class="col-lg-6 ">
+                        <div class="box-shadow bg-white pt-4" style="height:100%;">
+                            <div class="row">
+                                <h3 class="ps-4">Locations</h3>
+                            </div>
+                            <div class="row" *ngFor="let x of data">
+                                <div class="row m-1" *ngIf="x.settinggroup === 'location' ">
+                                    <div class="col-sm-4">
+                                        <label for="" class="small ">{{x.display_name}}</label>
+                                    </div>
+                                    <!-- <div class="col-sm-2">
+                                        <label for="" class="small ">{{x.settinggroup}}</label>
+                                    </div> -->
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-sm " [(ngModel)]="x.value">
+
+                                    </div>
+
+                                    <div class="col-sm-2 ">
+                                        <div class="input-group d-flex align-items-center">
+                                            <input type="checkbox" class="form-check-input" [(ngModel)]="x.published">
+                                            <!-- <input type="number" class="ms-1 form-control form-control-sm " [(ngModel)]="x.serial"> -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2 offset-1">
+                    <button (click)="sync()" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+
+
+
+<div class="card-new {{inputcss}}"  >
+    <div class="card-image">
+        <div class="image box-shadow">
+            <img src="{{baseUrl}}/api/OnlineUploadFileDownload?userid={{x.refid}}&sn={{x.refid}}&filenames={{x.refid}}.png&extension=.png&file_type=doctors"
+                class="image-radius col-sm-8 px-0 about-team-image"
+                style="aspect-ratio: 1/1 !important;"
+                (error)="errorHandler($event)"
+                >
+
+        </div>
+    </div>
+
+    <div class="card-text p-3 box-shadow">
+        <h5 class=" d-flex justify-content-center fs-6 m-0 " >
+            <b>{{x.referer}}</b></h5>
+        <p class=" small m-0 mt-1  d-flex  justify-content-around">
+            {{x.detail}}</p>
+            <!-- <p class=" small m-0 mt-1  d-flex  justify-content-around">
+                {{x.regno}}</p> -->
+                
+
+
+
+        <a class=" btn-style small btn-white mt-5  fs-6 smaller btn-book px-2 py-1 d-flex justify-content-around"
+             (click)="selectDoctor(x)"  >
+            View&nbsp;Profile</a>
+
+            <!--modalDirective [content]="modal" [size]="'lg'" -->
+
+
+    </div>
+</div>
+
+
+<modal #modal [modalConfig]="modalConfig" [appointmentData]="appointmentData"[size]="'lg'"> 
+
+

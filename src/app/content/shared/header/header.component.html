@@ -1,85 +1,350 @@
 <div class="header" style="display: block;" *ngIf="show">
     <div class="top-header" id="top-header">
         <div class="row">
-            <div class="col-xl-6 col-lg-4 col-xs-5 offset-lg-1 d-flex align-items-center">
-                <h6 class="white-color m-0"> Unilab Diagnostic Center Pvt. Ltd
-                </h6>
+            <div class="col-xl-2 col-lg-2 col-md-1 col-xs-2 ms-4 d-flex align-items-center d-none d-lg-block">
+                <a [routerLink]="['/Home']">
+                    <img src="{{logoUrl}}" height="90" [width]="90" alt="{{logoUrl}}">
+                </a>
             </div>
-            <div class="col-sm">
-                <div class="row">
-                    <div class="col-sm-1 col-xs-2">
-                        <i class="fa fa-calendar white-color"></i>
+            <div class="col-xs-7 col-lg-7 col-md-9  mx-xl-auto mx-md-0  flex-grow-1 my-auto">
+                <div class="row d-flex justify-content-around">
+
+
+                    <div class="col-4 " id="btnset">
+
+
+                        <div class="mt-1 " id="inner1">
+                            <li class="">Emergency</li>
+                        </div>
+                        <div class="" id="inner2">
+                            <li class="">
+                                {{settings.emergency_no}}
+                            </li>
+
+                        </div>
 
                     </div>
-                    <div class="col-sm col-xs white-color">
-                        Appointments(1234567890)
+
+                    <div class="col-4 d-flex align-items-center" id="btnset">
+                        <div class="ms-3">
+                            <li class="">
+                                {{settings.phone_no_one}} </li>
+                            <li class="">
+                                {{settings.phone_no_two}}
+                            </li>
+
+
+
+                        </div>
+
+                        <div class="mt-1">
+                            <img src="https://delhi.apollohospitals.com/wp-content/themes/apollo/images/icons/24by7.svg"
+                                alt="">
+                        </div>
+                        <div class="ms-3">
+                            <li class="">
+                                {{settings.phone_no_three}} </li>
+                            <li class="">
+                                {{settings.phone_no_four}}
+                            </li>
+
+
+
+                        </div>
+
                     </div>
+
+
+
+
+                    <!-- <div class="col-4  d-flex align-items-center" id="btnset"  >
+
+                        <span class="fa fa-calendar  fs-1 pe-2"></span>
+
+
+                        <a class="small primary-text " target="_blank" style="cursor:pointer" href='https://bluecross.com.np/webapp/LabReportDownload'>Book an <br />&nbsp;appointment</a>
+
+
+
+
+                    </div> -->
+
+
+                    <div class="col-3 d-flex align-items-center" id="btnset-dark">
+
+                        <span class="fa fa-calendar fs-1 p-2"></span>
+                        <a class="small text-white " style="cursor:pointer"
+                            href='{{settings.patient_report_link}}'>Patient's
+                            Report</a>
+
+
+
+
+
+                    </div>
+
+
+
+
                 </div>
             </div>
-            <div class="col-sm">
-                <div class="row">
+
+            <div class="col-lg-1 col-xl-2  mx-auto d-none d-lg-block">
+                <div class="pe-4 d-flex justify-content-end ">
+                    <img src="assets/images/33.png" style="width:80px;height: auto;"
+                        class="d-none d-xl-block m-0 bg-gray icon-circle">
+                    <img src="assets/images/33.png" style="width:60px;height: auto;"
+                        class="d-block d-xl-none m-0 bg-gray icon-circle">
+                    <!-- <img src="/assets/images/33.png"
+                        alt="" style="width:100px;height: auto;"> -->
+                </div>
+                <!-- <div class="col-2 fs-5 text-white p-2  d-flex justify-content-around" id="btnset-dark">
+                    <span class="fa fa-envelope"></span>
+
+                </div> -->
+                <!-- <div class="input-group d-flex justify-content-around">
+                    
+                        <i class="fab fa-twitter gray-color"></i>
+                        <i class="fab fa-youtube gray-color"></i>
+                        <i class="fab fa-facebook gray-color"></i>
+                        <i class="fab fa-linkedin gray-color"></i>
+                    
+                </div> -->
+                <!-- <div class="row">
                     <div class="col-sm-1">
                         <i class="fa fa-phone white-color"></i>
                     </div>
                     <div class="col-sm white-color">
                         1234567890
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
     <!--header-->
-        
-    <header id="site-header" class="fixed-top bottom-border">
-        <div class="container">
+
+    <header id="site-header" class="fixed-top ">
+        <div class="container-fluid">
             <nav class="navbar navbar-expand-lg ">
-                <a class="navbar-brand" href="index.html">
-                    <img src="assets/images/unilab-logo.png">
-                    
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
+                <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <img src="{{logoUrl}}">
+
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                  </button>
+                </button>
 
 
-                <div class="collapse navbar-collapse"id="navbarNavDropdown">
-                    <ul class="navbar-nav ms-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link nav-header" [routerLink]="['/Home']" routerLinkActive='active'>Home</a>
+
+                <div class="collapse navbar-collapse " id="navbarNavDropdown">
+
+                    <ul class="navbar-nav w-75 d-flex justify-content-around mx-lg-auto">
+
+                        <li class="nav-item  ">
+                            <a class="nav-link nav-header white-text " [routerLink]="['/Home']"
+                                routerLinkActive='active'>Home</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link  nav-header" [routerLink]="['/About']" routerLinkActive='active'>About</a>
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
+                                data-bs-toggle="dropdown" data-bs-auto-close="outside">About Us</a>
+                            <div class="dropdown-menu dropdown-menu-right" style="border:1px solid gray">
+
+                                <div class="row w-100 mx-0">
+
+
+
+                                    <div class="col-12 col-sm-12 col-md-12 small ">
+                                        <div class="list-group info" style="border-bottom:1px solid gray;">
+
+                                            <a class="list-group-item " *ngFor="let x of aboutList"
+                                                (click)="gotoPage(x.page_title)">{{x.page_title}}</a>
+                                            <!-- <a class="list-group-item" href="#">Mission & Vision</a>
+                                            <a class="list-group-item" href="#">Core values</a>
+                                            <a class="list-group-item" href="#">Chairman's Message</a>
+                                            <a class="list-group-item" href="#">Board of directors</a>
+                                            <a class="list-group-item" href="#">Senior Management Team</a> -->
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <div class="btn-group">
-                                <button style="border: none;" class="btn nav-link  nav-header dropdown-toggle" type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
+
+
+                        <!-- <li class="nav-item">
+                            <div class="dropdown">
+                                <button style="border: none;" class="btn nav-link  nav-header dropdown-toggle white-text"
+                                    type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true">
                                     Departments
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                  <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                              </div>
-                            <!-- <a class="nav-link  nav-header" >Departments</a> -->
+
+                                <div class="dropdown-menu">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                    <ul class="" aria-labelledby="">
+
+                                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-3">
+                                    <ul class="" aria-labelledby="">
+
+                                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                        <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            </div>
+                                
+                            </div>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link  nav-header" [routerLink]="['/Service']" routerLinkActive='active'>Scope of Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  nav-header " [routerLink]="['/Contact']" routerLinkActive='active'>Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  nav-header " [routerLink]="['/Admin/AdminHome']" routerLinkActive='active'>Admin</a>
+-->
+
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
+                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Departments</a>
+                            <div class="dropdown-menu dropdown-menu-right " style="border:1px solid gray">
+
+                                <div class="mx-0 d-flex justify-content-around small">
+
+                                    <div class="list-group info px-2" *ngFor="let column of getColumns()">
+                                        <a class="list-group-item " *ngFor="let item of column"
+                                            (click)="gotoPageMultipleParam(item)">{{ item.detail }}</a>
+
+                                    </div>
+                                </div>
+                            </div>
                         </li>
 
+
+
+                        <li class="nav-item ">
+                            <a class="nav-link  nav-header white-text " [routerLink]="['/DoctorsList']"
+                                routerLinkActive='active'>Doctors</a>
+                        </li>
+
+
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
+                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Services</a>
+                            <div class="dropdown-menu dropdown-menu-right" style="border:1px solid gray">
+
+                                <div class="row w-100 mx-0">
+
+
+
+                                    <div class="col-12 col-sm-12 col-md-12 small ">
+                                        <div class="list-group info" style="border-bottom:1px solid gray;">
+                                            <a class="list-group-item " *ngFor="let x of servicesList"
+                                                (click)="gotoPage(x.page_title)">{{x.page_title}}</a>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
+                                data-bs-toggle="dropdown" data-bs-auto-close="outside">Packages</a>
+                            <div class="dropdown-menu dropdown-menu-right" style="border:1px solid gray">
+
+                                <div class="row w-100 mx-0">
+
+
+
+                                    <div class="col-12 col-sm-12 col-md-12 small ">
+                                        <div class="list-group info" style="border-bottom:1px solid gray;">
+                                            <a class="list-group-item " *ngFor="let x of packagesList"
+                                                (click)="gotoPage(x.page_title)">{{x.page_title}}</a>
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Blogs']"
+                                routerLinkActive='active'>Events</a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/OpdTimings']"
+                                routerLinkActive='active'>OPD Timings</a>
+                        </li>
+
+                        <!-- <li class="nav-item " *ngIf="vacancyList.length==0">
+                            <a class="nav-link  nav-header white-text " [routerLink]="['/Page/careers']"
+                                routerLinkActive='active'>Careers</a>
+                        </li> -->
+
+
+                        <li class="nav-item">
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Contact']"
+                                routerLinkActive='active'>Contact</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link  nav-header white-text" [routerLink]="['/Admin/AdminHome']"
+                                routerLinkActive='active'>Admin</a>
+                        </li> -->
+
+                        <li class="nav-item">
+                            <div class="d-flex justify-content-around align-items-center mt-2">
+                                <a href="{{settings.facebook_link}}" target="_blank" *ngIf="settings.facebook_link">
+                                    <i class="fab nav-header  nav-link fa-facebook white-text"></i>
+                                </a>
+                                <a href="{{settings.instagram_link}}" target="_blank" *ngIf="settings.instagram_link">
+                                    <i class="fab nav-header nav-link fa-instagram white-text"></i>
+                                </a>
+                                <a href="{{settings.tiktok_link}}" target="_blank" *ngIf="settings.tiktok_link">
+                                    <i class="fa-brands fa-tiktok white-text nav-header nav-link "></i>
+                                </a>
+                                <a href="{{settings.linkedin_link}}" target="_blank" *ngIf="settings.linkedin_link">
+                                    <i class="fab nav-header nav-link fa-linkedin white-text"></i>
+                                </a>
+                                <a href="{{settings.youtube_link}}" target="_blank" *ngIf="settings.youtube_link">
+                                    <i class="fab nav-header nav-link fa-youtube white-text"></i>
+                                </a>
+                                <!-- <i class="fab nav-header nav-link fa-brands fa-tiktok white-text"></i>
+                                <i class="fab nav-header nav-link fa-linkedin white-text"></i> -->
+
+                            </div>
+                        </li>
 
                     </ul>
 
                 </div>
 
-                <!-- //toggle switch for light and dark theme -->
             </nav>
         </div>
     </header>
+
+
+
 </div>

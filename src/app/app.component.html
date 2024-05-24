@@ -1,10 +1,13 @@
 <div [ngStyle]="{'display': show ? 'unset' : 'flex' }">
+    <!-- loader  -->
+    <app-loader></app-loader>
+    
     <app-header *ngIf="show"></app-header>
-    <app-admin *ngIf="!show"></app-admin>
-    <div style="flex-grow: 1;">
-        <router-outlet> </router-outlet>
+    <app-admin *ngIf="!show" (fixEmitter)="fixNav($event)"></app-admin>
+    <div style="flex-grow: 1;min-height: 66vh;" [ngClass]="{'HideAdminRouteOnNavFix' : fix == true}">
+        <router-outlet > </router-outlet>
     </div>
-    <button (click)="topFunction()" id="movetop" title="Go to top" class="top-button">
+    <button (click)="topFunction()" id="movetop" title="Go to top" class="top-button" [ngStyle]="{'display': show ? 'unset' : 'none' }">
         &#10548;
     </button>
     <app-footer *ngIf="show"> </app-footer>

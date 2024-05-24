@@ -1,0 +1,156 @@
+<div class="mt-5">
+
+  <div id="banner-main " style="margin-top: 8%;">
+
+
+
+    <!-- <div class="inner-banner-image" *ngIf="fileList.length!=0">
+            <div class="" *ngFor="let x of fileList">
+                <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{content.page_group}}"
+                    alt="{{x.filenames}}">
+
+            </div>
+        </div>
+        <div class="inner-banner-image" *ngIf="fileList.length==0">
+            <div class="">
+                <img src="{{fileLink}}" alt="demoPic">
+
+            </div>
+        </div>
+
+        <div class="banner-content">
+            <h3 style="position: absolute;top:50%;left:40%;color: white;" *ngIf="param1==null"><b>
+
+                    {{param}}</b></h3>
+
+
+            <h3 style="position: absolute;top:50%;left:40%;color: white;" *ngIf="param1!=null"><b>
+
+                    {{param1}}</b></h3>
+        </div> -->
+
+
+  </div>
+
+
+
+
+  <div class="container">
+
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <!-- <li class="breadcrumb-item " aria-current="page" *ngIf="content.page_group!='departments'">{{selectedContent.page_title}}</li> -->
+
+        <li class="breadcrumb-item " aria-current="page">{{param1}} News</li>
+
+      </ol>
+    </nav>
+
+    <div class="row mt-3" *ngIf="selectedContent.length!=0">
+      <div class=" mb-2 ">
+        <h1 class="card-title mb-3 d-flex justify-content-start">{{selectedContent.page_title}}</h1>
+
+        <div class="row">
+
+          <div class="col-sm-12" >
+            <img src="{{fileLink}}&filenames={{selectedImage.filenames}}&extension={{selectedImage.extension}}&file_type={{content.page_group}}"
+              alt="{{selectedImage.filenames}}" class="img-fluid " style="width:100%;height:auto;aspect-ratio: 16/9;">
+
+          </div>
+
+          <div class="row align-items-center" *ngIf="fileList.length>1">
+            <div class="col-sm-2">
+              &nbsp;
+            </div>
+
+
+          <div class="col-sm justify-content-center"   *ngFor="let x of fileList">
+            
+            <img src="{{fileLink}}&filenames={{x.filenames}}&extension={{x.extension}}&file_type={{content.page_group}}"
+              alt="{{x.filenames}}" class="img-fluid "
+              [ngClass]="{'activated' : selectedImage.filenames== x.filenames }"  style="width:40%"
+              (click)="selectImage(x)">
+ 
+          </div>
+
+          
+        </div>
+
+          <div class=" col-md-12 box-shadow mb-5">
+            <!-- <img
+              src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{selectedContent.sn}}&sn={{selectedContent.sn}}&filenames={{selectedContent.sn}}.png&extension=.png&file_type={{content.page_group}}"
+              class="img-fluid " style="width:100%" /> -->
+
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card-body">
+
+              <div class="black-text" [innerHTML]="selectedContent.page_text"></div>
+
+              <!-- <p class="card-text">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </p> -->
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <hr class="mt-5">
+    <div class="row">
+      <h2 class="primary-text">Our Events</h2>
+
+
+    </div>
+
+    <div class="row mt-3" style="padding:0px ">
+
+
+
+      <div class="card-group">
+        <div class="card m-3 box-shadow blog-card" *ngFor="let x of contents">
+          <div class="image" style="height: 50%;">
+            
+            <img
+              src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{x.sn}}&sn={{x.sn}}&filenames={{x.sn}}.png&extension=.png&file_type={{content.page_group}}"
+              class="card-img-top" style="height:100%" />
+          </div>
+          <div class="card-body ">
+            <div style="position: relative;">
+              <h5 class="card-title fs-5 mt-2 fw-lighter" style="cursor:pointer" (click)="selectContent(x)">
+                {{x.page_title}}</h5>
+              <hr>
+              <p class="card-text black-text " [innerHTML]="x.page_text | slice:0:150">
+              </p>
+              <br>
+            </div>
+            <a class=" btn-style small btn-white  m-3 p-2 col-sm-4  smaller btn-book  d-flex  justify-content-center "
+              style="cursor:pointer;position: absolute;
+          bottom: 0;right: 0;font-size: 9px;" (click)="selectContent(x)">
+              Read&nbsp;more</a>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+  </div>
