@@ -13,10 +13,17 @@ export class AdminComponent implements OnInit {
   isLoggedIn: any;
   userName: any;
   id: number = 0
+  logoUrl : any
   constructor(private router: Router,
     private service: BroadcastService,
-    private auth: AuthService) {
-
+    private auth: AuthService,
+    private broadcastService : BroadcastService
+  ) {
+    this.broadcastService.currentLogo.subscribe({
+      next: data => {
+        this.logoUrl = data
+      }
+    })
     this.service.currentData.subscribe((dataSub: any) => {
       this.isLoggedIn = dataSub;
       // console.log(this.isLoggedIn);

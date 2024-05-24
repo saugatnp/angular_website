@@ -28,16 +28,22 @@ export class HomeComponent implements OnInit {
   baseUrl: string = '';
   settings = new SettingsGroup()
 
+  logoUrl : any
+
   constructor(private router: Router,
     private doctorService: DoctorsService,
     public appconfig: AppConfiguration,
     public pagecontent: PageContentService,
     private http: HttpClient,
     private BroadCastservice: BroadcastService,
-    private modalService: NgbModal
-
-
+    private modalService: NgbModal,
+    private broadcastService : BroadcastService
   ) {
+    this.broadcastService.currentLogo.subscribe({
+      next: data => {
+        this.logoUrl = data
+      }
+    })
 
     this.baseUrl = this.appconfig.baseUrl;
 
@@ -65,7 +71,8 @@ export class HomeComponent implements OnInit {
   errorHandler(event: any) {
     // (event.target as HTMLImageElement).style.display = 'none';
     console.debug(event);
-    event.target.src = "https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=60&h=60  "
+    // event.target.src = this.fileLink;
+    event.target.src = this.logoUrl
   }
 
   goToLink(x: any) {

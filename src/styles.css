@@ -1063,7 +1063,7 @@ body {
 
   /* For mobile phones: */
   .top-header {
-    display: none;
+    /* display: none; */
   }
 
   .home-services {

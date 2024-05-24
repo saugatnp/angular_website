@@ -3,6 +3,8 @@ import { Component, HostListener } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { SettingsService } from './content/services/settings.service';
+import { BroadcastService } from './content/services/broadcast.service';
+import { UserUploads } from './content/pages/admin/settings/settings.model';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,8 @@ export class AppComponent {
     private router: Router,
     private http : HttpClient,
     private appconfig: JsonAppConfigService,
-    private settingService : SettingsService
+    private settingService : SettingsService,
+    private broadcastService : BroadcastService
     ) {
 
       this.baseUrl = this.appconfig.baseUrl;
@@ -25,6 +28,7 @@ export class AppComponent {
      }
   ngOnInit(): void {
     this.getSettings()
+    this.getPicture()
     this.settingService.getSettings();
     this.router.events.subscribe(event => {
 
@@ -39,6 +43,28 @@ export class AppComponent {
       }
     });
   }
+
+  userUploadData : UserUploads = new UserUploads();
+  getPicture() {
+    var token = localStorage.getItem('access_token');
+    this.http.get<Array<UserUploads>>(this.baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo", { headers: { Authorization: 'Bearer ' + token } })
+      .subscribe({
+        next: data => this.storePic(data[data.length -1]),
+        error: res => console.log(res)
+      })
+  }
+
+
+  fileList: any;
+  fileLink: any;
+  storePic(res: any) {
+    this.fileList = res;
+    this.fileLink =     this.baseUrl + "uploads/logo/120/" + res.filenames;
+    this.broadcastService.changeLogoUrl(this.fileLink)
+    // this.fileLink = this.baseUrl + '/api/OnlineUploadFileDownload?userid=' + 120 + '&sn=' + 120
+  }
+
+
   fix: boolean = false
   fixNav($event: boolean) {
     this.fix = $event

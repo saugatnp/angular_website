@@ -9,6 +9,8 @@ import { ModalConfig } from '../../modal/modal.config';
 import { AppointmentModel } from '../../models/appointment.model';
 import { Settings, SettingsGroup } from '../../pages/admin/settings/settings.model';
 import { PageContentService } from '../../services/pagecontent.service';
+import { BroadcastService } from '../../services/broadcast.service';
+
 
 @Component({
   selector: 'doctor-card',
@@ -21,13 +23,18 @@ export class DoctorCardComponent implements OnInit {
 
   show: boolean = true;
   baseUrl = ''
+  logoUrl : any;
   constructor(private router: Router,
     private http: HttpClient,
     private pagecontent: PageContentService,
     public appconfig: JsonAppConfigService,
-
-
+    private broadcastService : BroadcastService
   ) {
+    this.broadcastService.currentLogo.subscribe({
+      next: data => {
+        this.logoUrl = data
+      }
+    })
     this.baseUrl = this.appconfig.baseUrl;
   }
 
@@ -117,9 +124,8 @@ export class DoctorCardComponent implements OnInit {
 
 
   errorHandler(event: any) {
-    // (event.target as HTMLImageElement).style.display = 'none';
     console.debug(event);
-    event.target.src = "https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=60&h=60  "
+    event.target.src = this.logoUrl
   }
 
 

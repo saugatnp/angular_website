@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Observer } from 'rxjs';
-import { SettingsGroup } from '../pages/admin/settings/settings.model';
+import { SettingsGroup , UserUploads } from '../pages/admin/settings/settings.model';
 import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';
+import { JsonAppConfigService } from 'src/config/json-app-config.service';
+
+
 
 
 @Injectable({
@@ -23,11 +27,17 @@ export class BroadcastService {
   moduleSelected: string = '';
 
   firms: any;
+  baseUrl = ''
 
 
 
   constructor(private auth: AuthService,
+    private http: HttpClient,
+    private appconfig: JsonAppConfigService,
+
+
 ) {
+  this.baseUrl = this.appconfig.baseUrl
 
 
     // this.firmService.getFirmFromServer().subscribe(x =>
@@ -43,6 +53,32 @@ export class BroadcastService {
 //   changeInit(newinit: string) {
 //     this.initSub.next(newinit);
 //   }
+
+
+userUploadData : UserUploads = new UserUploads();
+  getPicture() {
+    var token = localStorage.getItem('access_token');
+    this.http.get<Array<UserUploads>>(this.baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo", { headers: { Authorization: 'Bearer ' + token } })
+      .subscribe({
+        next: data => this.storePic(data[0]),
+        error: res => console.log(res)
+      })
+  }
+
+//NAVIGATION DYNAMIC Url
+private logoUrl = new BehaviorSubject<string>('');
+currentLogo = this.logoUrl.asObservable();
+changeLogoUrl(newObj: string) {
+  this.logoUrl.next(newObj);
+}
+
+  fileList: any;
+  fileLink: any;
+  storePic(res: any) {
+    this.fileList = res;
+    this.fileLink =     this.baseUrl + "uploads/logo/120/" + res.filenames;
+    // this.fileLink = this.baseUrl + '/api/OnlineUploadFileDownload?userid=' + 120 + '&sn=' + 120
+  }
 
 
   //LIS OGGED IN  

@@ -3,9 +3,7 @@
         <div class="row">
             <div class="col-xl-2 col-lg-2 col-md-1 col-xs-2 ms-4 d-flex align-items-center d-none d-lg-block">
                 <a [routerLink]="['/Home']">
-                    <img src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=70&h=80" class="d-none d-xl-block">
-                    <img src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=49&h=56" class="d-block d-xl-none">
-
+                    <img src="{{logoUrl}}" height="90" [width]="90" alt="{{logoUrl}}">
                 </a>
             </div>
             <div class="col-xs-7 col-lg-7 col-md-9  mx-xl-auto mx-md-0  flex-grow-1 my-auto">
@@ -75,7 +73,8 @@
                     <div class="col-3 d-flex align-items-center" id="btnset-dark">
 
                         <span class="fa fa-calendar fs-1 p-2"></span>
-                        <a class="small text-white " style="cursor:pointer" href='{{settings.patient_report_link}}'>Patient's
+                        <a class="small text-white " style="cursor:pointer"
+                            href='{{settings.patient_report_link}}'>Patient's
                             Report</a>
 
 
@@ -86,14 +85,16 @@
 
 
 
-                    
+
                 </div>
             </div>
 
-            <div class="col-lg-1 col-xl-2  mx-auto d-none d-lg-block" >
+            <div class="col-lg-1 col-xl-2  mx-auto d-none d-lg-block">
                 <div class="pe-4 d-flex justify-content-end ">
-                    <img src="assets/images/33.png" style="width:80px;height: auto;" class="d-none d-xl-block m-0 bg-gray icon-circle">
-                    <img src="assets/images/33.png" style="width:60px;height: auto;" class="d-block d-xl-none m-0 bg-gray icon-circle">
+                    <img src="assets/images/33.png" style="width:80px;height: auto;"
+                        class="d-none d-xl-block m-0 bg-gray icon-circle">
+                    <img src="assets/images/33.png" style="width:60px;height: auto;"
+                        class="d-block d-xl-none m-0 bg-gray icon-circle">
                     <!-- <img src="/assets/images/33.png"
                         alt="" style="width:100px;height: auto;"> -->
                 </div>
@@ -125,10 +126,10 @@
     <header id="site-header" class="fixed-top ">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg ">
-                
+
                 <div class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src="https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=35&h=40">
+                    <img src="{{logoUrl}}">
 
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -237,7 +238,7 @@
                                 routerLinkActive='active'>Doctors</a>
                         </li>
 
-                        
+
                         <li class="nav-item dropdown dropdown-mega position-static">
                             <a class="nav-link  nav-header white-text dropdown-toggle" href="#"
                                 data-bs-toggle="dropdown" data-bs-auto-close="outside">Services</a>
@@ -292,12 +293,12 @@
                             <a class="nav-link  nav-header white-text" [routerLink]="['/Blogs']"
                                 routerLinkActive='active'>Events</a>
                         </li>
-                      
+
                         <li class="nav-item ">
                             <a class="nav-link  nav-header white-text" [routerLink]="['/OpdTimings']"
                                 routerLinkActive='active'>OPD Timings</a>
                         </li>
-                      
+
                         <!-- <li class="nav-item " *ngIf="vacancyList.length==0">
                             <a class="nav-link  nav-header white-text " [routerLink]="['/Page/careers']"
                                 routerLinkActive='active'>Careers</a>
@@ -324,10 +325,10 @@
                                 <a href="{{settings.tiktok_link}}" target="_blank" *ngIf="settings.tiktok_link">
                                     <i class="fa-brands fa-tiktok white-text nav-header nav-link "></i>
                                 </a>
-                                <a href="{{settings.linkedin_link}}" target="_blank"  *ngIf="settings.linkedin_link">
+                                <a href="{{settings.linkedin_link}}" target="_blank" *ngIf="settings.linkedin_link">
                                     <i class="fab nav-header nav-link fa-linkedin white-text"></i>
                                 </a>
-                                <a href="{{settings.youtube_link}}" target="_blank"  *ngIf="settings.youtube_link">
+                                <a href="{{settings.youtube_link}}" target="_blank" *ngIf="settings.youtube_link">
                                     <i class="fab nav-header nav-link fa-youtube white-text"></i>
                                 </a>
                                 <!-- <i class="fab nav-header nav-link fa-brands fa-tiktok white-text"></i>

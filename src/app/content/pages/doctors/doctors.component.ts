@@ -7,6 +7,8 @@ import { ModalConfig } from '../../modal/modal.config';
 import { AppointmentModel } from '../../models/appointment.model';
 import { DoctorsService } from '../../services/doctors.service';
 import { SpecialityService } from '../../services/speciality.service';
+import { BroadcastService } from '../../services/broadcast.service';
+
 
 @Component({
   selector: 'app-doctors',
@@ -14,12 +16,21 @@ import { SpecialityService } from '../../services/speciality.service';
   styleUrls: ['./doctors.component.css']
 })
 export class DoctorsComponent implements OnInit {
+  logoUrl : any
+
 
   constructor(private specialityService: SpecialityService,
     private doctorsService: DoctorsService,
 
     private http: HttpClient,
-    public appconfig: AppConfiguration) {
+    public appconfig: AppConfiguration,
+    private broadcastService : BroadcastService
+  ) {
+    this.broadcastService.currentLogo.subscribe({
+      next: data => {
+        this.logoUrl = data
+      }
+    })
     this.baseUrl = appconfig.baseUrl;
   }
 
@@ -47,7 +58,7 @@ export class DoctorsComponent implements OnInit {
   errorHandler(event: any) {
     // (event.target as HTMLImageElement).style.display = 'none';
     console.debug(event);
-    event.target.src = "https://www.hamrodoctor.com/image.php?src=/uploads/hospitals/5e53652a04e48.png&w=60&h=60  "
+    event.target.src = this.logoUrl
   }
 
 

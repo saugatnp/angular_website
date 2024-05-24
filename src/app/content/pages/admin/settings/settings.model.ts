@@ -32,3 +32,13 @@ export class SettingsGroup {
     map_url: string = ''; 
     remarks: string = ''
 }
+
+export class UserUploads {
+    ddate: string = '';
+    extension: string = '';
+    filenames: string = '';
+    id: number = 0;
+    published: boolean = false;
+    sn: string = '';
+    userid: number = 0;
+  }

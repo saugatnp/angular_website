@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
   
   loggedInAsMr: any;
   returnUrl!: string;
+  logoUrl : any
+
 
   ngOnInit() {
 
@@ -46,10 +48,14 @@ export class LoginComponent implements OnInit {
     private titleService:TitleService,
     private route: ActivatedRoute,
     public toastr: NotificationService,
-
-    //NEW URL COPY FROM HERE
-    private appConfig:AppConfiguration
-    ) {
+    private appConfig:AppConfiguration,
+    private broadcastService : BroadcastService
+  ) {
+    this.broadcastService.currentLogo.subscribe({
+      next: data => {
+        this.logoUrl = data
+      }
+    })
    this.baseUrl = appConfig.baseUrl;
    this.titleService.setTitle(this.title)
 }

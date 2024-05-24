@@ -8,6 +8,8 @@ import { PageContentService } from 'src/app/content/services/pagecontent.service
 import { SpecialityService } from 'src/app/content/services/speciality.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
 import { PageContent } from '../admin-about/pagecontent.model';
+import { BroadcastService } from 'src/app/content/services/broadcast.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,6 +17,7 @@ import { PageContent } from '../admin-about/pagecontent.model';
 export class AdminHomeComponent implements OnInit {
 
   title: string = "Home";
+  logoUrl :any
  
   editor = ClassicEditor as unknown as {
     create: any;
@@ -31,8 +34,13 @@ export class AdminHomeComponent implements OnInit {
     private contentService: PageContentService,
     private modal: NgbModal,
     private toastr : NotificationService,
-
+    private broadcastService : BroadcastService
   ) {
+    this.broadcastService.currentLogo.subscribe({
+      next: data => {
+        this.logoUrl = data
+      }
+    })
     this.baseUrl = appconfig.baseUrl;
 
     // contentService.getPageContent().subscribe(x => {

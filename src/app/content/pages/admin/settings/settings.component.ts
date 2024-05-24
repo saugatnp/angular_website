@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/content/services/notification.service';
 import { JsonAppConfigService } from 'src/config/json-app-config.service';
-import { Settings, SettingsGroup } from './settings.model';
+import { Settings, SettingsGroup, UserUploads } from './settings.model';
+import { BroadcastService } from 'src/app/content/services/broadcast.service';
 
 @Component({
   selector: 'app-settings',
@@ -16,14 +17,19 @@ export class SettingsComponent implements OnInit {
   baseUrl = ''
   data: Array<Settings> = new Array<Settings>();
 
-
+  logoUrl: any
 
   constructor(
     private http: HttpClient,
     private appconfig: JsonAppConfigService,
     private toastr: NotificationService,
+    private broadcastService : BroadcastService
   ) {
-
+    this.broadcastService.currentLogo.subscribe({
+      next: data => {
+        this.logoUrl = data
+      }
+    });
     this.baseUrl = this.appconfig.baseUrl;
   }
 
@@ -31,7 +37,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getFromServer()
-    this.getPicture()
+    // this.getPicture()
   }
 
 
@@ -152,39 +158,22 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  userUploadData : UserUploads = new UserUploads();
   getPicture() {
-    // this.modal.dismissAll();
     var token = localStorage.getItem('access_token');
-    // var userId = this.authorize.getUserId();
-    const baseUrl = this.appconfig.baseUrl;
-    var demourl = 'api/OnlineAppointmentRequestFile?userid=' + 120 +
-      '&sn=' + 120 +
-      '&file_type=logo'
-    this.http.get(baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo"
-      // baseUrl + demourl
-      , { headers: { Authorization: 'Bearer ' + token } })
+    this.http.get<Array<UserUploads>>(this.baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo", { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
-
-        next: data => this.storePic(data),
+        next: data => this.storePic(data[0]),
         error: res => console.log(res)
-
-      }
-      )
+      })
   }
 
 
   fileList: any;
   fileLink: any;
   storePic(res: any) {
-    // console.log(res);
     this.fileList = res;
-    const baseUrl = this.appconfig.baseUrl;
-
-    this.fileLink =
-      baseUrl + '/api/OnlineUploadFileDownload?userid=' + 120 + '&sn=' + 120
-    // '&file_type=ANGULAR'
-    // fileLink = this.baseUrl + 'api/OnlineUploadFileDownload?userid='+vm.selectedBlog.sn+'&sn='+vm.selectedBlog.sn;
-    // $scope.fileType = 'SERVICES';
+    this.fileLink =     this.baseUrl + "uploads/logo/120/" + res.filenames;
   }
 
 
