@@ -48,7 +48,7 @@ export class DoctorsComponent implements OnInit {
   getDepartmentList() {
     this.specialityService.getSpecialityList().subscribe({
       next: res => this.deptList = res,
-      error: err => console.log(err)
+      error: err => console.error(err)
     })
   }
 

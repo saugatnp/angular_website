@@ -162,7 +162,6 @@ export class ContentComponent implements OnInit {
     }
 
 
-    // console.log(this.content)
     this.http.post(this.baseUrl + postUrl, this.content, options)
       .subscribe(
         {
@@ -191,7 +190,6 @@ export class ContentComponent implements OnInit {
 
   }
   Error(res: any): void {
-    // console.log(res)
     this.errorToastr();
     // throw new Error('Method not implemented.');
   }
@@ -253,7 +251,7 @@ export class ContentComponent implements OnInit {
           .subscribe(
             {
               next:res=>this.getPicture(),
-              error:err => console.log(err)
+              error:err => console.error(err)
 
             }
            
@@ -300,7 +298,7 @@ export class ContentComponent implements OnInit {
       .subscribe({
 
         next: data => this.storePic(data),
-        error: res => console.log(res)
+        error: res => console.error(res)
 
       }
       )
@@ -312,7 +310,6 @@ export class ContentComponent implements OnInit {
   imageList:any=[]
 
   storePic(res: any) {
-    // console.log(res);
     this.fileList = res;
     this.imageList=res;
     const baseUrl = this.baseUrl;

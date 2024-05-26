@@ -61,7 +61,7 @@ userUploadData : UserUploads = new UserUploads();
     this.http.get<Array<UserUploads>>(this.baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo", { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
         next: data => this.storePic(data[0]),
-        error: res => console.log(res)
+        error: res => console.error(res)
       })
   }
 

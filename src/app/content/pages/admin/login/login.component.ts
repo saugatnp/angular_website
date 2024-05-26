@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
 
   Error(res: any) {
    // this.ngxspinner.hide()
-    console.log(res);
+    console.error(res);
     // this.notifyService.showError(res.statusText,this.title);
   }
 

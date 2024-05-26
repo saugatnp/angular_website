@@ -61,7 +61,6 @@ export class SettingsComponent implements OnInit {
 
   successGet(data: any) {
     this.data = data;
-    console.log(this.data)
   }
 
 
@@ -94,7 +93,6 @@ export class SettingsComponent implements OnInit {
       'headers': { 'Authorization': 'Bearer' + token }
     }
     var postUrl = 'api/SettingsInsert';
-    console.log(payload);
     this.http.post(this.baseUrl + postUrl, payload, options)
       .subscribe(
         {
@@ -114,7 +112,6 @@ export class SettingsComponent implements OnInit {
       'headers': { 'Authorization': 'Bearer' + token }
     }
     var postUrl = 'api/SettingsUpdate';
-    // console.log(payload)
     this.http.post(this.baseUrl + postUrl, payload, options)
       .subscribe(
         {
@@ -150,7 +147,7 @@ export class SettingsComponent implements OnInit {
         .subscribe(
           {
             next: data => this.getPicture(),
-            error: err => console.log(err)
+            error: err => console.error(err)
           }
 
 
@@ -164,7 +161,7 @@ export class SettingsComponent implements OnInit {
     this.http.get<Array<UserUploads>>(this.baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo", { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
         next: data => this.storePic(data[0]),
-        error: res => console.log(res)
+        error: res => console.error(res)
       })
   }
 

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   baseUrl: string = '';
   settings = new SettingsGroup()
 
-  logoUrl : any
+  logoUrl: any
 
   constructor(private router: Router,
     private doctorService: DoctorsService,
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private BroadCastservice: BroadcastService,
     private modalService: NgbModal,
-    private broadcastService : BroadcastService
+    private broadcastService: BroadcastService
   ) {
     this.broadcastService.currentLogo.subscribe({
       next: data => {
@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
 
     doctorService.getDoctorList().subscribe({
       next: x => this.doctors = x,
-      error: err => console.log(err)
+      error: err => console.error(err)
     })
 
 
@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
     this.pagecontent.getPageContent().subscribe({
       next: (value) =>
         this.storeContent(value),
-      error: (err) => console.log(err)
+      error: (err) => console.error(err)
 
 
     })
@@ -116,18 +116,15 @@ export class HomeComponent implements OnInit {
         this.modalData.push(value)
 
 
-          this.openModal(parseInt(key))
-        // console.log(this.modalData)
+        this.openModal(parseInt(key))
 
       }
 
-      // console.log('1time')
 
       // for (let i = 0; i <= this.modalData.length - 1; i++) {
 
       //   setTimeout(() => {
       //     this.selectedIndex=i;
-      //     console.log(this.selectedIndex)
       //     this.openModal(i)
       //   }, 1000);
       // }
@@ -145,18 +142,17 @@ export class HomeComponent implements OnInit {
 
   async openModal(i: number) {
 
-    // console.log(i)
     // this.selectedIndex = i
-if(i==0){
-    this.modalService.open(this.content1,{size:'lg',centered:true,animation:true})
-  }
+    if (i == 0) {
+      this.modalService.open(this.content1, { size: 'lg', centered: true, animation: true })
+    }
 
-  if(i==1){
-    this.modalService.open(this.content2,{size:'lg',centered:true,animation:true})
-  }
-  if(i==2){
-    this.modalService.open(this.content3,{size:'lg',centered:true,animation:true})
-  }
+    if (i == 1) {
+      this.modalService.open(this.content2, { size: 'lg', centered: true, animation: true })
+    }
+    if (i == 2) {
+      this.modalService.open(this.content3, { size: 'lg', centered: true, animation: true })
+    }
   }
 
 
@@ -176,13 +172,13 @@ if(i==0){
       .subscribe({
 
         next: data => this.storePic(data),
-        error: res => console.log(res)
+        error: res => console.error(res)
 
       }
       )
   }
 
-  modalImageLink= this.appconfig.baseUrl + '/api/OnlineUploadFileDownload?userid='
+  modalImageLink = this.appconfig.baseUrl + '/api/OnlineUploadFileDownload?userid='
   // + 101 + '&sn=' + 101
 
 
@@ -190,7 +186,7 @@ if(i==0){
   fileList: any;
   fileLink: any;
   storePic(res: any) {
-    // console.log(res);
+
     this.fileList = res;
     this.fileList = res.filter((x: { page_group: string, published: boolean }) => x.published == true);
     const baseUrl = this.appconfig.baseUrl;
@@ -206,10 +202,8 @@ if(i==0){
   redirectToService(index: number) {
     if (index % 2 == 0) {
       this.router.navigateByUrl("/Service/(ServiceName:ServiceOne/)")
-      // console.log("%2")
     }
     else {
-      // console.log("no %2")
 
       this.router.navigateByUrl("/Service/(ServiceName:ServiceTwo)")
     }
@@ -220,7 +214,6 @@ if(i==0){
   onSelectImage(x: any) {
     this.router.navigate(['/Page/' + x]);
 
-    // console.log(x)
     this.selectedImage = x.image;
     // localStorage.setItem('img', this.selectedImage);
   }

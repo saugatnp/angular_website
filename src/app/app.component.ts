@@ -50,7 +50,7 @@ export class AppComponent {
     this.http.get<Array<UserUploads>>(this.baseUrl + "/api/OnlineAppointmentRequestFile?userid=" + 120 + "&sn=" + 120 + "&file_type=logo", { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
         next: data => this.storePic(data[data.length -1]),
-        error: res => console.log(res)
+        error: res => console.error(res)
       })
   }
 

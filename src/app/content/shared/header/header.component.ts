@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
       , { headers: { Authorization: 'Bearer ' + token } })
       .subscribe({
         next: data => this.storePic(data[data.length - 1]),
-        error: res => console.log(res)
+        error: res => console.error(res)
       })
   }
 
@@ -121,9 +121,7 @@ export class HeaderComponent implements OnInit {
     this.content.getPageContent().subscribe({
       next: (value) =>
         this.storeContent(value),
-      error: (err) => console.log(err)
-
-
+      error: (err) => console.error(err)
     })
   }
 
@@ -132,7 +130,7 @@ export class HeaderComponent implements OnInit {
     this.specialityService.getSpecialityList().subscribe({
       next: (value) =>
         this.storeDeptList(value),
-      error: (err) => console.log(err)
+      error: (err) => console.error(err)
 
 
     })
