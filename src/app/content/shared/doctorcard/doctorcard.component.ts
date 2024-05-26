@@ -136,7 +136,7 @@ export class DoctorCardComponent implements OnInit {
   getPageContent() {
     this.pagecontent.getPageContent().subscribe({
       next: res => this.storeContent(res),
-      error: err => console.log(err)
+      error: err => console.error(err)
 
     })
   }
@@ -175,7 +175,6 @@ export class DoctorCardComponent implements OnInit {
         }
       })
     })
-    console.log(this.data);
   }
   errorToastr() {
     // this.toastr.error('Error', 'Error')

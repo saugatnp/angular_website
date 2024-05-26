@@ -103,7 +103,6 @@ export class AuthService {
 
         if (this.tokenBody !== null && this.tokenBody !== undefined) {
           return roles = this.tokenBody.role.slice(0);
-         // console.log(roles)
         }
 
       

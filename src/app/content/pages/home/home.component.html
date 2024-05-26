@@ -280,7 +280,7 @@
 
                                 <div class="unilab-shape">
                                     <img src="{{appconfig.baseUrl}}/api/OnlineUploadFileDownload?userid={{slide.sn}}&sn={{slide.sn}}&filenames={{slide.sn}}.png&extension=.png&file_type=services"
-                                        alt="{{slide.page_title}}" style="width:100%;">
+                                        alt="{{slide.page_title}}" style="width:100%;" (error)="errorHandler($event)">
                                     <div class="" style="padding-bottom:50px;height: auto;">
                                         <div style="position: relative;">
                                             <h5 class="card-title fs-5 m-2">{{slide.page_title}}</h5>

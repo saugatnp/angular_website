@@ -99,7 +99,7 @@ export class AdminblogsComponent implements OnInit {
 
   }
   Error(res: any): void {
-    console.log(res)
+    console.error(res)
     // throw new Error('Method not implemented.');
   }
 
@@ -147,7 +147,7 @@ export class AdminblogsComponent implements OnInit {
         .subscribe(
           data => this.getPicture()
           ,
-          error => console.log(error)
+          error => console.error(error)
         )
     }
   }
@@ -188,7 +188,7 @@ export class AdminblogsComponent implements OnInit {
       .subscribe({
 
         next: data => this.storePic(data),
-        error: res => console.log(res)
+        error: res => console.error(res)
 
       }
       )
@@ -198,7 +198,6 @@ export class AdminblogsComponent implements OnInit {
   fileList: any;
   fileLink: any;
   storePic(res: any) {
-    // console.log(res);
     this.fileList = res;
     const baseUrl = this.baseUrl;
 
