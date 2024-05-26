@@ -16,7 +16,6 @@ export class LabreportdownloadComponent implements OnInit {
 
   ) {
     this.downloadUrl = this.appconfig.onlineLabUrl
-    // console.log(this.downloadUrl)
 
   }
 
@@ -61,14 +60,13 @@ export class LabreportdownloadComponent implements OnInit {
     }
   }
   showError(err: any) {
-    console.log(err);
+    console.error(err);
     this.showUnavailable = true
 
   }
 
   downloadReport() {
     var url = this.downloadUrl + this.data.invno + '_' + this.data.phoneno + '.pdf';
-    // console.log(url)
 
     window.open(url,
       '_blank', '');

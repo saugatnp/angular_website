@@ -26,7 +26,6 @@ export class AdminComponent implements OnInit {
     })
     this.service.currentData.subscribe((dataSub: any) => {
       this.isLoggedIn = dataSub;
-      // console.log(this.isLoggedIn);
       this.service.currentloggedAdmin.subscribe((data: any) => {
         this.loggedInAsAdmin = data;
         this.userName = this.auth.getUser()

@@ -66,7 +66,7 @@ export class DoctorProfileComponent implements OnInit {
   getContent() {
     this.contentService.getPageContent().subscribe({
       next: res => this.storeContent(res),
-      error: err => console.log(err)
+      error: err => console.error(err)
     })
   }
 
@@ -136,13 +136,11 @@ if(this.param2=='' && this.param2==''){
     this.getPicture();
 
 
-    // console.log(this.content)
   }
 
 
   selectedContent: any = []
   selectContent(content: any) {
-    // console.log(content);
     this.selectedContent = content
     this.content = content;
     this.getPicture()
@@ -163,7 +161,7 @@ if(this.param2=='' && this.param2==''){
       .subscribe({
 
         next: data => this.storePic(data),
-        error: res => console.log(res)
+        error: res => console.error(res)
 
       }
       )
@@ -174,7 +172,7 @@ if(this.param2=='' && this.param2==''){
   fileLink: any = [];
   doctorLink=''
   storePic(res: any) {
-    // console.log(res);
+    
     this.fileList = res;
     this.fileList = this.fileList.filter((x: { published: boolean; }) => x.published === true);
 
@@ -204,7 +202,7 @@ this.doctorLink=
   getDoctorList() {
     this.refererService.getDoctorList().subscribe({
       next: res => this.storeDoctors(res),
-      error: err => console.log(err)
+      error: err => console.error(err)
     })
   }
 

@@ -60,7 +60,7 @@ window.scroll(0,0)
   getContent() {
     this.contentService.getPageContent().subscribe({
       next: res => this.storeContent(res),
-      error: err => console.log(err)
+      error: err => console.error(err)
     })
   }
 
@@ -74,14 +74,12 @@ window.scroll(0,0)
     this.getPicture();
 
 
-    // console.log(this.content)
   }
 
 
   selectedContent: any = []
   selectContent(content: any) {
     window.scroll(0,0)
-    // console.log(content);
     this.selectedContent = content
     this.content = content;
     this.getPicture()
@@ -102,7 +100,7 @@ window.scroll(0,0)
       .subscribe({
 
         next: data => this.storePic(data),
-        error: res => console.log(res)
+        error: res => console.error(res)
 
       }
       )
@@ -117,7 +115,7 @@ this.selectedImage=x;
   fileList: any = [];
   fileLink: any = [];
   storePic(res: any) {
-    // console.log(res);
+    
     this.fileList = res;
     this.fileList = this.fileList.filter((x: { published: boolean; }) => x.published === true);
 
@@ -143,7 +141,7 @@ this.selectedImage=x;
   getDoctorList() {
     this.refererService.getDoctorList().subscribe({
       next: res => this.storeDoctors(res),
-      error: err => console.log(err)
+      error: err => console.error(err)
     })
   }
 

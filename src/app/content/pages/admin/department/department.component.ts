@@ -190,7 +190,6 @@ export class DepartmentComponent implements OnInit {
 
 
   Error(res: any): void {
-    // console.log(res)
     this.errorToastr();
     // throw new Error('Method not implemented.');
   }
@@ -289,7 +288,7 @@ export class DepartmentComponent implements OnInit {
         // .catch(error => Observable.throw(error))
         .subscribe(
         {next:data=> this.getPicture(),
-          error:err => console.log(err)
+          error:err => console.error(err)
         } 
           
         
@@ -364,7 +363,7 @@ export class DepartmentComponent implements OnInit {
       .subscribe({
 
         next: data => this.storePic(data),
-        error: res => console.log(res)
+        error: res => console.error(res)
 
       }
       )
@@ -374,7 +373,6 @@ export class DepartmentComponent implements OnInit {
   fileList: any;
   fileLink: any;
   storePic(res: any) {
-    // console.log(res);
     this.fileList = res;
     const baseUrl = this.appconfig.baseUrl;
 

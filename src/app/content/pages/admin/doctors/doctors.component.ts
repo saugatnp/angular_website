@@ -215,7 +215,6 @@ export class AdminDoctorsComponent implements OnInit {
 
 
   Error(res: any): void {
-    // console.log(res)
     this.errorToastr();
     // throw new Error('Method not implemented.');
   }
@@ -253,7 +252,7 @@ export class AdminDoctorsComponent implements OnInit {
         .subscribe(
           data => this.getPicture()
           ,
-          error => console.log(error)
+          error => console.error(error)
         )
     }
   }
@@ -301,7 +300,7 @@ export class AdminDoctorsComponent implements OnInit {
       .subscribe({
 
         next: data => this.storePic(data),
-        error: res => console.log(res)
+        error: res => console.error(res)
 
       }
       )
@@ -311,7 +310,6 @@ export class AdminDoctorsComponent implements OnInit {
   fileList: any;
   fileLink: any;
   storePic(res: any) {
-    // console.log(res);
     this.fileList = res;
     const baseUrl = this.appconfig.baseUrl;
 
